@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intel® Arc™ Graphics - Windows*</title>
+  <style>
+    :root {
+      --intel-blue: #00285a;
+      --intel-link: #0068b5;
+      --bg-gray: #f7f7f7;
+    }
+
+    body {
+      margin: 0;
+      background: #ffffff;
+      color: #333;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .header-path {
+      padding: 15px 20px;
+      font-size: 14px;
+      color: var(--intel-link);
+    }
+
+    .hero-section {
+      background-color: var(--intel-blue);
+      color: white;
+      padding: 40px 30px;
+      position: relative;
+    }
+
+    .hero-section h1 {
+      font-size: 32px;
+      font-weight: 300;
+      margin: 0 0 30px 0;
+    }
+
+    .meta-data {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .meta-label {
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    .meta-value {
+      font-weight: 300;
+      font-size: 15px;
+    }
+
+    select {
+      width: 100%;
+      max-width: 350px;
+      padding: 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .content-area {
+      padding: 30px;
+    }
+
+    h2 {
+      font-size: 22px;
+      font-weight: 400;
+      margin-top: 0;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    .intro-text {
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .download-card {
+      border: 1px solid #e2e2e2;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    .btn-download {
+      display: block;
+      width: 100%;
+      background-color: #0068b5;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 15px;
+    }
+
+    .btn-download:hover {
+      background-color: #005a9e;
+    }
+
+    .btn-download span {
+      display: block;
+      font-size: 13px;
+      font-weight: normal;
+      margin-top: 4px;
+    }
+
+    .recommended-tag {
+      background: #eee;
+      display: inline-block;
+      padding: 2px 8px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .file-info {
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .sha-box {
+      background: #f9f9f9;
+      padding: 10px;
+      border: 1px solid #eee;
+      word-break: break-all;
+      font-family: monospace;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header-path">Drivers & Software</div>
+
+    <div class="hero-section">
+      <h1 id="ui-title">Intel® Arc™ Graphics - Windows*</h1>
+
+      <div class="meta-data">
+        <div class="meta-label">ID</div>
+        <div class="meta-value" id="ui-id">785598</div>
+
+        <div class="meta-label">Date</div>
+        <div class="meta-value" id="ui-date">5/10/2026</div>
+
+        <div class="meta-label">Version</div>
+        <div class="meta-value">
+          <select id="versionSelector" onchange="changeVersion()">
+            <option value="v2">33.0.102.2131 WHQL</option>
+            <option value="v3">Minecraft 1.21 Legacy Game On</option>
+            <option value="v4">Old Control Panel SDK</option>
+            <option value="v5">Pacchetto AI Completo</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-area">
+      <h2>Introduction</h2>
+      <p class="intro-text" id="ui-intro">
+        This download installs Intel® Graphics Driver 33.0.102.2131 WHQL stable version.
+      </p>
+
+      <h2>Available Downloads</h2>
+      <div class="download-card">
+        <button class="btn-download" onclick="startDownload()">
+          Download
+          <span id="ui-filename">gfx_win_102.2131.exe</span>
+        </button>
+
+        <div class="recommended-tag">Recommended</div>
+
+        <div class="file-info">
+          <div id="ui-os">Windows 11 Family*</div>
+          <div style="margin-top:10px">SHA256:</div>
+          <div class="sha-box" id="ui-sha">9F8E7D6C5B4A3928172635445362718293049586756453423120192837465544</div>
+        </div>
+      </div>
+
+      <h2 style="margin-top:40px">Detailed Description</h2>
+      <p class="intro-text" id="ui-desc">
+        Versione certificata WHQL per sistemi di produzione.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    const database = {
+      v2: {
+        title: "Intel® Arc™ Graphics - WHQL",
+        id: "785598",
+        date: "5/10/2026",
+        intro: "This download installs Intel® Graphics Driver 33.0.102.2131 WHQL stable version.",
+        file: "gfx_win_102.2131.exe",
+        os: "Windows 11 Family*",
+        sha: "9F8E7D6C5B4A3928172635445362718293049586756453423120192837465544",
+        desc: "Versione certificata WHQL per sistemi di produzione.",
+        url: "https://drive.google.com/uc?export=download&id=1Xud5XxkHYwOSUIPjp3SoMzJCOqwNbdtw"
+      },
+      v3: {
+        title: "Game On Legacy - Minecraft 1.21",
+        id: "892102",
+        date: "4/21/2026",
+        intro: "Ottimizzazioni specifiche per Minecraft 1.21 su hardware Legacy.",
+        file: "legacy_game_on_mc.zip",
+        os: "Windows 10, Windows 11",
+        sha: "A1B2C3D4E5F678901234567890ABCDEF1234567890ABCDEF1234567890ABCDEF",
+        desc: "Supporto speciale per il profilo Game On di Minecraft.",
+        url: "https://drive.google.com/drive/folders/1p5u_K7c6X_PDKc3diWqnwMoIWELU1FpB?usp=sharing"
+      },
+      v4: {
+        title: "Old Control Panel SDK",
+        id: "445123",
+        date: "01/12/2025",
+        intro: "Software di compatibilità per il vecchio pannello di controllo Intel.",
+        file: "old_control_panel.zip",
+        os: "Windows 10 (Legacy)",
+        sha: "BBDDCC11223344556677889900AABBCCDDEEFF11223344556677889900AABBCC",
+        desc: "Usa questo pacchetto solo se hai bisogno di impostazioni rimosse nel nuovo Arc Control.",
+        url: "https://drive.google.com/uc?export=download&id=1FMxlcMH__KeSqMOuahNUHN47S3AeYrDo"
+      },
+      v5: {
+        title: "Intel Arc AI Toolkit",
+        id: "998877",
+        date: "4/21/2026",
+        intro: "Librerie e driver per l'accelerazione AI su GPU Intel Arc.",
+        file: "ai_full_pack.zip",
+        os: "Windows 11 (X64)",
+        sha: "FFeeddCCbbaa99887766554433221100FFeeddCCbbaa99887766554433221100",
+        desc: "Include OpenVINO e strumenti per il Deep Learning.",
+        url: "https://drive.google.com/drive/folders/1g0B7EcuI3x7zovo92jdW1lRs0CgRnv1w?usp=sharing"
+      }
+    };
+
+    function changeVersion() {
+      const val = document.getElementById("versionSelector").value;
+      const data = database[val];
+
+      document.getElementById("ui-title").innerText = data.title;
+      document.getElementById("ui-id").innerText = data.id;
+      document.getElementById("ui-date").innerText = data.date;
+      document.getElementById("ui-intro").innerText = data.intro;
+      document.getElementById("ui-filename").innerText = data.file;
+      document.getElementById("ui-os").innerText = data.os;
+      document.getElementById("ui-sha").innerText = data.sha;
+      document.getElementById("ui-desc").innerText = data.desc;
+    }
+
+    function startDownload() {
+      const val = document.getElementById("versionSelector").value;
+      const url = database[val].url;
+
+      if (!url || url === "#") {
+        alert("Link non disponibile.");
+      } else {
+        window.open(url, "_blank");
+      }
+    }
+
+    changeVersion();
+  </script>
+</body>
+</html>
