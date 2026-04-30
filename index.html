@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Driver & Software - Portale Ufficiale</title>
+  <title>Driver & Software -</title>
   <style>
     :root {
       --intel-blue: #00285a;
@@ -140,8 +140,8 @@
 
 <div class="container">
   <div id="legacy-alert">
-    <span>⚠️ <strong>Nota:</strong> Stai visualizzando una versione legacy. È disponibile una versione più recente e ottimizzata.</span>
-    <span class="alert-link" onclick="loadVersion('v7')">Vai a Pacchetto Xe-2.0</span>
+    <span>⚠️ <strong>Nota:</strong> newer version of this software is available, which includes functional and security updates..</span>
+    <span class="alert-link" onclick="loadVersion('v7')"> click here to update to the latest version </span>
   </div>
 
   <div class="hero-section">
@@ -154,11 +154,11 @@
       <div class="label">VERSIONE</div>
       <div class="value">
         <select id="versionSelector" onchange="changeVersion()">
-          <option value="v6">XRMOT v4.2.1 (Ottimizzazione)</option>
-          <option value="v7">Pacchetto Xe-2.0 (Nuovo Standard)</option>
+          <option value="v6">XRMOT v4.2.1 </option>
+          <option value="v7">Pacchetto Xe-2.0 </option>
           <option value="v8">Software Studio Accelerator</option>
           <option value="v2">Intel® Arc™ 33.0.102.2131 WHQL</option>
-          <option value="v3">Minecraft 1.21 Legacy Game On</option>
+          <option value="v3">1.21 Legacy Game On</option>
           <option value="v4">Old Control Panel SDK (Legacy)</option>
         </select>
       </div>
@@ -190,43 +190,43 @@
     v6: {
       title: "XRMOT - eXtreme Resource Manager Optimization Tool",
       id: "XRMOT-421", date: "30/04/2026", isLegacy: false,
-      desc: "Tool avanzato per l'ottimizzazione istantanea. <ul><li>Priorità CPU Alta</li><li>Libera 300-500MB VRAM</li><li>Pulizia RAM forzata</li><li>Ritorno allo stato originale alla chiusura</li></ul>",
-      file: "XRMOT_v4.2.1_Final.zip", os: "Windows 10/11", sha: "8F4E2C1B9A0D7F6E5D4C3B2A1F0E9D8C7B6A5F4E3D2C1B0A9F8E7D6C5B4A3928",
+      desc: "Tool avanzato per l'ottimizzazione. <ul><li>Priorità CPU </li><li>Libera VRAM</li><li>Pulizia RAM-cache</li><li>Ritorno allo stato originale alla chiusura</li></ul>",
+      file: "XRMOT_v4.2.1 ", os: "Windows 10/11", sha: "8F4E2C1B9A0D7F6E5D4C3B2A1F0E9D8C7B6A5F4E3D2C1B0A9F8E7D6C5B4A3928",
       url: "https://drive.google.com/drive/folders/1U5ILjzK-W6B-R1AFDRuQ0jWji2vrZWAG"
     },
     v7: {
-      title: "Pacchetto Xe-2.0 - Driver & Optimization Next-Gen",
-      id: "XE-2026-V2", date: "05/05/2026", isLegacy: false,
-      desc: "L'ultimo standard per l'architettura Intel Xe. Include ottimizzazioni kernel e supporto esteso per le nuove librerie grafiche.",
-      file: "Intel_Xe_Package_2.0.exe", os: "Windows 11 (22H2+)", sha: "AAABBBCCCDDDEEEFFF111222333444555666777888999000AAABBBCCCDDDEEEF",
+      title: "Pacchetto Xe-2.0 - Driver & Software ",
+      id: "XE-2026-V2", date: "01/05/2026", isLegacy: false,
+      desc: "L'ultimo standard per l'architettura Intel Xe. Include ottimizzazioni kernel e supporto esteso per le nuove librerie.",
+      file: "Intel_Xe_Package_2.0", os: " Any", sha: "AAABBBCCCDDDEEEFFF111222333444555666777888999000AAABBBCCCDDDEEEF",
       url: "https://drive.google.com/drive/folders/1naCyvxiBd3ZwUsu5P1q7tuixYzE-hwH2"
     },
     v8: {
       title: "Software Studio Accelerator",
       id: "SSA-PRO", date: "02/05/2026", isLegacy: false,
-      desc: "Acceleratore dedicato per software di produzione e suite creative. Ottimizza i tempi di rendering e la risposta della UI.",
-      file: "Studio_Accelerator_Setup.msi", os: "Windows 10/11 (x64)", sha: "556677889900AABBCCDDEEFF11223344556677889900AABBCCDDEEFF11223344",
+      desc: "Acceleratore dedicato per software di produzione e suite creative. Ottimizza i tempi",
+      file: "Studio_Accelerator", os: "any", sha: "556677889900AABBCCDDEEFF11223344556677889900AABBCCDDEEFF11223344",
       url: "https://drive.google.com/drive/folders/1JHV173PewLwC9sXJVamaORnKKy3lcKV_"
     },
     v2: {
       title: "Intel® Arc™ Graphics - 33.0.102.2131",
       id: "785598", date: "10/05/2026", isLegacy: false,
       desc: "Versione standard WHQL per schede video Intel Arc.",
-      file: "gfx_win_102.2131.exe", os: "Windows 11 Family*", sha: "9F8E7D6C5B4A3928172635445362718293049586756453423120192837465544",
+      file: "gfx_win_102.2131.exe", os: "Windows 10/11 Family*", sha: "9F8E7D6C5B4A3928172635445362718293049586756453423120192837465544",
       url: "https://drive.google.com/uc?export=download&id=1Xud5XxkHYwOSUIPjp3SoMzJCOqwNbdtw"
     },
     v3: {
-      title: "Game On Legacy - Minecraft 1.21",
+      title: "Game On Legacy - 1.21",
       id: "892102", date: "21/04/2026", isLegacy: true,
       desc: "Ottimizzazione per hardware datato specifica per Minecraft.",
-      file: "mc_legacy_opt.zip", os: "Windows 10 (Legacy)", sha: "A1B2C3D4E5F678901234567890ABCDEF1234567890ABCDEF1234567890ABCDEF",
+      file: " game on", os: "Windows 10/11 ", sha: "A1B2C3D4E5F678901234567890ABCDEF1234567890ABCDEF1234567890ABCDEF",
       url: "https://drive.google.com/drive/folders/1p5u_K7c6X_PDKc3diWqnwMoIWELU1FpB?usp=sharing"
     },
     v4: {
       title: "Old Control Panel SDK (Legacy)",
       id: "445123", date: "12/01/2025", isLegacy: true,
       desc: "Vecchio pannello di controllo per compatibilità con impostazioni rimosse.",
-      file: "old_panel.zip", os: "Windows 10", sha: "BBDDCC11223344556677889900AABBCCDDEEFF11223344556677889900AABBCC",
+      file: "old_panel.", os: "Windows 10", sha: "BBDDCC11223344556677889900AABBCCDDEEFF11223344556677889900AABBCC",
       url: "https://drive.google.com/uc?export=download&id=1FMxlcMH__KeSqMOuahNUHN47S3AeYrDo"
     }
   };
@@ -251,9 +251,9 @@
     // Badge
     const badge = document.getElementById("ui-badge");
     if(data.isLegacy) {
-      badge.innerHTML = '<span class="badge badge-legacy">Versione Legacy</span>';
+      badge.innerHTML = '<span class="badge badge-legacy"> Legacy</span>';
     } else {
-      badge.innerHTML = '<span class="badge badge-new">Nuova Release</span>';
+      badge.innerHTML = '<span class="badge badge-new">New Release</span>';
     }
   }
 
