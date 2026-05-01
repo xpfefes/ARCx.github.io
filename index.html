@@ -3,274 +3,607 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Driver & Software -</title>
+  <title>Driver & Software - Archive</title>
   <style>
     :root {
-      --intel-blue: #00285a;
+      --intel-blue: #001f46;
+      --intel-blue-2: #00285a;
       --intel-link: #0068b5;
-      --intel-yellow: #ffc400;
       --bg-gray: #f4f7fa;
-      --text-dark: #333;
+      --text-dark: #1f2937;
+      --muted: #5b6472;
+      --border: #dfe5ec;
+      --panel: #ffffff;
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+
+      --archived-bg: #fff7e6;
+      --archived-text: #6f5200;
+      --archived-border: #d6a100;
+
+      --new-bg: #e8f3ff;
+      --new-text: #0b4f8a;
+      --new-border: #86bdf2;
+
+      --beta-bg: #f2edff;
+      --beta-text: #5b3aa6;
+      --beta-border: #b79dff;
     }
 
-    body {
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
       margin: 0;
+      padding: 0;
+      min-height: 100%;
       background: var(--bg-gray);
       color: var(--text-dark);
       font-family: "Segoe UI", Tahoma, sans-serif;
+      line-height: 1.5;
+    }
+
+    body {
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    .page-wrap {
+      width: min(100%, 1040px);
+      margin: 20px auto;
+      padding: 0 14px 22px;
     }
 
     .container {
-      max-width: 950px;
-      margin: 30px auto;
-      background: #fff;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      border-radius: 4px;
+      background: var(--panel);
+      border-radius: 12px;
       overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0, 0, 0, 0.05);
     }
 
-    /* Alert Stile Intel */
-    #legacy-alert {
-      display: none;
-      background-color: #fff3cd;
-      border-left: 5px solid var(--intel-yellow);
-      padding: 15px 25px;
-      margin: 0;
-      color: #856404;
-      font-size: 15px;
+    .top-brand {
+      display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 16px;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+      background: #fff;
     }
 
-    .alert-link {
-      color: var(--intel-link);
-      font-weight: bold;
-      text-decoration: underline;
-      cursor: pointer;
+    .brand-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 76px;
+      height: 30px;
+      flex: 0 0 auto;
+    }
+
+    .brand-title {
+      font-size: 13px;
+      color: #6b7280;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .hero-section {
+      position: relative;
+      color: #fff;
+      padding: clamp(18px, 4vw, 34px);
       background-color: var(--intel-blue);
-      color: white;
-      padding: 35px;
+      background-image:
+        radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+        radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+        linear-gradient(180deg, var(--intel-blue) 0%, #00336f 100%);
+      background-size: 18px 18px, 28px 28px, auto;
+      background-position: 0 0, 9px 9px, 0 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .hero-section h1 {
-      font-size: 28px;
+      font-size: clamp(22px, 3.2vw, 32px);
       font-weight: 300;
-      margin: 0 0 25px 0;
+      margin: 0 0 18px 0;
+      letter-spacing: 0.2px;
+      line-height: 1.2;
     }
 
     .meta-grid {
       display: grid;
-      grid-template-columns: 120px 1fr;
-      gap: 12px;
-      background: rgba(255,255,255,0.05);
-      padding: 15px;
-      border-radius: 4px;
+      grid-template-columns: 145px minmax(0, 1fr);
+      gap: 12px 14px;
+      background: rgba(255, 255, 255, 0.07);
+      padding: 16px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(2px);
     }
 
-    .label { font-weight: bold; color: #accbff; font-size: 14px; }
-    .value { font-weight: 300; }
+    .label {
+      font-weight: 700;
+      color: #cde0ff;
+      font-size: 13px;
+      letter-spacing: 0.25px;
+      align-self: center;
+    }
+
+    .value {
+      font-weight: 400;
+      word-break: break-word;
+      align-self: center;
+    }
 
     select {
       width: 100%;
-      max-width: 400px;
-      padding: 10px;
-      border-radius: 3px;
-      border: 1px solid #ccc;
+      max-width: 460px;
+      padding: 11px 12px;
+      border-radius: 7px;
+      border: 1px solid #cbd5e1;
       font-size: 15px;
+      background: #fff;
+      color: #111827;
+      outline: none;
     }
 
-    .content { padding: 30px; }
+    select:focus {
+      border-color: var(--intel-link);
+      box-shadow: 0 0 0 3px rgba(0, 104, 181, 0.18);
+    }
+
+    .content {
+      padding: clamp(18px, 4vw, 30px);
+    }
+
+    #legacy-alert {
+      display: none;
+      background: var(--archived-bg);
+      border: 1px solid #efd48a;
+      border-left: 6px solid var(--archived-border);
+      color: var(--archived-text);
+      padding: 16px 18px;
+      border-radius: 10px;
+      margin-bottom: 22px;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .alert-link {
+      color: var(--intel-link);
+      font-weight: 700;
+      text-decoration: underline;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .section-title {
+      font-weight: 500;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 10px;
+      margin: 0 0 14px 0;
+      color: #111827;
+      font-size: clamp(18px, 2.2vw, 22px);
+    }
+
+    #ui-desc {
+      margin-bottom: 26px;
+      line-height: 1.65;
+      color: #374151;
+    }
+
+    .info-box {
+      border: 1px solid var(--border);
+      padding: clamp(16px, 3vw, 22px);
+      background: #fafafa;
+      border-radius: 12px;
+    }
 
     .btn-download {
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
+      gap: 4px;
       background-color: var(--intel-link);
-      color: white;
-      padding: 18px;
+      color: #fff;
+      padding: 16px 18px;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 700;
       border: none;
-      border-radius: 4px;
+      border-radius: 10px;
       cursor: pointer;
       width: 100%;
-      transition: background 0.2s;
+      transition: transform 0.15s ease, background 0.2s ease;
+      font-size: 15px;
     }
 
-    .btn-download:hover { background-color: #004a82; }
-    .btn-download span { font-size: 13px; font-weight: normal; margin-top: 5px; }
+    .btn-download:hover {
+      background-color: #004a82;
+      transform: translateY(-1px);
+    }
 
-    .info-box {
-      border: 1px solid #e2e2e2;
-      padding: 20px;
+    .btn-download:active {
+      transform: translateY(0);
+    }
+
+    .btn-download span {
+      font-size: 13px;
+      font-weight: 400;
+      opacity: 0.95;
+    }
+
+    .meta-detail {
       margin-top: 20px;
-      background: #fafafa;
+      font-size: 14px;
+      color: #374151;
+    }
+
+    .sha-code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      background: #eef2f7;
+      padding: 10px 12px;
+      display: block;
+      margin-top: 6px;
+      font-size: 12px;
+      word-break: break-all;
+      border-radius: 7px;
+      border: 1px solid #d9e2ec;
+      color: #111827;
     }
 
     .badge {
-      display: inline-block;
-      padding: 3px 10px;
-      border-radius: 3px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 12px;
+      border-radius: 999px;
       font-size: 12px;
-      font-weight: bold;
-      margin-bottom: 15px;
+      font-weight: 800;
+      margin-bottom: 16px;
       text-transform: uppercase;
+      letter-spacing: 0.4px;
+      border: 1px solid transparent;
     }
 
-    .badge-new { background: #00c853; color: white; }
-    .badge-legacy { background: #757575; color: white; }
+    .badge-new {
+      background: var(--new-bg);
+      color: var(--new-text);
+      border-color: var(--new-border);
+    }
 
-    .sha-code {
-      font-family: monospace;
-      background: #eee;
-      padding: 8px;
-      display: block;
-      margin-top: 5px;
+    .badge-archived {
+      background: #eef0f2;
+      color: #525f6b;
+      border-color: #d4d9de;
+    }
+
+    .badge-beta {
+      background: var(--beta-bg);
+      color: var(--beta-text);
+      border-color: var(--beta-border);
+    }
+
+    ul {
+      padding-left: 20px;
+      margin: 10px 0 0 0;
+      color: #4b5563;
+    }
+
+    li {
+      margin: 4px 0;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px 18px;
+      color: #6b7280;
       font-size: 12px;
-      word-break: break-all;
+      border-top: 1px solid #edf1f5;
+      background: #fff;
+      flex-wrap: wrap;
     }
 
-    ul { padding-left: 20px; line-height: 1.6; color: #555; }
+    .footer strong {
+      color: #4b5563;
+      font-weight: 700;
+    }
+
+    @media (max-width: 720px) {
+      .page-wrap {
+        margin: 10px auto;
+        padding: 0 10px 14px;
+      }
+
+      .top-brand {
+        padding: 12px 14px;
+      }
+
+      .meta-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .label {
+        margin-top: 6px;
+      }
+
+      select {
+        max-width: 100%;
+      }
+
+      #legacy-alert {
+        align-items: flex-start;
+      }
+
+      .footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .hero-section {
+        padding: 16px;
+      }
+
+      .content {
+        padding: 16px;
+      }
+
+      .info-box {
+        padding: 14px;
+      }
+
+      .btn-download {
+        font-size: 14px;
+        padding: 15px 16px;
+      }
+    }
   </style>
 </head>
 <body>
+  <div class="page-wrap">
+    <div class="container">
+      <div class="top-brand">
+        <div class="brand-left">
+          <svg class="brand-mark" viewBox="0 0 120 44" xmlns="http://www.w3.org/2000/svg" aria-label="Intel">
+            <rect x="0" y="0" width="120" height="44" rx="8" fill="#00285a"></rect>
+            <text x="18" y="28" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700">intel</text>
+          </svg>
+          <div class="brand-title">Drive & Software</div>
+        </div>
+      </div>
 
-<div class="container">
-  <div id="legacy-alert">
-    <span>⚠️ <strong>Nota:</strong> newer version of this software is available, which includes functional and security updates..</span>
-    <span class="alert-link" onclick="loadVersion('v7')"> click here to update to the latest version </span>
-  </div>
+      <div id="legacy-alert">
+        <span id="legacy-alert-text">
+          ⚠️ <strong>Nota:</strong> questa versione è archiviata. È disponibile, ma non riceverà più aggiornamenti. Si consiglia di adottare la versione Xe-2 Package.
+        </span>
+        <span class="alert-link" onclick="loadVersion('v7')">Vai a Xe-2 Package</span>
+      </div>
 
-  <div class="hero-section">
-    <h1 id="ui-title">Caricamento...</h1>
-    <div class="meta-grid">
-      <div class="label">ID PRODOTTO</div>
-      <div class="value" id="ui-id">--</div>
-      <div class="label">DATA RILASCIO</div>
-      <div class="value" id="ui-date">--</div>
-      <div class="label">VERSIONE</div>
-      <div class="value">
-        <select id="versionSelector" onchange="changeVersion()">
-          <option value="v6">XRMOT v4.2.1 </option>
-          <option value="v7">Pacchetto Xe-2.0 </option>
-          <option value="v8">Software Studio Accelerator</option>
-          <option value="v2">Intel® Arc™ 33.0.102.2131 WHQL</option>
-          <option value="v3">1.21 Legacy Game On</option>
-          <option value="v4">Old Control Panel SDK (Legacy)</option>
-        </select>
+      <div class="hero-section">
+        <h1 id="ui-title">Caricamento...</h1>
+        <div class="meta-grid">
+          <div class="label">ID PRODOTTO</div>
+          <div class="value" id="ui-id">--</div>
+
+          <div class="label">DATA RILASCIO</div>
+          <div class="value" id="ui-date">--</div>
+
+          <div class="label">VERSIONE</div>
+          <div class="value">
+            <select id="versionSelector" onchange="changeVersion()">
+              <option value="v9">SDK 2.1 - Developer Mini App</option>
+              <option value="v1">Pacchetto 1</option>
+              <option value="v6">XRMOT v4.2.1</option>
+              <option value="v7">Pacchetto Xe-2.0</option>
+              <option value="v8">Software Studio Accelerator</option>
+              <option value="v2">Intel® Arc™ 33.0.102.2131 WHQL</option>
+              <option value="v3">1.21 Minecraft Mod (Archivio)</option>
+              <option value="v4">Old Control Panel SDK (Archivio)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div id="ui-badge"></div>
+        <h2 class="section-title">Descrizione Software</h2>
+        <div id="ui-desc"></div>
+
+        <div class="info-box">
+          <a class="btn-download" id="downloadLink" href="#" target="_blank" rel="noopener noreferrer">
+            SCARICA ORA
+            <span id="ui-filename">nome_file.zip</span>
+          </a>
+
+          <div class="meta-detail">
+            <strong>Sistemi supportati:</strong> <span id="ui-os">--</span><br><br>
+            <strong>Checksum SHA256:</strong>
+            <span class="sha-code" id="ui-sha">--</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div>Intel®</div>
+        <div>© Archivio software</div>
       </div>
     </div>
   </div>
 
-  <div class="content">
-    <div id="ui-badge"></div>
-    <h2 style="font-weight: 400; border-bottom: 1px solid #ddd; padding-bottom: 10px;">Descrizione Software</h2>
-    <div id="ui-desc" style="margin-bottom: 30px; line-height: 1.6;"></div>
+  <script>
+    const database = {
+      v9: {
+        title: "SDK 2.1 - Developer Mini App",
+        id: "SDK-21-DEV",
+        date: "01/05/2026",
+        status: "beta",
+        isArchived: false,
+        alert: "",
+        alertAction: "",
+        desc: "Versione SDK 2.1 per developer. Mini app progettata per test rapidi e integrazione locale. Questa build è ancora in beta e non è considerata stabile al 100%.\n<ul><li>Interfaccia ridotta</li><li>Installazione leggera</li><li>Integrazione AI locale</li><li>Versione sperimentale</li></ul>",
+        file: "SDK_2.1_DevMiniApp_670KB.zip",
+        os: "Windows 10 e 11 a 64 bit, connessione internet, CPU almeno 1 GHz, spazio richiesto 700 KB",
+        sha: "C1D2E3F40516273849A0B1C2D3E4F5061728394A5B6C7D8E9F00112233445566",
+        url: "https://drive.google.com/drive/folders/15GycJKJmR1iwp-owg9xXaI4t8J2-q1dq?usp=drive_link"
+      },
+      v1: {
+        title: "Pacchetto 1",
+        id: "PKG-001",
+        date: "29/04/2026",
+        status: "archived",
+        isArchived: true,
+        alert: "⚠️ <strong>Nota:</strong> questa versione è archiviata. È disponibile, ma non riceverà più aggiornamenti. Si consiglia di aggiornare la versione Xe-2 per futuri update",
+        alertAction: "Vai a Xe-2",
+        desc: "Pacchetto originale conservato per compatibilità e archivio. È disponibile, ma non riceverà aggiornamenti.",
+        file: "Pacchetto_Xe-1",
+        os: "64 bit",
+        sha: "111122223333444455556666777788889999AAAABBBBCCCCDDDDEEEEFFFF0000",
+        url: "https://drive.google.com/drive/folders/1g0B7EcuI3x7zovo92jdW1lRs0CgRnv1w?usp=drive_link"
+      },
+      v6: {
+        title: "XRMOT - eXtreme Resource Manager Optimization Tool",
+        id: "XRMOT-421",
+        date: "30/04/2026",
+        status: "beta",
+        isArchived: false,
+        alert: "",
+        alertAction: "",
+        desc: "Tool avanzato per l'ottimizzazione del sistema.\n<ul><li>Priorità CPU</li><li>Libera VRAM</li><li>Pulizia RAM-cache</li><li>Ritorno allo stato originale alla chiusura</li></ul>",
+        file: "XRMOT_v4.2.1",
+        os: "Windows 10 e 11",
+        sha: "8F4E2C1B9A0D7F6E5D4C3B2A1F0E9D8C7B6A5F4E3D2C1B0A9F8E7D6C5B4A3928",
+        url: "https://drive.google.com/drive/folders/1U5ILjzK-W6B-R1AFDRuQ0jWji2vrZWAG"
+      },
+      v7: {
+        title: "Pacchetto Xe-2.0 - Driver & Software",
+        id: "XE-2026-V2",
+        date: "01/05/2026",
+        status: "beta",
+        isArchived: false,
+        alert: "",
+        alertAction: "",
+        desc: "Pacchetto Xe-2.0 in fase di raffinamento. Include ottimizzazioni kernel e supporto esteso per le nuove librerie.",
+        file: "Intel_Xe_Package_2.0",
+        os: "64Bit",
+        sha: "AAABBBCCCDDDEEEFFF111222333444555666777888999000AAABBBCCCDDDEEEF",
+        url: "https://drive.google.com/drive/folders/1naCyvxiBd3ZwUsu5P1q7tuixYzE-hwH2"
+      },
+      v8: {
+        title: "Software Studio Accelerator",
+        id: "SSA-",
+        date: "02/05/2026",
+        status: "new",
+        isArchived: false,
+        alert: "",
+        alertAction: "",
+        desc: "Acceleratore dedicato per software di produzione e suite creative. Ottimizza i tempi di esecuzione.",
+        file: "Studio_Accelerator",
+        os: "64 bit",
+        sha: "556677889900AABBCCDDEEFF11223344556677889900AABBCCDDEEFF11223344",
+        url: "https://drive.google.com/drive/folders/1JHV173PewLwC9sXJVamaORnKKy3lcKV_"
+      },
+      v2: {
+        title: "Intel® Arc™ Graphics - 33.0.102.2131 Test WHQL",
+        id: "785598",
+        date: "10/05/2026",
+        status: "new",
+        isArchived: false,
+        alert: "",
+        alertAction: "",
+        desc: "Versione Test WHQL per schede video Intel Arc (Non include Arc Control)",
+        file: "gfx_win_102.2131.exe",
+        os: "Windows 10 e 11 Family",
+        sha: "9F8E7D6C5B4A3928172635445362718293049586756453423120192837465544",
+        url: "https://drive.google.com/uc?export=download&id=1Xud5XxkHYwOSUIPjp3SoMzJCOqwNbdtw"
+      },
+      v3: {
+        title: "Game On Legacy - 1.21",
+        id: "892102",
+        date: "21/04/2026",
+        status: "archived",
+        isArchived: true,
+        alert: "⚠️ <strong>Nota:</strong> questa versione è archiviata. È disponibile, ma non riceverà più aggiornamenti. Si consiglia usare  la versione Xe-2.",
+        alertAction: "Vai a Xe-2",
+        desc: "Ottimizzazione per hardware datato specifica per Minecraft. È disponibile, ma non riceverà aggiornamenti.",
+        file: "game on",
+        os: "A 64 bit",
+        sha: "A1B2C3D4E5F678901234567890ABCDEF1234567890ABCDEF1234567890ABCDEF",
+        url: "https://drive.google.com/drive/folders/1p5u_K7c6X_PDKc3diWqnwMoIWELU1FpB?usp=sharing"
+      },
+      v4: {
+        title: "Old Control Panel SDK (Archivio)",
+        id: "445123",
+        date: "12/01/2025",
+        status: "archived",
+        isArchived: true,
+        alert: "⚠️ <strong>Nota:</strong> questa versione è archiviata. È disponibile, ma non riceverà più aggiornamenti. Si consiglia di adottare la versione Xe-2.",
+        alertAction: "Vai a Xe-2",
+        desc: "Vecchio pannello di controllo per compatibilità con impostazioni rimosse. È disponibile, ma non riceverà aggiornamenti.",
+        file: "old_panel",
+        os: "Windows 10 & 11",
+        sha: "BBDDCC11223344556677889900AABBCCDDEEFF11223344556677889900AABBCC",
+        url: "https://drive.google.com/uc?export=download&id=1FMxlcMH__KeSqMOuahNUHN47S3AeYrDo"
+      }
+    };
 
-    <div class="info-box">
-      <button class="btn-download" onclick="startDownload()">
-        SCARICA ORA
-        <span id="ui-filename">nome_file.zip</span>
-      </button>
-      
-      <div style="margin-top: 20px; font-size: 14px;">
-        <strong>Sistemi supportati:</strong> <span id="ui-os">--</span><br><br>
-        <strong>Checksum SHA256:</strong>
-        <span class="sha-code" id="ui-sha">--</span>
-      </div>
-    </div>
-  </div>
-</div>
+    function changeVersion() {
+      const key = document.getElementById("versionSelector").value;
+      const data = database[key];
 
-<script>
-  const database = {
-    v6: {
-      title: "XRMOT - eXtreme Resource Manager Optimization Tool",
-      id: "XRMOT-421", date: "30/04/2026", isLegacy: false,
-      desc: "Tool avanzato per l'ottimizzazione. <ul><li>Priorità CPU </li><li>Libera VRAM</li><li>Pulizia RAM-cache</li><li>Ritorno allo stato originale alla chiusura</li></ul>",
-      file: "XRMOT_v4.2.1 ", os: "Windows 10/11", sha: "8F4E2C1B9A0D7F6E5D4C3B2A1F0E9D8C7B6A5F4E3D2C1B0A9F8E7D6C5B4A3928",
-      url: "https://drive.google.com/drive/folders/1U5ILjzK-W6B-R1AFDRuQ0jWji2vrZWAG"
-    },
-    v7: {
-      title: "Pacchetto Xe-2.0 - Driver & Software ",
-      id: "XE-2026-V2", date: "01/05/2026", isLegacy: false,
-      desc: "L'ultimo standard per l'architettura Intel Xe. Include ottimizzazioni kernel e supporto esteso per le nuove librerie.",
-      file: "Intel_Xe_Package_2.0", os: " Any", sha: "AAABBBCCCDDDEEEFFF111222333444555666777888999000AAABBBCCCDDDEEEF",
-      url: "https://drive.google.com/drive/folders/1naCyvxiBd3ZwUsu5P1q7tuixYzE-hwH2"
-    },
-    v8: {
-      title: "Software Studio Accelerator",
-      id: "SSA-PRO", date: "02/05/2026", isLegacy: false,
-      desc: "Acceleratore dedicato per software di produzione e suite creative. Ottimizza i tempi",
-      file: "Studio_Accelerator", os: "any", sha: "556677889900AABBCCDDEEFF11223344556677889900AABBCCDDEEFF11223344",
-      url: "https://drive.google.com/drive/folders/1JHV173PewLwC9sXJVamaORnKKy3lcKV_"
-    },
-    v2: {
-      title: "Intel® Arc™ Graphics - 33.0.102.2131",
-      id: "785598", date: "10/05/2026", isLegacy: false,
-      desc: "Versione standard WHQL per schede video Intel Arc.",
-      file: "gfx_win_102.2131.exe", os: "Windows 10/11 Family*", sha: "9F8E7D6C5B4A3928172635445362718293049586756453423120192837465544",
-      url: "https://drive.google.com/uc?export=download&id=1Xud5XxkHYwOSUIPjp3SoMzJCOqwNbdtw"
-    },
-    v3: {
-      title: "Game On Legacy - 1.21",
-      id: "892102", date: "21/04/2026", isLegacy: true,
-      desc: "Ottimizzazione per hardware datato specifica per Minecraft.",
-      file: " game on", os: "Windows 10/11 ", sha: "A1B2C3D4E5F678901234567890ABCDEF1234567890ABCDEF1234567890ABCDEF",
-      url: "https://drive.google.com/drive/folders/1p5u_K7c6X_PDKc3diWqnwMoIWELU1FpB?usp=sharing"
-    },
-    v4: {
-      title: "Old Control Panel SDK (Legacy)",
-      id: "445123", date: "12/01/2025", isLegacy: true,
-      desc: "Vecchio pannello di controllo per compatibilità con impostazioni rimosse.",
-      file: "old_panel.", os: "Windows 10", sha: "BBDDCC11223344556677889900AABBCCDDEEFF11223344556677889900AABBCC",
-      url: "https://drive.google.com/uc?export=download&id=1FMxlcMH__KeSqMOuahNUHN47S3AeYrDo"
+      document.getElementById("ui-title").innerText = data.title;
+      document.getElementById("ui-id").innerText = data.id;
+      document.getElementById("ui-date").innerText = data.date;
+      document.getElementById("ui-desc").innerHTML = data.desc;
+      document.getElementById("ui-filename").innerText = data.file;
+      document.getElementById("ui-os").innerText = data.os;
+      document.getElementById("ui-sha").innerText = data.sha;
+
+      const alertBox = document.getElementById("legacy-alert");
+      const alertText = document.getElementById("legacy-alert-text");
+      const alertAction = document.querySelector(".alert-link");
+
+      if (data.isArchived) {
+        alertBox.style.display = "flex";
+        alertText.innerHTML = data.alert;
+        alertAction.innerText = data.alertAction;
+        alertAction.onclick = () => loadVersion("v7");
+      } else {
+        alertBox.style.display = "none";
+      }
+
+      const badge = document.getElementById("ui-badge");
+      if (data.status === "archived") {
+        badge.innerHTML = '<span class="badge badge-archived">ARCHIVIATO</span>';
+      } else if (data.status === "beta") {
+        badge.innerHTML = '<span class="badge badge-beta">BETA</span>';
+      } else {
+        badge.innerHTML = '<span class="badge badge-new">NEW RELEASE</span>';
+      }
+
+      const downloadLink = document.getElementById("downloadLink");
+      downloadLink.href = data.url;
     }
-  };
 
-  function changeVersion() {
-    const key = document.getElementById("versionSelector").value;
-    const data = database[key];
-
-    // Aggiorna Testi
-    document.getElementById("ui-title").innerText = data.title;
-    document.getElementById("ui-id").innerText = data.id;
-    document.getElementById("ui-date").innerText = data.date;
-    document.getElementById("ui-desc").innerHTML = data.desc;
-    document.getElementById("ui-filename").innerText = data.file;
-    document.getElementById("ui-os").innerText = data.os;
-    document.getElementById("ui-sha").innerText = data.sha;
-
-    // Gestione Alert Legacy
-    const alertBox = document.getElementById("legacy-alert");
-    alertBox.style.display = data.isLegacy ? "flex" : "none";
-
-    // Badge
-    const badge = document.getElementById("ui-badge");
-    if(data.isLegacy) {
-      badge.innerHTML = '<span class="badge badge-legacy"> Legacy</span>';
-    } else {
-      badge.innerHTML = '<span class="badge badge-new">New Release</span>';
+    function loadVersion(v) {
+      document.getElementById("versionSelector").value = v;
+      changeVersion();
     }
-  }
 
-  // Funzione per forzare il caricamento di una versione specifica (usata dal link nell'alert)
-  function loadVersion(v) {
-    document.getElementById("versionSelector").value = v;
     changeVersion();
-  }
-
-  function startDownload() {
-    const val = document.getElementById("versionSelector").value;
-    window.open(database[val].url, "_blank");
-  }
-
-  // Init
-  changeVersion();
-</script>
-
+  </script>
 </body>
 </html>
