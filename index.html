@@ -31,21 +31,17 @@
 
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     html, body {
-      margin: 0;
-      padding: 0;
-      min-height: 100%;
+      min-height: 100vh;
       background: var(--bg-gray);
       color: var(--text-dark);
-      font-family: "Segoe UI", Tahoma, sans-serif;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.5;
-    }
-
-    body {
       -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
     }
 
     .page-wrap {
@@ -76,42 +72,25 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      min-width: 0;
-    }
-
-    .brand-mark {
-      width: 76px;
-      height: 30px;
-      flex: 0 0 auto;
-    }
-
-    .brand-title {
-      font-size: 13px;
-      color: #6b7280;
-      letter-spacing: 0.3px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
     .hero-section {
       position: relative;
       color: #fff;
       padding: clamp(18px, 4vw, 34px);
-      background-color: var(--intel-blue);
-      background-image:
-        radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
-        radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+      background: var(--intel-blue);
+      background-image: 
+        radial-gradient(rgba(255,255,255,0.12) 1px, transparent 1px),
+        radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
         linear-gradient(180deg, var(--intel-blue) 0%, #00336f 100%);
       background-size: 18px 18px, 28px 28px, auto;
-      background-position: 0 0, 9px 9px, 0 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      border-top: 1px solid rgba(255,255,255,0.06);
     }
 
     .hero-section h1 {
       font-size: clamp(22px, 3.2vw, 32px);
       font-weight: 300;
-      margin: 0 0 18px 0;
+      margin-bottom: 18px;
       letter-spacing: 0.2px;
       line-height: 1.2;
     }
@@ -124,14 +103,12 @@
       padding: 16px;
       border-radius: 10px;
       border: 1px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(2px);
     }
 
     .label {
       font-weight: 700;
       color: #cde0ff;
       font-size: 13px;
-      letter-spacing: 0.25px;
       align-self: center;
     }
 
@@ -151,6 +128,7 @@
       background: #fff;
       color: #111827;
       outline: none;
+      transition: all 0.2s ease;
     }
 
     select:focus {
@@ -171,10 +149,14 @@
       padding: 16px 18px;
       border-radius: 10px;
       margin-bottom: 22px;
-      gap: 12px;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    #legacy-alert.show {
+      display: flex;
     }
 
     .alert-link {
@@ -182,22 +164,14 @@
       font-weight: 700;
       text-decoration: underline;
       cursor: pointer;
-      white-space: nowrap;
     }
 
     .section-title {
       font-weight: 500;
       border-bottom: 1px solid #e5e7eb;
       padding-bottom: 10px;
-      margin: 0 0 14px 0;
-      color: #111827;
+      margin-bottom: 14px;
       font-size: clamp(18px, 2.2vw, 22px);
-    }
-
-    #ui-desc {
-      margin-bottom: 26px;
-      line-height: 1.65;
-      color: #374151;
     }
 
     .info-box {
@@ -218,46 +192,29 @@
       padding: 16px 18px;
       text-decoration: none;
       font-weight: 700;
-      border: none;
       border-radius: 10px;
-      cursor: pointer;
       width: 100%;
-      transition: transform 0.15s ease, background 0.2s ease;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0, 104, 181, 0.3);
       font-size: 15px;
     }
 
     .btn-download:hover {
       background-color: #004a82;
-      transform: translateY(-1px);
-    }
-
-    .btn-download:active {
-      transform: translateY(0);
-    }
-
-    .btn-download span {
-      font-size: 13px;
-      font-weight: 400;
-      opacity: 0.95;
-    }
-
-    .meta-detail {
-      margin-top: 20px;
-      font-size: 14px;
-      color: #374151;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 104, 181, 0.4);
     }
 
     .sha-code {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-family: ui-monospace, monospace;
       background: #eef2f7;
       padding: 10px 12px;
-      display: block;
       margin-top: 6px;
       font-size: 12px;
       word-break: break-all;
       border-radius: 7px;
       border: 1px solid #d9e2ec;
-      color: #111827;
+      display: block;
     }
 
     .badge {
@@ -271,104 +228,32 @@
       margin-bottom: 16px;
       text-transform: uppercase;
       letter-spacing: 0.4px;
-      border: 1px solid transparent;
     }
 
-    .badge-new {
-      background: var(--new-bg);
-      color: var(--new-text);
-      border-color: var(--new-border);
-    }
-
-    .badge-archived {
-      background: #eef0f2;
-      color: #525f6b;
-      border-color: #d4d9de;
-    }
-
-    .badge-beta {
-      background: var(--beta-bg);
-      color: var(--beta-text);
-      border-color: var(--beta-border);
-    }
-
-    ul {
-      padding-left: 20px;
-      margin: 10px 0 0 0;
-      color: #4b5563;
-    }
-
-    li {
-      margin: 4px 0;
-    }
+    .badge-new { background: var(--new-bg); color: var(--new-text); border: 1px solid var(--new-border); }
+    .badge-archived { background: #eef0f2; color: #525f6b; border: 1px solid #d4d9de; }
+    .badge-beta { background: var(--beta-bg); color: var(--beta-text); border: 1px solid var(--beta-border); }
 
     .footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 12px;
       padding: 14px 18px 18px;
       color: #6b7280;
       font-size: 12px;
       border-top: 1px solid #edf1f5;
       background: #fff;
       flex-wrap: wrap;
+      gap: 12px;
     }
 
-    .footer strong {
-      color: #4b5563;
-      font-weight: 700;
-    }
-
-    @media (max-width: 720px) {
-      .page-wrap {
-        margin: 10px auto;
-        padding: 0 10px 14px;
-      }
-
-      .top-brand {
-        padding: 12px 14px;
-      }
-
+    @media (max-width: 768px) {
       .meta-grid {
         grid-template-columns: 1fr;
-        gap: 8px;
       }
-
-      .label {
-        margin-top: 6px;
-      }
-
-      select {
-        max-width: 100%;
-      }
-
-      #legacy-alert {
-        align-items: flex-start;
-      }
-
       .footer {
         flex-direction: column;
         align-items: flex-start;
-      }
-    }
-
-    @media (max-width: 420px) {
-      .hero-section {
-        padding: 16px;
-      }
-
-      .content {
-        padding: 16px;
-      }
-
-      .info-box {
-        padding: 14px;
-      }
-
-      .btn-download {
-        font-size: 14px;
-        padding: 15px 16px;
       }
     }
   </style>
@@ -378,8 +263,8 @@
     <div class="container">
       <div class="top-brand">
         <div class="brand-left">
-          <svg class="brand-mark" viewBox="0 0 120 44" xmlns="http://www.w3.org/2000/svg" aria-label="Intel">
-            <rect x="0" y="0" width="120" height="44" rx="8" fill="#00285a"></rect>
+          <svg class="brand-mark" width="120" height="44" viewBox="0 0 120 44" xmlns="http://www.w3.org/2000/svg" aria-label="Intel">
+            <rect x="0" y="0" width="120" height="44" rx="8" fill="#00285a"/>
             <text x="18" y="28" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700">intel</text>
           </svg>
           <div class="brand-title">Drive & Software</div>
@@ -387,10 +272,8 @@
       </div>
 
       <div id="legacy-alert">
-        <span id="legacy-alert-text">
-          ⚠️ <strong>Nota:</strong> questa versione è archiviata. È disponibile, ma non riceverà più aggiornamenti. Si consiglia di adottare la versione Xe-2 Package.
-        </span>
-        <span class="alert-link" onclick="loadVersion('v7')">Vai a Xe-2 Package</span>
+        <span id="legacy-alert-text"></span>
+        <span class="alert-link" onclick="loadVersion('v7')" tabindex="0" role="button"></span>
       </div>
 
       <div class="hero-section">
@@ -429,9 +312,9 @@
             <span id="ui-filename">nome_file.zip</span>
           </a>
 
-          <div class="meta-detail">
+          <div class="meta-detail" style="margin-top: 20px; font-size: 14px; color: #374151;">
             <strong>Sistemi supportati:</strong> <span id="ui-os">--</span><br><br>
-            <strong>Checksum SHA256:</strong>
+            <strong>Checksum SHA256:</strong><br>
             <span class="sha-code" id="ui-sha">--</span>
           </div>
         </div>
@@ -564,25 +447,21 @@
       const key = document.getElementById("versionSelector").value;
       const data = database[key];
 
-      document.getElementById("ui-title").innerText = data.title;
-      document.getElementById("ui-id").innerText = data.id;
-      document.getElementById("ui-date").innerText = data.date;
+      document.getElementById("ui-title").textContent = data.title;
+      document.getElementById("ui-id").textContent = data.id;
+      document.getElementById("ui-date").textContent = data.date;
       document.getElementById("ui-desc").innerHTML = data.desc;
-      document.getElementById("ui-filename").innerText = data.file;
-      document.getElementById("ui-os").innerText = data.os;
-      document.getElementById("ui-sha").innerText = data.sha;
+      document.getElementById("ui-filename").textContent = data.file;
+      document.getElementById("ui-os").textContent = data.os;
+      document.getElementById("ui-sha").textContent = data.sha;
 
       const alertBox = document.getElementById("legacy-alert");
-      const alertText = document.getElementById("legacy-alert-text");
-      const alertAction = document.querySelector(".alert-link");
-
       if (data.isArchived) {
-        alertBox.style.display = "flex";
-        alertText.innerHTML = data.alert;
-        alertAction.innerText = data.alertAction;
-        alertAction.onclick = () => loadVersion("v7");
+        alertBox.classList.add("show");
+        document.getElementById("legacy-alert-text").innerHTML = data.alert;
+        document.querySelector(".alert-link").textContent = data.alertAction;
       } else {
-        alertBox.style.display = "none";
+        alertBox.classList.remove("show");
       }
 
       const badge = document.getElementById("ui-badge");
@@ -594,8 +473,7 @@
         badge.innerHTML = '<span class="badge badge-new">NEW RELEASE</span>';
       }
 
-      const downloadLink = document.getElementById("downloadLink");
-      downloadLink.href = data.url;
+      document.getElementById("downloadLink").href = data.url;
     }
 
     function loadVersion(v) {
@@ -603,6 +481,7 @@
       changeVersion();
     }
 
+    // Avvio
     changeVersion();
   </script>
 </body>
