@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Driver & Software - Archive</title>
+  <title>Driver & Software Archive</title>
   <style>
     :root {
       --intel-blue: #001f46;
@@ -405,10 +405,10 @@
           <div class="label">VERSIONE</div>
           <div class="value">
             <select id="versionSelector" onchange="changeVersion()">
-              <option value="v9">SDK 2.1 - Developer Mini App</option>
-              <option value="v1">Pacchetto 1</option>
+              <option value="v9">SDK 3.4 (Beta) </option>
+              <option value="v1"> Legacy </option>
               <option value="v6">XRMOT v4.2.1</option>
-              <option value="v7">Pacchetto Xe-2.0</option>
+              <option value="v7"> Xe-2.0</option>
               <option value="v8">Software Studio Accelerator</option>
               <option value="v2">Intel® Arc™ 33.0.102.2131 WHQL</option>
               <option value="v3">1.21 Minecraft Mod (Archivio)</option>
@@ -447,21 +447,21 @@
   <script>
     const database = {
       v9: {
-        title: "SDK 2.1 - Developer Mini App",
-        id: "SDK-21-DEV",
+        title: "SDK 3.4-",
+        id: "SDK-3.4-DEV",
         date: "01/05/2026",
         status: "beta",
         isArchived: false,
         alert: "",
         alertAction: "",
-        desc: "Versione SDK 2.1 per developer. Mini app progettata per test rapidi e integrazione locale. Questa build è ancora in beta e non è considerata stabile al 100%.\n<ul><li>Interfaccia ridotta</li><li>Installazione leggera</li><li>Integrazione AI locale</li><li>Versione sperimentale</li></ul>",
-        file: "SDK_2.1_DevMiniApp_670KB.zip",
-        os: "Windows 10 e 11 a 64 bit, connessione internet, CPU almeno 1 GHz, spazio richiesto 700 KB",
+        desc: "Versione SDK 3.4 per developer. Mini app progettata per test rapidi e integrazione ai . Questa build è ancora in beta e non è considerata stabile al 100%.\n<ul><li>Interfaccia ridotta</li><li>Installazione leggera</li><li>Integrazione AI locale</li><li>Versione sperimentale</li></ul>",
+        file: "SDK_3.4_DevMiniApp_670KB",
+        os: "Windows, connessione internet, CPU almeno 1 GHz, spazio richiesto 700 KB",
         sha: "C1D2E3F40516273849A0B1C2D3E4F5061728394A5B6C7D8E9F00112233445566",
         url: "https://drive.google.com/drive/folders/15GycJKJmR1iwp-owg9xXaI4t8J2-q1dq?usp=drive_link"
       },
       v1: {
-        title: "Pacchetto 1",
+        title: "legacy",
         id: "PKG-001",
         date: "29/04/2026",
         status: "archived",
@@ -469,7 +469,7 @@
         alert: "⚠️ <strong>Nota:</strong> questa versione è archiviata. È disponibile, ma non riceverà più aggiornamenti. Si consiglia di aggiornare la versione Xe-2 per futuri update",
         alertAction: "Vai a Xe-2",
         desc: "Pacchetto originale conservato per compatibilità e archivio. È disponibile, ma non riceverà aggiornamenti.",
-        file: "Pacchetto_Xe-1",
+        file: "_Xe-1",
         os: "64 bit",
         sha: "111122223333444455556666777788889999AAAABBBBCCCCDDDDEEEEFFFF0000",
         url: "https://drive.google.com/drive/folders/1g0B7EcuI3x7zovo92jdW1lRs0CgRnv1w?usp=drive_link"
@@ -489,7 +489,7 @@
         url: "https://drive.google.com/drive/folders/1U5ILjzK-W6B-R1AFDRuQ0jWji2vrZWAG"
       },
       v7: {
-        title: "Pacchetto Xe-2.0 - Driver & Software",
+        title: "Xe-2.0 - Driver & Software",
         id: "XE-2026-V2",
         date: "01/05/2026",
         status: "beta",
