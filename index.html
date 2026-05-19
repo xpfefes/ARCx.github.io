@@ -3,32 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="ARCx NASA K - Drive & Software Portal" />
-  <title>Drive & Software | ARCx NASA K</title>
+  <meta name="description" content="ARCx NASA K - AI & Software Portal" />
+  <title>AI & Software | ARCx NASA K</title>
   <style>
     :root {
-      /* 🚀 NASA Mission Control Palette */
-      --bg-deep: #03060d;
-      --bg-panel: rgba(8, 12, 22, 0.75);
-      --bg-panel-hover: rgba(15, 25, 40, 0.85);
+      /* 🌌 Neural AI HUD Palette */
+      --bg-deep: #02040a;
+      --bg-panel: rgba(6, 10, 20, 0.82);
+      --bg-panel-hover: rgba(12, 18, 35, 0.9);
       
       --nasa-blue: #0B3D91;
-      --nasa-red: #FC3D21;
-      --hud-cyan: #00E5FF;
-      --hud-cyan-dim: rgba(0, 229, 255, 0.35);
-      --hud-glow: 0 0 8px var(--hud-cyan), 0 0 16px rgba(0, 229, 255, 0.25);
+      --ai-purple: #8B5CF6;
+      --ai-cyan: #00E5FF;
+      --ai-glow: 0 0 10px var(--ai-cyan), 0 0 20px rgba(139, 92, 246, 0.3);
       
       --text-primary: #E2E8F0;
       --text-secondary: #94A3B8;
       --text-muted: #64748B;
       
-      --border-hud: 1px solid var(--hud-cyan-dim);
-      --glass-blur: blur(16px) saturate(140%);
+      --border-hud: 1px solid rgba(0, 229, 255, 0.25);
+      --glass-blur: blur(14px) saturate(130%);
       
       --space-xs: 4px; --space-sm: 8px; --space-md: 16px; --space-lg: 24px; --space-xl: 40px;
-      --radius: 4px;
+      --radius: 6px;
       
-      --anim-fast: 0.2s ease; --anim-normal: 0.4s ease; --anim-slow: 0.8s ease-in-out;
+      --anim-fast: 0.2s ease; --anim-normal: 0.4s ease;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -43,128 +42,112 @@
       min-height: 100vh;
     }
 
-    /* 🌌 Deep Space Background + HUD Grid */
+    /* 🔮 Neural Circuit Background */
     body::before {
       content: "";
       position: fixed; inset: 0;
       background: 
-        radial-gradient(ellipse at 20% 30%, rgba(11, 61, 145, 0.25) 0%, transparent 55%),
-        radial-gradient(ellipse at 80% 70%, rgba(252, 61, 33, 0.12) 0%, transparent 50%),
-        linear-gradient(rgba(0, 229, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+        radial-gradient(ellipse at 30% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 80%, rgba(0, 229, 255, 0.1) 0%, transparent 50%),
+        linear-gradient(rgba(0, 229, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(139, 92, 246, 0.04) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
       z-index: -2;
-      animation: nebulaDrift 20s ease-in-out infinite alternate;
       pointer-events: none;
     }
-    @keyframes nebulaDrift {
-      0%, 100% { transform: scale(1) translate(0, 0); opacity: 1; }
-      50% { transform: scale(1.05) translate(-8px, 10px); opacity: 0.92; }
-    }
 
-    /* ✨ Starfield Particles */
+    /* ✨ Floating Nodes */
     .particles { position: fixed; inset: 0; pointer-events: none; z-index: -1; overflow: hidden; }
     .particle {
-      position: absolute; width: 2px; height: 2px;
-      background: var(--hud-cyan); border-radius: 50%;
-      box-shadow: 0 0 4px var(--hud-cyan);
-      animation: starDrift linear infinite; opacity: 0.6;
+      position: absolute; width: 3px; height: 3px;
+      background: var(--ai-cyan); border-radius: 50%;
+      box-shadow: 0 0 6px var(--ai-cyan);
+      animation: nodeFloat linear infinite; opacity: 0.5;
     }
-    @keyframes starDrift {
+    @keyframes nodeFloat {
       0% { transform: translateY(100vh) scale(0); opacity: 0; }
-      10% { opacity: 0.7; } 90% { opacity: 0.7; }
-      100% { transform: translateY(-100px) scale(1); opacity: 0; }
+      15% { opacity: 0.8; } 85% { opacity: 0.8; }
+      100% { transform: translateY(-80px) scale(1); opacity: 0; }
     }
 
-    /* 🔤 HUD Typography & Effects */
-    .hud-text { color: var(--hud-cyan); letter-spacing: 0.5px; }
+    /* 🔤 HUD & AI Typography */
+    .hud-text { color: var(--ai-cyan); letter-spacing: 0.5px; }
     .hud-text-blue { color: #3B82F6; }
-    .hud-text-red { color: var(--nasa-red); }
+    .hud-text-purple { color: var(--ai-purple); }
+    .hud-text-red { color: #EF4444; }
     .hud-text-green { color: #10B981; }
-    .hud-text-purple { color: #8B5CF6; }
-    .hud-text-pink { color: #EC4899; }
 
     .shimmer {
       position: relative;
-      background: linear-gradient(90deg, var(--text-primary) 0%, var(--hud-cyan) 25%, var(--text-primary) 50%, #3B82F6 75%, var(--text-primary) 100%);
+      background: linear-gradient(90deg, var(--text-primary) 0%, var(--ai-cyan) 25%, var(--ai-purple) 50%, var(--ai-cyan) 75%, var(--text-primary) 100%);
       background-size: 300% 100%;
       -webkit-background-clip: text; background-clip: text; color: transparent;
-      animation: shimmerFlow 5s linear infinite;
+      animation: shimmerFlow 6s linear infinite;
     }
     @keyframes shimmerFlow { 0% { background-position: 0% 50%; } 100% { background-position: 300% 50%; } }
 
-    /* 📡 HUD Corner Brackets */
+    /* 📡 HUD Frame */
     .hud-frame { position: relative; }
     .hud-frame::before, .hud-frame::after {
-      content: ""; position: absolute; width: 16px; height: 16px;
-      border-color: var(--hud-cyan-dim); border-style: solid; border-width: 0;
+      content: ""; position: absolute; width: 18px; height: 18px;
+      border-color: rgba(0, 229, 255, 0.3); border-style: solid; border-width: 0;
       transition: border-color var(--anim-fast);
     }
-    .hud-frame::before { top: -4px; left: -4px; border-top-width: 2px; border-left-width: 2px; }
-    .hud-frame::after { bottom: -4px; right: -4px; border-bottom-width: 2px; border-right-width: 2px; }
-    .hud-frame:hover::before, .hud-frame:hover::after { border-color: var(--hud-cyan); }
+    .hud-frame::before { top: -5px; left: -5px; border-top-width: 2px; border-left-width: 2px; }
+    .hud-frame::after { bottom: -5px; right: -5px; border-bottom-width: 2px; border-right-width: 2px; }
+    .hud-frame:hover::before, .hud-frame:hover::after { border-color: var(--ai-cyan); }
 
     /* 🔝 Top Navigation */
     .top-nav {
       display: flex; align-items: center; padding: var(--space-md) var(--space-lg);
       background: var(--bg-panel); backdrop-filter: var(--glass-blur);
-      border-bottom: var(--border-hud); box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-      position: sticky; top: 0; z-index: 100; animation: slideDown 0.5s ease-out;
+      border-bottom: var(--border-hud); box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+      position: sticky; top: 0; z-index: 100;
     }
-    @keyframes slideDown { from { transform: translateY(-100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-
-    .brand-mark { margin-right: var(--space-md); filter: drop-shadow(0 0 6px var(--hud-cyan)); }
+    .brand-mark { margin-right: var(--space-md); filter: drop-shadow(0 0 8px var(--ai-cyan)); }
     .nav-title {
-      color: var(--hud-cyan); font-size: 13px; font-weight: 700; font-family: ui-monospace, monospace;
-      padding-left: var(--space-md); border-left: 2px solid var(--hud-cyan-dim);
+      color: var(--ai-cyan); font-size: 12px; font-weight: 700; font-family: ui-monospace, monospace;
+      padding-left: var(--space-md); border-left: 2px solid rgba(0, 229, 255, 0.3);
       letter-spacing: 1.5px; text-transform: uppercase;
     }
 
     /* 🛰️ Hero Section */
     .hero-section {
       position: relative; padding: var(--space-xl) var(--space-lg) calc(var(--space-xl) * 1.5);
-      background: linear-gradient(180deg, rgba(11, 61, 145, 0.15) 0%, transparent 100%);
-      border-bottom: 1px solid var(--hud-cyan-dim); overflow: hidden;
+      background: linear-gradient(180deg, rgba(11, 61, 145, 0.12) 0%, transparent 100%);
+      border-bottom: 1px solid rgba(0, 229, 255, 0.15); overflow: hidden;
     }
-    .hero-section::after {
-      content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, transparent, var(--hud-cyan), var(--nasa-blue), var(--nasa-red), transparent);
-      animation: gradientShift 4s linear infinite; background-size: 300% 100%;
-    }
-    @keyframes gradientShift { 0% { background-position: 0% 50%; } 100% { background-position: 300% 50%; } }
-
     .hero-content { max-width: 960px; margin: 0 auto; }
     .hero-section h1 {
-      font-size: clamp(26px, 4.5vw, 40px); font-weight: 600; margin-bottom: var(--space-lg);
-      letter-spacing: 0.5px; animation: fadeInUp 0.7s ease-out; font-family: ui-monospace, monospace;
+      font-size: clamp(24px, 4vw, 38px); font-weight: 600; margin-bottom: var(--space-lg);
+      letter-spacing: 0.5px; font-family: ui-monospace, monospace;
     }
 
     /* 📊 Meta Grid */
     .meta-data {
-      display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: var(--space-md) var(--space-lg);
-      align-items: center; font-size: 14px; animation: fadeInUp 0.8s ease-out; font-family: ui-monospace, monospace;
+      display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: var(--space-md) var(--space-lg);
+      align-items: center; font-size: 14px; font-family: ui-monospace, monospace;
     }
     .meta-label { color: var(--text-muted); font-weight: 600; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; }
     .meta-value { font-weight: 500; color: var(--text-primary); }
 
-    /* 🎛️ Custom Select (Flight Control Style) */
-    .select-wrapper { position: relative; display: inline-block; width: 100%; max-width: 540px; }
+    /* 🎛️ Custom Select */
+    .select-wrapper { position: relative; display: inline-block; width: 100%; max-width: 560px; }
     select {
-      width: 100%; padding: 10px 14px; border-radius: var(--radius); border: 1px solid var(--hud-cyan-dim);
+      width: 100%; padding: 10px 14px; border-radius: var(--radius); border: 1px solid rgba(0, 229, 255, 0.25);
       background: var(--bg-panel); color: var(--text-primary); font-size: 13px; font-family: ui-monospace, monospace;
       cursor: pointer; outline: none; transition: all var(--anim-fast); appearance: none;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2300E5FF' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
       background-repeat: no-repeat; background-position: right 12px center;
-      box-shadow: inset 0 1px 3px rgba(0,0,0,0.4);
     }
-    select:hover { border-color: var(--hud-cyan); background: var(--bg-panel-hover); box-shadow: 0 0 12px rgba(0, 229, 255, 0.2); }
-    select:focus { box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.4), 0 0 20px rgba(0, 229, 255, 0.3); border-color: var(--hud-cyan); }
+    select:hover { border-color: var(--ai-cyan); background: var(--bg-panel-hover); }
+    select:focus { box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.4); border-color: var(--ai-cyan); }
     select option { background: #0a0f1a; color: var(--text-primary); padding: 8px; }
 
     /* 📦 Main Content */
-    .main-content { max-width: 960px; margin: var(--space-xl) auto; padding: 0 var(--space-lg); animation: fadeInUp 0.9s ease-out; }
+    .main-content { max-width: 960px; margin: var(--space-xl) auto; padding: 0 var(--space-lg); }
 
-    /* ⚠️ Alert Box (Caution Panel) */
+    /* ⚠️ Alert Box */
     .alert-box {
       display: none; padding: var(--space-md) var(--space-lg); border-radius: var(--radius);
       margin-bottom: var(--space-lg); align-items: center; justify-content: space-between;
@@ -172,43 +155,48 @@
       border: 1px solid transparent; backdrop-filter: var(--glass-blur); transition: all var(--anim-normal);
     }
     .alert-box.show { display: flex; animation: slideIn 0.4s ease-out; }
-    .alert-legacy { background: rgba(252, 61, 33, 0.12); border-color: var(--nasa-red); color: #FCA5A5; box-shadow: 0 0 15px rgba(252, 61, 33, 0.2); }
-    .alert-archived { background: rgba(234, 179, 8, 0.12); border-color: #EAB308; color: #FDE047; box-shadow: 0 0 15px rgba(234, 179, 8, 0.2); }
-    @keyframes slideIn { from { opacity: 0; transform: translateX(-16px); } to { opacity: 1; transform: translateX(0); } }
+    .alert-legacy { background: rgba(239, 68, 68, 0.1); border-color: #EF4444; color: #FCA5A5; }
+    .alert-archived { background: rgba(234, 179, 8, 0.1); border-color: #EAB308; color: #FDE047; }
+    @keyframes slideIn { from { opacity: 0; transform: translateX(-12px); } to { opacity: 1; transform: translateX(0); } }
 
     .alert-link {
-      background: rgba(255,255,255,0.08); color: var(--text-primary); padding: 6px 14px; border-radius: var(--radius);
-      font-size: 11px; font-weight: 700; text-decoration: none; cursor: pointer; border: 1px solid var(--hud-cyan-dim);
+      background: rgba(255,255,255,0.06); color: var(--text-primary); padding: 6px 12px; border-radius: var(--radius);
+      font-size: 11px; font-weight: 700; text-decoration: none; cursor: pointer; border: 1px solid rgba(0, 229, 255, 0.25);
       transition: all var(--anim-fast); text-transform: uppercase; letter-spacing: 0.5px; font-family: ui-monospace, monospace;
     }
-    .alert-link:hover { background: var(--hud-cyan); color: #000; border-color: var(--hud-cyan); box-shadow: 0 0 12px var(--hud-cyan); transform: translateY(-1px); }
+    .alert-link:hover { background: var(--ai-cyan); color: #000; border-color: var(--ai-cyan); transform: translateY(-1px); }
 
-    /* 📑 Sections & Typography */
+    /* 📑 Sections */
     .section-title {
-      font-size: 18px; font-weight: 700; margin: var(--space-xl) 0 var(--space-md); color: var(--text-primary);
+      font-size: 17px; font-weight: 700; margin: var(--space-xl) 0 var(--space-md); color: var(--text-primary);
       position: relative; padding-left: var(--space-md); display: flex; align-items: center; gap: var(--space-sm);
       font-family: ui-monospace, monospace; text-transform: uppercase; letter-spacing: 1px;
     }
     .section-title::before {
-      content: ""; position: absolute; left: 0; width: 3px; height: 20px;
-      background: linear-gradient(180deg, var(--hud-cyan), var(--nasa-blue)); border-radius: 2px;
+      content: ""; position: absolute; left: 0; width: 3px; height: 18px;
+      background: linear-gradient(180deg, var(--ai-cyan), var(--ai-purple)); border-radius: 2px;
     }
     .desc-text { color: var(--text-secondary); margin-bottom: var(--space-xl); line-height: 1.7; font-size: 14px; }
     .desc-text ul { margin-top: var(--space-sm); padding-left: var(--space-lg); }
     .desc-text li { margin-bottom: var(--space-xs); }
-    .desc-text strong { color: var(--hud-cyan); }
+    .desc-text strong { color: var(--ai-cyan); }
 
-    /* 🖥️ Specs Box (Glass HUD) */
-    .specs-box {
+    /* 🖥️ Specs & AI Boxes */
+    .specs-box, .ai-req-box, .ai-instruct-box {
       background: var(--bg-panel); border: var(--border-hud); padding: var(--space-lg); border-radius: var(--radius);
       margin-bottom: var(--space-xl); backdrop-filter: var(--glass-blur); transition: all var(--anim-normal); position: relative;
     }
-    .specs-box:hover { border-color: var(--hud-cyan); box-shadow: 0 0 25px rgba(0, 229, 255, 0.2); }
-    .specs-title { font-weight: 700; margin-bottom: var(--space-sm); font-size: 13px; color: var(--text-primary); font-family: ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.5px; }
-    #ui-os { font-size: 13px; color: var(--text-secondary); line-height: 1.7; font-family: ui-monospace, monospace; }
-    #ui-os strong { color: var(--hud-cyan); }
+    .specs-box:hover, .ai-req-box:hover, .ai-instruct-box:hover { border-color: var(--ai-cyan); box-shadow: 0 0 20px rgba(0, 229, 255, 0.15); }
+    .box-title { font-weight: 700; margin-bottom: var(--space-sm); font-size: 13px; color: var(--text-primary); font-family: ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 8px; }
+    #ui-os, #ai-req-content, #ai-instruct-content { font-size: 13px; color: var(--text-secondary); line-height: 1.7; font-family: ui-monospace, monospace; }
+    #ui-os strong, #ai-req-content strong, #ai-instruct-content strong { color: var(--ai-cyan); }
 
-    /* ⬇️ Download Button (Mission Control) */
+    .ai-req-box { border-color: rgba(139, 92, 246, 0.3); }
+    .ai-req-box:hover { border-color: var(--ai-purple); box-shadow: 0 0 20px rgba(139, 92, 246, 0.2); }
+    .ai-instruct-box { border-color: rgba(16, 185, 129, 0.3); }
+    .ai-instruct-box:hover { border-color: #10B981; box-shadow: 0 0 20px rgba(16, 185, 129, 0.2); }
+
+    /* ⬇️ Download Button */
     .btn-download {
       display: inline-flex; align-items: center; gap: var(--space-sm);
       background: linear-gradient(135deg, var(--nasa-blue), #1E40AF); color: #fff;
@@ -217,12 +205,12 @@
       position: relative; overflow: hidden; box-shadow: 0 4px 15px rgba(11, 61, 145, 0.4);
       font-family: ui-monospace, monospace; border: 1px solid rgba(59, 130, 246, 0.3);
     }
-    .btn-download:hover { transform: translateY(-2px); box-shadow: 0 0 20px rgba(0, 229, 255, 0.5), 0 6px 20px rgba(11, 61, 145, 0.5); border-color: var(--hud-cyan); }
+    .btn-download:hover { transform: translateY(-2px); box-shadow: 0 0 20px rgba(0, 229, 255, 0.5), 0 6px 20px rgba(11, 61, 145, 0.5); border-color: var(--ai-cyan); }
     .btn-download:active { transform: translateY(0); }
     .btn-download svg { transition: transform var(--anim-fast); }
     .btn-download:hover svg { transform: translateY(2px); }
 
-    /* 🏷️ Badges (Status Tags) */
+    /* 🏷️ Badges */
     .badge {
       display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: var(--radius);
       font-size: 10px; font-weight: 800; margin-bottom: var(--space-lg); text-transform: uppercase;
@@ -231,19 +219,20 @@
     .badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; box-shadow: 0 0 6px currentColor; }
     .badge-new { background: rgba(16, 185, 129, 0.15); color: #10B981; border-color: #10B981; }
     .badge-archived { background: rgba(234, 179, 8, 0.15); color: #EAB308; border-color: #EAB308; }
-    .badge-legacy { background: rgba(252, 61, 33, 0.15); color: var(--nasa-red); border-color: var(--nasa-red); }
+    .badge-legacy { background: rgba(239, 68, 68, 0.15); color: #EF4444; border-color: #EF4444; }
     .badge-beta { background: rgba(139, 92, 246, 0.15); color: #8B5CF6; border-color: #8B5CF6; }
+    .badge-ai { background: rgba(0, 229, 255, 0.15); color: var(--ai-cyan); border-color: var(--ai-cyan); }
 
-    /* 🔐 SHA Code Box */
+    /* 🔐 SHA Code */
     .sha-code {
       font-family: ui-monospace, SFMono-Regular, Menlo, monospace; background: rgba(0, 0, 0, 0.5);
       padding: var(--space-sm) var(--space-md); margin-top: var(--space-xs); font-size: 11px;
-      word-break: break-all; border-radius: var(--radius); border: 1px solid var(--hud-cyan-dim);
-      display: block; color: var(--hud-cyan); letter-spacing: 0.5px;
+      word-break: break-all; border-radius: var(--radius); border: 1px solid rgba(0, 229, 255, 0.2);
+      display: block; color: var(--ai-cyan); letter-spacing: 0.5px;
     }
 
     /* 🎞️ Animations & Responsive */
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
     @media (max-width: 768px) {
       .meta-data { grid-template-columns: 1fr; gap: var(--space-sm); }
       .hero-section { padding: var(--space-lg) var(--space-md); }
@@ -255,8 +244,8 @@
       *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
       .particles { display: none; }
     }
-    :focus-visible { outline: 2px solid var(--hud-cyan); outline-offset: 3px; border-radius: var(--radius); box-shadow: 0 0 12px var(--hud-cyan); }
-    .skip-link { position: absolute; top: -40px; left: 0; background: var(--hud-cyan); color: #000; padding: var(--space-sm) var(--space-md); z-index: 200; transition: top var(--anim-fast); font-weight: 700; font-family: ui-monospace, monospace; }
+    :focus-visible { outline: 2px solid var(--ai-cyan); outline-offset: 3px; border-radius: var(--radius); box-shadow: 0 0 12px var(--ai-cyan); }
+    .skip-link { position: absolute; top: -40px; left: 0; background: var(--ai-cyan); color: #000; padding: var(--space-sm) var(--space-md); z-index: 200; transition: top var(--anim-fast); font-weight: 700; font-family: ui-monospace, monospace; }
     .skip-link:focus { top: 0; }
   </style>
 </head>
@@ -275,14 +264,14 @@
       </defs>
       <rect x="0" y="0" width="120" height="40" rx="4" fill="url(#arcGrad)" stroke="#00E5FF" stroke-width="1.5"/>
       <text x="14" y="26" fill="#ffffff" font-family="ui-monospace, monospace" font-size="20" font-weight="800" letter-spacing="1">ARCx</text>
-      <circle cx="108" cy="20" r="4" fill="#FC3D21" />
+      <circle cx="108" cy="20" r="4" fill="#8B5CF6" />
     </svg>
-    <div class="nav-title">MISSION CONTROL // DRIVE & SOFTWARE</div>
+    <div class="nav-title">NEURAL CONTROL // AI & SOFTWARE</div>
   </nav>
 
   <header class="hero-section">
     <div class="hero-content">
-      <h1 id="ui-title" class="shimmer hud-frame">Caricamento...</h1>
+      <h1 id="ui-title" class="shimmer hud-frame">Inizializzazione Core...</h1>
       
       <div class="meta-data">
         <div class="meta-label">MISSION ID</div>
@@ -291,10 +280,10 @@
         <div class="meta-label">LAUNCH DATE</div>
         <div class="meta-value hud-text-blue" id="ui-date">--</div>
 
-        <div class="meta-label">PAYLOAD VERSION</div>
+        <div class="meta-label">PAYLOAD / MODEL</div>
         <div class="meta-value">
           <div class="select-wrapper">
-            <select id="versionSelector" onchange="changeVersion()" aria-label="Seleziona versione software">
+            <select id="versionSelector" onchange="changeVersion()" aria-label="Seleziona versione software o modello AI">
               <option value="v10">Intel® Arc™ 33.0.102.5081 WHQL (BETA) - Latest</option>
               <option value="v9">SDK 3.4 (Beta)</option>
               <option value="v8">Software Studio Accelerator</option>
@@ -304,6 +293,8 @@
               <option value="v1">Legacy Xe-1 (Archivio)</option>
               <option value="v3">1.21 Minecraft Mod (Archivio)</option>
               <option value="v4">Old Control Panel SDK (Archivio)</option>
+              <option value="v11">🤖 AI Training Data (Lightweight)</option>
+              <option value="v12">🧠 AI FP16 3.8B Naxa Internal (OSS Test)</option>
             </select>
           </div>
         </div>
@@ -324,8 +315,34 @@
 
     <h2 class="section-title"><span class="hud-text-blue">SYSTEM REQUIREMENTS</span></h2>
     <div class="specs-box hud-frame">
-      <div class="specs-title">OPERATING SYSTEM & HARDWARE:</div>
+      <div class="box-title">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg>
+        OPERATING SYSTEM & HARDWARE:
+      </div>
       <div id="ui-os">--</div>
+    </div>
+
+    <!-- 🤖 AI Specific Sections (Hidden by default) -->
+    <div id="ai-requirements-panel" style="display: none;">
+      <h2 class="section-title"><span class="hud-text-purple">TENSOR CORE // AI REQUIREMENTS</span></h2>
+      <div class="ai-req-box hud-frame">
+        <div class="box-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 12v.01"/><path d="M12 16v.01"/><path d="M8 12v.01"/></svg>
+          VRAM / RAM / COMPUTE:
+        </div>
+        <div id="ai-req-content">--</div>
+      </div>
+    </div>
+
+    <div id="ai-instructions-panel" style="display: none;">
+      <h2 class="section-title"><span class="hud-text-green">TRAINING PROTOCOL // INSTRUCTIONS</span></h2>
+      <div class="ai-instruct-box hud-frame">
+        <div class="box-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/><path d="M8 7h6"/><path d="M8 11h8"/></svg>
+          PROCEDURA DI ADDESTRAMENTO:
+        </div>
+        <div id="ai-instruct-content">--</div>
+      </div>
     </div>
 
     <h2 class="section-title"><span class="hud-text-red">AVAILABLE DOWNLOADS</span></h2>
@@ -344,10 +361,9 @@
 
   <script>
     /**
-     * ARCx NASA K - Drive & Software Portal
-     * ✅ Logic preserved 100% from original implementation
-     * ✅ UI refactored with NASA Mission Control aesthetics
-     * ✅ All links, functions, and data structures unchanged
+     * ARCx NASA K - AI & Software Portal
+     * ✅ Logic preserved & extended for AI modules
+     * ✅ Zero external dependencies, production-safe vanilla JS
      */
     (function() {
       'use strict';
@@ -360,7 +376,7 @@
           file: "gfx_win_102.5081_beta.exe",
           os: "<strong>OS Minimo:</strong> Windows XP (32/64-bit) | <strong>OS Raccomandato:</strong> Windows 8.1 | <strong>OS Consigliato:</strong> Windows 11<br><strong>CPU:</strong> Qualunque a 32/64-bit<br><strong>RAM:</strong> Minimo 512 MB<br><strong>GPU:</strong> Qualunque Display Adapter<br><strong>Spazio Richiesto:</strong> 400 MB",
           sha: "E1F2A3B4C5D6E7F8901234567890ABCDEF1234567890ABCDEF1234567890ABCD",
-          url: "https://drive.google.com/drive/folders/1tCINvrgZT84fhitlwDiXXPSYa0SQZxTZ?usp=drive_link", targetLink: ""
+          url: "https://drive.google.com/drive/folders/1tCINvrgZT84fhitlwDiXXPSYa0SQZxTZ?usp=drive_link", isAI: false
         },
         v2: {
           title: "Intel® Arc™ Graphics - 33.0.102.2131 Test WHQL",
@@ -370,7 +386,7 @@
           desc: "Versione Test WHQL per schede video Intel Arc (Non include Arc Control)",
           file: "gfx_win_102.2131.exe", os: "Windows 10 e 11 Family (64-bit)",
           sha: "9F8E7D6C5B4A3928172635445362718293049586756453423120192837465544",
-          url: "https://drive.google.com/uc?export=download&id=1Xud5XxkHYwOSUIPjp3SoMzJCOqwNbdtw"
+          url: "https://drive.google.com/uc?export=download&id=1Xud5XxkHYwOSUIPjp3SoMzJCOqwNbdtw", isAI: false
         },
         v6: {
           title: "XRMOT - eXtreme Resource Manager Optimization Tool",
@@ -380,28 +396,28 @@
           desc: "Tool avanzato per l'ottimizzazione del sistema in stato legacy.\n<ul><li>Priorità CPU</li><li>Libera VRAM</li><li>Pulizia RAM-cache</li><li>Ritorno allo stato originale alla chiusura</li></ul>",
           file: "XRMOT_v4.2.1_legacy.zip", os: "Windows 10 e 11",
           sha: "8F4E2C1B9A0D7F6E5D4C3B2A1F0E9D8C7B6A5F4E3D2C1B0A9F8E7D6C5B4A3928",
-          url: "https://drive.google.com/drive/folders/1U5ILjzK-W6B-R1AFDRuQ0jWji2vrZWAG"
+          url: "https://drive.google.com/drive/folders/1U5ILjzK-W6B-R1AFDRuQ0jWji2vrZWAG", isAI: false
         },
         v9: {
           title: "SDK 3.4-", id: "SDK-3.4-DEV", date: "01/05/2026", status: "beta", alertType: "none",
           desc: "Versione SDK 3.4 per developer. Mini app progettata per test rapidi e integrazione. Questa build è in beta.\n<ul><li>Interfaccia ridotta e installazione leggera</li><li>Integrazione AI locale</li></ul>",
           file: "SDK_3.4_DevMiniApp.exe", os: "Windows 10+, connessione internet, CPU almeno 1 GHz, spazio richiesto 700 KB",
           sha: "C1D2E3F40516273849A0B1C2D3E4F5061728394A5B6C7D8E9F00112233445566",
-          url: "https://drive.google.com/drive/folders/15GycJKJmR1iwp-owg9xXaI4t8J2-q1dq?usp=drive_link"
+          url: "https://drive.google.com/drive/folders/15GycJKJmR1iwp-owg9xXaI4t8J2-q1dq?usp=drive_link", isAI: false
         },
         v7: {
           title: "Xe-2.0 - Driver & Software", id: "XE-2026-V2", date: "01/05/2026", status: "new", alertType: "none",
           desc: "Pacchetto Xe-2.0 in fase di raffinamento. Include ottimizzazioni kernel e supporto esteso per le nuove librerie grafiche.",
           file: "Intel_Xe_Package_2.0.exe", os: "Windows 10/11 64-bit",
           sha: "AAABBBCCCDDDEEEFFF111222333444555666777888999000AAABBBCCCDDDEEEF",
-          url: "https://drive.google.com/drive/folders/1naCyvxiBd3ZwUsu5P1q7tuixYzE-hwH2"
+          url: "https://drive.google.com/drive/folders/1naCyvxiBd3ZwUsu5P1q7tuixYzE-hwH2", isAI: false
         },
         v8: {
           title: "Software Studio Accelerator", id: "SSA-901", date: "02/05/2026", status: "new", alertType: "none",
           desc: "Acceleratore dedicato per software di produzione e suite creative. Ottimizza i tempi di esecuzione e di render.",
           file: "Studio_Accelerator_Setup.exe", os: "Windows 11 64-bit",
           sha: "556677889900AABBCCDDEEFF11223344556677889900AABBCCDDEEFF11223344",
-          url: "https://drive.google.com/drive/folders/1JHV173PewLwC9sXJVamaORnKKy3lcKV_"
+          url: "https://drive.google.com/drive/folders/1JHV173PewLwC9sXJVamaORnKKy3lcKV_", isAI: false
         },
         v1: {
           title: "Legacy Xe-1 (Archivio)", id: "PKG-001", date: "29/04/2026", status: "archived", alertType: "archived",
@@ -410,7 +426,7 @@
           desc: "Pacchetto originale conservato per compatibilità e archivio. È disponibile, ma non riceverà aggiornamenti.",
           file: "_Xe-1_Archive.zip", os: "Windows 10 64-bit",
           sha: "111122223333444455556666777788889999AAAABBBBCCCCDDDDEEEEFFFF0000",
-          url: "https://drive.google.com/drive/folders/1g0B7EcuI3x7zovo92jdW1lRs0CgRnv1w?usp=drive_link"
+          url: "https://drive.google.com/drive/folders/1g0B7EcuI3x7zovo92jdW1lRs0CgRnv1w?usp=drive_link", isAI: false
         },
         v3: {
           title: "Game On Legacy - 1.21", id: "892102", date: "21/04/2026", status: "archived", alertType: "archived",
@@ -419,7 +435,7 @@
           desc: "Ottimizzazione per hardware datato specifica per vecchi engine. Non riceverà aggiornamenti.",
           file: "game_on_1.21.exe", os: "Windows 8/10 64-bit",
           sha: "A1B2C3D4E5F678901234567890ABCDEF1234567890ABCDEF1234567890ABCDEF",
-          url: "https://drive.google.com/drive/folders/1p5u_K7c6X_PDKc3diWqnwMoIWELU1FpB?usp=sharing"
+          url: "https://drive.google.com/drive/folders/1p5u_K7c6X_PDKc3diWqnwMoIWELU1FpB?usp=sharing", isAI: false
         },
         v4: {
           title: "Old Control Panel SDK", id: "445123", date: "12/01/2025", status: "archived", alertType: "archived",
@@ -428,7 +444,32 @@
           desc: "Vecchio pannello di controllo per compatibilità con impostazioni rimosse.",
           file: "old_panel_sdk.zip", os: "Windows 10 & 11",
           sha: "BBDDCC11223344556677889900AABBCCDDEEFF11223344556677889900AABBCC",
-          url: "https://drive.google.com/uc?export=download&id=1FMxlcMH__KeSqMOuahNUHN47S3AeYrDo"
+          url: "https://drive.google.com/uc?export=download&id=1FMxlcMH__KeSqMOuahNUHN47S3AeYrDo", isAI: false
+        },
+        // 🤖 NEW AI ENTRIES
+        v11: {
+          title: "AI Training Data (Lightweight)",
+          id: "AI-TRN-LW-01", date: "05/05/2026", status: "new", alertType: "none",
+          desc: "<strong>Dataset Ottimizzato per Addestramento Leggero</strong><br>Raccolta di dati strutturati e pre-processati per il training di modelli AI su dispositivi con risorse limitate. Ideale per edge computing e test locali rapidi.",
+          file: "AI_TrainingData_LW_v1.zip",
+          os: "Qualsiasi OS moderno (Win/Linux/macOS)<br><strong>Storage:</strong> ~2.4 GB estratto<br><strong>CPU:</strong> Dual-core 1.5 GHz+<br><strong>RAM:</strong> 4 GB minimi",
+          sha: "7A8B9C0D1E2F3A4B5C6D7E8F9A0B1C2D3E4F5A6B7C8D9E0F1A2B3C4D5E6F7A8B",
+          url: "https://drive.google.com/drive/folders/1Sy1eZZR6_g8ucNrMzLckSr4rsxH6sto2",
+          isAI: true,
+          aiReq: "<strong>Dispositivi:</strong> Laptop, Mini-PC, Edge Device, Raspberry Pi 4/5<br><strong>Peso:</strong> Ottimizzato per basso impatto I/O e memoria<br><strong>Formato:</strong> JSONL / Parquet / CSV normalizzati",
+          aiInstructions: "<ol style='margin-left: 18px; margin-top: 8px;'><li>Estrai l'archivio in una directory con permessi di lettura/scrittura.</li><li>Verifica l'integrità con lo SHA256 fornito.</li><li>Carica il dataset nel tuo framework (PyTorch, TensorFlow, HuggingFace).</li><li>Imposta <code>batch_size</code> tra 8 e 32 per dispositivi leggeri.</li><li>Abilita <code>gradient_accumulation_steps=4</code> per simulare batch più grandi senza saturare la RAM.</li><li>Avvia il training monitorando VRAM/RAM con <code>htop</code> o <code>nvtop</code>.</li></ol>"
+        },
+        v12: {
+          title: "AI FP16 3.8B Naxa Internal (OSS Test)",
+          id: "NAXA-FP16-3.8B", date: "06/05/2026", status: "beta", alertType: "none",
+          desc: "<strong>Modello Linguistico 3.8B Parametri - Precisione FP16</strong><br>Build interna Naxa rilasciata per test Open Source. Ottimizzata per inferenza e fine-tuning su hardware consumer. Supporta architetture transformer standard e quantizzazione dinamica.",
+          file: "Naxa_3.8B_FP16_Internal.safetensors",
+          os: "Windows 10/11 64-bit o Linux (Ubuntu 22.04+)<br><strong>Python:</strong> 3.10+<br><strong>Librerie:</strong> transformers>=4.35, accelerate, torch>=2.1",
+          sha: "9F8E7D6C5B4A3928172635445362718293049586756453423120192837465599",
+          url: "https://drive.google.com/file/d/1ZRMaCxnISc4xfiqmlHWUPx3v169MoQkB/view?usp=drivesdk",
+          isAI: true,
+          aiReq: "<strong>VRAM:</strong> 12 GB minimi (GPU NVIDIA/AMD con supporto FP16)<br><strong>RAM Sistemica:</strong> 12 GB minimi<br><strong>Storage:</strong> ~8.5 GB (modello + cache)<br><strong>Compute:</strong> CUDA 12.x o ROCm 5.7+ consigliato",
+          aiInstructions: "<ol style='margin-left: 18px; margin-top: 8px;'><li>Scarica il file <code>.safetensors</code> e posizionalo nella cartella <code>./models/</code>.</li><li>Installa le dipendenze: <code>pip install torch transformers accelerate safetensors</code>.</li><li>Carica il modello con precisione FP16:<br><code>model = AutoModelForCausalLM.from_pretrained('./models/', torch_dtype=torch.float16, device_map='auto')</code></li><li>Per il fine-tuning, usa LoRA/QLoRA per ridurre il consumo di VRAM del 60%.</li><li>Monitora i picchi di memoria durante il primo forward pass. Se OOM, riduci <code>max_length</code> o abilita <code>load_in_8bit=True</code>.</li></ol>"
         }
       };
 
@@ -441,27 +482,31 @@
         sha: document.getElementById("ui-sha"), alertBox: document.getElementById("dynamic-alert"),
         alertText: document.getElementById("alert-text"), alertBtn: document.getElementById("alert-btn"),
         badge: document.getElementById("ui-badge"), downloadLink: document.getElementById("downloadLink"),
-        selector: document.getElementById("versionSelector")
+        selector: document.getElementById("versionSelector"),
+        aiReqPanel: document.getElementById("ai-requirements-panel"),
+        aiReqContent: document.getElementById("ai-req-content"),
+        aiInstPanel: document.getElementById("ai-instructions-panel"),
+        aiInstContent: document.getElementById("ai-instruct-content")
       };
 
       function initParticles() {
         const container = document.getElementById('particles');
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (prefersReducedMotion || !container) return;
-        const particleCount = 30;
+        const particleCount = 25;
         for (let i = 0; i < particleCount; i++) {
           const particle = document.createElement('div');
           particle.className = 'particle';
           const left = Math.random() * 100;
-          const delay = Math.random() * 20;
-          const duration = 20 + Math.random() * 25;
-          const size = 1 + Math.random() * 2;
+          const delay = Math.random() * 18;
+          const duration = 18 + Math.random() * 22;
+          const size = 1.5 + Math.random() * 2;
           particle.style.left = `${left}%`;
           particle.style.animationDelay = `${delay}s`;
           particle.style.animationDuration = `${duration}s`;
           particle.style.width = `${size}px`;
           particle.style.height = `${size}px`;
-          const colors = ['#FFFFFF', 'var(--hud-cyan)', 'var(--nasa-red)'];
+          const colors = ['#FFFFFF', 'var(--ai-cyan)', 'var(--ai-purple)'];
           particle.style.background = colors[Math.floor(Math.random() * colors.length)];
           particle.style.boxShadow = `0 0 6px ${particle.style.background}`;
           container.appendChild(particle);
@@ -497,11 +542,25 @@
           els.alertText.innerHTML = data.alert;
           els.alertBtn.textContent = data.alertAction;
           currentTargetLink = data.targetLink;
+        } else {
+          els.alertBox.classList.remove("show");
         }
 
         const badgeMap = { archived: { cls: "badge-archived", text: "ARCHIVED" }, legacy: { cls: "badge-legacy", text: "LEGACY" }, beta: { cls: "badge-beta", text: "BETA" }, new: { cls: "badge-new", text: "LATEST" } };
         const b = badgeMap[data.status] || badgeMap.new;
         els.badge.innerHTML = `<span class="badge ${b.cls}">${b.text}</span>`;
+
+        // 🤖 AI Panels Logic
+        if (data.isAI) {
+          els.aiReqPanel.style.display = "block";
+          els.aiInstPanel.style.display = "block";
+          els.aiReqContent.innerHTML = data.aiReq || "N/D";
+          els.aiInstContent.innerHTML = data.aiInstructions || "N/D";
+          els.badge.innerHTML += ` <span class="badge badge-ai">AI MODULE</span>`;
+        } else {
+          els.aiReqPanel.style.display = "none";
+          els.aiInstPanel.style.display = "none";
+        }
 
         els.desc.style.animation = "none";
         void els.desc.offsetHeight;
