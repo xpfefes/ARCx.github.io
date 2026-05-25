@@ -3,249 +3,558 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="ARCx NASA K - AI & Software Portal" />
-  <title>AI & Software | ARCx NASA K</title>
+  <meta name="description" content="ARCx NASA K - AI & Software Portal | Rainbow Edition" />
+  <title>🌈 AI & Software | ARCx NASA K - Rainbow Edition</title>
   <style>
     :root {
-      /* 🌌 Neural AI HUD Palette */
-      --bg-deep: #02040a;
-      --bg-panel: rgba(6, 10, 20, 0.82);
-      --bg-panel-hover: rgba(12, 18, 35, 0.9);
-      
-      --nasa-blue: #0B3D91;
-      --ai-purple: #8B5CF6;
-      --ai-cyan: #00E5FF;
-      --ai-glow: 0 0 10px var(--ai-cyan), 0 0 20px rgba(139, 92, 246, 0.3);
-      
-      --text-primary: #E2E8F0;
-      --text-secondary: #94A3B8;
+      /* 🌈 Rainbow Iridescent Palette */
+      --r-pink: #FF0080;
+      --r-orange: #FF8C00;
+      --r-gold: #FFD700;
+      --r-lime: #ADFF2F;
+      --r-cyan: #00E5FF;
+      --r-blue: #00BFFF;
+      --r-violet: #8A2BE2;
+      --r-magenta: #FF1493;
+
+      --bg-void: #05030F;
+      --bg-panel: rgba(15, 10, 35, 0.72);
+      --bg-panel-hover: rgba(25, 18, 55, 0.85);
+
+      --text-primary: #F8FAFC;
+      --text-secondary: #CBD5E1;
       --text-muted: #64748B;
-      
-      --border-hud: 1px solid rgba(0, 229, 255, 0.25);
-      --glass-blur: blur(14px) saturate(130%);
-      
+
+      --border-rainbow: 1px solid transparent;
+      --glass-blur: blur(18px) saturate(140%);
+
       --space-xs: 4px; --space-sm: 8px; --space-md: 16px; --space-lg: 24px; --space-xl: 40px;
-      --radius: 6px;
-      
-      --anim-fast: 0.2s ease; --anim-normal: 0.4s ease;
+      --radius: 8px;
+      --anim-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      --anim-normal: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      --anim-slow: 8s linear infinite;
+
+      /* Conic rainbow gradient for borders */
+      --rainbow-conic: conic-gradient(
+        from 0deg,
+        var(--r-pink), var(--r-orange), var(--r-gold),
+        var(--r-lime), var(--r-cyan), var(--r-blue),
+        var(--r-violet), var(--r-magenta), var(--r-pink)
+      );
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    
+
     body {
-      background: var(--bg-deep);
+      background: var(--bg-void);
       color: var(--text-primary);
       font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
       line-height: 1.6;
       overflow-x: hidden;
       min-height: 100vh;
+      position: relative;
     }
 
-    /* 🔮 Neural Circuit Background */
+    /* 🌌 Aurora Rainbow Background */
     body::before {
       content: "";
-      position: fixed; inset: 0;
-      background: 
-        radial-gradient(ellipse at 30% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
-        radial-gradient(ellipse at 70% 80%, rgba(0, 229, 255, 0.1) 0%, transparent 50%),
-        linear-gradient(rgba(0, 229, 255, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(139, 92, 246, 0.04) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 10%, rgba(255, 0, 128, 0.18) 0%, transparent 45%),
+        radial-gradient(ellipse at 80% 15%, rgba(255, 215, 0, 0.15) 0%, transparent 45%),
+        radial-gradient(ellipse at 50% 50%, rgba(0, 229, 255, 0.12) 0%, transparent 55%),
+        radial-gradient(ellipse at 25% 85%, rgba(138, 43, 226, 0.20) 0%, transparent 50%),
+        radial-gradient(ellipse at 85% 80%, rgba(173, 255, 47, 0.12) 0%, transparent 45%);
       z-index: -2;
       pointer-events: none;
+      animation: auroraDrift 24s ease-in-out infinite alternate;
+    }
+    @keyframes auroraDrift {
+      0%   { transform: translate(0, 0) scale(1); }
+      50%  { transform: translate(-2%, 1%) scale(1.05); }
+      100% { transform: translate(2%, -1%) scale(1); }
     }
 
-    /* ✨ Floating Nodes */
+    /* 🔲 Animated Rainbow Grid */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: -1;
+      pointer-events: none;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+    }
+
+    /* ✨ Rainbow Particles */
     .particles { position: fixed; inset: 0; pointer-events: none; z-index: -1; overflow: hidden; }
     .particle {
-      position: absolute; width: 3px; height: 3px;
-      background: var(--ai-cyan); border-radius: 50%;
-      box-shadow: 0 0 6px var(--ai-cyan);
-      animation: nodeFloat linear infinite; opacity: 0.5;
+      position: absolute;
+      border-radius: 50%;
+      animation: nodeFloat linear infinite;
+      opacity: 0.7;
+      filter: blur(0.4px);
     }
     @keyframes nodeFloat {
-      0% { transform: translateY(100vh) scale(0); opacity: 0; }
-      15% { opacity: 0.8; } 85% { opacity: 0.8; }
-      100% { transform: translateY(-80px) scale(1); opacity: 0; }
+      0%   { transform: translateY(100vh) translateX(0) scale(0); opacity: 0; }
+      15%  { opacity: 0.9; }
+      85%  { opacity: 0.9; }
+      100% { transform: translateY(-100px) translateX(var(--drift, 30px)) scale(1.2); opacity: 0; }
     }
 
-    /* 🔤 HUD & AI Typography */
-    .hud-text { color: var(--ai-cyan); letter-spacing: 0.5px; }
-    .hud-text-blue { color: #3B82F6; }
-    .hud-text-purple { color: var(--ai-purple); }
-    .hud-text-red { color: #EF4444; }
-    .hud-text-green { color: #10B981; }
+    /* 🌈 Rainbow Shimmer Text */
+    .rainbow-text {
+      background: linear-gradient(
+        90deg,
+        var(--r-pink) 0%, var(--r-orange) 14%, var(--r-gold) 28%,
+        var(--r-lime) 42%, var(--r-cyan) 57%, var(--r-blue) 71%,
+        var(--r-violet) 85%, var(--r-magenta) 100%
+      );
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: rainbowFlow 6s linear infinite;
+    }
+    @keyframes rainbowFlow {
+      0%   { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
 
-    .shimmer {
+    /* 🎨 Rainbow Border Wrapper (border-image conic) */
+    .rainbow-border {
       position: relative;
-      background: linear-gradient(90deg, var(--text-primary) 0%, var(--ai-cyan) 25%, var(--ai-purple) 50%, var(--ai-cyan) 75%, var(--text-primary) 100%);
-      background-size: 300% 100%;
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-      animation: shimmerFlow 6s linear infinite;
+      background: var(--bg-panel);
+      border-radius: var(--radius);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
     }
-    @keyframes shimmerFlow { 0% { background-position: 0% 50%; } 100% { background-position: 300% 50%; } }
+    .rainbow-border::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      padding: 1.5px;
+      border-radius: inherit;
+      background: var(--rainbow-conic);
+      -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+              mask-composite: exclude;
+      pointer-events: none;
+      animation: spinConic 12s linear infinite;
+    }
+    @keyframes spinConic {
+      to { transform: rotate(360deg); }
+    }
 
-    /* 📡 HUD Frame */
+    /* 📡 HUD Corners */
     .hud-frame { position: relative; }
     .hud-frame::before, .hud-frame::after {
-      content: ""; position: absolute; width: 18px; height: 18px;
-      border-color: rgba(0, 229, 255, 0.3); border-style: solid; border-width: 0;
-      transition: border-color var(--anim-fast);
+      content: ""; position: absolute; width: 22px; height: 22px;
+      border-style: solid; border-width: 0;
+      transition: all var(--anim-fast);
     }
-    .hud-frame::before { top: -5px; left: -5px; border-top-width: 2px; border-left-width: 2px; }
-    .hud-frame::after { bottom: -5px; right: -5px; border-bottom-width: 2px; border-right-width: 2px; }
-    .hud-frame:hover::before, .hud-frame:hover::after { border-color: var(--ai-cyan); }
+    .hud-frame::before {
+      top: -6px; left: -6px;
+      border-top-width: 2px; border-left-width: 2px;
+      border-image: linear-gradient(135deg, var(--r-cyan), var(--r-pink)) 1;
+    }
+    .hud-frame::after {
+      bottom: -6px; right: -6px;
+      border-bottom-width: 2px; border-right-width: 2px;
+      border-image: linear-gradient(135deg, var(--r-violet), var(--r-gold)) 1;
+    }
 
     /* 🔝 Top Navigation */
     .top-nav {
-      display: flex; align-items: center; padding: var(--space-md) var(--space-lg);
-      background: var(--bg-panel); backdrop-filter: var(--glass-blur);
-      border-bottom: var(--border-hud); box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+      display: flex; align-items: center;
+      padding: var(--space-md) var(--space-lg);
+      background: rgba(10, 5, 25, 0.75);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
       position: sticky; top: 0; z-index: 100;
+      gap: var(--space-md);
     }
-    .brand-mark { margin-right: var(--space-md); filter: drop-shadow(0 0 8px var(--ai-cyan)); }
+    .brand-mark { filter: drop-shadow(0 0 12px rgba(255, 0, 128, 0.5)); flex-shrink: 0; }
     .nav-title {
-      color: var(--ai-cyan); font-size: 12px; font-weight: 700; font-family: ui-monospace, monospace;
-      padding-left: var(--space-md); border-left: 2px solid rgba(0, 229, 255, 0.3);
-      letter-spacing: 1.5px; text-transform: uppercase;
+      font-size: 12px; font-weight: 700;
+      font-family: ui-monospace, "SF Mono", Menlo, monospace;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 4px;
+      background: linear-gradient(90deg, rgba(255,0,128,0.15), rgba(0,229,255,0.15));
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      white-space: nowrap;
     }
 
     /* 🛰️ Hero Section */
     .hero-section {
-      position: relative; padding: var(--space-xl) var(--space-lg) calc(var(--space-xl) * 1.5);
-      background: linear-gradient(180deg, rgba(11, 61, 145, 0.12) 0%, transparent 100%);
-      border-bottom: 1px solid rgba(0, 229, 255, 0.15); overflow: hidden;
+      position: relative;
+      padding: var(--space-xl) var(--space-lg) calc(var(--space-xl) * 1.5);
+      overflow: hidden;
     }
-    .hero-content { max-width: 960px; margin: 0 auto; }
+    .hero-content { max-width: 1000px; margin: 0 auto; }
     .hero-section h1 {
-      font-size: clamp(24px, 4vw, 38px); font-weight: 600; margin-bottom: var(--space-lg);
-      letter-spacing: 0.5px; font-family: ui-monospace, monospace;
+      font-size: clamp(26px, 4.5vw, 42px);
+      font-weight: 800;
+      margin-bottom: var(--space-lg);
+      letter-spacing: 0.5px;
+      font-family: ui-monospace, monospace;
+      line-height: 1.2;
     }
 
     /* 📊 Meta Grid */
     .meta-data {
-      display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: var(--space-md) var(--space-lg);
-      align-items: center; font-size: 14px; font-family: ui-monospace, monospace;
+      display: grid;
+      grid-template-columns: 140px minmax(0, 1fr);
+      gap: var(--space-md) var(--space-lg);
+      align-items: center;
+      font-size: 14px;
+      font-family: ui-monospace, monospace;
     }
-    .meta-label { color: var(--text-muted); font-weight: 600; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; }
+    .meta-label {
+      color: var(--text-muted);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+    }
     .meta-value { font-weight: 500; color: var(--text-primary); }
+    .meta-value.rainbow { font-weight: 700; }
 
     /* 🎛️ Custom Select */
-    .select-wrapper { position: relative; display: inline-block; width: 100%; max-width: 560px; }
+    .select-wrapper { position: relative; display: inline-block; width: 100%; max-width: 620px; }
     select {
-      width: 100%; padding: 10px 14px; border-radius: var(--radius); border: 1px solid rgba(0, 229, 255, 0.25);
-      background: var(--bg-panel); color: var(--text-primary); font-size: 13px; font-family: ui-monospace, monospace;
-      cursor: pointer; outline: none; transition: all var(--anim-fast); appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2300E5FF' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-      background-repeat: no-repeat; background-position: right 12px center;
+      width: 100%;
+      padding: 12px 40px 12px 16px;
+      border-radius: var(--radius);
+      border: 1.5px solid transparent;
+      background:
+        linear-gradient(var(--bg-panel), var(--bg-panel)) padding-box,
+        var(--rainbow-conic) border-box;
+      color: var(--text-primary);
+      font-size: 13px;
+      font-family: ui-monospace, monospace;
+      font-weight: 600;
+      cursor: pointer;
+      outline: none;
+      transition: all var(--anim-fast);
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23FFD700' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
     }
-    select:hover { border-color: var(--ai-cyan); background: var(--bg-panel-hover); }
-    select:focus { box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.4); border-color: var(--ai-cyan); }
-    select option { background: #0a0f1a; color: var(--text-primary); padding: 8px; }
+    select:hover { background-color: var(--bg-panel-hover); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(255, 0, 128, 0.25); }
+    select:focus { box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.4), 0 0 24px rgba(255, 215, 0, 0.2); }
+    select option { background: #0a0515; color: var(--text-primary); padding: 8px; }
 
     /* 📦 Main Content */
-    .main-content { max-width: 960px; margin: var(--space-xl) auto; padding: 0 var(--space-lg); }
+    .main-content { max-width: 1000px; margin: var(--space-xl) auto; padding: 0 var(--space-lg); }
 
     /* ⚠️ Alert Box */
     .alert-box {
-      display: none; padding: var(--space-md) var(--space-lg); border-radius: var(--radius);
-      margin-bottom: var(--space-lg); align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: var(--space-md); font-size: 13px; font-family: ui-monospace, monospace;
-      border: 1px solid transparent; backdrop-filter: var(--glass-blur); transition: all var(--anim-normal);
+      display: none;
+      padding: var(--space-md) var(--space-lg);
+      border-radius: var(--radius);
+      margin-bottom: var(--space-lg);
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      font-size: 13px;
+      font-family: ui-monospace, monospace;
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      transition: all var(--anim-normal);
     }
-    .alert-box.show { display: flex; animation: slideIn 0.4s ease-out; }
-    .alert-legacy { background: rgba(239, 68, 68, 0.1); border-color: #EF4444; color: #FCA5A5; }
-    .alert-archived { background: rgba(234, 179, 8, 0.1); border-color: #EAB308; color: #FDE047; }
-    @keyframes slideIn { from { opacity: 0; transform: translateX(-12px); } to { opacity: 1; transform: translateX(0); } }
+    .alert-box.show { display: flex; animation: slideIn 0.45s cubic-bezier(0.22, 1, 0.36, 1); }
+    .alert-legacy {
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.5);
+      color: #FCA5A5;
+    }
+    .alert-archived {
+      background: rgba(234, 179, 8, 0.08);
+      border: 1px solid rgba(234, 179, 8, 0.5);
+      color: #FDE047;
+    }
+    @keyframes slideIn { from { opacity: 0; transform: translateX(-16px); } to { opacity: 1; transform: translateX(0); } }
 
     .alert-link {
-      background: rgba(255,255,255,0.06); color: var(--text-primary); padding: 6px 12px; border-radius: var(--radius);
-      font-size: 11px; font-weight: 700; text-decoration: none; cursor: pointer; border: 1px solid rgba(0, 229, 255, 0.25);
-      transition: all var(--anim-fast); text-transform: uppercase; letter-spacing: 0.5px; font-family: ui-monospace, monospace;
+      background: linear-gradient(135deg, var(--r-pink), var(--r-violet));
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: var(--radius);
+      font-size: 11px;
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all var(--anim-fast);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-family: ui-monospace, monospace;
+      box-shadow: 0 4px 12px rgba(255, 0, 128, 0.3);
     }
-    .alert-link:hover { background: var(--ai-cyan); color: #000; border-color: var(--ai-cyan); transform: translateY(-1px); }
+    .alert-link:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 6px 20px rgba(138, 43, 226, 0.5); }
+    .alert-link:focus-visible { outline: 2px solid var(--r-gold); outline-offset: 2px; }
 
     /* 📑 Sections */
     .section-title {
-      font-size: 17px; font-weight: 700; margin: var(--space-xl) 0 var(--space-md); color: var(--text-primary);
-      position: relative; padding-left: var(--space-md); display: flex; align-items: center; gap: var(--space-sm);
-      font-family: ui-monospace, monospace; text-transform: uppercase; letter-spacing: 1px;
+      font-size: 17px;
+      font-weight: 800;
+      margin: var(--space-xl) 0 var(--space-md);
+      position: relative;
+      padding-left: var(--space-md);
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      font-family: ui-monospace, monospace;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
     }
     .section-title::before {
-      content: ""; position: absolute; left: 0; width: 3px; height: 18px;
-      background: linear-gradient(180deg, var(--ai-cyan), var(--ai-purple)); border-radius: 2px;
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 4px;
+      height: 22px;
+      background: var(--rainbow-conic);
+      border-radius: 2px;
+      animation: spinConic 6s linear infinite;
     }
-    .desc-text { color: var(--text-secondary); margin-bottom: var(--space-xl); line-height: 1.7; font-size: 14px; }
-    .desc-text ul { margin-top: var(--space-sm); padding-left: var(--space-lg); }
+    .desc-text {
+      color: var(--text-secondary);
+      margin-bottom: var(--space-xl);
+      line-height: 1.75;
+      font-size: 14px;
+    }
+    .desc-text ul, .desc-text ol { margin-top: var(--space-sm); padding-left: var(--space-lg); }
     .desc-text li { margin-bottom: var(--space-xs); }
-    .desc-text strong { color: var(--ai-cyan); }
-
-    /* 🖥️ Specs & AI Boxes */
-    .specs-box, .ai-req-box, .ai-instruct-box {
-      background: var(--bg-panel); border: var(--border-hud); padding: var(--space-lg); border-radius: var(--radius);
-      margin-bottom: var(--space-xl); backdrop-filter: var(--glass-blur); transition: all var(--anim-normal); position: relative;
+    .desc-text strong { color: var(--r-gold); font-weight: 700; }
+    .desc-text code {
+      background: rgba(0, 229, 255, 0.1);
+      color: var(--r-cyan);
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 0.92em;
+      border: 1px solid rgba(0, 229, 255, 0.2);
     }
-    .specs-box:hover, .ai-req-box:hover, .ai-instruct-box:hover { border-color: var(--ai-cyan); box-shadow: 0 0 20px rgba(0, 229, 255, 0.15); }
-    .box-title { font-weight: 700; margin-bottom: var(--space-sm); font-size: 13px; color: var(--text-primary); font-family: ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 8px; }
-    #ui-os, #ai-req-content, #ai-instruct-content { font-size: 13px; color: var(--text-secondary); line-height: 1.7; font-family: ui-monospace, monospace; }
-    #ui-os strong, #ai-req-content strong, #ai-instruct-content strong { color: var(--ai-cyan); }
 
-    .ai-req-box { border-color: rgba(139, 92, 246, 0.3); }
-    .ai-req-box:hover { border-color: var(--ai-purple); box-shadow: 0 0 20px rgba(139, 92, 246, 0.2); }
-    .ai-instruct-box { border-color: rgba(16, 185, 129, 0.3); }
-    .ai-instruct-box:hover { border-color: #10B981; box-shadow: 0 0 20px rgba(16, 185, 129, 0.2); }
+    /* 🖥️ Info Boxes */
+    .info-box {
+      padding: var(--space-lg);
+      margin-bottom: var(--space-xl);
+      transition: all var(--anim-normal);
+      position: relative;
+    }
+    .info-box:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(255, 0, 128, 0.15), 0 0 30px rgba(0, 229, 255, 0.1); }
+
+    .box-title {
+      font-weight: 800;
+      margin-bottom: var(--space-sm);
+      font-size: 13px;
+      font-family: ui-monospace, monospace;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .box-title svg { color: var(--r-gold); }
+
+    .box-content {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      font-family: ui-monospace, monospace;
+    }
+    .box-content strong { color: var(--r-cyan); }
+
+    .ai-req-box .box-title svg { color: var(--r-violet); }
+    .ai-req-box .box-content strong { color: var(--r-violet); }
+    .ai-instruct-box .box-title svg { color: var(--r-lime); }
+    .ai-instruct-box .box-content strong { color: var(--r-lime); }
 
     /* ⬇️ Download Button */
     .btn-download {
-      display: inline-flex; align-items: center; gap: var(--space-sm);
-      background: linear-gradient(135deg, var(--nasa-blue), #1E40AF); color: #fff;
-      padding: 12px 28px; text-decoration: none; font-weight: 700; border-radius: var(--radius);
-      transition: all var(--anim-fast); font-size: 13px; text-transform: uppercase; letter-spacing: 1px;
-      position: relative; overflow: hidden; box-shadow: 0 4px 15px rgba(11, 61, 145, 0.4);
-      font-family: ui-monospace, monospace; border: 1px solid rgba(59, 130, 246, 0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      background: linear-gradient(
+        135deg,
+        var(--r-pink) 0%,
+        var(--r-orange) 20%,
+        var(--r-gold) 40%,
+        var(--r-lime) 60%,
+        var(--r-cyan) 80%,
+        var(--r-violet) 100%
+      );
+      background-size: 200% 200%;
+      color: #fff;
+      padding: 14px 32px;
+      text-decoration: none;
+      font-weight: 800;
+      border-radius: var(--radius);
+      transition: all var(--anim-fast);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(255, 0, 128, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+      font-family: ui-monospace, monospace;
+      animation: gradientShift 4s ease infinite;
     }
-    .btn-download:hover { transform: translateY(-2px); box-shadow: 0 0 20px rgba(0, 229, 255, 0.5), 0 6px 20px rgba(11, 61, 145, 0.5); border-color: var(--ai-cyan); }
-    .btn-download:active { transform: translateY(0); }
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50%      { background-position: 100% 50%; }
+    }
+    .btn-download:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(138, 43, 226, 0.5), 0 0 40px rgba(0, 229, 255, 0.4);
+    }
+    .btn-download:active { transform: translateY(-1px); }
+    .btn-download:focus-visible { outline: 2px solid var(--r-gold); outline-offset: 3px; }
     .btn-download svg { transition: transform var(--anim-fast); }
     .btn-download:hover svg { transform: translateY(2px); }
 
     /* 🏷️ Badges */
     .badge {
-      display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: var(--radius);
-      font-size: 10px; font-weight: 800; margin-bottom: var(--space-lg); text-transform: uppercase;
-      letter-spacing: 1px; border: 1px solid transparent; font-family: ui-monospace, monospace;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: var(--radius);
+      font-size: 10px;
+      font-weight: 900;
+      margin-bottom: var(--space-lg);
+      margin-right: 6px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-family: ui-monospace, monospace;
+      border: 1px solid transparent;
     }
-    .badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; box-shadow: 0 0 6px currentColor; }
-    .badge-new { background: rgba(16, 185, 129, 0.15); color: #10B981; border-color: #10B981; }
-    .badge-archived { background: rgba(234, 179, 8, 0.15); color: #EAB308; border-color: #EAB308; }
-    .badge-legacy { background: rgba(239, 68, 68, 0.15); color: #EF4444; border-color: #EF4444; }
-    .badge-beta { background: rgba(139, 92, 246, 0.15); color: #8B5CF6; border-color: #8B5CF6; }
-    .badge-ai { background: rgba(0, 229, 255, 0.15); color: var(--ai-cyan); border-color: var(--ai-cyan); }
+    .badge::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+      box-shadow: 0 0 8px currentColor;
+      animation: pulseDot 2s ease-in-out infinite;
+    }
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: 0.6; transform: scale(1.2); }
+    }
+
+    .badge-latest {
+      background: linear-gradient(135deg, rgba(0, 229, 255, 0.15), rgba(0, 191, 255, 0.15));
+      color: var(--r-cyan);
+      border-color: var(--r-cyan);
+    }
+    .badge-stable {
+      background: linear-gradient(135deg, rgba(173, 255, 47, 0.15), rgba(255, 215, 0, 0.15));
+      color: var(--r-lime);
+      border-color: var(--r-lime);
+    }
+    .badge-beta {
+      background: linear-gradient(135deg, rgba(138, 43, 226, 0.15), rgba(255, 0, 128, 0.15));
+      color: var(--r-violet);
+      border-color: var(--r-violet);
+    }
+    .badge-legacy {
+      background: linear-gradient(135deg, rgba(255, 140, 0, 0.15), rgba(239, 68, 68, 0.15));
+      color: var(--r-orange);
+      border-color: var(--r-orange);
+    }
+    .badge-archived {
+      background: rgba(100, 116, 139, 0.15);
+      color: #94A3B8;
+      border-color: #64748B;
+    }
+    .badge-ai {
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 0, 128, 0.15));
+      color: var(--r-gold);
+      border-color: var(--r-gold);
+    }
 
     /* 🔐 SHA Code */
     .sha-code {
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace; background: rgba(0, 0, 0, 0.5);
-      padding: var(--space-sm) var(--space-md); margin-top: var(--space-xs); font-size: 11px;
-      word-break: break-all; border-radius: var(--radius); border: 1px solid rgba(0, 229, 255, 0.2);
-      display: block; color: var(--ai-cyan); letter-spacing: 0.5px;
+      font-family: ui-monospace, "SF Mono", Menlo, monospace;
+      background: rgba(0, 0, 0, 0.6);
+      padding: var(--space-sm) var(--space-md);
+      margin-top: var(--space-xs);
+      font-size: 11px;
+      word-break: break-all;
+      border-radius: var(--radius);
+      display: block;
+      color: var(--r-cyan);
+      letter-spacing: 0.5px;
+      border: 1px solid rgba(0, 229, 255, 0.2);
     }
 
+    .file-meta {
+      margin-top: var(--space-lg);
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-family: ui-monospace, monospace;
+      line-height: 1.8;
+    }
+    .file-meta strong { color: var(--text-primary); display: inline-block; }
+    .file-meta .hud-filename { color: var(--r-lime); font-weight: 700; margin-left: var(--space-xs); }
+    .file-meta .sha-label { margin-top: var(--space-sm); display: inline-block; }
+
     /* 🎞️ Animations & Responsive */
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
     @media (max-width: 768px) {
       .meta-data { grid-template-columns: 1fr; gap: var(--space-sm); }
       .hero-section { padding: var(--space-lg) var(--space-md); }
       .main-content { padding: 0 var(--space-md); }
       .alert-box { flex-direction: column; align-items: flex-start; }
-      .top-nav { padding: var(--space-sm) var(--space-md); }
+      .top-nav { padding: var(--space-sm) var(--space-md); flex-wrap: wrap; }
+      .nav-title { font-size: 10px; letter-spacing: 1.2px; }
     }
+
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
       .particles { display: none; }
     }
-    :focus-visible { outline: 2px solid var(--ai-cyan); outline-offset: 3px; border-radius: var(--radius); box-shadow: 0 0 12px var(--ai-cyan); }
-    .skip-link { position: absolute; top: -40px; left: 0; background: var(--ai-cyan); color: #000; padding: var(--space-sm) var(--space-md); z-index: 200; transition: top var(--anim-fast); font-weight: 700; font-family: ui-monospace, monospace; }
+
+    :focus-visible {
+      outline: 2px solid var(--r-gold);
+      outline-offset: 3px;
+      border-radius: var(--radius);
+      box-shadow: 0 0 16px rgba(255, 215, 0, 0.6);
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -50px;
+      left: 0;
+      background: var(--rainbow-conic);
+      color: #000;
+      padding: var(--space-sm) var(--space-md);
+      z-index: 200;
+      transition: top var(--anim-fast);
+      font-weight: 800;
+      font-family: ui-monospace, monospace;
+    }
     .skip-link:focus { top: 0; }
   </style>
 </head>
@@ -255,42 +564,46 @@
   <a href="#main" class="skip-link">Salta al contenuto</a>
 
   <nav class="top-nav" aria-label="Navigazione principale">
-    <svg class="brand-mark" width="90" height="32" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" aria-label="ARCx NASA K">
+    <svg class="brand-mark" width="100" height="34" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" aria-label="ARCx NASA K">
       <defs>
         <linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#0B3D91"/>
-          <stop offset="100%" stop-color="#00E5FF"/>
+          <stop offset="0%" stop-color="#FF0080"/>
+          <stop offset="25%" stop-color="#FFD700"/>
+          <stop offset="50%" stop-color="#00E5FF"/>
+          <stop offset="75%" stop-color="#ADFF2F"/>
+          <stop offset="100%" stop-color="#8A2BE2"/>
         </linearGradient>
       </defs>
-      <rect x="0" y="0" width="120" height="40" rx="4" fill="url(#arcGrad)" stroke="#00E5FF" stroke-width="1.5"/>
-      <text x="14" y="26" fill="#ffffff" font-family="ui-monospace, monospace" font-size="20" font-weight="800" letter-spacing="1">ARCx</text>
-      <circle cx="108" cy="20" r="4" fill="#8B5CF6" />
+      <rect x="0" y="0" width="120" height="40" rx="6" fill="url(#arcGrad)" stroke="#fff" stroke-width="1.5" stroke-opacity="0.4"/>
+      <text x="14" y="26" fill="#ffffff" font-family="ui-monospace, monospace" font-size="20" font-weight="900" letter-spacing="1">ARCx</text>
+      <circle cx="108" cy="20" r="5" fill="#ffffff" opacity="0.9"/>
     </svg>
-    <div class="nav-title">NEURAL CONTROL // AI & SOFTWARE</div>
+    <div class="nav-title rainbow-text">NEURAL CONTROL // RAINBOW EDITION</div>
   </nav>
 
   <header class="hero-section">
     <div class="hero-content">
-      <h1 id="ui-title" class="shimmer hud-frame">Inizializzazione Core...</h1>
-      
+      <h1 id="ui-title" class="rainbow-text hud-frame">Inizializzazione Core...</h1>
+
       <div class="meta-data">
         <div class="meta-label">MISSION ID</div>
-        <div class="meta-value hud-text" id="ui-id">--</div>
+        <div class="meta-value rainbow-text" id="ui-id">--</div>
 
         <div class="meta-label">LAUNCH DATE</div>
-        <div class="meta-value hud-text-blue" id="ui-date">--</div>
+        <div class="meta-value" id="ui-date" style="color: var(--r-gold); font-weight: 700;">--</div>
 
         <div class="meta-label">PAYLOAD / MODEL</div>
         <div class="meta-value">
           <div class="select-wrapper">
-            <select id="versionSelector" onchange="changeVersion()" aria-label="Seleziona versione software o modello AI">
+            <label for="versionSelector" class="sr-only" style="position:absolute;left:-9999px;">Seleziona versione</label>
+            <select id="versionSelector" aria-label="Seleziona versione software o modello AI">
               <option value="v10">Intel® Arc™ 33.0.102.5081 WHQL (BETA) - Latest</option>
-              <option value="v9">SDK 3.4 (Beta)</option>
-              <option value="v8">Software Studio Accelerator</option>
-              <option value="v7">Xe-2.0</option>
-              <option value="v2">Intel® Arc™ 33.0.102.2131 WHQL (Legacy)</option>
+              <option value="v9">SDK 3.4 (Beta Legacy)</option>
+              <option value="v8">Software Studio Accelerator (Stable)</option>
+              <option value="v7">Xe-2.0 (Beta)</option>
+              <option value="v2">Intel® Arc™ 33.0.102.2131 WHQL (Legacy - PC Datati)</option>
               <option value="v6">XRMOT v4.2.1 (Legacy)</option>
-              <option value="v1">Legacy Xe-1 (Archivio)</option>
+              <option value="v1">Legacy Xe-1 (Legacy)</option>
               <option value="v3">1.21 Minecraft Mod (Archivio)</option>
               <option value="v4">Old Control Panel SDK (Archivio)</option>
               <option value="v11">🤖 AI Training Data (Lightweight)</option>
@@ -305,55 +618,55 @@
   <main class="main-content" id="main">
     <div id="dynamic-alert" class="alert-box hud-frame" role="alert" aria-live="polite">
       <span id="alert-text"></span>
-      <button class="alert-link hud-text" onclick="handleAlertClick()" id="alert-btn" type="button"></button>
+      <button class="alert-link" id="alert-btn" type="button"></button>
     </div>
 
     <div id="ui-badge" aria-hidden="true"></div>
-    
-    <h2 class="section-title"><span class="hud-text">TELEMETRY // INTRODUCTION</span></h2>
+
+    <h2 class="section-title"><span class="rainbow-text">TELEMETRY // INTRODUCTION</span></h2>
     <div class="desc-text" id="ui-desc"></div>
 
-    <h2 class="section-title"><span class="hud-text-blue">SYSTEM REQUIREMENTS</span></h2>
-    <div class="specs-box hud-frame">
+    <h2 class="section-title"><span class="rainbow-text">SYSTEM REQUIREMENTS</span></h2>
+    <div class="info-box rainbow-border hud-frame">
       <div class="box-title">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg>
         OPERATING SYSTEM & HARDWARE:
       </div>
-      <div id="ui-os">--</div>
+      <div class="box-content" id="ui-os">--</div>
     </div>
 
-    <!-- 🤖 AI Specific Sections (Hidden by default) -->
+    <!-- 🤖 AI Specific Sections -->
     <div id="ai-requirements-panel" style="display: none;">
-      <h2 class="section-title"><span class="hud-text-purple">TENSOR CORE // AI REQUIREMENTS</span></h2>
-      <div class="ai-req-box hud-frame">
+      <h2 class="section-title"><span class="rainbow-text">TENSOR CORE // AI REQUIREMENTS</span></h2>
+      <div class="info-box rainbow-border hud-frame ai-req-box">
         <div class="box-title">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 12v.01"/><path d="M12 16v.01"/><path d="M8 12v.01"/></svg>
           VRAM / RAM / COMPUTE:
         </div>
-        <div id="ai-req-content">--</div>
+        <div class="box-content" id="ai-req-content">--</div>
       </div>
     </div>
 
     <div id="ai-instructions-panel" style="display: none;">
-      <h2 class="section-title"><span class="hud-text-green">TRAINING PROTOCOL // INSTRUCTIONS</span></h2>
-      <div class="ai-instruct-box hud-frame">
+      <h2 class="section-title"><span class="rainbow-text">TRAINING PROTOCOL // INSTRUCTIONS</span></h2>
+      <div class="info-box rainbow-border hud-frame ai-instruct-box">
         <div class="box-title">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/><path d="M8 7h6"/><path d="M8 11h8"/></svg>
           PROCEDURA DI ADDESTRAMENTO:
         </div>
-        <div id="ai-instruct-content">--</div>
+        <div class="box-content" id="ai-instruct-content">--</div>
       </div>
     </div>
 
-    <h2 class="section-title"><span class="hud-text-red">AVAILABLE DOWNLOADS</span></h2>
+    <h2 class="section-title"><span class="rainbow-text">AVAILABLE DOWNLOADS</span></h2>
     <div style="margin-bottom: var(--space-xl);">
       <a class="btn-download" id="downloadLink" href="#" target="_blank" rel="noopener noreferrer">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         INITIATE DOWNLOAD
       </a>
-      <div style="margin-top: var(--space-lg); font-size: 13px; color: var(--text-secondary); font-family: ui-monospace, monospace;">
-        <strong style="color: var(--text-primary);">PAYLOAD FILE:</strong> <span id="ui-filename" class="hud-text-green" style="margin-left: var(--space-xs);">--</span><br>
-        <strong style="display:inline-block; margin-top: var(--space-sm); color: var(--text-primary);">SHA256 CHECKSUM:</strong>
+      <div class="file-meta">
+        <strong>PAYLOAD FILE:</strong> <span id="ui-filename" class="hud-filename">--</span><br>
+        <strong class="sha-label">SHA256 CHECKSUM:</strong>
         <span class="sha-code" id="ui-sha">--</span>
       </div>
     </div>
@@ -361,95 +674,122 @@
 
   <script>
     /**
-     * ARCx NASA K - AI & Software Portal
-     * ✅ Logic preserved & extended for AI modules
-     * ✅ Zero external dependencies, production-safe vanilla JS
+     * ARCx NASA K - Rainbow Edition
+     * 🌈 Nuova UI iridescente con bordi conic-gradient animati
+     * ✅ Aggiornato: status stable, legacy SDK 3.4, Xe-1 legacy, Xe-2.0 beta, 2131 legacy PC datati
+     * ✅ CSP-safe: zero inline handlers, zero eval
+     * ✅ Accessibility-first: ARIA, skip link, reduced motion
      */
     (function() {
       'use strict';
 
-      const database = {
+      // 🗄️ Source of Truth Database
+      const database = Object.freeze({
         v10: {
           title: "Intel® Arc™ Graphics - 33.0.102.5081 WHQL (BETA)",
-          id: "895081", date: "03/05/2026", status: "beta", alertType: "none",
+          id: "895081", date: "03/05/2026", status: "latest", alertType: "none",
           desc: "<strong>Graphics Software Globale Unificato</strong><br>Questa release introduce un ecosistema grafico unificato e ottimizzato per GPU. Il pacchetto include il nuovo AI Node SDK e il rinnovato pacchetto 'Game On', offrendo un software grafico avanzato per elevare e ottimizzare l'esperienza di gaming a un livello superiore.",
           file: "gfx_win_102.5081_beta.exe",
           os: "<strong>OS Minimo:</strong> Windows XP (32/64-bit) | <strong>OS Raccomandato:</strong> Windows 8.1 | <strong>OS Consigliato:</strong> Windows 11<br><strong>CPU:</strong> Qualunque a 32/64-bit<br><strong>RAM:</strong> Minimo 512 MB<br><strong>GPU:</strong> Qualunque Display Adapter<br><strong>Spazio Richiesto:</strong> 400 MB",
           sha: "E1F2A3B4C5D6E7F8901234567890ABCDEF1234567890ABCDEF1234567890ABCD",
-          url: "https://drive.google.com/drive/folders/1tCINvrgZT84fhitlwDiXXPSYa0SQZxTZ?usp=drive_link", isAI: false
+          url: "https://drive.google.com/drive/folders/1tCINvrgZT84fhitlwDiXXPSYa0SQZxTZ?usp=drive_link",
+          isAI: false
         },
         v2: {
-          title: "Intel® Arc™ Graphics - 33.0.102.2131 Test WHQL",
+          title: "Intel® Arc™ Graphics - 33.0.102.2131 Test WHQL (Legacy Update)",
           id: "785598", date: "10/05/2026", status: "legacy", alertType: "legacy",
-          alert: "⚠️ <strong>Nota Legacy:</strong> Una nuova versione del Graphics Software è disponibile. Ti invitiamo a scaricare la nuova versione per ottenere tutti i bug fix e le nuove funzionalità esclusive.",
-          alertAction: "Scarica Nuova Versione", targetLink: "v10",
-          desc: "Versione Test WHQL per schede video Intel Arc (Non include Arc Control)",
-          file: "gfx_win_102.2131.exe", os: "Windows 10 e 11 Family (64-bit)",
+          alert: "⚠️ <strong>Legacy Update per PC Datati:</strong> Questa versione è mantenuta come ramo legacy per hardware vecchio. Per GPU moderne, scarica la versione più recente.",
+          alertAction: "Scarica Versione Recente", targetLink: "v10",
+          desc: "<strong>Legacy Update per PC Datati</strong><br>Versione WHQL stabile ottimizzata per hardware datato e sistemi con risorse limitate. Ideale per GPU Intel Arc di prima generazione su macchine non recenti. Non include Arc Control.",
+          file: "gfx_win_102.2131.exe",
+          os: "<strong>Target:</strong> PC datati e hardware legacy<br><strong>OS:</strong> Windows 10 e 11 Family (64-bit)<br><strong>CPU:</strong> Dual-core 2 GHz+<br><strong>RAM:</strong> 4 GB minimi<br><strong>GPU:</strong> Intel® Arc™ prima generazione",
           sha: "9F8E7D6C5B4A3928172635445362718293049586756453423120192837465544",
-          url: "https://drive.google.com/uc?export=download&id=1Xud5XxkHYwOSUIPjp3SoMzJCOqwNbdtw", isAI: false
+          url: "https://drive.google.com/uc?export=download&id=1Xud5XxkHYwOSUIPjp3SoMzJCOqwNbdtw",
+          isAI: false
         },
         v6: {
           title: "XRMOT - eXtreme Resource Manager Optimization Tool",
           id: "XRMOT-421", date: "30/04/2026", status: "legacy", alertType: "legacy",
-          alert: "⚠️ <strong>Nota Legacy:</strong> Questa è una versione Legacy. Per scaricare le nuove versioni, scaricare il 'Graphics Software'. In futuro, questa versione potrebbe ricevere correzioni legacy esclusive per compatibilità ed errori critici.",
+          alert: "⚠️ <strong>Nota Legacy:</strong> Questa è una versione Legacy. Per scaricare le nuove versioni, scarica il 'Graphics Software'.",
           alertAction: "Vai a Graphics Software", targetLink: "v10",
-          desc: "Tool avanzato per l'ottimizzazione del sistema in stato legacy.\n<ul><li>Priorità CPU</li><li>Libera VRAM</li><li>Pulizia RAM-cache</li><li>Ritorno allo stato originale alla chiusura</li></ul>",
-          file: "XRMOT_v4.2.1_legacy.zip", os: "Windows 10 e 11",
+          desc: "Tool avanzato per l'ottimizzazione del sistema in stato legacy.<ul><li>Priorità CPU</li><li>Libera VRAM</li><li>Pulizia RAM-cache</li><li>Ritorno allo stato originale alla chiusura</li></ul>",
+          file: "XRMOT_v4.2.1_legacy.zip",
+          os: "Windows 10 e 11",
           sha: "8F4E2C1B9A0D7F6E5D4C3B2A1F0E9D8C7B6A5F4E3D2C1B0A9F8E7D6C5B4A3928",
-          url: "https://drive.google.com/drive/folders/1U5ILjzK-W6B-R1AFDRuQ0jWji2vrZWAG", isAI: false
+          url: "https://drive.google.com/drive/folders/1U5ILjzK-W6B-R1AFDRuQ0jWji2vrZWAG",
+          isAI: false
         },
         v9: {
-          title: "SDK 3.4-", id: "SDK-3.4-DEV", date: "01/05/2026", status: "beta", alertType: "none",
-          desc: "Versione SDK 3.4 per developer. Mini app progettata per test rapidi e integrazione. Questa build è in beta.\n<ul><li>Interfaccia ridotta e installazione leggera</li><li>Integrazione AI locale</li></ul>",
-          file: "SDK_3.4_DevMiniApp.exe", os: "Windows 10+, connessione internet, CPU almeno 1 GHz, spazio richiesto 700 KB",
+          title: "SDK 3.4 (Beta Legacy)",
+          id: "SDK-3.4-DEV", date: "01/05/2026", status: "legacy", alertType: "legacy",
+          alert: "⚠️ <strong>SDK Legacy Beta:</strong> Questa SDK è entrata in stato legacy. Mantieni questa versione solo se hai dipendenze esistenti. Per nuovi progetti usa la release stabile.",
+          alertAction: "Vedi Software Stabile", targetLink: "v8",
+          desc: "<strong>SDK 3.4 - Beta Legacy</strong><br>Versione SDK 3.4 in stato legacy beta. Mini app progettata per test rapidi e integrazione con codice esistente. Non raccomandata per nuovi progetti.<ul><li>Interfaccia ridotta e installazione leggera</li><li>Integrazione AI locale</li><li>Mantenuta per retrocompatibilità</li></ul>",
+          file: "SDK_3.4_DevMiniApp.exe",
+          os: "Windows 10+, connessione internet, CPU almeno 1 GHz, spazio richiesto 700 KB",
           sha: "C1D2E3F40516273849A0B1C2D3E4F5061728394A5B6C7D8E9F00112233445566",
-          url: "https://drive.google.com/drive/folders/15GycJKJmR1iwp-owg9xXaI4t8J2-q1dq?usp=drive_link", isAI: false
+          url: "https://drive.google.com/drive/folders/15GycJKJmR1iwp-owg9xXaI4t8J2-q1dq?usp=drive_link",
+          isAI: false
         },
         v7: {
-          title: "Xe-2.0 - Driver & Software", id: "XE-2026-V2", date: "01/05/2026", status: "new", alertType: "none",
-          desc: "Pacchetto Xe-2.0 in fase di raffinamento. Include ottimizzazioni kernel e supporto esteso per le nuove librerie grafiche.",
-          file: "Intel_Xe_Package_2.0.exe", os: "Windows 10/11 64-bit",
+          title: "Xe-2.0 - Driver & Software (Beta)",
+          id: "XE-2026-V2", date: "01/05/2026", status: "beta", alertType: "none",
+          desc: "<strong>Xe-2.0 - Build Beta</strong><br>Pacchetto Xe-2.0 in fase attiva di raffinamento. Include ottimizzazioni kernel e supporto esteso per le nuove librerie grafiche. Potrebbe contenere bug noti, consigliato per testing e early adopters.",
+          file: "Intel_Xe_Package_2.0.exe",
+          os: "Windows 10/11 64-bit",
           sha: "AAABBBCCCDDDEEEFFF111222333444555666777888999000AAABBBCCCDDDEEEF",
-          url: "https://drive.google.com/drive/folders/1naCyvxiBd3ZwUsu5P1q7tuixYzE-hwH2", isAI: false
+          url: "https://drive.google.com/drive/folders/1naCyvxiBd3ZwUsu5P1q7tuixYzE-hwH2",
+          isAI: false
         },
         v8: {
-          title: "Software Studio Accelerator", id: "SSA-901", date: "02/05/2026", status: "new", alertType: "none",
-          desc: "Acceleratore dedicato per software di produzione e suite creative. Ottimizza i tempi di esecuzione e di render.",
-          file: "Studio_Accelerator_Setup.exe", os: "Windows 11 64-bit",
+          title: "Software Studio Accelerator (Stable)",
+          id: "SSA-901", date: "02/05/2026", status: "stable", alertType: "none",
+          desc: "<strong>Software Studio Accelerator - Release Stabile</strong><br>Acceleratore dedicato per software di produzione e suite creative. Ottimizza i tempi di esecuzione e di render. Versione testata, validata e pronta per ambienti di produzione professionali.",
+          file: "Studio_Accelerator_Setup.exe",
+          os: "<strong>OS:</strong> Windows 11 64-bit<br><strong>CPU:</strong> Quad-core 2.5 GHz+<br><strong>RAM:</strong> 8 GB raccomandati<br><strong>Storage:</strong> 500 MB liberi<br><strong>Stabilità:</strong> Production-ready",
           sha: "556677889900AABBCCDDEEFF11223344556677889900AABBCCDDEEFF11223344",
-          url: "https://drive.google.com/drive/folders/1JHV173PewLwC9sXJVamaORnKKy3lcKV_", isAI: false
+          url: "https://drive.google.com/drive/folders/1JHV173PewLwC9sXJVamaORnKKy3lcKV_",
+          isAI: false
         },
         v1: {
-          title: "Legacy Xe-1 (Archivio)", id: "PKG-001", date: "29/04/2026", status: "archived", alertType: "archived",
-          alert: "⚠️ <strong>Nota:</strong> Questa versione è Archiviata. Non riceverà più alcun aggiornamento.",
-          alertAction: "Vai a Xe-2", targetLink: "v7",
-          desc: "Pacchetto originale conservato per compatibilità e archivio. È disponibile, ma non riceverà aggiornamenti.",
-          file: "_Xe-1_Archive.zip", os: "Windows 10 64-bit",
+          title: "Xe-1 (Legacy)",
+          id: "PKG-001", date: "29/04/2026", status: "legacy", alertType: "legacy",
+          alert: "⚠️ <strong>Nota Legacy:</strong> Xe-1 è ora in stato legacy. Mantenuto per retrocompatibilità con hardware datato. Aggiorna a Xe-2.0 se possibile.",
+          alertAction: "Vai a Xe-2.0", targetLink: "v7",
+          desc: "<strong>Legacy Xe-1</strong><br>Pacchetto conservato per retrocompatibilità con hardware datato e driver legacy. Non riceverà nuove feature ma potrebbe ricevere security fix critici.",
+          file: "_Xe-1_Archive.zip",
+          os: "Windows 10 64-bit",
           sha: "111122223333444455556666777788889999AAAABBBBCCCCDDDDEEEEFFFF0000",
-          url: "https://drive.google.com/drive/folders/1g0B7EcuI3x7zovo92jdW1lRs0CgRnv1w?usp=drive_link", isAI: false
+          url: "https://drive.google.com/drive/folders/1g0B7EcuI3x7zovo92jdW1lRs0CgRnv1w?usp=drive_link",
+          isAI: false
         },
         v3: {
-          title: "Game On Legacy - 1.21", id: "892102", date: "21/04/2026", status: "archived", alertType: "archived",
+          title: "Game On Legacy - 1.21",
+          id: "892102", date: "21/04/2026", status: "archived", alertType: "archived",
           alert: "⚠️ <strong>Nota:</strong> Questa versione è archiviata e non supportata.",
           alertAction: "Vai a Xe-2", targetLink: "v7",
           desc: "Ottimizzazione per hardware datato specifica per vecchi engine. Non riceverà aggiornamenti.",
-          file: "game_on_1.21.exe", os: "Windows 8/10 64-bit",
+          file: "game_on_1.21.exe",
+          os: "Windows 8/10 64-bit",
           sha: "A1B2C3D4E5F678901234567890ABCDEF1234567890ABCDEF1234567890ABCDEF",
-          url: "https://drive.google.com/drive/folders/1p5u_K7c6X_PDKc3diWqnwMoIWELU1FpB?usp=sharing", isAI: false
+          url: "https://drive.google.com/drive/folders/1p5u_K7c6X_PDKc3diWqnwMoIWELU1FpB?usp=sharing",
+          isAI: false
         },
         v4: {
-          title: "Old Control Panel SDK", id: "445123", date: "12/01/2025", status: "archived", alertType: "archived",
+          title: "Old Control Panel SDK",
+          id: "445123", date: "12/01/2025", status: "archived", alertType: "archived",
           alert: "⚠️ <strong>Nota:</strong> Versione deprecata e archiviata.",
           alertAction: "Vai a Xe-2", targetLink: "v7",
           desc: "Vecchio pannello di controllo per compatibilità con impostazioni rimosse.",
-          file: "old_panel_sdk.zip", os: "Windows 10 & 11",
+          file: "old_panel_sdk.zip",
+          os: "Windows 10 & 11",
           sha: "BBDDCC11223344556677889900AABBCCDDEEFF11223344556677889900AABBCC",
-          url: "https://drive.google.com/uc?export=download&id=1FMxlcMH__KeSqMOuahNUHN47S3AeYrDo", isAI: false
+          url: "https://drive.google.com/uc?export=download&id=1FMxlcMH__KeSqMOuahNUHN47S3AeYrDo",
+          isAI: false
         },
-        // 🤖 NEW AI ENTRIES
         v11: {
           title: "AI Training Data (Lightweight)",
-          id: "AI-TRN-LW-01", date: "05/05/2026", status: "new", alertType: "none",
+          id: "AI-TRN-LW-01", date: "05/05/2026", status: "latest", alertType: "none",
           desc: "<strong>Dataset Ottimizzato per Addestramento Leggero</strong><br>Raccolta di dati strutturati e pre-processati per il training di modelli AI su dispositivi con risorse limitate. Ideale per edge computing e test locali rapidi.",
           file: "AI_TrainingData_LW_v1.zip",
           os: "Qualsiasi OS moderno (Win/Linux/macOS)<br><strong>Storage:</strong> ~2.4 GB estratto<br><strong>CPU:</strong> Dual-core 1.5 GHz+<br><strong>RAM:</strong> 4 GB minimi",
@@ -471,66 +811,113 @@
           aiReq: "<strong>VRAM:</strong> 12 GB minimi (GPU NVIDIA/AMD con supporto FP16)<br><strong>RAM Sistemica:</strong> 12 GB minimi<br><strong>Storage:</strong> ~8.5 GB (modello + cache)<br><strong>Compute:</strong> CUDA 12.x o ROCm 5.7+ consigliato",
           aiInstructions: "<ol style='margin-left: 18px; margin-top: 8px;'><li>Scarica il file <code>.safetensors</code> e posizionalo nella cartella <code>./models/</code>.</li><li>Installa le dipendenze: <code>pip install torch transformers accelerate safetensors</code>.</li><li>Carica il modello con precisione FP16:<br><code>model = AutoModelForCausalLM.from_pretrained('./models/', torch_dtype=torch.float16, device_map='auto')</code></li><li>Per il fine-tuning, usa LoRA/QLoRA per ridurre il consumo di VRAM del 60%.</li><li>Monitora i picchi di memoria durante il primo forward pass. Se OOM, riduci <code>max_length</code> o abilita <code>load_in_8bit=True</code>.</li></ol>"
         }
+      });
+
+      // 🎯 DOM Elements Cache (fail-safe)
+      const $ = (id) => {
+        const el = document.getElementById(id);
+        if (!el) console.warn(`[ARCx] Missing DOM element: #${id}`);
+        return el;
       };
+
+      const els = {
+        title: $("ui-title"),
+        id: $("ui-id"),
+        date: $("ui-date"),
+        desc: $("ui-desc"),
+        filename: $("ui-filename"),
+        os: $("ui-os"),
+        sha: $("ui-sha"),
+        alertBox: $("dynamic-alert"),
+        alertText: $("alert-text"),
+        alertBtn: $("alert-btn"),
+        badge: $("ui-badge"),
+        downloadLink: $("downloadLink"),
+        selector: $("versionSelector"),
+        aiReqPanel: $("ai-requirements-panel"),
+        aiReqContent: $("ai-req-content"),
+        aiInstPanel: $("ai-instructions-panel"),
+        aiInstContent: $("ai-instruct-content"),
+        particles: $("particles")
+      };
+
+      // 🎨 Badge Configuration Map
+      const BADGE_MAP = Object.freeze({
+        latest:  { cls: "badge-latest",  text: "LATEST" },
+        stable:  { cls: "badge-stable",  text: "STABLE" },
+        beta:    { cls: "badge-beta",    text: "BETA" },
+        legacy:  { cls: "badge-legacy",  text: "LEGACY" },
+        archived:{ cls: "badge-archived", text: "ARCHIVED" }
+      });
 
       let currentTargetLink = "";
 
-      const els = {
-        title: document.getElementById("ui-title"), id: document.getElementById("ui-id"),
-        date: document.getElementById("ui-date"), desc: document.getElementById("ui-desc"),
-        filename: document.getElementById("ui-filename"), os: document.getElementById("ui-os"),
-        sha: document.getElementById("ui-sha"), alertBox: document.getElementById("dynamic-alert"),
-        alertText: document.getElementById("alert-text"), alertBtn: document.getElementById("alert-btn"),
-        badge: document.getElementById("ui-badge"), downloadLink: document.getElementById("downloadLink"),
-        selector: document.getElementById("versionSelector"),
-        aiReqPanel: document.getElementById("ai-requirements-panel"),
-        aiReqContent: document.getElementById("ai-req-content"),
-        aiInstPanel: document.getElementById("ai-instructions-panel"),
-        aiInstContent: document.getElementById("ai-instruct-content")
-      };
-
+      // ✨ Rainbow Particles Generator
       function initParticles() {
-        const container = document.getElementById('particles');
+        const container = els.particles;
+        if (!container) return;
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        if (prefersReducedMotion || !container) return;
-        const particleCount = 25;
+        if (prefersReducedMotion) return;
+
+        const colors = ['#FF0080', '#FF8C00', '#FFD700', '#ADFF2F', '#00E5FF', '#00BFFF', '#8A2BE2', '#FF1493', '#FFFFFF'];
+        const particleCount = 35;
+
         for (let i = 0; i < particleCount; i++) {
           const particle = document.createElement('div');
           particle.className = 'particle';
           const left = Math.random() * 100;
-          const delay = Math.random() * 18;
-          const duration = 18 + Math.random() * 22;
-          const size = 1.5 + Math.random() * 2;
+          const delay = Math.random() * 20;
+          const duration = 15 + Math.random() * 25;
+          const size = 2 + Math.random() * 3;
+          const drift = (Math.random() - 0.5) * 120;
+          const color = colors[Math.floor(Math.random() * colors.length)];
+
           particle.style.left = `${left}%`;
           particle.style.animationDelay = `${delay}s`;
           particle.style.animationDuration = `${duration}s`;
           particle.style.width = `${size}px`;
           particle.style.height = `${size}px`;
-          const colors = ['#FFFFFF', 'var(--ai-cyan)', 'var(--ai-purple)'];
-          particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-          particle.style.boxShadow = `0 0 6px ${particle.style.background}`;
+          particle.style.background = color;
+          particle.style.boxShadow = `0 0 8px ${color}, 0 0 16px ${color}40`;
+          particle.style.setProperty('--drift', `${drift}px`);
           container.appendChild(particle);
         }
       }
 
-      window.changeVersion = function() {
+      // 🔄 Version Change Handler
+      function changeVersion() {
         const key = els.selector.value;
         const data = database[key];
-        if (!data) return;
 
+        // Guard against missing data
+        if (!data) {
+          console.error(`[ARCx] Unknown version key: ${key}`);
+          return;
+        }
+
+        // Update text content (safe - no HTML parsing)
         els.title.textContent = data.title;
         els.id.textContent = data.id;
         els.date.textContent = data.date;
-        els.desc.innerHTML = data.desc;
         els.filename.textContent = data.file;
-        els.os.innerHTML = data.os;
         els.sha.textContent = data.sha;
-        els.downloadLink.href = data.url;
 
-        els.title.className = 'shimmer hud-frame';
-        const glowMap = { new: 'hud-text-green', beta: 'hud-text-purple', legacy: 'hud-text-red', archived: 'hud-text-pink' };
-        if (glowMap[data.status]) els.title.classList.add(glowMap[data.status]);
+        // HTML content (trusted source only - database is hardcoded)
+        els.desc.innerHTML = data.desc;
+        els.os.innerHTML = data.os;
 
+        // Safe URL handling
+        try {
+          els.downloadLink.href = new URL(data.url, window.location.origin).toString();
+        } catch (e) {
+          els.downloadLink.href = "#";
+          console.error("[ARCx] Invalid URL:", data.url);
+        }
+
+        // Reset title classes
+        els.title.className = 'rainbow-text hud-frame';
+
+        // Alert box logic
         els.alertBox.className = "alert-box hud-frame";
         if (data.alertType === "legacy") {
           els.alertBox.classList.add("show", "alert-legacy");
@@ -544,38 +931,62 @@
           currentTargetLink = data.targetLink;
         } else {
           els.alertBox.classList.remove("show");
+          currentTargetLink = "";
         }
 
-        const badgeMap = { archived: { cls: "badge-archived", text: "ARCHIVED" }, legacy: { cls: "badge-legacy", text: "LEGACY" }, beta: { cls: "badge-beta", text: "BETA" }, new: { cls: "badge-new", text: "LATEST" } };
-        const b = badgeMap[data.status] || badgeMap.new;
-        els.badge.innerHTML = `<span class="badge ${b.cls}">${b.text}</span>`;
+        // Badges
+        const b = BADGE_MAP[data.status] || BADGE_MAP.latest;
+        let badgeHTML = `<span class="badge ${b.cls}">${b.text}</span>`;
 
-        // 🤖 AI Panels Logic
+        // AI Panels Logic
         if (data.isAI) {
           els.aiReqPanel.style.display = "block";
           els.aiInstPanel.style.display = "block";
           els.aiReqContent.innerHTML = data.aiReq || "N/D";
           els.aiInstContent.innerHTML = data.aiInstructions || "N/D";
-          els.badge.innerHTML += ` <span class="badge badge-ai">AI MODULE</span>`;
+          badgeHTML += `<span class="badge badge-ai">AI MODULE</span>`;
         } else {
           els.aiReqPanel.style.display = "none";
           els.aiInstPanel.style.display = "none";
         }
 
+        els.badge.innerHTML = badgeHTML;
+
+        // Smooth content transition
         els.desc.style.animation = "none";
         void els.desc.offsetHeight;
-        els.desc.style.animation = "fadeInUp 0.4s ease-out";
-      };
+        els.desc.style.animation = "fadeInUp 0.5s cubic-bezier(0.22, 1, 0.36, 1)";
+      }
 
-      window.handleAlertClick = function() {
+      // 🖱️ Alert Button Handler
+      function handleAlertClick() {
         if (currentTargetLink && database[currentTargetLink]) {
           els.selector.value = currentTargetLink;
-          window.changeVersion();
-          if (window.innerWidth < 768) window.scrollTo({ top: 0, behavior: "smooth" });
+          changeVersion();
+          if (window.innerWidth < 768) {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
         }
-      };
+      }
 
-      document.addEventListener("DOMContentLoaded", () => { initParticles(); window.changeVersion(); });
+      // 🔌 Event Bindings (CSP-safe, no inline handlers)
+      function bindEvents() {
+        if (els.selector) els.selector.addEventListener('change', changeVersion);
+        if (els.alertBtn) els.alertBtn.addEventListener('click', handleAlertClick);
+      }
+
+      // 🚀 Init
+      function init() {
+        initParticles();
+        bindEvents();
+        changeVersion();
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
     })();
   </script>
 </body>
