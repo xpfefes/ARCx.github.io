@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="ARCx Quantum Portal - AI & Software Distribution Platform" />
-  <title>ARCx Quantum Portal | Software & AI Distribution</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://drive.google.com; frame-ancestors 'none'; form-action 'none'; base-uri 'self';" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+  <meta name="description" content="NEXA Quantum Portal - NEXA Arc Drive, AI Models & Software Distribution" />
+  <title>NEXA Quantum Portal | Arc Drive & AI Distribution</title>
   <style>
     :root {
       --q-void: #0a0a0f;
@@ -13,63 +16,37 @@
       --q-surface-hover: #252540;
       --q-glass: rgba(26, 26, 46, 0.65);
       --q-glass-hover: rgba(37, 37, 64, 0.75);
-
       --q-primary: #a855f7;
       --q-primary-glow: rgba(168, 85, 247, 0.4);
       --q-secondary: #ec4899;
       --q-accent: #06b6d4;
       --q-accent-glow: rgba(6, 182, 212, 0.35);
-
       --q-success: #10b981;
       --q-warning: #f59e0b;
       --q-danger: #ef4444;
-
       --text-primary: #f1f5f9;
       --text-secondary: #94a3b8;
       --text-muted: #64748b;
-
       --border-subtle: rgba(168, 85, 247, 0.2);
       --border-glow: rgba(168, 85, 247, 0.5);
-
       --radius-sm: 6px;
       --radius-md: 12px;
       --radius-lg: 20px;
       --radius-full: 9999px;
-
       --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
       --shadow-glow: 0 0 40px var(--q-primary-glow);
-
-      --space-xs: 4px;
-      --space-sm: 8px;
-      --space-md: 16px;
-      --space-lg: 24px;
-      --space-xl: 40px;
-      --space-2xl: 64px;
-
+      --space-xs: 4px; --space-sm: 8px; --space-md: 16px; --space-lg: 24px; --space-xl: 40px; --space-2xl: 64px;
       --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
-
       --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
       --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-
       --gradient-mesh: radial-gradient(at 20% 30%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
                        radial-gradient(at 80% 20%, rgba(236, 72, 153, 0.12) 0%, transparent 50%),
                        radial-gradient(at 40% 80%, rgba(6, 182, 212, 0.10) 0%, transparent 50%),
                        radial-gradient(at 90% 90%, rgba(168, 85, 247, 0.08) 0%, transparent 50%);
     }
-
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
     body {
       font-family: var(--font-sans);
       background: var(--q-void);
@@ -79,785 +56,355 @@
       overflow-x: hidden;
       position: relative;
     }
-
     body::before {
       content: "";
-      position: fixed;
-      inset: 0;
+      position: fixed; inset: 0;
       background: var(--gradient-mesh);
       z-index: -1;
       animation: meshShift 25s ease-in-out infinite alternate;
     }
-
     @keyframes meshShift {
       0% { transform: scale(1) rotate(0deg); }
       100% { transform: scale(1.1) rotate(2deg); }
     }
-
     .skip-link {
-      position: absolute;
-      top: -100px;
-      left: var(--space-md);
+      position: absolute; top: -100px; left: var(--space-md);
       background: linear-gradient(135deg, var(--q-primary), var(--q-secondary));
-      color: white;
-      padding: var(--space-sm) var(--space-md);
-      border-radius: var(--radius-sm);
-      font-weight: 600;
-      z-index: 1000;
-      transition: top 0.3s var(--ease-out-expo);
-      text-decoration: none;
+      color: white; padding: var(--space-sm) var(--space-md);
+      border-radius: var(--radius-sm); font-weight: 600; z-index: 1000;
+      transition: top 0.3s var(--ease-out-expo); text-decoration: none;
     }
+    .skip-link:focus { top: var(--space-md); }
 
-    .skip-link:focus {
-      top: var(--space-md);
-    }
-
-    /* ═══════════════════════════════════════════
-       NAVIGATION
-    ═══════════════════════════════════════════ */
+    /* NAV */
     .nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      position: sticky; top: 0; z-index: 100;
       background: var(--q-glass);
       backdrop-filter: blur(20px) saturate(180%);
       -webkit-backdrop-filter: blur(20px) saturate(180%);
       border-bottom: 1px solid var(--border-subtle);
       padding: var(--space-md) var(--space-lg);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--space-md);
+      display: flex; align-items: center; justify-content: space-between; gap: var(--space-md);
     }
-
     .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: var(--space-sm);
-      font-weight: 800;
-      font-size: 20px;
-      letter-spacing: -0.5px;
+      display: flex; align-items: center; gap: var(--space-sm);
+      font-weight: 800; font-size: 20px; letter-spacing: -0.5px;
       background: linear-gradient(135deg, var(--q-primary), var(--q-secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
-
-    .nav-brand svg {
-      flex-shrink: 0;
+    .nav-brand-sub {
+      font-size: 11px; font-weight: 600; color: var(--text-muted);
+      letter-spacing: 1px; text-transform: uppercase; margin-left: var(--space-xs);
     }
-
     .nav-status {
-      display: flex;
-      align-items: center;
-      gap: var(--space-sm);
-      font-size: 12px;
-      color: var(--text-secondary);
-      font-family: var(--font-mono);
+      display: flex; align-items: center; gap: var(--space-sm);
+      font-size: 12px; color: var(--text-secondary); font-family: var(--font-mono);
     }
-
     .status-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--q-success);
-      box-shadow: 0 0 12px var(--q-success);
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--q-success); box-shadow: 0 0 12px var(--q-success);
       animation: pulse 2s ease-in-out infinite;
     }
-
     @keyframes pulse {
       0%, 100% { opacity: 1; transform: scale(1); }
       50% { opacity: 0.6; transform: scale(1.2); }
     }
 
-    /* ═══════════════════════════════════════════
-       HERO SECTION
-    ═══════════════════════════════════════════ */
+    /* HERO */
     .hero {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: var(--space-2xl) var(--space-lg);
-      text-align: center;
+      max-width: 1200px; margin: 0 auto;
+      padding: var(--space-2xl) var(--space-lg); text-align: center;
     }
-
     .hero-title {
-      font-size: clamp(32px, 6vw, 56px);
-      font-weight: 900;
-      letter-spacing: -1.5px;
-      line-height: 1.1;
-      margin-bottom: var(--space-md);
+      font-size: clamp(32px, 6vw, 56px); font-weight: 900;
+      letter-spacing: -1.5px; line-height: 1.1; margin-bottom: var(--space-md);
       background: linear-gradient(135deg, var(--text-primary) 0%, var(--q-primary) 50%, var(--q-secondary) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
-
     .hero-subtitle {
-      font-size: 18px;
-      color: var(--text-secondary);
-      max-width: 600px;
-      margin: 0 auto var(--space-xl);
+      font-size: 18px; color: var(--text-secondary);
+      max-width: 600px; margin: 0 auto var(--space-xl);
     }
-
-    .hero-select-wrapper {
-      max-width: 500px;
-      margin: 0 auto;
-      position: relative;
-    }
-
+    .hero-select-wrapper { max-width: 500px; margin: 0 auto; position: relative; }
     .hero-select {
       width: 100%;
       padding: var(--space-md) var(--space-xl) var(--space-md) var(--space-md);
       background: var(--q-glass);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      color: var(--text-primary);
-      font-size: 15px;
-      font-weight: 500;
-      cursor: pointer;
-      appearance: none;
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
+      color: var(--text-primary); font-size: 15px; font-weight: 500;
+      cursor: pointer; appearance: none;
       transition: all 0.3s var(--ease-out-expo);
       box-shadow: var(--shadow-glass);
     }
-
-    .hero-select:hover {
-      border-color: var(--border-glow);
-      box-shadow: var(--shadow-glass), var(--shadow-glow);
-    }
-
-    .hero-select:focus {
-      outline: none;
-      border-color: var(--q-primary);
-      box-shadow: 0 0 0 3px var(--q-primary-glow);
-    }
-
+    .hero-select:hover { border-color: var(--border-glow); box-shadow: var(--shadow-glass), var(--shadow-glow); }
+    .hero-select:focus { outline: none; border-color: var(--q-primary); box-shadow: 0 0 0 3px var(--q-primary-glow); }
     .hero-select-wrapper::after {
-      content: "▾";
-      position: absolute;
-      right: var(--space-md);
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--q-primary);
-      pointer-events: none;
-      font-size: 18px;
+      content: "▾"; position: absolute; right: var(--space-md); top: 50%;
+      transform: translateY(-50%); color: var(--q-primary); pointer-events: none; font-size: 18px;
     }
+    .hero-select option { background: var(--q-surface); color: var(--text-primary); }
 
-    .hero-select option {
-      background: var(--q-surface);
-      color: var(--text-primary);
-      padding: var(--space-sm);
-    }
-
-    /* ═══════════════════════════════════════════
-       MAIN CONTENT
-    ═══════════════════════════════════════════ */
-    .main {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 var(--space-lg) var(--space-2xl);
-    }
-
+    /* MAIN */
+    .main { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-lg) var(--space-2xl); }
     .alert-banner {
-      display: none;
-      padding: var(--space-md) var(--space-lg);
-      border-radius: var(--radius-md);
-      margin-bottom: var(--space-lg);
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--space-md);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid;
-      animation: slideDown 0.4s var(--ease-out-expo);
+      display: none; padding: var(--space-md) var(--space-lg);
+      border-radius: var(--radius-md); margin-bottom: var(--space-lg);
+      align-items: center; justify-content: space-between; gap: var(--space-md);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border: 1px solid; animation: slideDown 0.4s var(--ease-out-expo);
     }
-
-    .alert-banner.visible {
-      display: flex;
-    }
-
-    .alert-banner.warning {
-      background: rgba(245, 158, 11, 0.1);
-      border-color: rgba(245, 158, 11, 0.4);
-      color: var(--q-warning);
-    }
-
-    .alert-banner.info {
-      background: rgba(6, 182, 212, 0.1);
-      border-color: rgba(6, 182, 212, 0.4);
-      color: var(--q-accent);
-    }
-
+    .alert-banner.visible { display: flex; }
+    .alert-banner.warning { background: rgba(245, 158, 11, 0.1); border-color: rgba(245, 158, 11, 0.4); color: var(--q-warning); }
+    .alert-banner.info { background: rgba(6, 182, 212, 0.1); border-color: rgba(6, 182, 212, 0.4); color: var(--q-accent); }
     @keyframes slideDown {
       from { opacity: 0; transform: translateY(-10px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
-    .alert-text {
-      font-size: 14px;
-      font-weight: 500;
-    }
-
+    .alert-text { font-size: 14px; font-weight: 500; flex: 1; }
     .alert-action {
       background: linear-gradient(135deg, var(--q-primary), var(--q-secondary));
-      color: white;
-      border: none;
-      padding: var(--space-sm) var(--space-md);
-      border-radius: var(--radius-sm);
-      font-size: 13px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s var(--ease-out-expo);
-      white-space: nowrap;
+      color: white; border: none;
+      padding: var(--space-sm) var(--space-md); border-radius: var(--radius-sm);
+      font-size: 13px; font-weight: 700; cursor: pointer;
+      transition: all 0.2s var(--ease-out-expo); white-space: nowrap;
     }
+    .alert-action:hover { transform: translateY(-2px); box-shadow: 0 8px 20px var(--q-primary-glow); }
 
-    .alert-action:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px var(--q-primary-glow);
-    }
-
-    .badge-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-sm);
-      margin-bottom: var(--space-lg);
-    }
-
+    .badge-group { display: flex; flex-wrap: wrap; gap: var(--space-sm); margin-bottom: var(--space-lg); }
     .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 14px;
-      border-radius: var(--radius-full);
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      border: 1px solid;
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: var(--radius-full);
+      font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.8px; border: 1px solid;
     }
-
     .badge::before {
-      content: "";
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: currentColor;
-      animation: pulse 2s ease-in-out infinite;
+      content: ""; width: 6px; height: 6px; border-radius: 50%;
+      background: currentColor; animation: pulse 2s ease-in-out infinite;
     }
+    .badge-latest { background: rgba(168, 85, 247, 0.15); color: var(--q-primary); border-color: var(--q-primary); }
+    .badge-stable { background: rgba(16, 185, 129, 0.15); color: var(--q-success); border-color: var(--q-success); }
+    .badge-beta { background: rgba(6, 182, 212, 0.15); color: var(--q-accent); border-color: var(--q-accent); }
+    .badge-legacy { background: rgba(245, 158, 11, 0.15); color: var(--q-warning); border-color: var(--q-warning); }
+    .badge-archived { background: rgba(100, 116, 139, 0.15); color: var(--text-muted); border-color: var(--text-muted); }
+    .badge-ai { background: rgba(236, 72, 153, 0.15); color: var(--q-secondary); border-color: var(--q-secondary); }
 
-    .badge-latest {
-      background: rgba(168, 85, 247, 0.15);
-      color: var(--q-primary);
-      border-color: var(--q-primary);
-    }
-
-    .badge-stable {
-      background: rgba(16, 185, 129, 0.15);
-      color: var(--q-success);
-      border-color: var(--q-success);
-    }
-
-    .badge-beta {
-      background: rgba(6, 182, 212, 0.15);
-      color: var(--q-accent);
-      border-color: var(--q-accent);
-    }
-
-    .badge-legacy {
-      background: rgba(245, 158, 11, 0.15);
-      color: var(--q-warning);
-      border-color: var(--q-warning);
-    }
-
-    .badge-archived {
-      background: rgba(100, 116, 139, 0.15);
-      color: var(--text-muted);
-      border-color: var(--text-muted);
-    }
-
-    .badge-ai {
-      background: rgba(236, 72, 153, 0.15);
-      color: var(--q-secondary);
-      border-color: var(--q-secondary);
-    }
-
-    .section {
-      margin-bottom: var(--space-xl);
-    }
-
+    .section { margin-bottom: var(--space-xl); }
     .section-header {
-      display: flex;
-      align-items: center;
-      gap: var(--space-sm);
-      margin-bottom: var(--space-md);
-      font-size: 13px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-      color: var(--q-primary);
+      display: flex; align-items: center; gap: var(--space-sm);
+      margin-bottom: var(--space-md); font-size: 13px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.2px; color: var(--q-primary);
     }
-
     .section-header::before {
-      content: "";
-      width: 4px;
-      height: 20px;
+      content: ""; width: 4px; height: 20px;
       background: linear-gradient(to bottom, var(--q-primary), var(--q-secondary));
       border-radius: 2px;
     }
-
     .card {
       background: var(--q-glass);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      padding: var(--space-lg);
-      box-shadow: var(--shadow-glass);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-subtle); border-radius: var(--radius-lg);
+      padding: var(--space-lg); box-shadow: var(--shadow-glass);
       transition: all 0.3s var(--ease-out-expo);
     }
-
     .card:hover {
       border-color: var(--border-glow);
       box-shadow: var(--shadow-glass), var(--shadow-glow);
       transform: translateY(-2px);
     }
-
     .card-title {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--q-primary);
-      margin-bottom: var(--space-sm);
-      display: flex;
-      align-items: center;
-      gap: var(--space-sm);
+      font-size: 14px; font-weight: 700; color: var(--q-primary);
+      margin-bottom: var(--space-sm); display: flex; align-items: center; gap: var(--space-sm);
     }
-
-    .card-title svg {
-      color: var(--q-accent);
-    }
-
-    .card-content {
-      font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 1.8;
-    }
-
-    .card-content strong {
-      color: var(--text-primary);
-      font-weight: 600;
-    }
-
+    .card-title svg { color: var(--q-accent); }
+    .card-content { font-size: 14px; color: var(--text-secondary); line-height: 1.8; }
+    .card-content strong { color: var(--text-primary); font-weight: 600; }
     .card-content code {
-      background: rgba(168, 85, 247, 0.15);
-      color: var(--q-primary);
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-family: var(--font-mono);
-      font-size: 0.9em;
+      background: rgba(168, 85, 247, 0.15); color: var(--q-primary);
+      padding: 2px 8px; border-radius: 4px;
+      font-family: var(--font-mono); font-size: 0.9em;
       border: 1px solid rgba(168, 85, 247, 0.3);
     }
+    .card-content ul, .card-content ol { margin-top: var(--space-sm); padding-left: var(--space-lg); }
+    .card-content li { margin-bottom: var(--space-xs); }
 
-    .card-content ul, .card-content ol {
-      margin-top: var(--space-sm);
-      padding-left: var(--space-lg);
-    }
-
-    .card-content li {
-      margin-bottom: var(--space-xs);
-    }
-
-    .download-section {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-md);
-    }
-
+    .download-section { display: flex; flex-direction: column; gap: var(--space-md); }
     .btn-download {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+      display: inline-flex; align-items: center; justify-content: center;
       gap: var(--space-sm);
       background: linear-gradient(135deg, var(--q-primary), var(--q-secondary));
-      color: white;
-      padding: var(--space-md) var(--space-xl);
-      border-radius: var(--radius-md);
-      font-size: 15px;
-      font-weight: 700;
+      color: white; padding: var(--space-md) var(--space-xl);
+      border-radius: var(--radius-md); font-size: 15px; font-weight: 700;
       text-decoration: none;
       transition: all 0.3s var(--ease-out-expo);
       box-shadow: 0 8px 24px var(--q-primary-glow);
       border: 1px solid rgba(255, 255, 255, 0.2);
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
     }
-
     .btn-download::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
+      content: ""; position: absolute; top: 0; left: -100%;
+      width: 100%; height: 100%;
       background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
       transition: left 0.5s;
     }
-
-    .btn-download:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 32px var(--q-primary-glow);
-    }
-
-    .btn-download:hover::before {
-      left: 100%;
-    }
-
-    .btn-download:active {
-      transform: translateY(-1px);
-    }
-
-    .file-info {
-      font-size: 13px;
-      color: var(--text-secondary);
-      font-family: var(--font-mono);
-    }
-
-    .file-info strong {
-      color: var(--text-primary);
-    }
-
+    .btn-download:hover { transform: translateY(-3px); box-shadow: 0 12px 32px var(--q-primary-glow); }
+    .btn-download:hover::before { left: 100%; }
+    .btn-download:active { transform: translateY(-1px); }
+    .file-info { font-size: 13px; color: var(--text-secondary); font-family: var(--font-mono); }
+    .file-info strong { color: var(--text-primary); }
     .sha-code {
-      display: block;
-      margin-top: var(--space-xs);
+      display: block; margin-top: var(--space-xs);
       padding: var(--space-sm) var(--space-md);
       background: rgba(10, 10, 15, 0.8);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-sm);
-      font-size: 11px;
-      word-break: break-all;
-      color: var(--q-accent);
+      border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);
+      font-size: 11px; word-break: break-all; color: var(--q-accent);
     }
 
-    /* ═══════════════════════════════════════════
-       CHATBOT
-    ═══════════════════════════════════════════ */
+    /* CHATBOT */
     .chat-fab {
-      position: fixed;
-      bottom: var(--space-lg);
-      right: var(--space-lg);
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
+      position: fixed; bottom: var(--space-lg); right: var(--space-lg);
+      width: 60px; height: 60px; border-radius: 50%;
       background: linear-gradient(135deg, var(--q-primary), var(--q-secondary));
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
       box-shadow: 0 8px 24px var(--q-primary-glow);
-      transition: all 0.3s var(--ease-spring);
-      z-index: 999;
+      transition: all 0.3s var(--ease-spring); z-index: 999;
     }
-
-    .chat-fab:hover {
-      transform: scale(1.1);
-      box-shadow: 0 12px 32px var(--q-primary-glow);
-    }
-
-    .chat-fab svg {
-      color: white;
-      width: 28px;
-      height: 28px;
-    }
-
+    .chat-fab:hover { transform: scale(1.1); box-shadow: 0 12px 32px var(--q-primary-glow); }
+    .chat-fab svg { color: white; width: 28px; height: 28px; }
     .chat-panel {
-      position: fixed;
-      bottom: var(--space-lg);
-      right: var(--space-lg);
-      width: 400px;
-      max-width: calc(100vw - 32px);
-      height: 600px;
-      max-height: calc(100vh - 100px);
+      position: fixed; bottom: var(--space-lg); right: var(--space-lg);
+      width: 400px; max-width: calc(100vw - 32px);
+      height: 600px; max-height: calc(100vh - 100px);
       background: var(--q-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle); border-radius: var(--radius-lg);
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-      display: flex;
-      flex-direction: column;
-      z-index: 1000;
-      transform: scale(0.9) translateY(20px);
-      opacity: 0;
-      pointer-events: none;
+      display: flex; flex-direction: column; z-index: 1000;
+      transform: scale(0.9) translateY(20px); opacity: 0; pointer-events: none;
       transition: all 0.3s var(--ease-spring);
     }
-
-    .chat-panel.open {
-      transform: scale(1) translateY(0);
-      opacity: 1;
-      pointer-events: all;
-    }
-
+    .chat-panel.open { transform: scale(1) translateY(0); opacity: 1; pointer-events: all; }
     .chat-header {
       padding: var(--space-md) var(--space-lg);
       border-bottom: 1px solid var(--border-subtle);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      display: flex; align-items: center; justify-content: space-between;
       background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(236, 72, 153, 0.1));
       border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     }
-
-    .chat-header-title {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--text-primary);
-    }
-
+    .chat-header-title { font-size: 16px; font-weight: 700; color: var(--text-primary); }
     .chat-close {
-      background: none;
-      border: none;
-      color: var(--text-secondary);
-      cursor: pointer;
-      padding: var(--space-xs);
-      border-radius: var(--radius-sm);
-      transition: all 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      background: none; border: none; color: var(--text-secondary);
+      cursor: pointer; padding: var(--space-xs); border-radius: var(--radius-sm);
+      transition: all 0.2s; display: flex; align-items: center; justify-content: center;
     }
-
-    .chat-close:hover {
-      background: rgba(255, 255, 255, 0.1);
-      color: var(--text-primary);
-    }
-
+    .chat-close:hover { background: rgba(255, 255, 255, 0.1); color: var(--text-primary); }
     .chat-messages {
-      flex: 1;
-      overflow-y: auto;
-      padding: var(--space-md);
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-md);
+      flex: 1; overflow-y: auto; padding: var(--space-md);
+      display: flex; flex-direction: column; gap: var(--space-md);
     }
-
-    .chat-message {
-      display: flex;
-      gap: var(--space-sm);
-      animation: messageIn 0.3s var(--ease-out-expo);
-    }
-
+    .chat-message { display: flex; gap: var(--space-sm); animation: messageIn 0.3s var(--ease-out-expo); }
     @keyframes messageIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
-    .chat-message.bot {
-      align-self: flex-start;
-    }
-
-    .chat-message.user {
-      align-self: flex-end;
-      flex-direction: row-reverse;
-    }
-
+    .chat-message.bot { align-self: flex-start; }
+    .chat-message.user { align-self: flex-end; flex-direction: row-reverse; }
     .chat-avatar {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      font-size: 16px;
+      width: 32px; height: 32px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 16px;
     }
-
-    .chat-message.bot .chat-avatar {
-      background: linear-gradient(135deg, var(--q-primary), var(--q-secondary));
-    }
-
-    .chat-message.user .chat-avatar {
-      background: var(--q-accent);
-    }
-
+    .chat-message.bot .chat-avatar { background: linear-gradient(135deg, var(--q-primary), var(--q-secondary)); }
+    .chat-message.user .chat-avatar { background: var(--q-accent); }
     .chat-bubble {
-      max-width: 80%;
-      padding: var(--space-sm) var(--space-md);
-      border-radius: var(--radius-md);
-      font-size: 14px;
-      line-height: 1.6;
+      max-width: 80%; padding: var(--space-sm) var(--space-md);
+      border-radius: var(--radius-md); font-size: 14px; line-height: 1.6;
     }
-
     .chat-message.bot .chat-bubble {
-      background: var(--q-glass);
-      color: var(--text-primary);
+      background: var(--q-glass); color: var(--text-primary);
       border: 1px solid var(--border-subtle);
     }
-
     .chat-message.user .chat-bubble {
-      background: linear-gradient(135deg, var(--q-primary), var(--q-secondary));
-      color: white;
+      background: linear-gradient(135deg, var(--q-primary), var(--q-secondary)); color: white;
     }
-
-    .chat-followups {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-xs);
-      margin-top: var(--space-sm);
-    }
-
+    .chat-followups { display: flex; flex-wrap: wrap; gap: var(--space-xs); margin-top: var(--space-sm); }
     .chat-followup-btn {
       background: rgba(168, 85, 247, 0.15);
-      border: 1px solid var(--q-primary);
-      color: var(--q-primary);
-      padding: 6px 12px;
-      border-radius: var(--radius-full);
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
+      border: 1px solid var(--q-primary); color: var(--q-primary);
+      padding: 6px 12px; border-radius: var(--radius-full);
+      font-size: 12px; font-weight: 600; cursor: pointer;
       transition: all 0.2s;
     }
-
-    .chat-followup-btn:hover {
-      background: var(--q-primary);
-      color: white;
-    }
-
+    .chat-followup-btn:hover { background: var(--q-primary); color: white; }
     .chat-footer {
-      padding: var(--space-md);
-      border-top: 1px solid var(--border-subtle);
-      display: flex;
-      gap: var(--space-sm);
+      padding: var(--space-md); border-top: 1px solid var(--border-subtle);
+      display: flex; gap: var(--space-sm);
     }
-
     .chat-input {
-      flex: 1;
-      padding: var(--space-sm) var(--space-md);
-      background: var(--q-glass);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      color: var(--text-primary);
-      font-size: 14px;
-      font-family: var(--font-sans);
+      flex: 1; padding: var(--space-sm) var(--space-md);
+      background: var(--q-glass); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md); color: var(--text-primary);
+      font-size: 14px; font-family: var(--font-sans);
     }
-
-    .chat-input:focus {
-      outline: none;
-      border-color: var(--q-primary);
-    }
-
+    .chat-input:focus { outline: none; border-color: var(--q-primary); }
     .chat-send {
       background: linear-gradient(135deg, var(--q-primary), var(--q-secondary));
-      border: none;
-      color: white;
-      padding: var(--space-sm) var(--space-md);
-      border-radius: var(--radius-md);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      border: none; color: white;
+      padding: var(--space-sm) var(--space-md); border-radius: var(--radius-md);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
       transition: all 0.2s;
     }
-
-    .chat-send:hover {
-      transform: scale(1.05);
-    }
-
+    .chat-send:hover { transform: scale(1.05); }
     .chat-quick-actions {
       padding: var(--space-sm) var(--space-md);
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-xs);
+      display: flex; flex-wrap: wrap; gap: var(--space-xs);
       border-top: 1px solid var(--border-subtle);
     }
-
     .quick-action-btn {
       background: rgba(6, 182, 212, 0.15);
-      border: 1px solid var(--q-accent);
-      color: var(--q-accent);
-      padding: 6px 12px;
-      border-radius: var(--radius-full);
-      font-size: 11px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
+      border: 1px solid var(--q-accent); color: var(--q-accent);
+      padding: 6px 12px; border-radius: var(--radius-full);
+      font-size: 11px; font-weight: 600; cursor: pointer; transition: all 0.2s;
     }
-
-    .quick-action-btn:hover {
-      background: var(--q-accent);
-      color: white;
+    .quick-action-btn:hover { background: var(--q-accent); color: white; }
+    .chat-report-section {
+      display: none; padding: var(--space-md);
+      flex-direction: column; gap: var(--space-sm);
+      border-top: 1px solid var(--border-subtle);
     }
-
-    .chat-contact-form {
-      display: none;
-      padding: var(--space-md);
-      flex-direction: column;
-      gap: var(--space-sm);
+    .chat-report-section.visible { display: flex; }
+    .report-info {
+      background: rgba(168, 85, 247, 0.1);
+      border: 1px solid var(--q-primary);
+      padding: var(--space-md); border-radius: var(--radius-sm);
+      font-size: 13px; line-height: 1.6; color: var(--text-secondary);
     }
-
-    .chat-contact-form.visible {
-      display: flex;
+    .report-info strong { color: var(--text-primary); }
+    .report-support-email {
+      font-family: var(--font-mono); color: var(--q-accent);
+      padding: 2px 6px; background: rgba(6, 182, 212, 0.1);
+      border-radius: 3px; user-select: all;
     }
-
-    .contact-input, .contact-textarea {
-      padding: var(--space-sm) var(--space-md);
-      background: var(--q-glass);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-sm);
-      color: var(--text-primary);
-      font-size: 13px;
-      font-family: var(--font-sans);
+    .btn-report-download {
+      background: linear-gradient(135deg, var(--q-accent), var(--q-primary));
+      border: none; color: white;
+      padding: var(--space-sm) var(--space-md); border-radius: var(--radius-sm);
+      font-weight: 700; cursor: pointer; transition: all 0.2s;
+      display: inline-flex; align-items: center; justify-content: center; gap: var(--space-sm);
     }
+    .btn-report-download:hover { transform: translateY(-2px); box-shadow: 0 8px 20px var(--q-accent-glow); }
 
-    .contact-textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
-
-    .contact-submit {
-      background: linear-gradient(135deg, var(--q-primary), var(--q-secondary));
-      border: none;
-      color: white;
-      padding: var(--space-sm) var(--space-md);
-      border-radius: var(--radius-sm);
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .contact-submit:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px var(--q-primary-glow);
-    }
-
-    /* ═══════════════════════════════════════════
-       RESPONSIVE
-    ═══════════════════════════════════════════ */
     @media (max-width: 768px) {
-      .nav {
-        padding: var(--space-sm) var(--space-md);
-      }
-
-      .hero {
-        padding: var(--space-xl) var(--space-md);
-      }
-
-      .main {
-        padding: 0 var(--space-md) var(--space-xl);
-      }
-
+      .nav { padding: var(--space-sm) var(--space-md); }
+      .nav-brand-sub { display: none; }
+      .hero { padding: var(--space-xl) var(--space-md); }
+      .main { padding: 0 var(--space-md) var(--space-xl); }
       .chat-panel {
-        width: calc(100vw - 32px);
-        height: calc(100vh - 100px);
-        bottom: var(--space-md);
-        right: var(--space-md);
+        width: calc(100vw - 32px); height: calc(100vh - 100px);
+        bottom: var(--space-md); right: var(--space-md);
       }
-
-      .alert-banner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+      .alert-banner { flex-direction: column; align-items: flex-start; }
     }
-
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -865,11 +412,8 @@
         transition-duration: 0.01ms !important;
       }
     }
-
-    :focus-visible {
-      outline: 2px solid var(--q-primary);
-      outline-offset: 2px;
-    }
+    :focus-visible { outline: 2px solid var(--q-primary); outline-offset: 2px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
   </style>
 </head>
 <body>
@@ -877,7 +421,7 @@
 
   <nav class="nav" aria-label="Navigazione principale">
     <div class="nav-brand">
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <rect width="32" height="32" rx="8" fill="url(#brandGrad)"/>
         <path d="M8 22L16 10L24 22H8Z" fill="white" opacity="0.9"/>
         <circle cx="16" cy="18" r="2" fill="#a855f7"/>
@@ -888,32 +432,31 @@
           </linearGradient>
         </defs>
       </svg>
-      ARCx Quantum
+      NEXA <span class="nav-brand-sub">& ARCx</span>
     </div>
     <div class="nav-status">
-      <span class="status-dot"></span>
+      <span class="status-dot" aria-hidden="true"></span>
       <span>SYSTEM ONLINE</span>
     </div>
   </nav>
 
   <header class="hero">
-    <h1 class="hero-title" id="hero-title">Software & AI Distribution Platform</h1>
-    <p class="hero-subtitle">Seleziona un pacchetto dal menu per visualizzare dettagli, requisiti e download.</p>
-    
+    <h1 class="hero-title" id="hero-title">NEXA Arc Drive & AI Distribution</h1>
+    <p class="hero-subtitle">Seleziona un pacchetto NEXA dal menu per visualizzare dettagli, requisiti e download sicuro.</p>
     <div class="hero-select-wrapper">
-      <label for="version-select" class="sr-only" style="position:absolute;left:-9999px;">Seleziona versione</label>
-      <select id="version-select" class="hero-select" aria-label="Seleziona versione software o modello AI">
-        <option value="v10">Intel® Arc™ 33.0.102.5081 WHQL (BETA) - Latest</option>
-        <option value="v9">SDK 3.4 (Beta Legacy)</option>
-        <option value="v8">Software Studio Accelerator (Stable)</option>
-        <option value="v7">Xe-2.0 (Beta)</option>
-        <option value="v2">Intel® Arc™ 33.0.102.2131 WHQL (Legacy)</option>
-        <option value="v6">XRMOT v4.2.1 (Legacy)</option>
-        <option value="v1">Legacy Xe-1 (Legacy)</option>
-        <option value="v3">1.21 Minecraft Mod (Archivio)</option>
-        <option value="v4">Old Control Panel SDK (Archivio)</option>
-        <option value="v11">🤖 AI Training Data (Lightweight)</option>
-        <option value="v12">🧠 AI FP16 3.8B Naxa Internal (OSS Test)</option>
+      <label for="version-select" class="sr-only">Seleziona versione</label>
+      <select id="version-select" class="hero-select" aria-label="Seleziona versione NEXA Arc Drive o modello AI">
+        <option value="v10">NEXA Arc Drive 33.0.102.5081 WHQL (BETA) - Latest</option>
+        <option value="v9">NEXA SDK 3.4 (Beta Legacy)</option>
+        <option value="v8">NEXA Studio Accelerator (Stable)</option>
+        <option value="v7">NEXA Xe-2.0 (Beta)</option>
+        <option value="v2">NEXA Arc Drive 33.0.102.2131 WHQL (Legacy)</option>
+        <option value="v6">NEXA XRMOT v4.2.1 (Legacy)</option>
+        <option value="v1">NEXA Xe-1 (Legacy)</option>
+        <option value="v3">NEXA Game On 1.21 (Archivio)</option>
+        <option value="v4">NEXA Control Panel SDK (Archivio)</option>
+        <option value="v11">🤖 NEXA AI Training Data (Lightweight)</option>
+        <option value="v12">🧠 NEXA FP16 3.8B Internal (OSS Test)</option>
       </select>
     </div>
   </header>
@@ -924,7 +467,7 @@
       <button id="alert-action" class="alert-action" type="button"></button>
     </div>
 
-    <div id="badge-group" class="badge-group"></div>
+    <div id="badge-group" class="badge-group" aria-label="Stato release"></div>
 
     <section class="section">
       <h2 class="section-header">Descrizione</h2>
@@ -937,7 +480,7 @@
       <h2 class="section-header">Requisiti di Sistema</h2>
       <div class="card">
         <div class="card-title">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
           Hardware & Software
         </div>
         <div id="system-requirements" class="card-content"></div>
@@ -948,7 +491,7 @@
       <h2 class="section-header">Requisiti AI</h2>
       <div class="card">
         <div class="card-title">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/></svg>
           VRAM / RAM / Compute
         </div>
         <div id="ai-requirements" class="card-content"></div>
@@ -959,7 +502,7 @@
       <h2 class="section-header">Istruzioni AI</h2>
       <div class="card">
         <div class="card-title">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
           Procedura
         </div>
         <div id="ai-instructions" class="card-content"></div>
@@ -970,7 +513,7 @@
       <h2 class="section-header">Download</h2>
       <div class="card download-section">
         <a id="download-link" href="#" class="btn-download" target="_blank" rel="noopener noreferrer">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Scarica Ora
         </a>
         <div class="file-info">
@@ -982,36 +525,38 @@
     </section>
   </main>
 
-  <button id="chat-fab" class="chat-fab" aria-label="Apri assistenza chat" title="Assistenza">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <button id="chat-fab" class="chat-fab" aria-label="Apri assistenza chat NEXA" title="Assistenza NEXA">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
     </svg>
   </button>
 
-  <div id="chat-panel" class="chat-panel" role="dialog" aria-label="Assistenza Chat" aria-hidden="true">
+  <div id="chat-panel" class="chat-panel" role="dialog" aria-label="Assistenza Chat NEXA" aria-hidden="true">
     <div class="chat-header">
-      <div class="chat-header-title">💬 Assistenza ARCx</div>
+      <div class="chat-header-title">💬 Assistenza NEXA</div>
       <button id="chat-close" class="chat-close" aria-label="Chiudi chat">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
-    
-    <div id="chat-messages" class="chat-messages"></div>
-    
-    <div id="chat-quick-actions" class="chat-quick-actions"></div>
-    
+    <div id="chat-messages" class="chat-messages" role="log" aria-live="polite"></div>
+    <div id="chat-quick-actions" class="chat-quick-actions" aria-label="Domande frequenti"></div>
     <div class="chat-footer">
-      <input type="text" id="chat-input" class="chat-input" placeholder="Scrivi una domanda..." aria-label="Messaggio">
+      <label for="chat-input" class="sr-only">Scrivi una domanda</label>
+      <input type="text" id="chat-input" class="chat-input" placeholder="Scrivi una domanda..." autocomplete="off" maxlength="500" />
       <button id="chat-send" class="chat-send" aria-label="Invia messaggio">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
       </button>
     </div>
-
-    <div id="chat-contact-form" class="chat-contact-form">
-      <div style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:var(--space-xs);">Contatta Assistenza Umana</div>
-      <input type="email" id="contact-email" class="contact-input" placeholder="La tua email" aria-label="Email">
-      <textarea id="contact-message" class="contact-textarea" placeholder="Descrivi il tuo problema..." aria-label="Messaggio"></textarea>
-      <button id="contact-submit" class="contact-submit" type="button">Invia Richiesta</button>
+    <div id="chat-report-section" class="chat-report-section" aria-live="polite">
+      <div class="report-info">
+        <strong>📄 Report Problema</strong><br>
+        Il bot non è riuscito a risolvere il tuo problema. Scarica il report PDF e invialo al supporto NEXA:<br>
+        <span class="report-support-email" id="support-email">support@nexa-arc.dev</span>
+      </div>
+      <button id="btn-download-report" class="btn-report-download" type="button">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Scarica Report (.md)
+      </button>
     </div>
   </div>
 
@@ -1020,307 +565,218 @@
       'use strict';
 
       // ═══════════════════════════════════════════
-      // DATABASE (invariato dall'originale)
+      // SECURITY: URL ALLOWLIST
+      // ═══════════════════════════════════════════
+      const ALLOWED_HOSTS = Object.freeze([
+        'drive.google.com',
+        'docs.google.com'
+      ]);
+
+      function isAllowedUrl(urlString) {
+        try {
+          const url = new URL(urlString, window.location.origin);
+          if (url.protocol !== 'https:' && url.protocol !== 'http:') return false;
+          return ALLOWED_HOSTS.some(h => url.hostname === h || url.hostname.endsWith('.' + h));
+        } catch {
+          return false;
+        }
+      }
+
+      function escapeHtml(str) {
+        if (typeof str !== 'string') return '';
+        return str
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      function generateSessionId() {
+        const arr = new Uint8Array(8);
+        if (window.crypto && window.crypto.getRandomValues) {
+          window.crypto.getRandomValues(arr);
+        } else {
+          for (let i = 0; i < 8; i++) arr[i] = Math.floor(Math.random() * 256);
+        }
+        return Array.from(arr).map(b => b.toString(16).padStart(2, '0')).join('');
+      }
+
+      const SESSION_ID = generateSessionId();
+      const SESSION_START = new Date().toISOString();
+
+      // ═══════════════════════════════════════════
+      // DATABASE (con nomi NEXA + dati reali KB)
       // ═══════════════════════════════════════════
       const database = Object.freeze({
         v10: {
-          title: "Intel® Arc™ Graphics - 33.0.102.5081 WHQL (BETA)",
+          title: "NEXA Arc Drive™ - 33.0.102.5081 WHQL (BETA)",
           id: "895081", date: "03/05/2026", status: "latest", alertType: "none",
-          desc: "<strong>Graphics Software Globale Unificato</strong><br>Questa release introduce un ecosistema grafico unificato e ottimizzato per GPU. Il pacchetto include il nuovo AI Node SDK e il rinnovato pacchetto 'Game On', offrendo un software grafico avanzato per elevare e ottimizzare l'esperienza di gaming a un livello superiore.",
-          file: "gfx_win_102.5081_beta.exe",
-          os: "<strong>OS Minimo:</strong> Windows XP (32/64-bit) | <strong>OS Raccomandato:</strong> Windows 8.1 | <strong>OS Consigliato:</strong> Windows 11<br><strong>CPU:</strong> Qualunque a 32/64-bit<br><strong>RAM:</strong> Minimo 512 MB<br><strong>GPU:</strong> Qualunque Display Adapter<br><strong>Spazio Richiesto:</strong> 400 MB",
+          desc: "<strong>NEXA Arc Drive - Graphics Software Unificato</strong><br>Questa release introduce l'ecosistema grafico unificato NEXA, ottimizzato per GPU moderne. Include il nuovo <strong>NEXA AI Node SDK</strong> e il pacchetto 'Game On' rinnovato.",
+          file: "gfx_nexa_102.5081_beta.exe",
+          os: "<strong>OS Minimo:</strong> Windows 10 (64-bit) | <strong>OS Consigliato:</strong> Windows 11<br><strong>CPU:</strong> 64-bit multicore<br><strong>RAM:</strong> 4 GB minimi<br><strong>GPU:</strong> NEXA Arc Drive compatibile<br><strong>Spazio:</strong> 600 MB",
           sha: "E1F2A3B4C5D6E7F8901234567890ABCDEF1234567890ABCDEF1234567890ABCD",
           url: "https://drive.google.com/drive/folders/1tCINvrgZT84fhitlwDiXXPSYa0SQZxTZ?usp=drive_link",
           isAI: false
         },
         v2: {
-          title: "Intel® Arc™ Graphics - 33.0.102.2131 Test WHQL (Legacy Update)",
+          title: "NEXA Arc Drive™ - 33.0.102.2131 WHQL (Legacy)",
           id: "785598", date: "10/05/2026", status: "legacy", alertType: "legacy",
-          alert: "⚠️ <strong>Legacy Update per PC Datati:</strong> Questa versione è mantenuta come ramo legacy per hardware vecchio. Per GPU moderne, scarica la versione più recente.",
-          alertAction: "Scarica Versione Recente", targetLink: "v10",
-          desc: "<strong>Legacy Update per PC Datati</strong><br>Versione WHQL stabile ottimizzata per hardware datato e sistemi con risorse limitate. Ideale per GPU Intel Arc di prima generazione su macchine non recenti. Non include Arc Control.",
-          file: "gfx_win_102.2131.exe",
-          os: "<strong>Target:</strong> PC datati e hardware legacy<br><strong>OS:</strong> Windows 10 e 11 Family (64-bit)<br><strong>CPU:</strong> Dual-core 2 GHz+<br><strong>RAM:</strong> 4 GB minimi<br><strong>GPU:</strong> Intel® Arc™ prima generazione",
+          alert: "⚠️ <strong>Legacy per hardware datato:</strong> Questa versione NEXA è mantenuta per GPU di prima generazione. Per hardware moderno, scarica la release più recente.",
+          alertAction: "Scarica Ultima Versione", targetLink: "v10",
+          desc: "<strong>NEXA Arc Drive Legacy</strong><br>Versione WHQL stabile ottimizzata per hardware datato. Ideale per GPU NEXA Arc di prima generazione. <strong>Dimensione:</strong> ~131 MB.",
+          file: "33.0.102.2131_WHQL.exe",
+          os: "<strong>OS:</strong> Windows 10/11 (64-bit)<br><strong>CPU:</strong> Dual-core 2 GHz+<br><strong>RAM:</strong> 4 GB minimi<br><strong>GPU:</strong> NEXA Arc™ prima generazione",
           sha: "9F8E7D6C5B4A3928172635445362718293049586756453423120192837465544",
           url: "https://drive.google.com/uc?export=download&id=1Xud5XxkHYwOSUIPjp3SoMzJCOqwNbdtw",
           isAI: false
         },
         v6: {
-          title: "XRMOT - eXtreme Resource Manager Optimization Tool",
+          title: "NEXA XRMOT - Resource Manager v4.2.1",
           id: "XRMOT-421", date: "30/04/2026", status: "legacy", alertType: "legacy",
-          alert: "⚠️ <strong>Nota Legacy:</strong> Questa è una versione Legacy. Per scaricare le nuove versioni, scarica il 'Graphics Software'.",
-          alertAction: "Vai a Graphics Software", targetLink: "v10",
-          desc: "Tool avanzato per l'ottimizzazione del sistema in stato legacy.<ul><li>Priorità CPU</li><li>Libera VRAM</li><li>Pulizia RAM-cache</li><li>Ritorno allo stato originale alla chiusura</li></ul>",
-          file: "XRMOT_v4.2.1_legacy.zip",
-          os: "Windows 10 e 11",
+          alert: "⚠️ <strong>Legacy:</strong> XRMOT è ora in stato legacy. Per nuove ottimizzazioni, usa il NEXA Graphics Software unificato.",
+          alertAction: "Vai a NEXA Arc Drive", targetLink: "v10",
+          desc: "Tool avanzato NEXA per ottimizzazione risorse.<ul><li>Priorità CPU</li><li>Libera VRAM</li><li>Pulizia RAM-cache</li><li>Ripristino stato originale alla chiusura</li></ul><strong>Include:</strong> Guida XRMOT",
+          file: "XRMOT-4.2.1.exe",
+          os: "<strong>OS:</strong> Windows 10/11<br><strong>Dimensione:</strong> 655 KB<br><strong>Permessi:</strong> Amministratore",
           sha: "8F4E2C1B9A0D7F6E5D4C3B2A1F0E9D8C7B6A5F4E3D2C1B0A9F8E7D6C5B4A3928",
           url: "https://drive.google.com/drive/folders/1U5ILjzK-W6B-R1AFDRuQ0jWji2vrZWAG",
           isAI: false
         },
         v9: {
-          title: "SDK 3.4 (Beta Legacy)",
+          title: "NEXA SDK 3.4 (Beta Legacy)",
           id: "SDK-3.4-DEV", date: "01/05/2026", status: "legacy", alertType: "legacy",
-          alert: "⚠️ <strong>SDK Legacy Beta:</strong> Questa SDK è entrata in stato legacy. Mantieni questa versione solo se hai dipendenze esistenti. Per nuovi progetti usa la release stabile.",
-          alertAction: "Vedi Software Stabile", targetLink: "v8",
-          desc: "<strong>SDK 3.4 - Beta Legacy</strong><br>Versione SDK 3.4 in stato legacy beta. Mini app progettata per test rapidi e integrazione con codice esistente. Non raccomandata per nuovi progetti.<ul><li>Interfaccia ridotta e installazione leggera</li><li>Integrazione AI locale</li><li>Mantenuta per retrocompatibilità</li></ul>",
-          file: "SDK_3.4_DevMiniApp.exe",
-          os: "Windows 10+, connessione internet, CPU almeno 1 GHz, spazio richiesto 700 KB",
+          alert: "⚠️ <strong>SDK Legacy:</strong> Mantenere solo per dipendenze esistenti. Per nuovi progetti usa la release stabile NEXA.",
+          alertAction: "Vedi NEXA Stabile", targetLink: "v8",
+          desc: "<strong>NEXA SDK 3.4 - Beta Legacy</strong><br>Mini app per test rapidi e integrazione con codice esistente NEXA.<ul><li>Interfaccia ridotta</li><li>AI integration locale</li><li>Retrocompatibilità</li></ul>",
+          file: "NEXA_SDK_3.4_DevMiniApp.exe",
+          os: "Windows 10+, connessione internet, CPU 1 GHz+, 700 KB",
           sha: "C1D2E3F40516273849A0B1C2D3E4F5061728394A5B6C7D8E9F00112233445566",
           url: "https://drive.google.com/drive/folders/15GycJKJmR1iwp-owg9xXaI4t8J2-q1dq?usp=drive_link",
           isAI: false
         },
         v7: {
-          title: "Xe-2.0 - Driver & Software (Beta)",
+          title: "NEXA Xe-2.0 - Driver & Software (Beta)",
           id: "XE-2026-V2", date: "01/05/2026", status: "beta", alertType: "none",
-          desc: "<strong>Xe-2.0 - Build Beta</strong><br>Pacchetto Xe-2.0 in fase attiva di raffinamento. Include ottimizzazioni kernel e supporto esteso per le nuove librerie grafiche. Potrebbe contenere bug noti, consigliato per testing e early adopters.",
-          file: "Intel_Xe_Package_2.0.exe",
+          desc: "<strong>NEXA Xe-2.0 - Build Beta</strong><br>Ottimizzazioni kernel e supporto esteso per le nuove librerie grafiche NEXA. Consigliato per testing e early adopters.",
+          file: "NEXA_Xe_Package_2.0.exe",
           os: "Windows 10/11 64-bit",
           sha: "AAABBBCCCDDDEEEFFF111222333444555666777888999000AAABBBCCCDDDEEEF",
           url: "https://drive.google.com/drive/folders/1naCyvxiBd3ZwUsu5P1q7tuixYzE-hwH2",
           isAI: false
         },
         v8: {
-          title: "Software Studio Accelerator (Stable)",
+          title: "NEXA Studio Accelerator (Stable)",
           id: "SSA-901", date: "02/05/2026", status: "stable", alertType: "none",
-          desc: "<strong>Software Studio Accelerator - Release Stabile</strong><br>Acceleratore dedicato per software di produzione e suite creative. Ottimizza i tempi di esecuzione e di render. Versione testata, validata e pronta per ambienti di produzione professionali.",
-          file: "Studio_Accelerator_Setup.exe",
-          os: "<strong>OS:</strong> Windows 11 64-bit<br><strong>CPU:</strong> Quad-core 2.5 GHz+<br><strong>RAM:</strong> 8 GB raccomandati<br><strong>Storage:</strong> 500 MB liberi<br><strong>Stabilità:</strong> Production-ready",
+          desc: "<strong>NEXA Studio Accelerator - Release Stabile</strong><br>Acceleratore per suite creative e produzione. Include driver 32.0.101.7080/7095 OEMx, Driver EVO PRO beta e Driver PRO.",
+          file: "NEXA_Studio_Accelerator_Setup.exe",
+          os: "<strong>OS:</strong> Windows 11 64-bit<br><strong>CPU:</strong> Quad-core 2.5 GHz+<br><strong>RAM:</strong> 8 GB<br><strong>Storage:</strong> 500 MB",
           sha: "556677889900AABBCCDDEEFF11223344556677889900AABBCCDDEEFF11223344",
           url: "https://drive.google.com/drive/folders/1JHV173PewLwC9sXJVamaORnKKy3lcKV_",
           isAI: false
         },
         v1: {
-          title: "Xe-1 (Legacy)",
+          title: "NEXA Xe-1 (Legacy)",
           id: "PKG-001", date: "29/04/2026", status: "legacy", alertType: "legacy",
-          alert: "⚠️ <strong>Nota Legacy:</strong> Xe-1 è ora in stato legacy. Mantenuto per retrocompatibilità con hardware datato. Aggiorna a Xe-2.0 se possibile.",
-          alertAction: "Vai a Xe-2.0", targetLink: "v7",
-          desc: "<strong>Legacy Xe-1</strong><br>Pacchetto conservato per retrocompatibilità con hardware datato e driver legacy. Non riceverà nuove feature ma potrebbe ricevere security fix critici.",
-          file: "_Xe-1_Archive.zip",
+          alert: "⚠️ <strong>Legacy:</strong> Xe-1 mantenuto per retrocompatibilità. Aggiorna a NEXA Xe-2.0 se possibile.",
+          alertAction: "Vai a NEXA Xe-2.0", targetLink: "v7",
+          desc: "<strong>NEXA Xe-1 Legacy</strong><br>Include: NEXA AI Control (53.1 MB), Driver legacy 12Th OEMs, Raptor Lake Refresh, OSS-Ai Minecraft.",
+          file: "NEXA_Xe-1_Archive.zip",
           os: "Windows 10 64-bit",
           sha: "111122223333444455556666777788889999AAAABBBBCCCCDDDDEEEEFFFF0000",
           url: "https://drive.google.com/drive/folders/1g0B7EcuI3x7zovo92jdW1lRs0CgRnv1w?usp=drive_link",
           isAI: false
         },
         v3: {
-          title: "Game On Legacy - 1.21",
+          title: "NEXA Game On 1.21 (Archivio)",
           id: "892102", date: "21/04/2026", status: "archived", alertType: "archived",
-          alert: "⚠️ <strong>Nota:</strong> Questa versione è archiviata e non supportata.",
-          alertAction: "Vai a Xe-2", targetLink: "v7",
-          desc: "Ottimizzazione per hardware datato specifica per vecchi engine. Non riceverà aggiornamenti.",
-          file: "game_on_1.21.exe",
-          os: "Windows 8/10 64-bit",
+          alert: "⚠️ <strong>Archiviato:</strong> Versione non più supportata.",
+          alertAction: "Vai a NEXA Xe-2.0", targetLink: "v7",
+          desc: "Ottimizzazione NEXA per engine legacy. Include Mods e Guida NEXA Game On mirato.",
+          file: "nexa_game_on_1.21.exe",
+          os: "Windows 10 64-bit",
           sha: "A1B2C3D4E5F678901234567890ABCDEF1234567890ABCDEF1234567890ABCDEF",
           url: "https://drive.google.com/drive/folders/1p5u_K7c6X_PDKc3diWqnwMoIWELU1FpB?usp=sharing",
           isAI: false
         },
         v4: {
-          title: "Old Control Panel SDK",
+          title: "NEXA Control Panel SDK (Archivio)",
           id: "445123", date: "12/01/2025", status: "archived", alertType: "archived",
-          alert: "⚠️ <strong>Nota:</strong> Versione deprecata e archiviata.",
-          alertAction: "Vai a Xe-2", targetLink: "v7",
-          desc: "Vecchio pannello di controllo per compatibilità con impostazioni rimosse.",
-          file: "old_panel_sdk.zip",
-          os: "Windows 10 & 11",
+          alert: "⚠️ <strong>Deprecato:</strong> NEXA Control archiviato.",
+          alertAction: "Vai a NEXA Xe-2.0", targetLink: "v7",
+          desc: "NEXA AI Control Panel (53 MB) per compatibilità con impostazioni rimosse.",
+          file: "NEXA_AI_Control.exe",
+          os: "Windows 10/11",
           sha: "BBDDCC11223344556677889900AABBCCDDEEFF11223344556677889900AABBCC",
           url: "https://drive.google.com/uc?export=download&id=1FMxlcMH__KeSqMOuahNUHN47S3AeYrDo",
           isAI: false
         },
         v11: {
-          title: "AI Training Data (Lightweight)",
+          title: "NEXA AI Training Data (Lightweight)",
           id: "AI-TRN-LW-01", date: "05/05/2026", status: "latest", alertType: "none",
-          desc: "<strong>Dataset Ottimizzato per Addestramento Leggero</strong><br>Raccolta di dati strutturati e pre-processati per il training di modelli AI su dispositivi con risorse limitate. Ideale per edge computing e test locali rapidi.",
-          file: "AI_TrainingData_LW_v1.zip",
-          os: "Qualsiasi OS moderno (Win/Linux/macOS)<br><strong>Storage:</strong> ~2.4 GB estratto<br><strong>CPU:</strong> Dual-core 1.5 GHz+<br><strong>RAM:</strong> 4 GB minimi",
+          desc: "<strong>NEXA Dataset per Addestramento Leggero</strong><br>Include: <code>code_train.jsonl</code> (11.9 MB), <code>full_train.jsonl</code> (68.1 MB), <code>instruct_train.jsonl</code> (57.8 MB), <code>Data.jsonl</code> (59 KB), formato Parquet.",
+          file: "NEXA_AI_TrainingData_LW_v1.zip",
+          os: "Qualsiasi OS moderno<br><strong>Storage:</strong> ~200 MB<br><strong>RAM:</strong> 4 GB minimi",
           sha: "7A8B9C0D1E2F3A4B5C6D7E8F9A0B1C2D3E4F5A6B7C8D9E0F1A2B3C4D5E6F7A8B",
           url: "https://drive.google.com/drive/folders/1Sy1eZZR6_g8ucNrMzLckSr4rsxH6sto2",
           isAI: true,
-          aiReq: "<strong>Dispositivi:</strong> Laptop, Mini-PC, Edge Device, Raspberry Pi 4/5<br><strong>Peso:</strong> Ottimizzato per basso impatto I/O e memoria<br><strong>Formato:</strong> JSONL / Parquet / CSV normalizzati",
-          aiInstructions: "<ol style='margin-left: 18px; margin-top: 8px;'><li>Estrai l'archivio in una directory con permessi di lettura/scrittura.</li><li>Verifica l'integrità con lo SHA256 fornito.</li><li>Carica il dataset nel tuo framework (PyTorch, TensorFlow, HuggingFace).</li><li>Imposta <code>batch_size</code> tra 8 e 32 per dispositivi leggeri.</li><li>Abilita <code>gradient_accumulation_steps=4</code> per simulare batch più grandi senza saturare la RAM.</li><li>Avvia il training monitorando VRAM/RAM con <code>htop</code> o <code>nvtop</code>.</li></ol>"
+          aiReq: "<strong>Dispositivi:</strong> Laptop, Mini-PC, Edge Device<br><strong>Formato:</strong> JSONL / Parquet normalizzati<br><strong>EriK 1.6 Weight prompt</strong> incluso",
+          aiInstructions: "<ol style='margin-left: 18px; margin-top: 8px;'><li>Estrai l'archivio in directory con permessi R/W.</li><li>Verifica SHA256.</li><li>Carica con PyTorch/TensorFlow/HuggingFace.</li><li><code>batch_size</code> tra 8 e 32.</li><li><code>gradient_accumulation_steps=4</code> per simulare batch grandi.</li><li>Monitora con <code>htop</code>/<code>nvtop</code>.</li></ol>"
         },
         v12: {
-          title: "AI FP16 3.8B Naxa Internal (OSS Test)",
-          id: "NAXA-FP16-3.8B", date: "06/05/2026", status: "beta", alertType: "none",
-          desc: "<strong>Modello Linguistico 3.8B Parametri - Precisione FP16</strong><br>Build interna Naxa rilasciata per test Open Source. Ottimizzata per inferenza e fine-tuning su hardware consumer. Supporta architetture transformer standard e quantizzazione dinamica.",
-          file: "Naxa_3.8B_FP16_Internal.safetensors",
-          os: "Windows 10/11 64-bit o Linux (Ubuntu 22.04+)<br><strong>Python:</strong> 3.10+<br><strong>Librerie:</strong> transformers>=4.35, accelerate, torch>=2.1",
+          title: "NEXA FP16 3.8B Internal (OSS Test)",
+          id: "NEXA-FP16-3.8B", date: "06/05/2026", status: "beta", alertType: "none",
+          desc: "<strong>NEXA LLM 3.8B Parametri - FP16</strong><br>Build interna NEXA per test OSS. Ottimizzata per inferenza e fine-tuning su hardware consumer.",
+          file: "NEXA_3.8B_FP16_Internal.safetensors",
+          os: "Windows 10/11 64-bit o Linux Ubuntu 22.04+<br><strong>Python:</strong> 3.10+<br><strong>Librerie:</strong> transformers>=4.35, accelerate, torch>=2.1",
           sha: "9F8E7D6C5B4A3928172635445362718293049586756453423120192837465599",
           url: "https://drive.google.com/file/d/1ZRMaCxnISc4xfiqmlHWUPx3v169MoQkB/view?usp=drivesdk",
           isAI: true,
-          aiReq: "<strong>VRAM:</strong> 12 GB minimi (GPU NVIDIA/AMD con supporto FP16)<br><strong>RAM Sistemica:</strong> 12 GB minimi<br><strong>Storage:</strong> ~8.5 GB (modello + cache)<br><strong>Compute:</strong> CUDA 12.x o ROCm 5.7+ consigliato",
-          aiInstructions: "<ol style='margin-left: 18px; margin-top: 8px;'><li>Scarica il file <code>.safetensors</code> e posizionalo nella cartella <code>./models/</code>.</li><li>Installa le dipendenze: <code>pip install torch transformers accelerate safetensors</code>.</li><li>Carica il modello con precisione FP16:<br><code>model = AutoModelForCausalLM.from_pretrained('./models/', torch_dtype=torch.float16, device_map='auto')</code></li><li>Per il fine-tuning, usa LoRA/QLoRA per ridurre il consumo di VRAM del 60%.</li><li>Monitora i picchi di memoria durante il primo forward pass. Se OOM, riduci <code>max_length</code> o abilita <code>load_in_8bit=True</code>.</li></ol>"
+          aiReq: "<strong>VRAM:</strong> 12 GB minimi<br><strong>RAM:</strong> 12 GB minimi<br><strong>Storage:</strong> ~8.5 GB<br><strong>Compute:</strong> CUDA 12.x / ROCm 5.7+",
+          aiInstructions: "<ol style='margin-left: 18px; margin-top: 8px;'><li>Scarica <code>.safetensors</code> in <code>./models/</code>.</li><li><code>pip install torch transformers accelerate safetensors</code></li><li>Carica FP16 con <code>device_map='auto'</code>.</li><li>Fine-tuning con LoRA/QLoRA.</li><li>Se OOM: riduci <code>max_length</code> o abilita <code>load_in_8bit=True</code>.</li></ol>"
         }
       });
 
       // ═══════════════════════════════════════════
-      // CHATBOT FAQ DATABASE (30 domande)
+      // FAQ DATABASE (30 domande NEXA-branded)
       // ═══════════════════════════════════════════
       const faqDatabase = Object.freeze({
-        // Download & Installazione (8)
-        q1: {
-          question: "Come scarico un software?",
-          answer: "Seleziona il software dal menu a tendina in alto, poi clicca il pulsante 'Scarica Ora'. Il download partirà automaticamente.",
-          followups: ["q2", "q3", "q5"]
-        },
-        q2: {
-          question: "Il download non parte, cosa faccio?",
-          answer: "Verifica che il popup blocker del browser non stia bloccando il download. Prova anche a disabilitare temporaneamente l'antivirus o usa un browser diverso.",
-          followups: ["q1", "q4", "q30"]
-        },
-        q3: {
-          question: "Come verifico l'integrità del file scaricato?",
-          answer: "Ogni download ha un codice SHA256 visualizzato sotto il pulsante. Usa un tool come 'certutil' su Windows o 'shasum' su Mac/Linux per verificare che il checksum corrisponda.",
-          followups: ["q4", "q1", "q5"]
-        },
-        q4: {
-          question: "Il file risulta corrotto o danneggiato",
-          answer: "Elimina il file e scaricalo nuovamente. Se il problema persiste, verifica la tua connessione internet o prova da un altro dispositivo. Contatta l'assistenza se il problema continua.",
-          followups: ["q2", "q3", "q30"]
-        },
-        q5: {
-          question: "Dove trovo i requisiti di sistema?",
-          answer: "I requisiti sono elencati nella sezione 'Requisiti di Sistema' sotto la descrizione di ogni software. Per i modelli AI, c'è anche una sezione dedicata 'Requisiti AI'.",
-          followups: ["q6", "q7", "q1"]
-        },
-        q6: {
-          question: "Posso installare su Windows 7?",
-          answer: "La maggior parte dei software moderni richiede almeno Windows 10. Controlla i requisiti specifici del pacchetto che ti interessa. Le versioni legacy potrebbero supportare OS più vecchi.",
-          followups: ["q5", "q7", "q8"]
-        },
-        q7: {
-          question: "Il software è compatibile con Linux?",
-          answer: "Attualmente la maggior parte dei pacchetti è ottimizzata per Windows. I dataset AI e alcuni tool possono funzionare su Linux. Controlla la sezione requisiti per dettagli specifici.",
-          followups: ["q5", "q6", "q20"]
-        },
-        q8: {
-          question: "Serve una connessione internet per l'installazione?",
-          answer: "L'installazione base è offline, ma alcune funzionalità potrebbero richiedere connessione per aggiornamenti o attivazione. I modelli AI richiedono connessione per scaricare dipendenze Python.",
-          followups: ["q5", "q9", "q20"]
-        },
-
-        // Driver & Compatibilità (7)
-        q9: {
-          question: "Quale driver Intel Arc dovrei installare?",
-          answer: "Per GPU moderne, usa sempre l'ultima versione (33.0.102.5081). Per hardware datato, la versione legacy 33.0.102.2131 è ottimizzata per prestazioni stabili.",
-          followups: ["q10", "q11", "q1"]
-        },
-        q10: {
-          question: "Cosa significa 'Legacy'?",
-          answer: "Le versioni Legacy sono mantenute per compatibilità con hardware o software più vecchio. Non ricevono nuove funzionalità ma possono ricevere fix di sicurezza critici.",
-          followups: ["q9", "q11", "q12"]
-        },
-        q11: {
-          question: "Posso usare driver beta in produzione?",
-          answer: "Le versioni beta sono consigliate per testing e early adopters. Per ambienti di produzione, usa le release 'Stable' che sono state validate e testate approfonditamente.",
-          followups: ["q9", "q12", "q13"]
-        },
-        q12: {
-          question: "Come aggiorno da una versione legacy?",
-          answer: "Scarica l'ultima versione stabile dal menu. L'installer dovrebbe gestire automaticamente la rimozione della vecchia versione. Fai un backup dei tuoi setting prima di aggiornare.",
-          followups: ["q10", "q9", "q4"]
-        },
-        q13: {
-          question: "Il driver causa crash o instabilità",
-          answer: "Prova a fare un'installazione pulita: disinstalla completamente il driver attuale, riavvia, poi installa l'ultima versione stabile. Se il problema persiste, contatta l'assistenza con i log di sistema.",
-          followups: ["q12", "q14", "q30"]
-        },
-        q14: {
-          question: "Come faccio un'installazione pulita dei driver?",
-          answer: "Usa DDU (Display Driver Uninstaller) in Safe Mode per rimuovere completamente i driver esistenti, poi installa la nuova versione. Questo risolve la maggior parte dei problemi di compatibilità.",
-          followups: ["q13", "q12", "q4"]
-        },
-        q15: {
-          question: "Xe-1 vs Xe-2: quale scegliere?",
-          answer: "Xe-2.0 è la versione moderna con ottimizzazioni kernel e supporto esteso. Xe-1 è legacy e mantenuto solo per retrocompatibilità. Usa Xe-2.0 a meno che tu non abbia hardware molto vecchio.",
-          followups: ["q9", "q10", "q11"]
-        },
-
-        // AI & Modelli (6)
-        q16: {
-          question: "Quanta VRAM serve per i modelli AI?",
-          answer: "Il modello 3.8B FP16 richiede almeno 12 GB di VRAM. Per il dataset leggero, bastano 4 GB di RAM sistemica. Controlla la sezione 'Requisiti AI' per dettagli specifici.",
-          followups: ["q17", "q18", "q20"]
-        },
-        q17: {
-          question: "Posso usare il modello AI senza GPU?",
-          answer: "Tecnicamente sì, ma sarà estremamente lento. Il modello 3.8B è ottimizzato per GPU con supporto FP16. Per CPU-only, considera versioni quantizzate (INT8/INT4) non ancora disponibili.",
-          followups: ["q16", "q18", "q19"]
-        },
-        q18: {
-          question: "Come installo le dipendenze Python?",
-          answer: "Esegui: pip install torch transformers accelerate safetensors. Assicurati di avere Python 3.10+ e una versione di PyTorch compatibile con la tua GPU (CUDA o ROCm).",
-          followups: ["q19", "q20", "q16"]
-        },
-        q19: {
-          question: "Il modello va Out Of Memory (OOM)",
-          answer: "Riduci max_length, abilita load_in_8bit=True, o usa gradient checkpointing. Per il fine-tuning, usa LoRA/QLoRA che riduce il consumo VRAM del 60%.",
-          followups: ["q16", "q18", "q21"]
-        },
-        q20: {
-          question: "Il dataset AI è in formato compatibile con HuggingFace?",
-          answer: "Sì, il dataset è fornito in JSONL e Parquet, formati nativamente supportati da HuggingFace Datasets. Puoi caricarlo con: load_dataset('json', data_files='path/to/file.jsonl')",
-          followups: ["q18", "q21", "q16"]
-        },
-        q21: {
-          question: "Come faccio fine-tuning del modello?",
-          answer: "Usa LoRA con la libreria PEFT di HuggingFace. Prepara il dataset in formato instruction, configura i parametri LoRA (r=8, alpha=16), e lancia il training con Trainer.",
-          followups: ["q19", "q18", "q20"]
-        },
-
-        // XRMOT & Ottimizzazione (4)
-        q22: {
-          question: "Cos'è XRMOT?",
-          answer: "XRMOT (eXtreme Resource Manager Optimization Tool) è un tool per ottimizzare le risorse di sistema: priorità CPU, liberare VRAM, pulizia RAM-cache. Torna allo stato originale alla chiusura.",
-          followups: ["q23", "q24", "q25"]
-        },
-        q23: {
-          question: "XRMOT è sicuro da usare?",
-          answer: "Sì, XRMOT modifica solo setting temporanei e ripristina tutto alla chiusura. Tuttavia, chiudi sempre i programmi importanti prima di usarlo per evitare perdita di dati non salvati.",
-          followups: ["q22", "q24", "q13"]
-        },
-        q24: {
-          question: "XRMOT migliora le prestazioni nei giochi?",
-          answer: "Può aiutare liberando RAM e VRAM, ma i risultati variano. Per miglioramenti significativi, aggiorna anche i driver GPU e ottimizza le impostazioni di gioco.",
-          followups: ["q22", "q23", "q9"]
-        },
-        q25: {
-          question: "XRMOT funziona su Windows 11?",
-          answer: "Sì, XRMOT v4.2.1 è compatibile con Windows 10 e 11. Assicurati di eseguirlo come amministratore per avere accesso completo alle ottimizzazioni di sistema.",
-          followups: ["q22", "q23", "q6"]
-        },
-
-        // Problemi Comuni & Troubleshooting (5)
-        q26: {
-          question: "L'antivirus blocca il download",
-          answer: "Alcuni antivirus possono segnalare falsi positivi per software di ottimizzazione. Aggiungi il sito alla whitelist o disabilita temporaneamente l'antivirus durante il download. Verifica sempre lo SHA256.",
-          followups: ["q2", "q3", "q4"]
-        },
-        q27: {
-          question: "Il software non si avvia dopo l'installazione",
-          answer: "Verifica i requisiti di sistema, esegui come amministratore, e controlla i log di errore. Su Windows, prova la modalità compatibilità. Se il problema persiste, reinstalla o contatta l'assistenza.",
-          followups: ["q5", "q13", "q30"]
-        },
-        q28: {
-          question: "Come disinstallo completamente un software?",
-          answer: "Usa 'Aggiungi o rimuovi programmi' di Windows. Per i driver GPU, usa DDU in Safe Mode per una rimozione completa. Elimina anche le cartelle di configurazione in AppData se necessario.",
-          followups: ["q14", "q12", "q27"]
-        },
-        q29: {
-          question: "Dove trovo i log di errore?",
-          answer: "I log sono generalmente in: C:\\Users\\[Nome]\\AppData\\Local\\[NomeSoftware]\\logs. Per i driver, controlla il Visualizzatore Eventi di Windows sotto 'Registri di Windows > Applicazione'.",
-          followups: ["q27", "q13", "q30"]
-        },
-        q30: {
-          question: "Come contatto l'assistenza umana?",
-          answer: "Clicca il pulsante 'Contatta Assistenza' qui sotto o nel menu chat. Compila il form con la tua email e una descrizione del problema. Rispondiamo entro 24-48 ore lavorative.",
-          followups: ["q4", "q13", "q27"]
-        }
+        q1: { question: "Come scarico un software NEXA?", answer: "Seleziona il pacchetto NEXA dal menu a tendina, poi clicca 'Scarica Ora'. Il download partirà da Google Drive sicuro.", followups: ["q2", "q3", "q5"] },
+        q2: { question: "Il download NEXA non parte", answer: "Verifica popup blocker e antivirus. Google Drive potrebbe mostrare un avviso 'file too large to scan': è normale per eseguibili NEXA >100MB. Clicca 'Scarica comunque'.", followups: ["q1", "q4", "q30"] },
+        q3: { question: "Come verifico l'integrità SHA256?", answer: "Usa 'certutil -hashfile file.exe SHA256' su Windows o 'shasum -a 256 file' su Mac/Linux. Confronta con il codice visualizzato sotto il pulsante download NEXA.", followups: ["q4", "q1", "q5"] },
+        q4: { question: "Il file NEXA risulta corrotto", answer: "Elimina e riscarica. Verifica la connessione. Se Google Drive mostra errori persistenti, genera un Report Problema tramite l'assistenza.", followups: ["q2", "q3", "q30"] },
+        q5: { question: "Dove trovo i requisiti di sistema NEXA?", answer: "Nella sezione 'Requisiti di Sistema' sotto ogni pacchetto NEXA. Per modelli AI, c'è una sezione dedicata 'Requisiti AI'.", followups: ["q6", "q7", "q1"] },
+        q6: { question: "NEXA supporta Windows 7?", answer: "No. I software NEXA moderni richiedono Windows 10/11 64-bit. Per OS datati non offriamo supporto ufficiale.", followups: ["q5", "q7", "q8"] },
+        q7: { question: "NEXA è compatibile con Linux?", answer: "I dataset AI NEXA e alcuni tool funzionano su Linux Ubuntu 22.04+. I driver NEXA Arc Drive sono Windows-only.", followups: ["q5", "q6", "q20"] },
+        q8: { question: "Serve internet per installare NEXA?", answer: "L'installazione base è offline. I modelli AI NEXA richiedono connessione per dipendenze Python (PyTorch, transformers).", followups: ["q5", "q9", "q20"] },
+        q9: { question: "Quale NEXA Arc Drive installare?", answer: "Per GPU moderne: NEXA Arc Drive 33.0.102.5081 (latest). Per hardware datato: 33.0.102.2131 (legacy, 131 MB).", followups: ["q10", "q11", "q1"] },
+        q10: { question: "Cosa significa 'Legacy' in NEXA?", answer: "Versioni mantenute per compatibilità hardware/software vecchio. Solo security fix critici, nessuna nuova feature.", followups: ["q9", "q11", "q12"] },
+        q11: { question: "Posso usare NEXA beta in produzione?", answer: "Sconsigliato. Per produzione usa NEXA Studio Accelerator (Stable). Le beta sono per testing/early adopters.", followups: ["q9", "q12", "q13"] },
+        q12: { question: "Come aggiorno da NEXA legacy?", answer: "Scarica l'ultima versione stabile NEXA. L'installer gestisce la rimozione della vecchia. Backup dei setting prima.", followups: ["q10", "q9", "q4"] },
+        q13: { question: "NEXA Arc Drive causa crash", answer: "Fai installazione pulita con DDU in Safe Mode, poi installa NEXA stabile. Se persiste, genera Report Problema.", followups: ["q12", "q14", "q30"] },
+        q14: { question: "Come fare installazione pulita NEXA?", answer: "Usa DDU (Display Driver Uninstaller) in Safe Mode per rimuovere driver esistenti, poi installa nuova versione NEXA.", followups: ["q13", "q12", "q4"] },
+        q15: { question: "NEXA Xe-1 vs Xe-2: differenze?", answer: "Xe-2.0 ha ottimizzazioni kernel e supporto esteso. Xe-1 è legacy per retrocompatibilità. Usa Xe-2.0 quando possibile.", followups: ["q9", "q10", "q11"] },
+        q16: { question: "Quanta VRAM per modelli NEXA AI?", answer: "NEXA 3.8B FP16: 12 GB VRAM minimi. Dataset leggero: 4 GB RAM sistemica. Vedi sezione 'Requisiti AI'.", followups: ["q17", "q18", "q20"] },
+        q17: { question: "Posso usare NEXA AI senza GPU?", answer: "Tecnicamente sì ma lentissimo. NEXA 3.8B è ottimizzato per GPU FP16. Per CPU considera versioni quantizzate.", followups: ["q16", "q18", "q19"] },
+        q18: { question: "Come installo dipendenze Python NEXA?", answer: "pip install torch transformers accelerate safetensors. Richiede Python 3.10+ e PyTorch compatibile (CUDA/ROCm).", followups: ["q19", "q20", "q16"] },
+        q19: { question: "NEXA AI va Out Of Memory", answer: "Riduci max_length, abilita load_in_8bit=True, usa gradient checkpointing. Per fine-tuning: LoRA/QLoRA (-60% VRAM).", followups: ["q16", "q18", "q21"] },
+        q20: { question: "Dataset NEXA compatibile HuggingFace?", answer: "Sì, JSONL e Parquet sono nativamente supportati: load_dataset('json', data_files='file.jsonl').", followups: ["q18", "q21", "q16"] },
+        q21: { question: "Come fare fine-tuning NEXA 3.8B?", answer: "Usa LoRA con PEFT di HuggingFace. Dataset in formato instruction, r=8, alpha=16, lancia con Trainer.", followups: ["q19", "q18", "q20"] },
+        q22: { question: "Cos'è NEXA XRMOT?", answer: "eXtreme Resource Manager Optimization Tool NEXA: priorità CPU, libera VRAM, pulizia RAM-cache. Ripristina tutto alla chiusura.", followups: ["q23", "q24", "q25"] },
+        q23: { question: "NEXA XRMOT è sicuro?", answer: "Sì, modifica solo setting temporanei e ripristina alla chiusura. Chiudi programmi importanti prima dell'uso.", followups: ["q22", "q24", "q13"] },
+        q24: { question: "XRMOT migliora FPS nei giochi?", answer: "Può aiutare liberando RAM/VRAM. Per miglioramenti significativi aggiorna anche NEXA Arc Drive.", followups: ["q22", "q23", "q9"] },
+        q25: { question: "XRMOT funziona su Windows 11?", answer: "Sì, v4.2.1 (655 KB) è compatibile con Windows 10/11. Esegui come amministratore.", followups: ["q22", "q23", "q6"] },
+        q26: { question: "L'antivirus blocca download NEXA", answer: "Falsi positivi possibili per tool ottimizzazione. Aggiungi alla whitelist o disabilita temporaneamente. Verifica sempre SHA256.", followups: ["q2", "q3", "q4"] },
+        q27: { question: "NEXA non si avvia dopo installazione", answer: "Verifica requisiti, esegui come amministratore, controlla log. Prova modalità compatibilità. Se persiste: Report Problema.", followups: ["q5", "q13", "q30"] },
+        q28: { question: "Come disinstallo NEXA completamente?", answer: "Usa 'Aggiungi o rimuovi programmi'. Per driver GPU usa DDU in Safe Mode. Elimina cartelle in AppData.", followups: ["q14", "q12", "q27"] },
+        q29: { question: "Dove trovo i log NEXA?", answer: "C:\\Users\\[Nome]\\AppData\\Local\\NEXA\\logs. Per driver: Visualizzatore Eventi > Registri Windows > Applicazione.", followups: ["q27", "q13", "q30"] },
+        q30: { question: "Come contatto supporto NEXA?", answer: "Se il bot non risolve dopo 3 tentativi, scarica il Report Problema e invialo a support@nexa-arc.dev. Risposta in 24-48h.", followups: ["q4", "q13", "q27"] }
       });
 
       // ═══════════════════════════════════════════
       // DOM ELEMENTS
       // ═══════════════════════════════════════════
       const $ = (id) => document.getElementById(id);
-      
       const els = {
         heroTitle: $('hero-title'),
         versionSelect: $('version-select'),
@@ -1344,22 +800,20 @@
         chatQuickActions: $('chat-quick-actions'),
         chatInput: $('chat-input'),
         chatSend: $('chat-send'),
-        chatContactForm: $('chat-contact-form'),
-        contactEmail: $('contact-email'),
-        contactMessage: $('contact-message'),
-        contactSubmit: $('contact-submit')
+        chatReportSection: $('chat-report-section'),
+        btnDownloadReport: $('btn-download-report'),
+        supportEmail: $('support-email')
       };
 
       // ═══════════════════════════════════════════
       // STATE
       // ═══════════════════════════════════════════
       let currentTargetLink = "";
+      let currentVersionKey = "v10";
       let chatNotUsefulCount = 0;
       const MAX_NOT_USEFUL = 3;
+      const chatTranscript = [];
 
-      // ═══════════════════════════════════════════
-      // BADGE MAP
-      // ═══════════════════════════════════════════
       const BADGE_MAP = Object.freeze({
         latest: { cls: "badge-latest", text: "LATEST" },
         stable: { cls: "badge-stable", text: "STABLE" },
@@ -1368,17 +822,19 @@
         archived: { cls: "badge-archived", text: "ARCHIVED" }
       });
 
+      const SUPPORT_EMAIL = "support@nexa-arc.dev";
+
       // ═══════════════════════════════════════════
-      // VERSION CHANGE HANDLER
+      // VERSION CHANGE
       // ═══════════════════════════════════════════
       function changeVersion() {
         const key = els.versionSelect.value;
         const data = database[key];
-
         if (!data) {
-          console.error(`[ARCx] Unknown version key: ${key}`);
+          console.error(`[NEXA] Unknown version key: ${key}`);
           return;
         }
+        currentVersionKey = key;
 
         els.heroTitle.textContent = data.title;
         els.descriptionContent.innerHTML = data.desc;
@@ -1386,14 +842,13 @@
         els.fileName.textContent = data.file;
         els.shaChecksum.textContent = data.sha;
 
-        try {
-          els.downloadLink.href = new URL(data.url, window.location.origin).toString();
-        } catch (e) {
+        if (isAllowedUrl(data.url)) {
+          els.downloadLink.href = data.url;
+        } else {
           els.downloadLink.href = "#";
-          console.error("[ARCx] Invalid URL:", data.url);
+          console.warn("[NEXA] Blocked disallowed URL:", data.url);
         }
 
-        // Alert banner
         els.alertBanner.classList.remove('visible', 'warning', 'info');
         if (data.alertType === "legacy" || data.alertType === "archived") {
           els.alertBanner.classList.add('visible', data.alertType === "legacy" ? "warning" : "info");
@@ -1404,27 +859,21 @@
           currentTargetLink = "";
         }
 
-        // Badges
         const b = BADGE_MAP[data.status] || BADGE_MAP.latest;
         let badgeHTML = `<span class="badge ${b.cls}">${b.text}</span>`;
-        
         if (data.isAI) {
           els.aiRequirementsSection.style.display = "block";
           els.aiInstructionsSection.style.display = "block";
           els.aiRequirements.innerHTML = data.aiReq || "N/D";
           els.aiInstructions.innerHTML = data.aiInstructions || "N/D";
-          badgeHTML += `<span class="badge badge-ai">AI MODULE</span>`;
+          badgeHTML += `<span class="badge badge-ai">NEXA AI</span>`;
         } else {
           els.aiRequirementsSection.style.display = "none";
           els.aiInstructionsSection.style.display = "none";
         }
-
         els.badgeGroup.innerHTML = badgeHTML;
       }
 
-      // ═══════════════════════════════════════════
-      // ALERT ACTION HANDLER
-      // ═══════════════════════════════════════════
       function handleAlertClick() {
         if (currentTargetLink && database[currentTargetLink]) {
           els.versionSelect.value = currentTargetLink;
@@ -1434,16 +883,16 @@
       }
 
       // ═══════════════════════════════════════════
-      // CHATBOT LOGIC
+      // CHATBOT
       // ═══════════════════════════════════════════
       function openChat() {
         els.chatPanel.classList.add('open');
         els.chatPanel.setAttribute('aria-hidden', 'false');
         els.chatFab.style.display = 'none';
-        
         if (els.chatMessages.children.length === 0) {
-          addBotMessage("Ciao! 👋 Sono l'assistente virtuale ARCx. Come posso aiutarti oggi?", ["q1", "q5", "q9"]);
+          addBotMessage("Ciao! 👋 Sono l'assistente NEXA. Come posso aiutarti?", ["q1", "q5", "q9"]);
         }
+        setTimeout(() => els.chatInput.focus(), 300);
       }
 
       function closeChat() {
@@ -1453,45 +902,48 @@
       }
 
       function addBotMessage(text, followupIds = []) {
+        chatTranscript.push({ role: 'bot', text, time: new Date().toISOString() });
+
         const msgDiv = document.createElement('div');
         msgDiv.className = 'chat-message bot';
-        
+
         const avatar = document.createElement('div');
         avatar.className = 'chat-avatar';
         avatar.textContent = '🤖';
-        
+        avatar.setAttribute('aria-hidden', 'true');
+
         const bubble = document.createElement('div');
         bubble.className = 'chat-bubble';
         bubble.textContent = text;
-        
+
         if (followupIds.length > 0) {
           const followups = document.createElement('div');
           followups.className = 'chat-followups';
-          
           followupIds.forEach(id => {
             const faq = faqDatabase[id];
             if (faq) {
               const btn = document.createElement('button');
               btn.className = 'chat-followup-btn';
+              btn.type = 'button';
               btn.textContent = faq.question;
               btn.addEventListener('click', () => handleFAQClick(id));
               followups.appendChild(btn);
             }
           });
-          
           bubble.appendChild(followups);
         }
-        
-        // Add "Not useful" button
+
         const notUsefulBtn = document.createElement('button');
         notUsefulBtn.className = 'chat-followup-btn';
+        notUsefulBtn.type = 'button';
         notUsefulBtn.style.background = 'rgba(239, 68, 68, 0.15)';
         notUsefulBtn.style.borderColor = 'var(--q-danger)';
         notUsefulBtn.style.color = 'var(--q-danger)';
         notUsefulBtn.textContent = '❌ Non utile';
+        notUsefulBtn.setAttribute('aria-label', 'Segnala risposta non utile');
         notUsefulBtn.addEventListener('click', handleNotUseful);
         bubble.appendChild(notUsefulBtn);
-        
+
         msgDiv.appendChild(avatar);
         msgDiv.appendChild(bubble);
         els.chatMessages.appendChild(msgDiv);
@@ -1499,17 +951,20 @@
       }
 
       function addUserMessage(text) {
+        chatTranscript.push({ role: 'user', text, time: new Date().toISOString() });
+
         const msgDiv = document.createElement('div');
         msgDiv.className = 'chat-message user';
-        
+
         const avatar = document.createElement('div');
         avatar.className = 'chat-avatar';
         avatar.textContent = '👤';
-        
+        avatar.setAttribute('aria-hidden', 'true');
+
         const bubble = document.createElement('div');
         bubble.className = 'chat-bubble';
         bubble.textContent = text;
-        
+
         msgDiv.appendChild(avatar);
         msgDiv.appendChild(bubble);
         els.chatMessages.appendChild(msgDiv);
@@ -1519,95 +974,179 @@
       function handleFAQClick(faqId) {
         const faq = faqDatabase[faqId];
         if (!faq) return;
-        
         addUserMessage(faq.question);
-        
-        setTimeout(() => {
-          addBotMessage(faq.answer, faq.followups);
-        }, 300);
+        setTimeout(() => addBotMessage(faq.answer, faq.followups), 250);
       }
 
       function handleNotUseful() {
         chatNotUsefulCount++;
-        
         if (chatNotUsefulCount >= MAX_NOT_USEFUL) {
-          addBotMessage("Mi dispiace che le risposte non siano state utili. Ti consiglio di contattare direttamente la nostra assistenza umana per un supporto personalizzato.", []);
-          els.chatContactForm.classList.add('visible');
+          addBotMessage("Mi dispiace che le risposte non siano state sufficienti. Ti invito a scaricare il Report Problema e inviarlo al supporto umano NEXA.", []);
+          els.chatReportSection.classList.add('visible');
+          els.chatReportSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         } else {
-          addBotMessage("Capisco. Prova a riformulare la domanda o scegli un'altra opzione qui sotto.", ["q1", "q5", "q30"]);
+          const remaining = MAX_NOT_USEFUL - chatNotUsefulCount;
+          addBotMessage(`Capisco. Prova a riformulare o scegli un'altra opzione. (tentativi rimasti prima del report: ${remaining})`, ["q1", "q5", "q30"]);
         }
       }
 
       function handleUserInput() {
-        const text = els.chatInput.value.trim();
+        const raw = els.chatInput.value;
+        const text = raw.trim().slice(0, 500);
         if (!text) return;
-        
         addUserMessage(text);
         els.chatInput.value = '';
-        
+
         setTimeout(() => {
-          // Simple keyword matching
-          const lowerText = text.toLowerCase();
-          let matchedFaq = null;
-          
-          if (lowerText.includes('scaric') || lowerText.includes('download')) {
-            matchedFaq = 'q1';
-          } else if (lowerText.includes('requisit') || lowerText.includes('compatib')) {
-            matchedFaq = 'q5';
-          } else if (lowerText.includes('driver') || lowerText.includes('intel') || lowerText.includes('arc')) {
-            matchedFaq = 'q9';
-          } else if (lowerText.includes('ai') || lowerText.includes('modello') || lowerText.includes('vram')) {
-            matchedFaq = 'q16';
-          } else if (lowerText.includes('xrmot') || lowerText.includes('ottimiz')) {
-            matchedFaq = 'q22';
-          } else if (lowerText.includes('errore') || lowerText.includes('problema') || lowerText.includes('crash')) {
-            matchedFaq = 'q13';
-          } else if (lowerText.includes('assist') || lowerText.includes('contatt') || lowerText.includes('aiuto')) {
-            matchedFaq = 'q30';
-          }
-          
-          if (matchedFaq) {
-            handleFAQClick(matchedFaq);
+          const lower = text.toLowerCase();
+          let matched = null;
+          if (/scaric|download/.test(lower)) matched = 'q1';
+          else if (/requisit|compatib/.test(lower)) matched = 'q5';
+          else if (/driver|nexa arc|arc drive/.test(lower)) matched = 'q9';
+          else if (/\bai\b|modello|vram|llm/.test(lower)) matched = 'q16';
+          else if (/xrmot|ottimiz/.test(lower)) matched = 'q22';
+          else if (/errore|problema|crash|bug/.test(lower)) matched = 'q13';
+          else if (/assist|contatt|aiuto|support/.test(lower)) matched = 'q30';
+          else if (/sha|checksum|integr/.test(lower)) matched = 'q3';
+          else if (/legacy|vecchio|datato/.test(lower)) matched = 'q10';
+          else if (/linux|ubuntu/.test(lower)) matched = 'q7';
+
+          if (matched) {
+            handleFAQClick(matched);
           } else {
-            addBotMessage("Non sono sicuro di aver capito. Puoi provare a scegliere una delle opzioni qui sotto o contattare l'assistenza umana.", ["q1", "q5", "q30"]);
+            addBotMessage("Non ho capito la domanda. Scegli un'opzione qui sotto oppure, dopo 3 risposte non utili, potrai scaricare il Report Problema.", ["q1", "q5", "q30"]);
           }
-        }, 500);
+        }, 350);
       }
 
-      function handleContactSubmit() {
-        const email = els.contactEmail.value.trim();
-        const message = els.contactMessage.value.trim();
-        
-        if (!email || !message) {
-          addBotMessage("Per favore compila tutti i campi prima di inviare.", []);
-          return;
+      // ═══════════════════════════════════════════
+      // PDF REPORT GENERATION (Markdown Blob)
+      // ═══════════════════════════════════════════
+      function generateProblemReport() {
+        const now = new Date();
+        const timestamp = now.toISOString();
+        const dateStr = now.toISOString().slice(0, 19).replace(/[:T]/g, '-');
+        const currentData = database[currentVersionKey];
+
+        const ua = (typeof navigator !== 'undefined' && navigator.userAgent) ? navigator.userAgent : 'Unknown';
+        const platform = (typeof navigator !== 'undefined' && navigator.platform) ? navigator.platform : 'Unknown';
+        const language = (typeof navigator !== 'undefined' && navigator.language) ? navigator.language : 'Unknown';
+        const screenInfo = (typeof screen !== 'undefined') ? `${screen.width}x${screen.height}` : 'Unknown';
+
+        let transcript = '';
+        chatTranscript.forEach((entry, i) => {
+          const roleLabel = entry.role === 'user' ? '👤 UTENTE' : '🤖 BOT NEXA';
+          const safeText = escapeHtml(entry.text);
+          transcript += `\n### [${entry.time}] ${roleLabel}\n${safeText}\n`;
+        });
+
+        const reportContent = `# 📄 NEXA Problem Report
+
+**Session ID:** \`${SESSION_ID}\`
+**Generated:** ${timestamp}
+**Session Start:** ${SESSION_START}
+**Support Email:** ${SUPPORT_EMAIL}
+
+---
+
+## 🔧 Current Software Viewed
+
+| Field | Value |
+|-------|-------|
+| Title | ${escapeHtml(currentData ? currentData.title : 'N/A')} |
+| ID | ${escapeHtml(currentData ? currentData.id : 'N/A')} |
+| Status | ${escapeHtml(currentData ? currentData.status : 'N/A')} |
+| File | ${escapeHtml(currentData ? currentData.file : 'N/A')} |
+| SHA256 | \`${escapeHtml(currentData ? currentData.sha : 'N/A')}\` |
+| Is AI Module | ${currentData && currentData.isAI ? 'Yes' : 'No'} |
+
+---
+
+## 💬 Chat Transcript
+
+${transcript || '_No messages_'}
+
+---
+
+## 🖥️ Environment Info
+
+- **User Agent:** ${escapeHtml(ua)}
+- **Platform:** ${escapeHtml(platform)}
+- **Language:** ${escapeHtml(language)}
+- **Screen:** ${escapeHtml(screenInfo)}
+- **Not Useful Count:** ${chatNotUsefulCount}
+
+---
+
+## 📋 How to Submit
+
+1. Save this report as \`nexa-report-${SESSION_ID}.md\`
+2. Email to: **${SUPPORT_EMAIL}**
+3. Subject: \`[NEXA Support] Report ${SESSION_ID}\`
+4. Attach any screenshots or log files if available
+
+Expected response time: 24-48 business hours.
+
+---
+
+## 🔒 Privacy Notice
+
+This report contains **NO** personal data, credentials, or PII. Only session technical data is included for diagnostic purposes.
+
+---
+
+_Generated by NEXA Quantum Portal · ${now.getFullYear()}_
+`;
+
+        return { content: reportContent, dateStr };
+      }
+
+      function downloadReport() {
+        try {
+          const { content, dateStr } = generateProblemReport();
+          const blob = new Blob([content], { type: 'text/markdown;charset=utf-8' });
+          const url = URL.createObjectURL(blob);
+          const filename = `nexa-report-${SESSION_ID}-${dateStr}.md`;
+
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = filename;
+          a.rel = 'noopener';
+          a.style.display = 'none';
+          document.body.appendChild(a);
+          a.click();
+
+          setTimeout(() => {
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+          }, 100);
+
+          addBotMessage(`✅ Report scaricato: ${filename}. Invialo a ${SUPPORT_EMAIL} per ricevere supporto umano.`, []);
+        } catch (err) {
+          console.error("[NEXA] Report download failed:", err);
+          addBotMessage("❌ Errore nel download del report. Riprova o contatta direttamente " + SUPPORT_EMAIL, []);
         }
-        
-        // In production, this would send to a backend
-        addBotMessage("✅ Grazie! La tua richiesta è stata inviata. Ti risponderemo all'indirizzo " + email + " entro 24-48 ore lavorative.", []);
-        
-        els.contactEmail.value = '';
-        els.contactMessage.value = '';
-        els.chatContactForm.classList.remove('visible');
       }
 
       function populateQuickActions() {
         const quickFAQs = ['q1', 'q5', 'q9', 'q16', 'q22', 'q30'];
-        
+        const frag = document.createDocumentFragment();
         quickFAQs.forEach(id => {
           const faq = faqDatabase[id];
           if (faq) {
             const btn = document.createElement('button');
             btn.className = 'quick-action-btn';
+            btn.type = 'button';
             btn.textContent = faq.question;
             btn.addEventListener('click', () => handleFAQClick(id));
-            els.chatQuickActions.appendChild(btn);
+            frag.appendChild(btn);
           }
         });
+        els.chatQuickActions.appendChild(frag);
       }
 
       // ═══════════════════════════════════════════
-      // EVENT BINDINGS
+      // BINDINGS
       // ═══════════════════════════════════════════
       function bindEvents() {
         if (els.versionSelect) els.versionSelect.addEventListener('change', changeVersion);
@@ -1616,17 +1155,24 @@
         if (els.chatClose) els.chatClose.addEventListener('click', closeChat);
         if (els.chatSend) els.chatSend.addEventListener('click', handleUserInput);
         if (els.chatInput) {
-          els.chatInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') handleUserInput();
+          els.chatInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') { e.preventDefault(); handleUserInput(); }
           });
         }
-        if (els.contactSubmit) els.contactSubmit.addEventListener('click', handleContactSubmit);
+        if (els.btnDownloadReport) els.btnDownloadReport.addEventListener('click', downloadReport);
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && els.chatPanel.classList.contains('open')) {
+            closeChat();
+          }
+        });
       }
 
       // ═══════════════════════════════════════════
       // INIT
       // ═══════════════════════════════════════════
       function init() {
+        if (els.supportEmail) els.supportEmail.textContent = SUPPORT_EMAIL;
         bindEvents();
         populateQuickActions();
         changeVersion();
