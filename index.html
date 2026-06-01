@@ -3,679 +3,859 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="ARCx NASA K - AI & Software Portal | Deep Space HUD Edition" />
-  <title>🚀 AI & Software | ARCx NASA K - Deep Space HUD</title>
+  <meta name="description" content="ARCx Quantum Portal - AI & Software Distribution Platform" />
+  <title>ARCx Quantum Portal | Software & AI Distribution</title>
   <style>
     :root {
-      /* 🌌 NASA Deep Space Palette */
-      --ns-void: #00060F;
-      --ns-deep: #001226;
-      --ns-panel: rgba(0, 18, 40, 0.78);
-      --ns-panel-hover: rgba(0, 30, 70, 0.88);
-      --ns-panel-solid: #001B3A;
+      --q-void: #0a0a0f;
+      --q-deep: #12121a;
+      --q-surface: #1a1a2e;
+      --q-surface-hover: #252540;
+      --q-glass: rgba(26, 26, 46, 0.65);
+      --q-glass-hover: rgba(37, 37, 64, 0.75);
 
-      --ns-neon: #00E5FF;        /* Cyan neon primario */
-      --ns-electric: #1E90FF;    /* Blu elettrico */
-      --ns-plasma: #4FC3F7;      /* Plasma chiaro */
-      --ns-laser: #00BFFF;       /* Laser blu */
-      --ns-quantum: #7DF9FF;     /* Quantum glow */
-      --ns-aurora: #00FFFF;      /* Aurora cyan */
-      --ns-ultraviolet: #4169E1; /* Royal blue */
+      --q-primary: #a855f7;
+      --q-primary-glow: rgba(168, 85, 247, 0.4);
+      --q-secondary: #ec4899;
+      --q-accent: #06b6d4;
+      --q-accent-glow: rgba(6, 182, 212, 0.35);
 
-      --ns-warn: #FFB800;        /* Warning NASA ambra */
-      --ns-danger: #FF3860;      /* Legacy/danger */
-      --ns-success: #00E676;     /* Stable green */
+      --q-success: #10b981;
+      --q-warning: #f59e0b;
+      --q-danger: #ef4444;
 
-      --text-primary: #E6F4FF;
-      --text-secondary: #9FB8D0;
-      --text-muted: #4A6580;
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
 
-      --border-glow: 1px solid rgba(0, 229, 255, 0.35);
-      --glass-blur: blur(14px) saturate(160%);
+      --border-subtle: rgba(168, 85, 247, 0.2);
+      --border-glow: rgba(168, 85, 247, 0.5);
 
-      --space-xs: 4px; --space-sm: 8px; --space-md: 16px; --space-lg: 24px; --space-xl: 40px;
-      --radius: 4px;
-      --anim-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      --anim-normal: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
 
-      /* Conic gradient NASA HUD */
-      --hud-conic: conic-gradient(
-        from 0deg,
-        var(--ns-neon), var(--ns-electric), var(--ns-laser),
-        var(--ns-plasma), var(--ns-quantum), var(--ns-aurora),
-        var(--ns-ultraviolet), var(--ns-neon)
-      );
+      --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      --shadow-glow: 0 0 40px var(--q-primary-glow);
 
-      /* Laser gradient per bottoni */
-      --laser-gradient: linear-gradient(
-        90deg,
-        var(--ns-ultraviolet) 0%,
-        var(--ns-electric) 25%,
-        var(--ns-neon) 50%,
-        var(--ns-aurora) 75%,
-        var(--ns-ultraviolet) 100%
-      );
+      --space-xs: 4px;
+      --space-sm: 8px;
+      --space-md: 16px;
+      --space-lg: 24px;
+      --space-xl: 40px;
+      --space-2xl: 64px;
+
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
+
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+      --gradient-mesh: radial-gradient(at 20% 30%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
+                       radial-gradient(at 80% 20%, rgba(236, 72, 153, 0.12) 0%, transparent 50%),
+                       radial-gradient(at 40% 80%, rgba(6, 182, 212, 0.10) 0%, transparent 50%),
+                       radial-gradient(at 90% 90%, rgba(168, 85, 247, 0.08) 0%, transparent 50%);
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
     body {
-      background: var(--ns-void);
+      font-family: var(--font-sans);
+      background: var(--q-void);
       color: var(--text-primary);
-      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
       line-height: 1.6;
-      overflow-x: hidden;
       min-height: 100vh;
+      overflow-x: hidden;
       position: relative;
     }
 
-    /* 🌌 Layer 1: Deep space nebula */
     body::before {
       content: "";
       position: fixed;
       inset: 0;
-      background:
-        radial-gradient(ellipse at 15% 20%, rgba(0, 229, 255, 0.18) 0%, transparent 45%),
-        radial-gradient(ellipse at 85% 15%, rgba(30, 144, 255, 0.15) 0%, transparent 50%),
-        radial-gradient(ellipse at 50% 60%, rgba(0, 191, 255, 0.10) 0%, transparent 55%),
-        radial-gradient(ellipse at 20% 90%, rgba(65, 105, 225, 0.18) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 85%, rgba(125, 249, 255, 0.08) 0%, transparent 45%);
-      z-index: -4;
-      pointer-events: none;
-      animation: nebulaDrift 30s ease-in-out infinite alternate;
-    }
-    @keyframes nebulaDrift {
-      0%   { transform: translate(0, 0) scale(1); }
-      50%  { transform: translate(-1.5%, 1%) scale(1.03); }
-      100% { transform: translate(1.5%, -1%) scale(1); }
-    }
-
-    /* ⭐ Layer 2: Fixed starfield */
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background-image:
-        radial-gradient(1px 1px at 25% 30%, rgba(255,255,255,0.9) 50%, transparent 50%),
-        radial-gradient(1px 1px at 50% 70%, rgba(125,249,255,0.8) 50%, transparent 50%),
-        radial-gradient(1px 1px at 75% 20%, rgba(255,255,255,0.7) 50%, transparent 50%),
-        radial-gradient(2px 2px at 15% 85%, rgba(0,229,255,0.9) 50%, transparent 50%),
-        radial-gradient(1px 1px at 85% 55%, rgba(255,255,255,0.8) 50%, transparent 50%),
-        radial-gradient(1px 1px at 40% 45%, rgba(125,249,255,0.6) 50%, transparent 50%),
-        radial-gradient(2px 2px at 90% 90%, rgba(30,144,255,0.8) 50%, transparent 50%),
-        radial-gradient(1px 1px at 10% 10%, rgba(255,255,255,0.7) 50%, transparent 50%),
-        radial-gradient(1px 1px at 60% 15%, rgba(0,229,255,0.7) 50%, transparent 50%);
-      background-size: 400px 400px;
-      background-repeat: repeat;
-      z-index: -3;
-      pointer-events: none;
-      opacity: 0.85;
-      animation: starTwinkle 8s ease-in-out infinite alternate;
-    }
-    @keyframes starTwinkle {
-      0%   { opacity: 0.6; }
-      100% { opacity: 0.95; }
-    }
-
-    /* 📐 Layer 3: HUD Grid */
-    .hud-grid {
-      position: fixed;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(0, 229, 255, 0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 229, 255, 0.06) 1px, transparent 1px);
-      background-size: 50px 50px;
-      z-index: -2;
-      pointer-events: none;
-      mask-image: radial-gradient(ellipse at center, black 20%, transparent 80%);
-      -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 80%);
-    }
-
-    /* 📡 Layer 4: Scan line (typical NASA HUD) */
-    .scan-line {
-      position: fixed;
-      inset: 0;
-      background: linear-gradient(
-        to bottom,
-        transparent 0%,
-        transparent 48%,
-        rgba(0, 229, 255, 0.12) 49.5%,
-        rgba(0, 229, 255, 0.25) 50%,
-        rgba(0, 229, 255, 0.12) 50.5%,
-        transparent 52%,
-        transparent 100%
-      );
+      background: var(--gradient-mesh);
       z-index: -1;
-      pointer-events: none;
-      animation: scanMove 6s linear infinite;
-    }
-    @keyframes scanMove {
-      0%   { transform: translateY(-100%); }
-      100% { transform: translateY(100%); }
+      animation: meshShift 25s ease-in-out infinite alternate;
     }
 
-    /* ✨ Layer 5: Animated particles */
-    .particles { position: fixed; inset: 0; pointer-events: none; z-index: -1; overflow: hidden; }
-    .particle {
+    @keyframes meshShift {
+      0% { transform: scale(1) rotate(0deg); }
+      100% { transform: scale(1.1) rotate(2deg); }
+    }
+
+    .skip-link {
       position: absolute;
-      border-radius: 50%;
-      animation: nodeFloat linear infinite;
-      opacity: 0.8;
-    }
-    @keyframes nodeFloat {
-      0%   { transform: translateY(100vh) translateX(0) scale(0); opacity: 0; }
-      15%  { opacity: 1; }
-      85%  { opacity: 1; }
-      100% { transform: translateY(-100px) translateX(var(--drift, 30px)) scale(1.3); opacity: 0; }
-    }
-
-    /* 💫 Neon text glow */
-    .neon-text {
-      color: var(--ns-quantum);
-      text-shadow:
-        0 0 6px rgba(0, 229, 255, 0.9),
-        0 0 14px rgba(0, 229, 255, 0.7),
-        0 0 22px rgba(30, 144, 255, 0.5),
-        0 0 36px rgba(30, 144, 255, 0.3);
-      animation: neonPulse 3s ease-in-out infinite alternate;
-    }
-    @keyframes neonPulse {
-      0%   {
-        text-shadow:
-          0 0 4px rgba(0, 229, 255, 0.8),
-          0 0 10px rgba(0, 229, 255, 0.6),
-          0 0 18px rgba(30, 144, 255, 0.4);
-      }
-      100% {
-        text-shadow:
-          0 0 8px rgba(0, 229, 255, 1),
-          0 0 18px rgba(0, 229, 255, 0.85),
-          0 0 28px rgba(30, 144, 255, 0.65),
-          0 0 42px rgba(30, 144, 255, 0.4);
-      }
+      top: -100px;
+      left: var(--space-md);
+      background: linear-gradient(135deg, var(--q-primary), var(--q-secondary));
+      color: white;
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      z-index: 1000;
+      transition: top 0.3s var(--ease-out-expo);
+      text-decoration: none;
     }
 
-    /* 🔷 HUD Border Wrapper */
-    .hud-border {
-      position: relative;
-      background: var(--ns-panel);
-      border-radius: var(--radius);
-      backdrop-filter: var(--glass-blur);
-      -webkit-backdrop-filter: var(--glass-blur);
-      border: 1px solid rgba(0, 229, 255, 0.25);
-    }
-    .hud-border::before {
-      content: "";
-      position: absolute;
-      inset: -1px;
-      padding: 1.5px;
-      border-radius: inherit;
-      background: var(--hud-conic);
-      -webkit-mask:
-        linear-gradient(#000 0 0) content-box,
-        linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor;
-              mask-composite: exclude;
-      pointer-events: none;
-      animation: spinConic 16s linear infinite;
-      opacity: 0.85;
-    }
-    @keyframes spinConic {
-      to { transform: rotate(360deg); }
+    .skip-link:focus {
+      top: var(--space-md);
     }
 
-    /* 🛰️ HUD Corners (più prominenti, con pulse) */
-    .hud-frame { position: relative; }
-    .hud-frame::before, .hud-frame::after {
-      content: ""; position: absolute; width: 24px; height: 24px;
-      border-style: solid; border-width: 0;
-      transition: all var(--anim-fast);
-    }
-    .hud-frame::before {
-      top: -6px; left: -6px;
-      border-top-width: 2px; border-left-width: 2px;
-      border-color: var(--ns-neon);
-      box-shadow: -2px -2px 8px rgba(0, 229, 255, 0.6);
-      animation: cornerPulse 2.5s ease-in-out infinite alternate;
-    }
-    .hud-frame::after {
-      bottom: -6px; right: -6px;
-      border-bottom-width: 2px; border-right-width: 2px;
-      border-color: var(--ns-electric);
-      box-shadow: 2px 2px 8px rgba(30, 144, 255, 0.6);
-      animation: cornerPulse 2.5s ease-in-out infinite alternate-reverse;
-    }
-    @keyframes cornerPulse {
-      0%   { opacity: 0.65; filter: drop-shadow(0 0 0px var(--ns-neon)); }
-      100% { opacity: 1; filter: drop-shadow(0 0 6px var(--ns-neon)); }
-    }
-
-    /* 🔝 Top Navigation */
-    .top-nav {
-      display: flex; align-items: center;
+    /* ═══════════════════════════════════════════
+       NAVIGATION
+    ═══════════════════════════════════════════ */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--q-glass);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid var(--border-subtle);
       padding: var(--space-md) var(--space-lg);
-      background: rgba(0, 10, 25, 0.85);
-      backdrop-filter: var(--glass-blur);
-      -webkit-backdrop-filter: var(--glass-blur);
-      border-bottom: 1px solid rgba(0, 229, 255, 0.25);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7), inset 0 -1px 0 rgba(0, 229, 255, 0.15);
-      position: sticky; top: 0; z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       gap: var(--space-md);
     }
-    .brand-mark {
-      filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.7));
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, var(--q-primary), var(--q-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-brand svg {
       flex-shrink: 0;
     }
-    .nav-title {
-      font-size: 12px; font-weight: 700;
-      font-family: ui-monospace, "SF Mono", Menlo, monospace;
-      letter-spacing: 2.5px; text-transform: uppercase;
-      padding: 6px 14px;
-      border-radius: var(--radius);
-      background: linear-gradient(90deg, rgba(0,229,255,0.12), rgba(30,144,255,0.18));
-      border: 1px solid rgba(0, 229, 255, 0.4);
-      white-space: nowrap;
-      color: var(--ns-quantum);
-      text-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
-      position: relative;
-      overflow: hidden;
-    }
-    .nav-title::before {
-      content: "";
-      position: absolute;
-      top: 0; left: -100%;
-      width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(0,229,255,0.2), transparent);
-      animation: shimmer 3s ease-in-out infinite;
-    }
-    @keyframes shimmer {
-      0%   { left: -100%; }
-      100% { left: 100%; }
-    }
 
-    /* 🛰️ Hero Section */
-    .hero-section {
-      position: relative;
-      padding: var(--space-xl) var(--space-lg) calc(var(--space-xl) * 1.5);
-      overflow: hidden;
-    }
-    .hero-content { max-width: 1000px; margin: 0 auto; position: relative; z-index: 2; }
-    .hero-section h1 {
-      font-size: clamp(26px, 4.5vw, 42px);
-      font-weight: 800;
-      margin-bottom: var(--space-lg);
-      letter-spacing: 0.5px;
-      font-family: ui-monospace, monospace;
-      line-height: 1.2;
-    }
-
-    /* 📊 Meta Grid */
-    .meta-data {
-      display: grid;
-      grid-template-columns: 160px minmax(0, 1fr);
-      gap: var(--space-md) var(--space-lg);
+    .nav-status {
+      display: flex;
       align-items: center;
-      font-size: 14px;
-      font-family: ui-monospace, monospace;
+      gap: var(--space-sm);
+      font-size: 12px;
+      color: var(--text-secondary);
+      font-family: var(--font-mono);
     }
-    .meta-label {
-      color: var(--ns-neon);
-      font-weight: 700;
-      text-transform: uppercase;
-      font-size: 11px;
-      letter-spacing: 2px;
-      text-shadow: 0 0 4px rgba(0, 229, 255, 0.5);
-    }
-    .meta-label::before {
-      content: "▸ ";
-      color: var(--ns-quantum);
-    }
-    .meta-value { font-weight: 500; color: var(--text-primary); }
-    .meta-value.neon { color: var(--ns-quantum); text-shadow: 0 0 6px rgba(0,229,255,0.6); }
 
-    /* 🎛️ Custom Select */
-    .select-wrapper { position: relative; display: inline-block; width: 100%; max-width: 620px; }
-    select {
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--q-success);
+      box-shadow: 0 0 12px var(--q-success);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.2); }
+    }
+
+    /* ═══════════════════════════════════════════
+       HERO SECTION
+    ═══════════════════════════════════════════ */
+    .hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--space-2xl) var(--space-lg);
+      text-align: center;
+    }
+
+    .hero-title {
+      font-size: clamp(32px, 6vw, 56px);
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: var(--space-md);
+      background: linear-gradient(135deg, var(--text-primary) 0%, var(--q-primary) 50%, var(--q-secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto var(--space-xl);
+    }
+
+    .hero-select-wrapper {
+      max-width: 500px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hero-select {
       width: 100%;
-      padding: 12px 40px 12px 16px;
-      border-radius: var(--radius);
-      border: 1.5px solid transparent;
-      background:
-        linear-gradient(var(--ns-panel), var(--ns-panel)) padding-box,
-        var(--hud-conic) border-box;
+      padding: var(--space-md) var(--space-xl) var(--space-md) var(--space-md);
+      background: var(--q-glass);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
       color: var(--text-primary);
-      font-size: 13px;
-      font-family: ui-monospace, monospace;
-      font-weight: 600;
+      font-size: 15px;
+      font-weight: 500;
       cursor: pointer;
-      outline: none;
-      transition: all var(--anim-fast);
       appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2300E5FF' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 14px center;
-      box-shadow: 0 0 12px rgba(0, 229, 255, 0.15) inset;
+      transition: all 0.3s var(--ease-out-expo);
+      box-shadow: var(--shadow-glass);
     }
-    select:hover {
-      background-color: var(--ns-panel-hover);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 18px rgba(0, 229, 255, 0.3), 0 0 12px rgba(0, 229, 255, 0.2) inset;
-    }
-    select:focus {
-      box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.4), 0 0 24px rgba(0, 229, 255, 0.35);
-    }
-    select option { background: var(--ns-panel-solid); color: var(--text-primary); padding: 8px; }
 
-    /* 📦 Main Content */
-    .main-content { max-width: 1000px; margin: var(--space-xl) auto; padding: 0 var(--space-lg); position: relative; z-index: 2; }
+    .hero-select:hover {
+      border-color: var(--border-glow);
+      box-shadow: var(--shadow-glass), var(--shadow-glow);
+    }
 
-    /* ⚠️ Alert Box */
-    .alert-box {
+    .hero-select:focus {
+      outline: none;
+      border-color: var(--q-primary);
+      box-shadow: 0 0 0 3px var(--q-primary-glow);
+    }
+
+    .hero-select-wrapper::after {
+      content: "▾";
+      position: absolute;
+      right: var(--space-md);
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--q-primary);
+      pointer-events: none;
+      font-size: 18px;
+    }
+
+    .hero-select option {
+      background: var(--q-surface);
+      color: var(--text-primary);
+      padding: var(--space-sm);
+    }
+
+    /* ═══════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════ */
+    .main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-lg) var(--space-2xl);
+    }
+
+    .alert-banner {
       display: none;
       padding: var(--space-md) var(--space-lg);
-      border-radius: var(--radius);
+      border-radius: var(--radius-md);
       margin-bottom: var(--space-lg);
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
       gap: var(--space-md);
-      font-size: 13px;
-      font-family: ui-monospace, monospace;
-      backdrop-filter: var(--glass-blur);
-      -webkit-backdrop-filter: var(--glass-blur);
-      transition: all var(--anim-normal);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid;
+      animation: slideDown 0.4s var(--ease-out-expo);
     }
-    .alert-box.show { display: flex; animation: slideIn 0.45s cubic-bezier(0.22, 1, 0.36, 1); }
-    .alert-legacy {
-      background: rgba(255, 56, 96, 0.08);
-      border: 1px solid rgba(255, 56, 96, 0.55);
-      color: #FF99AA;
-      box-shadow: 0 0 16px rgba(255, 56, 96, 0.15);
-    }
-    .alert-archived {
-      background: rgba(255, 184, 0, 0.08);
-      border: 1px solid rgba(255, 184, 0, 0.55);
-      color: #FFD885;
-      box-shadow: 0 0 16px rgba(255, 184, 0, 0.15);
-    }
-    @keyframes slideIn { from { opacity: 0; transform: translateX(-16px); } to { opacity: 1; transform: translateX(0); } }
 
-    .alert-link {
-      background: linear-gradient(135deg, var(--ns-neon), var(--ns-electric));
-      color: #001226;
-      padding: 9px 18px;
-      border-radius: var(--radius);
-      font-size: 11px;
-      font-weight: 900;
-      text-decoration: none;
-      cursor: pointer;
-      border: none;
-      transition: all var(--anim-fast);
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-      font-family: ui-monospace, monospace;
-      box-shadow: 0 4px 14px rgba(0, 229, 255, 0.45);
-    }
-    .alert-link:hover {
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 6px 22px rgba(0, 229, 255, 0.75);
-      filter: brightness(1.1);
-    }
-    .alert-link:focus-visible { outline: 2px solid var(--ns-quantum); outline-offset: 2px; }
-
-    /* 📑 Sections */
-    .section-title {
-      font-size: 17px;
-      font-weight: 800;
-      margin: var(--space-xl) 0 var(--space-md);
-      position: relative;
-      padding-left: var(--space-md);
+    .alert-banner.visible {
       display: flex;
-      align-items: center;
-      gap: var(--space-sm);
-      font-family: ui-monospace, monospace;
-      text-transform: uppercase;
-      letter-spacing: 1.8px;
     }
-    .section-title::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      width: 4px;
-      height: 22px;
-      background: linear-gradient(to bottom, var(--ns-neon), var(--ns-electric));
-      border-radius: 2px;
-      box-shadow: 0 0 8px var(--ns-neon);
-      animation: barPulse 2s ease-in-out infinite alternate;
+
+    .alert-banner.warning {
+      background: rgba(245, 158, 11, 0.1);
+      border-color: rgba(245, 158, 11, 0.4);
+      color: var(--q-warning);
     }
-    @keyframes barPulse {
-      0%   { box-shadow: 0 0 4px var(--ns-neon); }
-      100% { box-shadow: 0 0 14px var(--ns-neon), 0 0 22px var(--ns-electric); }
+
+    .alert-banner.info {
+      background: rgba(6, 182, 212, 0.1);
+      border-color: rgba(6, 182, 212, 0.4);
+      color: var(--q-accent);
     }
-    .desc-text {
-      color: var(--text-secondary);
-      margin-bottom: var(--space-xl);
-      line-height: 1.75;
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .alert-text {
       font-size: 14px;
-    }
-    .desc-text ul, .desc-text ol { margin-top: var(--space-sm); padding-left: var(--space-lg); }
-    .desc-text li { margin-bottom: var(--space-xs); }
-    .desc-text strong { color: var(--ns-quantum); font-weight: 700; text-shadow: 0 0 4px rgba(125,249,255,0.3); }
-    .desc-text code {
-      background: rgba(0, 229, 255, 0.1);
-      color: var(--ns-aurora);
-      padding: 2px 7px;
-      border-radius: 3px;
-      font-size: 0.92em;
-      border: 1px solid rgba(0, 229, 255, 0.3);
-      text-shadow: 0 0 3px rgba(0, 255, 255, 0.4);
+      font-weight: 500;
     }
 
-    /* 🖥️ Info Boxes */
-    .info-box {
-      padding: var(--space-lg);
-      margin-bottom: var(--space-xl);
-      transition: all var(--anim-normal);
-      position: relative;
+    .alert-action {
+      background: linear-gradient(135deg, var(--q-primary), var(--q-secondary));
+      color: white;
+      border: none;
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s var(--ease-out-expo);
+      white-space: nowrap;
     }
-    .info-box:hover {
+
+    .alert-action:hover {
       transform: translateY(-2px);
-      box-shadow:
-        0 12px 40px rgba(0, 229, 255, 0.2),
-        0 0 30px rgba(30, 144, 255, 0.15),
-        0 0 60px rgba(0, 229, 255, 0.1) inset;
+      box-shadow: 0 8px 20px var(--q-primary-glow);
     }
 
-    .box-title {
-      font-weight: 800;
-      margin-bottom: var(--space-sm);
-      font-size: 13px;
-      font-family: ui-monospace, monospace;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+    .badge-group {
       display: flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--ns-quantum);
-    }
-    .box-title svg { color: var(--ns-neon); filter: drop-shadow(0 0 4px var(--ns-neon)); }
-
-    .box-content {
-      font-size: 13px;
-      color: var(--text-secondary);
-      line-height: 1.75;
-      font-family: ui-monospace, monospace;
-    }
-    .box-content strong { color: var(--ns-plasma); }
-
-    .ai-req-box .box-title svg { color: var(--ns-electric); }
-    .ai-req-box .box-content strong { color: var(--ns-laser); }
-    .ai-instruct-box .box-title svg { color: var(--ns-aurora); }
-    .ai-instruct-box .box-content strong { color: var(--ns-aurora); }
-
-    /* ⬇️ Download Button - Laser style */
-    .btn-download {
-      display: inline-flex;
-      align-items: center;
+      flex-wrap: wrap;
       gap: var(--space-sm);
-      background: var(--laser-gradient);
-      background-size: 200% 100%;
-      color: #001226;
-      padding: 14px 34px;
-      text-decoration: none;
-      font-weight: 900;
-      border-radius: var(--radius);
-      transition: all var(--anim-fast);
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 1.8px;
-      position: relative;
-      overflow: hidden;
-      box-shadow:
-        0 8px 24px rgba(0, 229, 255, 0.4),
-        0 0 0 1px rgba(255, 255, 255, 0.2) inset,
-        0 0 16px rgba(0, 229, 255, 0.35);
-      font-family: ui-monospace, monospace;
-      animation: laserShift 3.5s linear infinite;
-      border: 1px solid rgba(125, 249, 255, 0.5);
+      margin-bottom: var(--space-lg);
     }
-    @keyframes laserShift {
-      0%   { background-position: 0% 50%; }
-      100% { background-position: 200% 50%; }
-    }
-    .btn-download::before {
-      content: "";
-      position: absolute;
-      top: 0; left: -100%;
-      width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-      transition: left 0.6s;
-    }
-    .btn-download:hover {
-      transform: translateY(-3px);
-      box-shadow:
-        0 12px 34px rgba(0, 229, 255, 0.65),
-        0 0 40px rgba(125, 249, 255, 0.5),
-        0 0 0 1px rgba(255, 255, 255, 0.3) inset;
-      filter: brightness(1.1);
-    }
-    .btn-download:hover::before { left: 100%; }
-    .btn-download:active { transform: translateY(-1px); }
-    .btn-download:focus-visible { outline: 2px solid var(--ns-quantum); outline-offset: 3px; }
-    .btn-download svg { transition: transform var(--anim-fast); }
-    .btn-download:hover svg { transform: translateY(2px); }
 
-    /* 🏷️ Badges */
     .badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 5px 12px;
-      border-radius: var(--radius);
-      font-size: 10px;
-      font-weight: 900;
-      margin-bottom: var(--space-lg);
-      margin-right: 6px;
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      font-size: 11px;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
-      font-family: ui-monospace, monospace;
-      border: 1px solid transparent;
-      position: relative;
+      letter-spacing: 0.8px;
+      border: 1px solid;
     }
+
     .badge::before {
       content: "";
-      width: 7px;
-      height: 7px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
       background: currentColor;
-      box-shadow: 0 0 8px currentColor;
-      animation: pulseDot 2s ease-in-out infinite;
-    }
-    @keyframes pulseDot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50%      { opacity: 0.6; transform: scale(1.25); }
+      animation: pulse 2s ease-in-out infinite;
     }
 
     .badge-latest {
-      background: linear-gradient(135deg, rgba(0, 229, 255, 0.18), rgba(30, 144, 255, 0.18));
-      color: var(--ns-quantum);
-      border-color: var(--ns-neon);
-      text-shadow: 0 0 5px rgba(0, 229, 255, 0.6);
+      background: rgba(168, 85, 247, 0.15);
+      color: var(--q-primary);
+      border-color: var(--q-primary);
     }
+
     .badge-stable {
-      background: linear-gradient(135deg, rgba(0, 230, 118, 0.15), rgba(0, 229, 255, 0.15));
-      color: var(--ns-success);
-      border-color: var(--ns-success);
-      text-shadow: 0 0 5px rgba(0, 230, 118, 0.5);
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--q-success);
+      border-color: var(--q-success);
     }
+
     .badge-beta {
-      background: linear-gradient(135deg, rgba(30, 144, 255, 0.18), rgba(0, 229, 255, 0.18));
-      color: var(--ns-electric);
-      border-color: var(--ns-electric);
-      text-shadow: 0 0 5px rgba(30, 144, 255, 0.6);
+      background: rgba(6, 182, 212, 0.15);
+      color: var(--q-accent);
+      border-color: var(--q-accent);
     }
+
     .badge-legacy {
-      background: linear-gradient(135deg, rgba(255, 184, 0, 0.15), rgba(255, 56, 96, 0.15));
-      color: var(--ns-warn);
-      border-color: var(--ns-warn);
-      text-shadow: 0 0 5px rgba(255, 184, 0, 0.5);
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--q-warning);
+      border-color: var(--q-warning);
     }
+
     .badge-archived {
       background: rgba(100, 116, 139, 0.15);
-      color: #94A3B8;
-      border-color: #64748B;
+      color: var(--text-muted);
+      border-color: var(--text-muted);
     }
+
     .badge-ai {
-      background: linear-gradient(135deg, rgba(0, 255, 255, 0.18), rgba(30, 144, 255, 0.18));
-      color: var(--ns-aurora);
-      border-color: var(--ns-aurora);
-      text-shadow: 0 0 6px rgba(0, 255, 255, 0.6);
+      background: rgba(236, 72, 153, 0.15);
+      color: var(--q-secondary);
+      border-color: var(--q-secondary);
     }
 
-    /* 🔐 SHA Code */
-    .sha-code {
-      font-family: ui-monospace, "SF Mono", Menlo, monospace;
-      background: rgba(0, 10, 25, 0.85);
-      padding: var(--space-sm) var(--space-md);
-      margin-top: var(--space-xs);
-      font-size: 11px;
-      word-break: break-all;
-      border-radius: var(--radius);
-      display: block;
-      color: var(--ns-quantum);
-      letter-spacing: 0.5px;
-      border: 1px solid rgba(0, 229, 255, 0.3);
-      text-shadow: 0 0 4px rgba(0, 229, 255, 0.5);
-      box-shadow: 0 0 10px rgba(0, 229, 255, 0.1) inset;
+    .section {
+      margin-bottom: var(--space-xl);
     }
 
-    .file-meta {
-      margin-top: var(--space-lg);
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-md);
       font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--q-primary);
+    }
+
+    .section-header::before {
+      content: "";
+      width: 4px;
+      height: 20px;
+      background: linear-gradient(to bottom, var(--q-primary), var(--q-secondary));
+      border-radius: 2px;
+    }
+
+    .card {
+      background: var(--q-glass);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      box-shadow: var(--shadow-glass);
+      transition: all 0.3s var(--ease-out-expo);
+    }
+
+    .card:hover {
+      border-color: var(--border-glow);
+      box-shadow: var(--shadow-glass), var(--shadow-glow);
+      transform: translateY(-2px);
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--q-primary);
+      margin-bottom: var(--space-sm);
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .card-title svg {
+      color: var(--q-accent);
+    }
+
+    .card-content {
+      font-size: 14px;
       color: var(--text-secondary);
-      font-family: ui-monospace, monospace;
       line-height: 1.8;
     }
-    .file-meta strong { color: var(--text-primary); display: inline-block; }
-    .file-meta .hud-filename {
-      color: var(--ns-quantum);
-      font-weight: 700;
-      margin-left: var(--space-xs);
-      text-shadow: 0 0 5px rgba(125, 249, 255, 0.5);
+
+    .card-content strong {
+      color: var(--text-primary);
+      font-weight: 600;
     }
-    .file-meta .sha-label { margin-top: var(--space-sm); display: inline-block; color: var(--ns-plasma); }
 
-    /* 🎞️ Animations & Responsive */
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .card-content code {
+      background: rgba(168, 85, 247, 0.15);
+      color: var(--q-primary);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 0.9em;
+      border: 1px solid rgba(168, 85, 247, 0.3);
+    }
 
+    .card-content ul, .card-content ol {
+      margin-top: var(--space-sm);
+      padding-left: var(--space-lg);
+    }
+
+    .card-content li {
+      margin-bottom: var(--space-xs);
+    }
+
+    .download-section {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      background: linear-gradient(135deg, var(--q-primary), var(--q-secondary));
+      color: white;
+      padding: var(--space-md) var(--space-xl);
+      border-radius: var(--radius-md);
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s var(--ease-out-expo);
+      box-shadow: 0 8px 24px var(--q-primary-glow);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-download::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn-download:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px var(--q-primary-glow);
+    }
+
+    .btn-download:hover::before {
+      left: 100%;
+    }
+
+    .btn-download:active {
+      transform: translateY(-1px);
+    }
+
+    .file-info {
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-family: var(--font-mono);
+    }
+
+    .file-info strong {
+      color: var(--text-primary);
+    }
+
+    .sha-code {
+      display: block;
+      margin-top: var(--space-xs);
+      padding: var(--space-sm) var(--space-md);
+      background: rgba(10, 10, 15, 0.8);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      font-size: 11px;
+      word-break: break-all;
+      color: var(--q-accent);
+    }
+
+    /* ═══════════════════════════════════════════
+       CHATBOT
+    ═══════════════════════════════════════════ */
+    .chat-fab {
+      position: fixed;
+      bottom: var(--space-lg);
+      right: var(--space-lg);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--q-primary), var(--q-secondary));
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 24px var(--q-primary-glow);
+      transition: all 0.3s var(--ease-spring);
+      z-index: 999;
+    }
+
+    .chat-fab:hover {
+      transform: scale(1.1);
+      box-shadow: 0 12px 32px var(--q-primary-glow);
+    }
+
+    .chat-fab svg {
+      color: white;
+      width: 28px;
+      height: 28px;
+    }
+
+    .chat-panel {
+      position: fixed;
+      bottom: var(--space-lg);
+      right: var(--space-lg);
+      width: 400px;
+      max-width: calc(100vw - 32px);
+      height: 600px;
+      max-height: calc(100vh - 100px);
+      background: var(--q-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      z-index: 1000;
+      transform: scale(0.9) translateY(20px);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s var(--ease-spring);
+    }
+
+    .chat-panel.open {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .chat-header {
+      padding: var(--space-md) var(--space-lg);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(236, 72, 153, 0.1));
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    }
+
+    .chat-header-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .chat-close {
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      cursor: pointer;
+      padding: var(--space-xs);
+      border-radius: var(--radius-sm);
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .chat-close:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-primary);
+    }
+
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .chat-message {
+      display: flex;
+      gap: var(--space-sm);
+      animation: messageIn 0.3s var(--ease-out-expo);
+    }
+
+    @keyframes messageIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .chat-message.bot {
+      align-self: flex-start;
+    }
+
+    .chat-message.user {
+      align-self: flex-end;
+      flex-direction: row-reverse;
+    }
+
+    .chat-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 16px;
+    }
+
+    .chat-message.bot .chat-avatar {
+      background: linear-gradient(135deg, var(--q-primary), var(--q-secondary));
+    }
+
+    .chat-message.user .chat-avatar {
+      background: var(--q-accent);
+    }
+
+    .chat-bubble {
+      max-width: 80%;
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--radius-md);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .chat-message.bot .chat-bubble {
+      background: var(--q-glass);
+      color: var(--text-primary);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .chat-message.user .chat-bubble {
+      background: linear-gradient(135deg, var(--q-primary), var(--q-secondary));
+      color: white;
+    }
+
+    .chat-followups {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+      margin-top: var(--space-sm);
+    }
+
+    .chat-followup-btn {
+      background: rgba(168, 85, 247, 0.15);
+      border: 1px solid var(--q-primary);
+      color: var(--q-primary);
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .chat-followup-btn:hover {
+      background: var(--q-primary);
+      color: white;
+    }
+
+    .chat-footer {
+      padding: var(--space-md);
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      gap: var(--space-sm);
+    }
+
+    .chat-input {
+      flex: 1;
+      padding: var(--space-sm) var(--space-md);
+      background: var(--q-glass);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-size: 14px;
+      font-family: var(--font-sans);
+    }
+
+    .chat-input:focus {
+      outline: none;
+      border-color: var(--q-primary);
+    }
+
+    .chat-send {
+      background: linear-gradient(135deg, var(--q-primary), var(--q-secondary));
+      border: none;
+      color: white;
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .chat-send:hover {
+      transform: scale(1.05);
+    }
+
+    .chat-quick-actions {
+      padding: var(--space-sm) var(--space-md);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .quick-action-btn {
+      background: rgba(6, 182, 212, 0.15);
+      border: 1px solid var(--q-accent);
+      color: var(--q-accent);
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .quick-action-btn:hover {
+      background: var(--q-accent);
+      color: white;
+    }
+
+    .chat-contact-form {
+      display: none;
+      padding: var(--space-md);
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .chat-contact-form.visible {
+      display: flex;
+    }
+
+    .contact-input, .contact-textarea {
+      padding: var(--space-sm) var(--space-md);
+      background: var(--q-glass);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      font-size: 13px;
+      font-family: var(--font-sans);
+    }
+
+    .contact-textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .contact-submit {
+      background: linear-gradient(135deg, var(--q-primary), var(--q-secondary));
+      border: none;
+      color: white;
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .contact-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px var(--q-primary-glow);
+    }
+
+    /* ═══════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════ */
     @media (max-width: 768px) {
-      .meta-data { grid-template-columns: 1fr; gap: var(--space-sm); }
-      .hero-section { padding: var(--space-lg) var(--space-md); }
-      .main-content { padding: 0 var(--space-md); }
-      .alert-box { flex-direction: column; align-items: flex-start; }
-      .top-nav { padding: var(--space-sm) var(--space-md); flex-wrap: wrap; }
-      .nav-title { font-size: 10px; letter-spacing: 1.2px; }
+      .nav {
+        padding: var(--space-sm) var(--space-md);
+      }
+
+      .hero {
+        padding: var(--space-xl) var(--space-md);
+      }
+
+      .main {
+        padding: 0 var(--space-md) var(--space-xl);
+      }
+
+      .chat-panel {
+        width: calc(100vw - 32px);
+        height: calc(100vh - 100px);
+        bottom: var(--space-md);
+        right: var(--space-md);
+      }
+
+      .alert-banner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -684,198 +864,164 @@
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
       }
-      .particles, .scan-line { display: none; }
     }
 
     :focus-visible {
-      outline: 2px solid var(--ns-quantum);
-      outline-offset: 3px;
-      border-radius: var(--radius);
-      box-shadow: 0 0 16px rgba(0, 229, 255, 0.7);
-    }
-
-    .skip-link {
-      position: absolute;
-      top: -50px;
-      left: 0;
-      background: linear-gradient(90deg, var(--ns-neon), var(--ns-electric));
-      color: #001226;
-      padding: var(--space-sm) var(--space-md);
-      z-index: 200;
-      transition: top var(--anim-fast);
-      font-weight: 900;
-      font-family: ui-monospace, monospace;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    .skip-link:focus { top: 0; }
-
-    /* 📡 Radar corner decoration */
-    .radar-corner {
-      position: fixed;
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      border: 1px solid rgba(0, 229, 255, 0.25);
-      pointer-events: none;
-      z-index: 0;
-    }
-    .radar-corner::before {
-      content: "";
-      position: absolute;
-      inset: 20%;
-      border-radius: 50%;
-      border: 1px solid rgba(0, 229, 255, 0.35);
-    }
-    .radar-corner::after {
-      content: "";
-      position: absolute;
-      inset: 40%;
-      border-radius: 50%;
-      border: 1px solid rgba(0, 229, 255, 0.45);
-      background: radial-gradient(circle, rgba(0,229,255,0.2) 0%, transparent 70%);
-    }
-    .radar-corner.top-right { top: 80px; right: -80px; animation: radarSweep 6s linear infinite; }
-    .radar-corner.bottom-left { bottom: -80px; left: -80px; animation: radarSweep 8s linear infinite reverse; }
-    @keyframes radarSweep {
-      0%   { transform: rotate(0deg); opacity: 0.4; }
-      50%  { opacity: 0.7; }
-      100% { transform: rotate(360deg); opacity: 0.4; }
-    }
-    @media (max-width: 768px) {
-      .radar-corner { display: none; }
+      outline: 2px solid var(--q-primary);
+      outline-offset: 2px;
     }
   </style>
 </head>
 <body>
+  <a href="#main" class="skip-link">Salta al contenuto principale</a>
 
-  <div class="hud-grid" aria-hidden="true"></div>
-  <div class="scan-line" aria-hidden="true"></div>
-  <div class="particles" aria-hidden="true" id="particles"></div>
-  <div class="radar-corner top-right" aria-hidden="true"></div>
-  <div class="radar-corner bottom-left" aria-hidden="true"></div>
-  <a href="#main" class="skip-link">Salta al contenuto</a>
-
-  <nav class="top-nav" aria-label="Navigazione principale">
-    <svg class="brand-mark" width="100" height="34" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" aria-label="ARCx NASA K">
-      <defs>
-        <linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#00E5FF"/>
-          <stop offset="35%" stop-color="#1E90FF"/>
-          <stop offset="65%" stop-color="#4FC3F7"/>
-          <stop offset="100%" stop-color="#4169E1"/>
-        </linearGradient>
-      </defs>
-      <rect x="0" y="0" width="120" height="40" rx="6" fill="url(#arcGrad)" stroke="#7DF9FF" stroke-width="1.5" stroke-opacity="0.7"/>
-      <text x="14" y="26" fill="#ffffff" font-family="ui-monospace, monospace" font-size="20" font-weight="900" letter-spacing="1">ARCx</text>
-      <circle cx="108" cy="20" r="5" fill="#ffffff" opacity="0.95"/>
-      <circle cx="108" cy="20" r="2.5" fill="#00E5FF"/>
-    </svg>
-    <div class="nav-title">NEURAL CONTROL // DEEP SPACE HUD</div>
+  <nav class="nav" aria-label="Navigazione principale">
+    <div class="nav-brand">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="32" height="32" rx="8" fill="url(#brandGrad)"/>
+        <path d="M8 22L16 10L24 22H8Z" fill="white" opacity="0.9"/>
+        <circle cx="16" cy="18" r="2" fill="#a855f7"/>
+        <defs>
+          <linearGradient id="brandGrad" x1="0" y1="0" x2="32" y2="32">
+            <stop offset="0%" stop-color="#a855f7"/>
+            <stop offset="100%" stop-color="#ec4899"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      ARCx Quantum
+    </div>
+    <div class="nav-status">
+      <span class="status-dot"></span>
+      <span>SYSTEM ONLINE</span>
+    </div>
   </nav>
 
-  <header class="hero-section">
-    <div class="hero-content">
-      <h1 id="ui-title" class="neon-text hud-frame">Inizializzazione Core...</h1>
-
-      <div class="meta-data">
-        <div class="meta-label">MISSION ID</div>
-        <div class="meta-value neon" id="ui-id">--</div>
-
-        <div class="meta-label">LAUNCH DATE</div>
-        <div class="meta-value" id="ui-date" style="color: var(--ns-quantum); font-weight: 700;">--</div>
-
-        <div class="meta-label">PAYLOAD / MODEL</div>
-        <div class="meta-value">
-          <div class="select-wrapper">
-            <label for="versionSelector" class="sr-only" style="position:absolute;left:-9999px;">Seleziona versione</label>
-            <select id="versionSelector" aria-label="Seleziona versione software o modello AI">
-              <option value="v10">Intel® Arc™ 33.0.102.5081 WHQL (BETA) - Latest</option>
-              <option value="v9">SDK 3.4 (Beta Legacy)</option>
-              <option value="v8">Software Studio Accelerator (Stable)</option>
-              <option value="v7">Xe-2.0 (Beta)</option>
-              <option value="v2">Intel® Arc™ 33.0.102.2131 WHQL (Legacy - PC Datati)</option>
-              <option value="v6">XRMOT v4.2.1 (Legacy)</option>
-              <option value="v1">Legacy Xe-1 (Legacy)</option>
-              <option value="v3">1.21 Minecraft Mod (Archivio)</option>
-              <option value="v4">Old Control Panel SDK (Archivio)</option>
-              <option value="v11">🤖 AI Training Data (Lightweight)</option>
-              <option value="v12">🧠 AI FP16 3.8B Naxa Internal (OSS Test)</option>
-            </select>
-          </div>
-        </div>
-      </div>
+  <header class="hero">
+    <h1 class="hero-title" id="hero-title">Software & AI Distribution Platform</h1>
+    <p class="hero-subtitle">Seleziona un pacchetto dal menu per visualizzare dettagli, requisiti e download.</p>
+    
+    <div class="hero-select-wrapper">
+      <label for="version-select" class="sr-only" style="position:absolute;left:-9999px;">Seleziona versione</label>
+      <select id="version-select" class="hero-select" aria-label="Seleziona versione software o modello AI">
+        <option value="v10">Intel® Arc™ 33.0.102.5081 WHQL (BETA) - Latest</option>
+        <option value="v9">SDK 3.4 (Beta Legacy)</option>
+        <option value="v8">Software Studio Accelerator (Stable)</option>
+        <option value="v7">Xe-2.0 (Beta)</option>
+        <option value="v2">Intel® Arc™ 33.0.102.2131 WHQL (Legacy)</option>
+        <option value="v6">XRMOT v4.2.1 (Legacy)</option>
+        <option value="v1">Legacy Xe-1 (Legacy)</option>
+        <option value="v3">1.21 Minecraft Mod (Archivio)</option>
+        <option value="v4">Old Control Panel SDK (Archivio)</option>
+        <option value="v11">🤖 AI Training Data (Lightweight)</option>
+        <option value="v12">🧠 AI FP16 3.8B Naxa Internal (OSS Test)</option>
+      </select>
     </div>
   </header>
 
-  <main class="main-content" id="main">
-    <div id="dynamic-alert" class="alert-box hud-frame" role="alert" aria-live="polite">
-      <span id="alert-text"></span>
-      <button class="alert-link" id="alert-btn" type="button"></button>
+  <main class="main" id="main">
+    <div id="alert-banner" class="alert-banner" role="alert" aria-live="polite">
+      <span id="alert-text" class="alert-text"></span>
+      <button id="alert-action" class="alert-action" type="button"></button>
     </div>
 
-    <div id="ui-badge" aria-hidden="true"></div>
+    <div id="badge-group" class="badge-group"></div>
 
-    <h2 class="section-title"><span class="neon-text">TELEMETRY // INTRODUCTION</span></h2>
-    <div class="desc-text" id="ui-desc"></div>
-
-    <h2 class="section-title"><span class="neon-text">SYSTEM REQUIREMENTS</span></h2>
-    <div class="info-box hud-border hud-frame">
-      <div class="box-title">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg>
-        OPERATING SYSTEM & HARDWARE:
+    <section class="section">
+      <h2 class="section-header">Descrizione</h2>
+      <div class="card">
+        <div id="description-content" class="card-content"></div>
       </div>
-      <div class="box-content" id="ui-os">--</div>
-    </div>
+    </section>
 
-    <div id="ai-requirements-panel" style="display: none;">
-      <h2 class="section-title"><span class="neon-text">TENSOR CORE // AI REQUIREMENTS</span></h2>
-      <div class="info-box hud-border hud-frame ai-req-box">
-        <div class="box-title">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 12v.01"/><path d="M12 16v.01"/><path d="M8 12v.01"/></svg>
-          VRAM / RAM / COMPUTE:
+    <section class="section">
+      <h2 class="section-header">Requisiti di Sistema</h2>
+      <div class="card">
+        <div class="card-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          Hardware & Software
         </div>
-        <div class="box-content" id="ai-req-content">--</div>
+        <div id="system-requirements" class="card-content"></div>
       </div>
-    </div>
+    </section>
 
-    <div id="ai-instructions-panel" style="display: none;">
-      <h2 class="section-title"><span class="neon-text">TRAINING PROTOCOL // INSTRUCTIONS</span></h2>
-      <div class="info-box hud-border hud-frame ai-instruct-box">
-        <div class="box-title">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/><path d="M8 7h6"/><path d="M8 11h8"/></svg>
-          PROCEDURA DI ADDESTRAMENTO:
+    <section id="ai-requirements-section" class="section" style="display:none;">
+      <h2 class="section-header">Requisiti AI</h2>
+      <div class="card">
+        <div class="card-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/></svg>
+          VRAM / RAM / Compute
         </div>
-        <div class="box-content" id="ai-instruct-content">--</div>
+        <div id="ai-requirements" class="card-content"></div>
       </div>
-    </div>
+    </section>
 
-    <h2 class="section-title"><span class="neon-text">AVAILABLE DOWNLOADS</span></h2>
-    <div style="margin-bottom: var(--space-xl);">
-      <a class="btn-download" id="downloadLink" href="#" target="_blank" rel="noopener noreferrer">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        INITIATE DOWNLOAD
-      </a>
-      <div class="file-meta">
-        <strong>PAYLOAD FILE:</strong> <span id="ui-filename" class="hud-filename">--</span><br>
-        <strong class="sha-label">SHA256 CHECKSUM:</strong>
-        <span class="sha-code" id="ui-sha">--</span>
+    <section id="ai-instructions-section" class="section" style="display:none;">
+      <h2 class="section-header">Istruzioni AI</h2>
+      <div class="card">
+        <div class="card-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+          Procedura
+        </div>
+        <div id="ai-instructions" class="card-content"></div>
       </div>
-    </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-header">Download</h2>
+      <div class="card download-section">
+        <a id="download-link" href="#" class="btn-download" target="_blank" rel="noopener noreferrer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Scarica Ora
+        </a>
+        <div class="file-info">
+          <strong>File:</strong> <span id="file-name">--</span><br>
+          <strong>SHA256:</strong>
+          <code id="sha-checksum" class="sha-code">--</code>
+        </div>
+      </div>
+    </section>
   </main>
 
+  <button id="chat-fab" class="chat-fab" aria-label="Apri assistenza chat" title="Assistenza">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+  </button>
+
+  <div id="chat-panel" class="chat-panel" role="dialog" aria-label="Assistenza Chat" aria-hidden="true">
+    <div class="chat-header">
+      <div class="chat-header-title">💬 Assistenza ARCx</div>
+      <button id="chat-close" class="chat-close" aria-label="Chiudi chat">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    
+    <div id="chat-messages" class="chat-messages"></div>
+    
+    <div id="chat-quick-actions" class="chat-quick-actions"></div>
+    
+    <div class="chat-footer">
+      <input type="text" id="chat-input" class="chat-input" placeholder="Scrivi una domanda..." aria-label="Messaggio">
+      <button id="chat-send" class="chat-send" aria-label="Invia messaggio">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
+
+    <div id="chat-contact-form" class="chat-contact-form">
+      <div style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:var(--space-xs);">Contatta Assistenza Umana</div>
+      <input type="email" id="contact-email" class="contact-input" placeholder="La tua email" aria-label="Email">
+      <textarea id="contact-message" class="contact-textarea" placeholder="Descrivi il tuo problema..." aria-label="Messaggio"></textarea>
+      <button id="contact-submit" class="contact-submit" type="button">Invia Richiesta</button>
+    </div>
+  </div>
+
   <script>
-    /**
-     * ARCx NASA K - Deep Space HUD Edition
-     * 🌌 UI Blu NASA fluo con effetti HUD (scan line, stars, radar, glow)
-     * ✅ CSP-safe: zero inline handlers, zero eval
-     * ✅ Accessibility-first: ARIA, skip link, reduced motion
-     * ✅ Performance: particles limitate a 28, requestAnimationFrame non usato (CSS-driven)
-     */
     (function() {
       'use strict';
 
-      // 🗄️ Source of Truth Database (invariata)
+      // ═══════════════════════════════════════════
+      // DATABASE (invariato dall'originale)
+      // ═══════════════════════════════════════════
       const database = Object.freeze({
         v10: {
           title: "Intel® Arc™ Graphics - 33.0.102.5081 WHQL (BETA)",
@@ -1005,83 +1151,228 @@
         }
       });
 
-      // 🎯 DOM Elements Cache (fail-safe)
-      const $ = (id) => {
-        const el = document.getElementById(id);
-        if (!el) console.warn(`[ARCx] Missing DOM element: #${id}`);
-        return el;
-      };
+      // ═══════════════════════════════════════════
+      // CHATBOT FAQ DATABASE (30 domande)
+      // ═══════════════════════════════════════════
+      const faqDatabase = Object.freeze({
+        // Download & Installazione (8)
+        q1: {
+          question: "Come scarico un software?",
+          answer: "Seleziona il software dal menu a tendina in alto, poi clicca il pulsante 'Scarica Ora'. Il download partirà automaticamente.",
+          followups: ["q2", "q3", "q5"]
+        },
+        q2: {
+          question: "Il download non parte, cosa faccio?",
+          answer: "Verifica che il popup blocker del browser non stia bloccando il download. Prova anche a disabilitare temporaneamente l'antivirus o usa un browser diverso.",
+          followups: ["q1", "q4", "q30"]
+        },
+        q3: {
+          question: "Come verifico l'integrità del file scaricato?",
+          answer: "Ogni download ha un codice SHA256 visualizzato sotto il pulsante. Usa un tool come 'certutil' su Windows o 'shasum' su Mac/Linux per verificare che il checksum corrisponda.",
+          followups: ["q4", "q1", "q5"]
+        },
+        q4: {
+          question: "Il file risulta corrotto o danneggiato",
+          answer: "Elimina il file e scaricalo nuovamente. Se il problema persiste, verifica la tua connessione internet o prova da un altro dispositivo. Contatta l'assistenza se il problema continua.",
+          followups: ["q2", "q3", "q30"]
+        },
+        q5: {
+          question: "Dove trovo i requisiti di sistema?",
+          answer: "I requisiti sono elencati nella sezione 'Requisiti di Sistema' sotto la descrizione di ogni software. Per i modelli AI, c'è anche una sezione dedicata 'Requisiti AI'.",
+          followups: ["q6", "q7", "q1"]
+        },
+        q6: {
+          question: "Posso installare su Windows 7?",
+          answer: "La maggior parte dei software moderni richiede almeno Windows 10. Controlla i requisiti specifici del pacchetto che ti interessa. Le versioni legacy potrebbero supportare OS più vecchi.",
+          followups: ["q5", "q7", "q8"]
+        },
+        q7: {
+          question: "Il software è compatibile con Linux?",
+          answer: "Attualmente la maggior parte dei pacchetti è ottimizzata per Windows. I dataset AI e alcuni tool possono funzionare su Linux. Controlla la sezione requisiti per dettagli specifici.",
+          followups: ["q5", "q6", "q20"]
+        },
+        q8: {
+          question: "Serve una connessione internet per l'installazione?",
+          answer: "L'installazione base è offline, ma alcune funzionalità potrebbero richiedere connessione per aggiornamenti o attivazione. I modelli AI richiedono connessione per scaricare dipendenze Python.",
+          followups: ["q5", "q9", "q20"]
+        },
 
-      const els = {
-        title: $("ui-title"),
-        id: $("ui-id"),
-        date: $("ui-date"),
-        desc: $("ui-desc"),
-        filename: $("ui-filename"),
-        os: $("ui-os"),
-        sha: $("ui-sha"),
-        alertBox: $("dynamic-alert"),
-        alertText: $("alert-text"),
-        alertBtn: $("alert-btn"),
-        badge: $("ui-badge"),
-        downloadLink: $("downloadLink"),
-        selector: $("versionSelector"),
-        aiReqPanel: $("ai-requirements-panel"),
-        aiReqContent: $("ai-req-content"),
-        aiInstPanel: $("ai-instructions-panel"),
-        aiInstContent: $("ai-instruct-content"),
-        particles: $("particles")
-      };
+        // Driver & Compatibilità (7)
+        q9: {
+          question: "Quale driver Intel Arc dovrei installare?",
+          answer: "Per GPU moderne, usa sempre l'ultima versione (33.0.102.5081). Per hardware datato, la versione legacy 33.0.102.2131 è ottimizzata per prestazioni stabili.",
+          followups: ["q10", "q11", "q1"]
+        },
+        q10: {
+          question: "Cosa significa 'Legacy'?",
+          answer: "Le versioni Legacy sono mantenute per compatibilità con hardware o software più vecchio. Non ricevono nuove funzionalità ma possono ricevere fix di sicurezza critici.",
+          followups: ["q9", "q11", "q12"]
+        },
+        q11: {
+          question: "Posso usare driver beta in produzione?",
+          answer: "Le versioni beta sono consigliate per testing e early adopters. Per ambienti di produzione, usa le release 'Stable' che sono state validate e testate approfonditamente.",
+          followups: ["q9", "q12", "q13"]
+        },
+        q12: {
+          question: "Come aggiorno da una versione legacy?",
+          answer: "Scarica l'ultima versione stabile dal menu. L'installer dovrebbe gestire automaticamente la rimozione della vecchia versione. Fai un backup dei tuoi setting prima di aggiornare.",
+          followups: ["q10", "q9", "q4"]
+        },
+        q13: {
+          question: "Il driver causa crash o instabilità",
+          answer: "Prova a fare un'installazione pulita: disinstalla completamente il driver attuale, riavvia, poi installa l'ultima versione stabile. Se il problema persiste, contatta l'assistenza con i log di sistema.",
+          followups: ["q12", "q14", "q30"]
+        },
+        q14: {
+          question: "Come faccio un'installazione pulita dei driver?",
+          answer: "Usa DDU (Display Driver Uninstaller) in Safe Mode per rimuovere completamente i driver esistenti, poi installa la nuova versione. Questo risolve la maggior parte dei problemi di compatibilità.",
+          followups: ["q13", "q12", "q4"]
+        },
+        q15: {
+          question: "Xe-1 vs Xe-2: quale scegliere?",
+          answer: "Xe-2.0 è la versione moderna con ottimizzazioni kernel e supporto esteso. Xe-1 è legacy e mantenuto solo per retrocompatibilità. Usa Xe-2.0 a meno che tu non abbia hardware molto vecchio.",
+          followups: ["q9", "q10", "q11"]
+        },
 
-      // 🎨 Badge Configuration Map
-      const BADGE_MAP = Object.freeze({
-        latest:  { cls: "badge-latest",  text: "LATEST" },
-        stable:  { cls: "badge-stable",  text: "STABLE" },
-        beta:    { cls: "badge-beta",    text: "BETA" },
-        legacy:  { cls: "badge-legacy",  text: "LEGACY" },
-        archived:{ cls: "badge-archived", text: "ARCHIVED" }
+        // AI & Modelli (6)
+        q16: {
+          question: "Quanta VRAM serve per i modelli AI?",
+          answer: "Il modello 3.8B FP16 richiede almeno 12 GB di VRAM. Per il dataset leggero, bastano 4 GB di RAM sistemica. Controlla la sezione 'Requisiti AI' per dettagli specifici.",
+          followups: ["q17", "q18", "q20"]
+        },
+        q17: {
+          question: "Posso usare il modello AI senza GPU?",
+          answer: "Tecnicamente sì, ma sarà estremamente lento. Il modello 3.8B è ottimizzato per GPU con supporto FP16. Per CPU-only, considera versioni quantizzate (INT8/INT4) non ancora disponibili.",
+          followups: ["q16", "q18", "q19"]
+        },
+        q18: {
+          question: "Come installo le dipendenze Python?",
+          answer: "Esegui: pip install torch transformers accelerate safetensors. Assicurati di avere Python 3.10+ e una versione di PyTorch compatibile con la tua GPU (CUDA o ROCm).",
+          followups: ["q19", "q20", "q16"]
+        },
+        q19: {
+          question: "Il modello va Out Of Memory (OOM)",
+          answer: "Riduci max_length, abilita load_in_8bit=True, o usa gradient checkpointing. Per il fine-tuning, usa LoRA/QLoRA che riduce il consumo VRAM del 60%.",
+          followups: ["q16", "q18", "q21"]
+        },
+        q20: {
+          question: "Il dataset AI è in formato compatibile con HuggingFace?",
+          answer: "Sì, il dataset è fornito in JSONL e Parquet, formati nativamente supportati da HuggingFace Datasets. Puoi caricarlo con: load_dataset('json', data_files='path/to/file.jsonl')",
+          followups: ["q18", "q21", "q16"]
+        },
+        q21: {
+          question: "Come faccio fine-tuning del modello?",
+          answer: "Usa LoRA con la libreria PEFT di HuggingFace. Prepara il dataset in formato instruction, configura i parametri LoRA (r=8, alpha=16), e lancia il training con Trainer.",
+          followups: ["q19", "q18", "q20"]
+        },
+
+        // XRMOT & Ottimizzazione (4)
+        q22: {
+          question: "Cos'è XRMOT?",
+          answer: "XRMOT (eXtreme Resource Manager Optimization Tool) è un tool per ottimizzare le risorse di sistema: priorità CPU, liberare VRAM, pulizia RAM-cache. Torna allo stato originale alla chiusura.",
+          followups: ["q23", "q24", "q25"]
+        },
+        q23: {
+          question: "XRMOT è sicuro da usare?",
+          answer: "Sì, XRMOT modifica solo setting temporanei e ripristina tutto alla chiusura. Tuttavia, chiudi sempre i programmi importanti prima di usarlo per evitare perdita di dati non salvati.",
+          followups: ["q22", "q24", "q13"]
+        },
+        q24: {
+          question: "XRMOT migliora le prestazioni nei giochi?",
+          answer: "Può aiutare liberando RAM e VRAM, ma i risultati variano. Per miglioramenti significativi, aggiorna anche i driver GPU e ottimizza le impostazioni di gioco.",
+          followups: ["q22", "q23", "q9"]
+        },
+        q25: {
+          question: "XRMOT funziona su Windows 11?",
+          answer: "Sì, XRMOT v4.2.1 è compatibile con Windows 10 e 11. Assicurati di eseguirlo come amministratore per avere accesso completo alle ottimizzazioni di sistema.",
+          followups: ["q22", "q23", "q6"]
+        },
+
+        // Problemi Comuni & Troubleshooting (5)
+        q26: {
+          question: "L'antivirus blocca il download",
+          answer: "Alcuni antivirus possono segnalare falsi positivi per software di ottimizzazione. Aggiungi il sito alla whitelist o disabilita temporaneamente l'antivirus durante il download. Verifica sempre lo SHA256.",
+          followups: ["q2", "q3", "q4"]
+        },
+        q27: {
+          question: "Il software non si avvia dopo l'installazione",
+          answer: "Verifica i requisiti di sistema, esegui come amministratore, e controlla i log di errore. Su Windows, prova la modalità compatibilità. Se il problema persiste, reinstalla o contatta l'assistenza.",
+          followups: ["q5", "q13", "q30"]
+        },
+        q28: {
+          question: "Come disinstallo completamente un software?",
+          answer: "Usa 'Aggiungi o rimuovi programmi' di Windows. Per i driver GPU, usa DDU in Safe Mode per una rimozione completa. Elimina anche le cartelle di configurazione in AppData se necessario.",
+          followups: ["q14", "q12", "q27"]
+        },
+        q29: {
+          question: "Dove trovo i log di errore?",
+          answer: "I log sono generalmente in: C:\\Users\\[Nome]\\AppData\\Local\\[NomeSoftware]\\logs. Per i driver, controlla il Visualizzatore Eventi di Windows sotto 'Registri di Windows > Applicazione'.",
+          followups: ["q27", "q13", "q30"]
+        },
+        q30: {
+          question: "Come contatto l'assistenza umana?",
+          answer: "Clicca il pulsante 'Contatta Assistenza' qui sotto o nel menu chat. Compila il form con la tua email e una descrizione del problema. Rispondiamo entro 24-48 ore lavorative.",
+          followups: ["q4", "q13", "q27"]
+        }
       });
 
+      // ═══════════════════════════════════════════
+      // DOM ELEMENTS
+      // ═══════════════════════════════════════════
+      const $ = (id) => document.getElementById(id);
+      
+      const els = {
+        heroTitle: $('hero-title'),
+        versionSelect: $('version-select'),
+        alertBanner: $('alert-banner'),
+        alertText: $('alert-text'),
+        alertAction: $('alert-action'),
+        badgeGroup: $('badge-group'),
+        descriptionContent: $('description-content'),
+        systemRequirements: $('system-requirements'),
+        aiRequirementsSection: $('ai-requirements-section'),
+        aiRequirements: $('ai-requirements'),
+        aiInstructionsSection: $('ai-instructions-section'),
+        aiInstructions: $('ai-instructions'),
+        downloadLink: $('download-link'),
+        fileName: $('file-name'),
+        shaChecksum: $('sha-checksum'),
+        chatFab: $('chat-fab'),
+        chatPanel: $('chat-panel'),
+        chatClose: $('chat-close'),
+        chatMessages: $('chat-messages'),
+        chatQuickActions: $('chat-quick-actions'),
+        chatInput: $('chat-input'),
+        chatSend: $('chat-send'),
+        chatContactForm: $('chat-contact-form'),
+        contactEmail: $('contact-email'),
+        contactMessage: $('contact-message'),
+        contactSubmit: $('contact-submit')
+      };
+
+      // ═══════════════════════════════════════════
+      // STATE
+      // ═══════════════════════════════════════════
       let currentTargetLink = "";
+      let chatNotUsefulCount = 0;
+      const MAX_NOT_USEFUL = 3;
 
-      // ✨ Particles Generator (NASA Blu themed)
-      function initParticles() {
-        const container = els.particles;
-        if (!container) return;
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        if (prefersReducedMotion) return;
+      // ═══════════════════════════════════════════
+      // BADGE MAP
+      // ═══════════════════════════════════════════
+      const BADGE_MAP = Object.freeze({
+        latest: { cls: "badge-latest", text: "LATEST" },
+        stable: { cls: "badge-stable", text: "STABLE" },
+        beta: { cls: "badge-beta", text: "BETA" },
+        legacy: { cls: "badge-legacy", text: "LEGACY" },
+        archived: { cls: "badge-archived", text: "ARCHIVED" }
+      });
 
-        // Palette NASA Blu
-        const colors = ['#00E5FF', '#1E90FF', '#4FC3F7', '#00BFFF', '#7DF9FF', '#00FFFF', '#4169E1', '#FFFFFF'];
-        const particleCount = 28; // ottimizzato per performance
-
-        const fragment = document.createDocumentFragment();
-        for (let i = 0; i < particleCount; i++) {
-          const particle = document.createElement('div');
-          particle.className = 'particle';
-          const left = Math.random() * 100;
-          const delay = Math.random() * 20;
-          const duration = 14 + Math.random() * 24;
-          const size = 1.5 + Math.random() * 3;
-          const drift = (Math.random() - 0.5) * 120;
-          const color = colors[Math.floor(Math.random() * colors.length)];
-
-          particle.style.left = `${left}%`;
-          particle.style.animationDelay = `${delay}s`;
-          particle.style.animationDuration = `${duration}s`;
-          particle.style.width = `${size}px`;
-          particle.style.height = `${size}px`;
-          particle.style.background = color;
-          particle.style.boxShadow = `0 0 6px ${color}, 0 0 12px ${color}60`;
-          particle.style.setProperty('--drift', `${drift}px`);
-          fragment.appendChild(particle);
-        }
-        container.appendChild(fragment);
-      }
-
-      // 🔄 Version Change Handler
+      // ═══════════════════════════════════════════
+      // VERSION CHANGE HANDLER
+      // ═══════════════════════════════════════════
       function changeVersion() {
-        const key = els.selector.value;
+        const key = els.versionSelect.value;
         const data = database[key];
 
         if (!data) {
@@ -1089,14 +1380,11 @@
           return;
         }
 
-        els.title.textContent = data.title;
-        els.id.textContent = data.id;
-        els.date.textContent = data.date;
-        els.filename.textContent = data.file;
-        els.sha.textContent = data.sha;
-
-        els.desc.innerHTML = data.desc;
-        els.os.innerHTML = data.os;
+        els.heroTitle.textContent = data.title;
+        els.descriptionContent.innerHTML = data.desc;
+        els.systemRequirements.innerHTML = data.os;
+        els.fileName.textContent = data.file;
+        els.shaChecksum.textContent = data.sha;
 
         try {
           els.downloadLink.href = new URL(data.url, window.location.origin).toString();
@@ -1105,66 +1393,242 @@
           console.error("[ARCx] Invalid URL:", data.url);
         }
 
-        els.title.className = 'neon-text hud-frame';
-
-        els.alertBox.className = "alert-box hud-frame";
-        if (data.alertType === "legacy") {
-          els.alertBox.classList.add("show", "alert-legacy");
+        // Alert banner
+        els.alertBanner.classList.remove('visible', 'warning', 'info');
+        if (data.alertType === "legacy" || data.alertType === "archived") {
+          els.alertBanner.classList.add('visible', data.alertType === "legacy" ? "warning" : "info");
           els.alertText.innerHTML = data.alert;
-          els.alertBtn.textContent = data.alertAction;
-          currentTargetLink = data.targetLink;
-        } else if (data.alertType === "archived") {
-          els.alertBox.classList.add("show", "alert-archived");
-          els.alertText.innerHTML = data.alert;
-          els.alertBtn.textContent = data.alertAction;
+          els.alertAction.textContent = data.alertAction;
           currentTargetLink = data.targetLink;
         } else {
-          els.alertBox.classList.remove("show");
           currentTargetLink = "";
         }
 
+        // Badges
         const b = BADGE_MAP[data.status] || BADGE_MAP.latest;
         let badgeHTML = `<span class="badge ${b.cls}">${b.text}</span>`;
-
+        
         if (data.isAI) {
-          els.aiReqPanel.style.display = "block";
-          els.aiInstPanel.style.display = "block";
-          els.aiReqContent.innerHTML = data.aiReq || "N/D";
-          els.aiInstContent.innerHTML = data.aiInstructions || "N/D";
+          els.aiRequirementsSection.style.display = "block";
+          els.aiInstructionsSection.style.display = "block";
+          els.aiRequirements.innerHTML = data.aiReq || "N/D";
+          els.aiInstructions.innerHTML = data.aiInstructions || "N/D";
           badgeHTML += `<span class="badge badge-ai">AI MODULE</span>`;
         } else {
-          els.aiReqPanel.style.display = "none";
-          els.aiInstPanel.style.display = "none";
+          els.aiRequirementsSection.style.display = "none";
+          els.aiInstructionsSection.style.display = "none";
         }
 
-        els.badge.innerHTML = badgeHTML;
-
-        els.desc.style.animation = "none";
-        void els.desc.offsetHeight;
-        els.desc.style.animation = "fadeInUp 0.5s cubic-bezier(0.22, 1, 0.36, 1)";
+        els.badgeGroup.innerHTML = badgeHTML;
       }
 
-      // 🖱️ Alert Button Handler
+      // ═══════════════════════════════════════════
+      // ALERT ACTION HANDLER
+      // ═══════════════════════════════════════════
       function handleAlertClick() {
         if (currentTargetLink && database[currentTargetLink]) {
-          els.selector.value = currentTargetLink;
+          els.versionSelect.value = currentTargetLink;
           changeVersion();
-          if (window.innerWidth < 768) {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          }
+          window.scrollTo({ top: 0, behavior: "smooth" });
         }
       }
 
-      // 🔌 Event Bindings (CSP-safe)
-      function bindEvents() {
-        if (els.selector) els.selector.addEventListener('change', changeVersion);
-        if (els.alertBtn) els.alertBtn.addEventListener('click', handleAlertClick);
+      // ═══════════════════════════════════════════
+      // CHATBOT LOGIC
+      // ═══════════════════════════════════════════
+      function openChat() {
+        els.chatPanel.classList.add('open');
+        els.chatPanel.setAttribute('aria-hidden', 'false');
+        els.chatFab.style.display = 'none';
+        
+        if (els.chatMessages.children.length === 0) {
+          addBotMessage("Ciao! 👋 Sono l'assistente virtuale ARCx. Come posso aiutarti oggi?", ["q1", "q5", "q9"]);
+        }
       }
 
-      // 🚀 Init
+      function closeChat() {
+        els.chatPanel.classList.remove('open');
+        els.chatPanel.setAttribute('aria-hidden', 'true');
+        els.chatFab.style.display = 'flex';
+      }
+
+      function addBotMessage(text, followupIds = []) {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = 'chat-message bot';
+        
+        const avatar = document.createElement('div');
+        avatar.className = 'chat-avatar';
+        avatar.textContent = '🤖';
+        
+        const bubble = document.createElement('div');
+        bubble.className = 'chat-bubble';
+        bubble.textContent = text;
+        
+        if (followupIds.length > 0) {
+          const followups = document.createElement('div');
+          followups.className = 'chat-followups';
+          
+          followupIds.forEach(id => {
+            const faq = faqDatabase[id];
+            if (faq) {
+              const btn = document.createElement('button');
+              btn.className = 'chat-followup-btn';
+              btn.textContent = faq.question;
+              btn.addEventListener('click', () => handleFAQClick(id));
+              followups.appendChild(btn);
+            }
+          });
+          
+          bubble.appendChild(followups);
+        }
+        
+        // Add "Not useful" button
+        const notUsefulBtn = document.createElement('button');
+        notUsefulBtn.className = 'chat-followup-btn';
+        notUsefulBtn.style.background = 'rgba(239, 68, 68, 0.15)';
+        notUsefulBtn.style.borderColor = 'var(--q-danger)';
+        notUsefulBtn.style.color = 'var(--q-danger)';
+        notUsefulBtn.textContent = '❌ Non utile';
+        notUsefulBtn.addEventListener('click', handleNotUseful);
+        bubble.appendChild(notUsefulBtn);
+        
+        msgDiv.appendChild(avatar);
+        msgDiv.appendChild(bubble);
+        els.chatMessages.appendChild(msgDiv);
+        els.chatMessages.scrollTop = els.chatMessages.scrollHeight;
+      }
+
+      function addUserMessage(text) {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = 'chat-message user';
+        
+        const avatar = document.createElement('div');
+        avatar.className = 'chat-avatar';
+        avatar.textContent = '👤';
+        
+        const bubble = document.createElement('div');
+        bubble.className = 'chat-bubble';
+        bubble.textContent = text;
+        
+        msgDiv.appendChild(avatar);
+        msgDiv.appendChild(bubble);
+        els.chatMessages.appendChild(msgDiv);
+        els.chatMessages.scrollTop = els.chatMessages.scrollHeight;
+      }
+
+      function handleFAQClick(faqId) {
+        const faq = faqDatabase[faqId];
+        if (!faq) return;
+        
+        addUserMessage(faq.question);
+        
+        setTimeout(() => {
+          addBotMessage(faq.answer, faq.followups);
+        }, 300);
+      }
+
+      function handleNotUseful() {
+        chatNotUsefulCount++;
+        
+        if (chatNotUsefulCount >= MAX_NOT_USEFUL) {
+          addBotMessage("Mi dispiace che le risposte non siano state utili. Ti consiglio di contattare direttamente la nostra assistenza umana per un supporto personalizzato.", []);
+          els.chatContactForm.classList.add('visible');
+        } else {
+          addBotMessage("Capisco. Prova a riformulare la domanda o scegli un'altra opzione qui sotto.", ["q1", "q5", "q30"]);
+        }
+      }
+
+      function handleUserInput() {
+        const text = els.chatInput.value.trim();
+        if (!text) return;
+        
+        addUserMessage(text);
+        els.chatInput.value = '';
+        
+        setTimeout(() => {
+          // Simple keyword matching
+          const lowerText = text.toLowerCase();
+          let matchedFaq = null;
+          
+          if (lowerText.includes('scaric') || lowerText.includes('download')) {
+            matchedFaq = 'q1';
+          } else if (lowerText.includes('requisit') || lowerText.includes('compatib')) {
+            matchedFaq = 'q5';
+          } else if (lowerText.includes('driver') || lowerText.includes('intel') || lowerText.includes('arc')) {
+            matchedFaq = 'q9';
+          } else if (lowerText.includes('ai') || lowerText.includes('modello') || lowerText.includes('vram')) {
+            matchedFaq = 'q16';
+          } else if (lowerText.includes('xrmot') || lowerText.includes('ottimiz')) {
+            matchedFaq = 'q22';
+          } else if (lowerText.includes('errore') || lowerText.includes('problema') || lowerText.includes('crash')) {
+            matchedFaq = 'q13';
+          } else if (lowerText.includes('assist') || lowerText.includes('contatt') || lowerText.includes('aiuto')) {
+            matchedFaq = 'q30';
+          }
+          
+          if (matchedFaq) {
+            handleFAQClick(matchedFaq);
+          } else {
+            addBotMessage("Non sono sicuro di aver capito. Puoi provare a scegliere una delle opzioni qui sotto o contattare l'assistenza umana.", ["q1", "q5", "q30"]);
+          }
+        }, 500);
+      }
+
+      function handleContactSubmit() {
+        const email = els.contactEmail.value.trim();
+        const message = els.contactMessage.value.trim();
+        
+        if (!email || !message) {
+          addBotMessage("Per favore compila tutti i campi prima di inviare.", []);
+          return;
+        }
+        
+        // In production, this would send to a backend
+        addBotMessage("✅ Grazie! La tua richiesta è stata inviata. Ti risponderemo all'indirizzo " + email + " entro 24-48 ore lavorative.", []);
+        
+        els.contactEmail.value = '';
+        els.contactMessage.value = '';
+        els.chatContactForm.classList.remove('visible');
+      }
+
+      function populateQuickActions() {
+        const quickFAQs = ['q1', 'q5', 'q9', 'q16', 'q22', 'q30'];
+        
+        quickFAQs.forEach(id => {
+          const faq = faqDatabase[id];
+          if (faq) {
+            const btn = document.createElement('button');
+            btn.className = 'quick-action-btn';
+            btn.textContent = faq.question;
+            btn.addEventListener('click', () => handleFAQClick(id));
+            els.chatQuickActions.appendChild(btn);
+          }
+        });
+      }
+
+      // ═══════════════════════════════════════════
+      // EVENT BINDINGS
+      // ═══════════════════════════════════════════
+      function bindEvents() {
+        if (els.versionSelect) els.versionSelect.addEventListener('change', changeVersion);
+        if (els.alertAction) els.alertAction.addEventListener('click', handleAlertClick);
+        if (els.chatFab) els.chatFab.addEventListener('click', openChat);
+        if (els.chatClose) els.chatClose.addEventListener('click', closeChat);
+        if (els.chatSend) els.chatSend.addEventListener('click', handleUserInput);
+        if (els.chatInput) {
+          els.chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleUserInput();
+          });
+        }
+        if (els.contactSubmit) els.contactSubmit.addEventListener('click', handleContactSubmit);
+      }
+
+      // ═══════════════════════════════════════════
+      // INIT
+      // ═══════════════════════════════════════════
       function init() {
-        initParticles();
         bindEvents();
+        populateQuickActions();
         changeVersion();
       }
 
