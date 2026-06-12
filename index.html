@@ -14,10 +14,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <style>
 /* ═══════════════════════════════════════════════════
-FEBLE-5 MYTHOX AI EDITION - LIQUID GLASS DESIGN SYSTEM v5.0
-Windows Vista Aero Inspired with Enhanced Background
+FEBLE-5 MYTHOX AI EDITION - ENHANCED LIQUID GLASS v6.0
+Advanced Glassmorphism with Professional Icons
 ═══════════════════════════════════════════════════ */
 :root {
   /* Liquid Glass Aero Effects */
@@ -28,6 +29,7 @@ Windows Vista Aero Inspired with Enhanced Background
   --glass-border-active: rgba(147, 197, 253, 0.7);
   --glass-glow: 0 0 20px rgba(96, 165, 250, 0.3);
   --glass-glow-intense: 0 0 40px rgba(96, 165, 250, 0.5), 0 0 80px rgba(96, 165, 250, 0.3);
+  --glass-refraction: inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
   
   /* FEBLE-5 Brand Colors */
   --feble-primary: #60a5fa;
@@ -35,6 +37,7 @@ Windows Vista Aero Inspired with Enhanced Background
   --feble-accent: #34d399;
   --feble-gradient: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #34d399 100%);
   --feble-gradient-hover: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #10b981 100%);
+  --feble-gradient-radial: radial-gradient(circle, #60a5fa 0%, #a78bfa 50%, #34d399 100%);
   
   /* Background */
   --bg-base: #0a0a0f;
@@ -69,6 +72,7 @@ Windows Vista Aero Inspired with Enhanced Background
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.3);
   --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.4);
   --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  --shadow-glow: 0 0 30px rgba(96, 165, 250, 0.4);
   
   /* Radii */
   --radius-sm: 8px;
@@ -94,9 +98,11 @@ Windows Vista Aero Inspired with Enhanced Background
   /* Motion */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-liquid: cubic-bezier(0.4, 0, 0.2, 1);
   --duration-fast: 150ms;
   --duration-normal: 250ms;
   --duration-slow: 400ms;
+  --duration-slower: 600ms;
   
   /* Z-index */
   --z-nav: 100;
@@ -228,7 +234,51 @@ body {
 }
 
 /* ═══════════════════════════════════════════════════
-NAVIGATION - Liquid Glass Aero
+ICON SYSTEM - Professional SVG Icons
+═══════════════════════════════════════════════════ */
+.icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--duration-normal);
+}
+
+.icon-wrapper svg {
+  transition: all var(--duration-normal);
+}
+
+.icon-gpu {
+  color: var(--feble-primary);
+}
+
+.icon-ai {
+  color: var(--feble-secondary);
+}
+
+.icon-tool {
+  color: var(--feble-accent);
+}
+
+.icon-sdk {
+  color: var(--feble-primary);
+}
+
+/* Icon animations */
+.icon-wrapper:hover svg {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.icon-pulse {
+  animation: iconPulse 2s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* ═══════════════════════════════════════════════════
+NAVIGATION - Enhanced Liquid Glass
 ═══════════════════════════════════════════════════ */
 .nav {
   position: sticky;
@@ -239,11 +289,12 @@ NAVIGATION - Liquid Glass Aero
   -webkit-backdrop-filter: blur(24px) saturate(180%);
   border-bottom: 1px solid var(--glass-border);
   transition: all var(--duration-normal);
+  box-shadow: var(--glass-refraction);
 }
 
 .nav.scrolled {
   background: var(--glass-bg-heavy);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-md), var(--glass-refraction);
 }
 
 .nav-inner {
@@ -260,6 +311,7 @@ NAVIGATION - Liquid Glass Aero
   gap: var(--space-sm);
   text-decoration: none;
   color: var(--text-primary);
+  position: relative;
 }
 
 .nav-logo {
@@ -276,7 +328,7 @@ NAVIGATION - Liquid Glass Aero
   box-shadow: var(--glass-glow);
   position: relative;
   overflow: hidden;
-  transition: transform var(--duration-normal) var(--ease-spring);
+  transition: all var(--duration-normal) var(--ease-spring);
 }
 
 .nav-logo::before {
@@ -294,6 +346,7 @@ NAVIGATION - Liquid Glass Aero
 
 .nav-logo:hover {
   transform: scale(1.05) rotate(-3deg);
+  box-shadow: var(--glass-glow-intense);
 }
 
 .nav-brand-text {
@@ -310,6 +363,12 @@ NAVIGATION - Liquid Glass Aero
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  animation: gradientShift 8s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 .nav-brand-tag {
@@ -336,11 +395,27 @@ NAVIGATION - Liquid Glass Aero
   text-decoration: none;
   border-radius: var(--radius-sm);
   transition: all var(--duration-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--feble-gradient);
+  opacity: 0;
+  transition: opacity var(--duration-fast);
+  z-index: -1;
 }
 
 .nav-link:hover {
   color: var(--text-primary);
   background: var(--glass-bg);
+}
+
+.nav-link:hover::before {
+  opacity: 0.1;
 }
 
 .nav-link.active {
@@ -366,12 +441,15 @@ NAVIGATION - Liquid Glass Aero
   cursor: pointer;
   color: var(--text-secondary);
   transition: all var(--duration-fast);
+  box-shadow: var(--glass-refraction);
 }
 
 .nav-btn:hover {
   color: var(--text-primary);
   border-color: var(--glass-border-hover);
   background: var(--glass-bg-heavy);
+  transform: translateY(-2px);
+  box-shadow: var(--glass-glow);
 }
 
 .nav-btn svg {
@@ -405,6 +483,7 @@ NAVIGATION - Liquid Glass Aero
   transition: transform var(--duration-slow) var(--ease-out-expo);
   overflow-y: auto;
   overscroll-behavior: contain;
+  backdrop-filter: blur(20px);
 }
 
 .mobile-drawer.open {
@@ -438,14 +517,18 @@ NAVIGATION - Liquid Glass Aero
   display: flex;
   align-items: center;
   gap: var(--space-sm);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
 }
 
 .mobile-drawer-link:hover {
-  background: var(--bg-surface);
+  background: var(--glass-bg-heavy);
   transform: translateX(8px);
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--glass-glow);
 }
 
-.mobile-drawer-link .icon {
+.mobile-drawer-link .icon-wrapper {
   width: 32px;
   height: 32px;
   border-radius: var(--radius-sm);
@@ -453,11 +536,10 @@ NAVIGATION - Liquid Glass Aero
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
 }
 
 /* ═══════════════════════════════════════════════════
-HERO SECTION - Liquid Glass
+HERO SECTION - Enhanced Liquid Glass
 ═══════════════════════════════════════════════════ */
 .hero {
   position: relative;
@@ -480,6 +562,7 @@ HERO SECTION - Liquid Glass
   margin-bottom: var(--space-xl);
   backdrop-filter: blur(12px);
   animation: fadeInUp var(--duration-slow) var(--ease-out-expo);
+  box-shadow: var(--glass-refraction);
 }
 
 .hero-badge-dot {
@@ -515,11 +598,6 @@ HERO SECTION - Liquid Glass
   animation: gradientShift 8s ease-in-out infinite;
 }
 
-@keyframes gradientShift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
 .hero-subtitle {
   font-size: clamp(16px, 2.5vw, 22px);
   color: var(--text-secondary);
@@ -541,7 +619,7 @@ HERO SECTION - Liquid Glass
 }
 
 /* ═══════════════════════════════════════════════════
-SEARCH & FILTER
+SEARCH & FILTER - Enhanced
 ═══════════════════════════════════════════════════ */
 .search-section {
   padding: var(--space-2xl) 0;
@@ -568,7 +646,8 @@ SEARCH & FILTER
 
 .search-bar:focus-within {
   border-color: var(--feble-primary);
-  box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.15), var(--shadow-md);
+  box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.15), var(--shadow-md), var(--glass-glow);
+  transform: translateY(-2px);
 }
 
 .search-bar svg {
@@ -610,6 +689,7 @@ SEARCH & FILTER
   transition: all var(--duration-normal) var(--ease-out-expo);
   max-height: 400px;
   overflow-y: auto;
+  backdrop-filter: blur(20px);
 }
 
 .search-suggestions.visible {
@@ -639,14 +719,10 @@ SEARCH & FILTER
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
   flex-shrink: 0;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
 }
-
-.suggestion-icon.gpu { background: linear-gradient(135deg, rgba(96, 165, 250, 0.2), rgba(167, 139, 250, 0.2)); }
-.suggestion-icon.ai { background: linear-gradient(135deg, rgba(52, 211, 153, 0.2), rgba(96, 165, 250, 0.2)); }
-.suggestion-icon.tool { background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(239, 68, 68, 0.2)); }
-.suggestion-icon.sdk { background: linear-gradient(135deg, rgba(96, 165, 250, 0.2), rgba(52, 211, 153, 0.2)); }
 
 .suggestion-content {
   flex: 1;
@@ -689,8 +765,8 @@ SEARCH & FILTER
 
 .chip {
   padding: var(--space-xs) var(--space-md);
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-full);
   font-size: 13px;
   font-weight: 500;
@@ -701,19 +777,21 @@ SEARCH & FILTER
   display: inline-flex;
   align-items: center;
   gap: var(--space-xs);
+  backdrop-filter: blur(10px);
 }
 
 .chip:hover {
   border-color: var(--glass-border-hover);
   color: var(--text-primary);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: var(--glass-glow);
 }
 
 .chip.active {
   background: var(--feble-gradient);
   border-color: transparent;
   color: var(--text-on-primary);
-  box-shadow: var(--glass-glow);
+  box-shadow: var(--glass-glow-intense);
 }
 
 .chip-count {
@@ -730,7 +808,7 @@ SEARCH & FILTER
 }
 
 /* ═══════════════════════════════════════════════════
-PACKAGES GRID - Liquid Glass Cards
+PACKAGES GRID - Enhanced Liquid Glass Cards
 ═══════════════════════════════════════════════════ */
 .packages-section {
   padding: var(--space-xl) 0 var(--space-3xl);
@@ -768,13 +846,14 @@ PACKAGES GRID - Liquid Glass Cards
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-xl);
   padding: var(--space-lg);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px) saturate(180%);
   transition: all var(--duration-normal) var(--ease-out-expo);
   cursor: pointer;
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  box-shadow: var(--shadow-sm), var(--glass-refraction);
 }
 
 .package-card::before {
@@ -789,19 +868,33 @@ PACKAGES GRID - Liquid Glass Cards
   transition: opacity var(--duration-normal);
 }
 
+.package-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(96, 165, 250, 0.1), transparent 70%);
+  opacity: 0;
+  transition: opacity var(--duration-normal);
+  pointer-events: none;
+}
+
 .package-card:hover {
   border-color: var(--glass-border-hover);
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-lg), var(--glass-glow);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-lg), var(--glass-glow-intense);
 }
 
 .package-card:hover::before {
   opacity: 1;
 }
 
+.package-card:hover::after {
+  opacity: 1;
+}
+
 .package-card.selected {
   border-color: var(--feble-primary);
-  box-shadow: var(--glass-glow);
+  box-shadow: var(--glass-glow-intense);
 }
 
 .package-header {
@@ -820,10 +913,11 @@ PACKAGES GRID - Liquid Glass Cards
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  background: linear-gradient(135deg, rgba(96, 165, 250, 0.2), rgba(167, 139, 250, 0.2));
+  background: var(--glass-bg-heavy);
   border: 1px solid var(--glass-border);
   position: relative;
   overflow: hidden;
+  box-shadow: var(--glass-refraction);
 }
 
 .package-icon::after {
@@ -836,9 +930,13 @@ PACKAGES GRID - Liquid Glass Cards
 .package-icon svg {
   width: 28px;
   height: 28px;
-  color: var(--feble-primary);
   position: relative;
   z-index: 1;
+  transition: all var(--duration-normal);
+}
+
+.package-card:hover .package-icon svg {
+  transform: scale(1.15) rotate(5deg);
 }
 
 .package-badges {
@@ -859,6 +957,7 @@ PACKAGES GRID - Liquid Glass Cards
   text-transform: uppercase;
   letter-spacing: 0.5px;
   border: 1px solid;
+  backdrop-filter: blur(8px);
 }
 
 .badge-latest {
@@ -969,7 +1068,13 @@ PACKAGES GRID - Liquid Glass Cards
   align-items: center;
   justify-content: center;
   margin: 0 auto var(--space-lg);
-  font-size: 40px;
+  border: 1px solid var(--glass-border);
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
 .empty-title {
@@ -987,7 +1092,7 @@ PACKAGES GRID - Liquid Glass Cards
 }
 
 /* ═══════════════════════════════════════════════════
-BUTTONS - Enhanced
+BUTTONS - Enhanced with Liquid Effects
 ═══════════════════════════════════════════════════ */
 .btn {
   display: inline-flex;
@@ -1003,6 +1108,21 @@ BUTTONS - Enhanced
   transition: all var(--duration-normal);
   white-space: nowrap;
   font-family: var(--font-sans);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+  opacity: 0;
+  transition: opacity var(--duration-fast);
+}
+
+.btn:hover::before {
+  opacity: 1;
 }
 
 .btn:active {
@@ -1017,18 +1137,20 @@ BUTTONS - Enhanced
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(96, 165, 250, 0.4);
+  box-shadow: 0 8px 24px rgba(96, 165, 250, 0.4), var(--glass-glow);
 }
 
 .btn-secondary {
   background: var(--glass-bg);
   color: var(--text-primary);
   border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
 }
 
 .btn-secondary:hover {
   background: var(--glass-bg-heavy);
   border-color: var(--glass-border-hover);
+  box-shadow: var(--glass-glow);
 }
 
 .btn-ghost {
@@ -1069,7 +1191,7 @@ DETAIL PANEL - Enhanced
   position: fixed;
   inset: 0;
   background: var(--bg-overlay);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(12px);
   z-index: var(--z-modal);
   opacity: 0;
   pointer-events: none;
@@ -1097,6 +1219,7 @@ DETAIL PANEL - Enhanced
   display: flex;
   flex-direction: column;
   overscroll-behavior: contain;
+  backdrop-filter: blur(20px);
 }
 
 .detail-panel.open {
@@ -1114,6 +1237,7 @@ DETAIL PANEL - Enhanced
   top: 0;
   background: var(--bg-elevated);
   z-index: 2;
+  backdrop-filter: blur(20px);
 }
 
 .detail-close {
@@ -1133,6 +1257,8 @@ DETAIL PANEL - Enhanced
 .detail-close:hover {
   color: var(--text-primary);
   border-color: var(--glass-border-hover);
+  background: var(--bg-surface-hover);
+  transform: rotate(90deg);
 }
 
 .detail-body {
@@ -1228,6 +1354,7 @@ DETAIL PANEL - Enhanced
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
   padding: var(--space-lg);
+  backdrop-filter: blur(12px);
 }
 
 .download-btn-main {
@@ -1248,11 +1375,26 @@ DETAIL PANEL - Enhanced
   box-shadow: 0 8px 24px rgba(96, 165, 250, 0.35);
   text-decoration: none;
   font-family: var(--font-sans);
+  position: relative;
+  overflow: hidden;
+}
+
+.download-btn-main::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+  opacity: 0;
+  transition: opacity var(--duration-fast);
+}
+
+.download-btn-main:hover::before {
+  opacity: 1;
 }
 
 .download-btn-main:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(96, 165, 250, 0.5);
+  box-shadow: 0 12px 32px rgba(96, 165, 250, 0.5), var(--glass-glow-intense);
 }
 
 .download-btn-main svg {
@@ -1308,6 +1450,8 @@ DETAIL PANEL - Enhanced
 .copy-btn:hover {
   color: var(--feble-primary);
   border-color: var(--glass-border-hover);
+  background: var(--bg-surface-hover);
+  transform: scale(1.1);
 }
 
 .copy-btn.copied {
@@ -1432,7 +1576,7 @@ DETAIL PANEL - Enhanced
 }
 
 /* ═══════════════════════════════════════════════════
-CHATBOT - Enhanced
+CHATBOT - Enhanced with Professional Icons
 ═══════════════════════════════════════════════════ */
 .chat-fab {
   position: fixed;
@@ -1455,7 +1599,7 @@ CHATBOT - Enhanced
 
 .chat-fab:hover {
   transform: scale(1.1) rotate(5deg);
-  box-shadow: var(--glass-glow), var(--shadow-xl);
+  box-shadow: var(--glass-glow-intense), var(--shadow-xl);
 }
 
 .chat-fab svg {
@@ -1478,6 +1622,7 @@ CHATBOT - Enhanced
   justify-content: center;
   border: 2px solid var(--bg-base);
   color: white;
+  animation: pulse 2s ease-in-out infinite;
 }
 
 .chat-panel {
@@ -1492,7 +1637,7 @@ CHATBOT - Enhanced
   background: var(--bg-elevated);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-xl);
+  box-shadow: var(--shadow-xl), var(--glass-glow);
   display: flex;
   flex-direction: column;
   z-index: calc(var(--z-overlay) + 1);
@@ -1501,6 +1646,7 @@ CHATBOT - Enhanced
   pointer-events: none;
   transition: all var(--duration-slow) var(--ease-spring);
   overflow: hidden;
+  backdrop-filter: blur(20px);
 }
 
 .chat-panel.open {
@@ -1551,8 +1697,8 @@ CHATBOT - Enhanced
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
   color: var(--text-on-primary);
+  box-shadow: var(--glass-glow);
 }
 
 .chat-header-info {
@@ -1600,6 +1746,8 @@ CHATBOT - Enhanced
 .chat-close:hover {
   color: var(--text-primary);
   border-color: var(--glass-border-hover);
+  background: var(--bg-surface-hover);
+  transform: rotate(90deg);
 }
 
 .chat-messages {
@@ -1648,7 +1796,6 @@ CHATBOT - Enhanced
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  font-size: 14px;
 }
 
 .chat-message.bot .chat-msg-avatar {
@@ -1666,6 +1813,7 @@ CHATBOT - Enhanced
   border-radius: var(--radius-md);
   font-size: 13px;
   line-height: 1.5;
+  backdrop-filter: blur(10px);
 }
 
 .chat-message.bot .chat-bubble {
@@ -1732,6 +1880,8 @@ CHATBOT - Enhanced
   background: var(--feble-primary);
   border-color: var(--feble-primary);
   color: var(--text-on-primary);
+  transform: translateY(-1px);
+  box-shadow: var(--glass-glow);
 }
 
 .chat-not-useful {
@@ -1749,6 +1899,7 @@ CHATBOT - Enhanced
 
 .chat-not-useful:hover {
   background: rgba(239, 68, 68, 0.1);
+  transform: translateY(-1px);
 }
 
 .chat-quick-actions {
@@ -1769,12 +1920,17 @@ CHATBOT - Enhanced
   font-weight: 500;
   cursor: pointer;
   transition: all var(--duration-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .quick-action-btn:hover {
   background: var(--bg-surface-hover);
   color: var(--text-primary);
   border-color: var(--glass-border-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--glass-glow);
 }
 
 .chat-footer {
@@ -1799,6 +1955,7 @@ CHATBOT - Enhanced
 
 .chat-input:focus {
   border-color: var(--feble-primary);
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
 }
 
 .chat-input::placeholder {
@@ -1817,10 +1974,12 @@ CHATBOT - Enhanced
   cursor: pointer;
   color: var(--text-on-primary);
   transition: all var(--duration-fast);
+  box-shadow: var(--glass-glow);
 }
 
 .chat-send:hover {
-  transform: scale(1.05);
+  transform: scale(1.05) rotate(5deg);
+  box-shadow: var(--glass-glow-intense);
 }
 
 .chat-send svg {
@@ -1911,7 +2070,7 @@ TOAST NOTIFICATIONS
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-lg), var(--glass-glow);
   pointer-events: all;
   animation: toastIn var(--duration-slow) var(--ease-out-expo);
   backdrop-filter: blur(16px);
@@ -1954,6 +2113,7 @@ FOOTER - FEBLE-5 Branding
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin-bottom: var(--space-xs);
+  animation: gradientShift 8s ease-in-out infinite;
 }
 
 .footer-copy {
@@ -1974,10 +2134,16 @@ FOOTER - FEBLE-5 Branding
 <nav class="nav" id="main-nav">
   <div class="container nav-inner">
     <a href="#" class="nav-brand" aria-label="FEBLE-5 MythOX">
-      <div class="nav-logo">F5</div>
+      <div class="nav-logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+          <path d="M2 17l10 5 10-5"/>
+          <path d="M2 12l10 5 10-5"/>
+        </svg>
+      </div>
       <div class="nav-brand-text">
         <span class="nav-brand-name">FEBLE-5 MythOX</span>
-        <span class="nav-brand-tag">AI EDITION v5.0</span>
+        <span class="nav-brand-tag">AI EDITION v6.0</span>
       </div>
     </a>
     <ul class="nav-links">
@@ -2000,14 +2166,17 @@ FOOTER - FEBLE-5 Branding
   <div class="mobile-drawer-header">
     <div class="nav-brand-text">
       <span class="nav-brand-name">FEBLE-5 MythOX</span>
-      <span class="nav-brand-tag">AI EDITION v5.0</span>
+      <span class="nav-brand-tag">AI EDITION v6.0</span>
     </div>
     <button class="nav-btn" id="mobile-drawer-close" aria-label="Chiudi menu">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
   </div>
   <ul class="mobile-drawer-links">
-    <li><a href="#packages" class="mobile-drawer-link"><span class="icon">📦</span>Pacchetti</a></li>
+    <li><a href="#packages" class="mobile-drawer-link">
+      <span class="icon-wrapper"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></span>
+      Pacchetti
+    </a></li>
   </ul>
 </div>
 
@@ -2024,8 +2193,8 @@ FOOTER - FEBLE-5 Branding
         Liquid Glass Portal
       </h1>
       <p class="hero-subtitle">
-        Piattaforma di distribuzione AI & GPU con design Windows Vista Aero.
-        Download verificati SHA256, UI responsive completa.
+        Piattaforma di distribuzione AI & GPU con design Windows Vista Aero avanzato.
+        Download verificati SHA256, UI responsive completa con icone professionali.
       </p>
     </div>
   </section>
@@ -2078,7 +2247,7 @@ FOOTER - FEBLE-5 Branding
 <footer class="footer">
   <div class="container">
     <div class="footer-brand">FEBLE-5 MythOX AI Edition</div>
-    <div class="footer-copy">Designed & Built by FEBLE-5 MythOX Agent • Liquid Glass v5.0.0 • © 2026</div>
+    <div class="footer-copy">Designed & Built by FEBLE-5 MythOX Agent • Liquid Glass v6.0.0 • © 2026</div>
   </div>
 </footer>
 
@@ -2087,7 +2256,7 @@ FOOTER - FEBLE-5 Branding
 <div class="detail-panel" id="detail-panel" role="dialog" aria-label="Dettagli pacchetto" aria-hidden="true">
   <div class="detail-header">
     <div style="display:flex;align-items:center;gap:var(--space-sm);">
-      <div class="package-icon" id="detail-icon" style="width:44px;height:44px;font-size:22px;"></div>
+      <div class="package-icon" id="detail-icon" style="width:44px;height:44px;"></div>
       <div id="detail-badges" style="display:flex;gap:4px;flex-wrap:wrap;"></div>
     </div>
     <button class="detail-close" id="detail-close" aria-label="Chiudi">
@@ -2167,7 +2336,16 @@ FOOTER - FEBLE-5 Branding
 <div class="chat-panel" id="chat-panel" role="dialog" aria-label="Assistenza Chat FEBLE-5" aria-hidden="true">
   <div class="chat-header">
     <div class="chat-header-left">
-      <div class="chat-avatar-header">F5</div>
+      <div class="chat-avatar-header">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 8V4H8"/>
+          <rect width="16" height="12" x="4" y="8" rx="2"/>
+          <path d="M2 14h2"/>
+          <path d="M20 14h2"/>
+          <path d="M15 13v2"/>
+          <path d="M9 13v2"/>
+        </svg>
+      </div>
       <div class="chat-header-info">
         <div class="chat-header-name">FEBLE-5 Assistant</div>
         <div class="chat-header-status">Online</div>
@@ -2205,6 +2383,11 @@ FOOTER - FEBLE-5 Branding
 (function() {
   'use strict';
 
+  // Initialize Lucide icons
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
+
   // ═══════════════════════════════════════════════════
   // ENHANCED PARTICLE BACKGROUND
   // ═══════════════════════════════════════════════════
@@ -2232,7 +2415,7 @@ FOOTER - FEBLE-5 Branding
           vy: (Math.random() - 0.5) * 0.3,
           radius: Math.random() * 2.5 + 0.8,
           opacity: Math.random() * 0.5 + 0.3,
-          hue: Math.random() * 60 + 200 // Blue-purple range
+          hue: Math.random() * 60 + 200
         });
       }
     }
@@ -2240,7 +2423,6 @@ FOOTER - FEBLE-5 Branding
     function draw() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      // Draw connections
       if (!isMobile) {
         for (let i = 0; i < particles.length; i++) {
           for (let j = i + 1; j < particles.length; j++) {
@@ -2261,22 +2443,18 @@ FOOTER - FEBLE-5 Branding
         }
       }
 
-      // Draw and update particles
       particles.forEach(p => {
         p.x += p.vx;
         p.y += p.vy;
 
-        // Bounce off edges
         if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
         if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
 
-        // Draw particle with glow
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fillStyle = `hsla(${p.hue}, 70%, 60%, ${p.opacity})`;
         ctx.fill();
 
-        // Add glow effect
         const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.radius * 3);
         gradient.addColorStop(0, `hsla(${p.hue}, 70%, 60%, ${p.opacity * 0.4})`);
         gradient.addColorStop(1, 'hsla(220, 70%, 60%, 0)');
@@ -2303,6 +2481,21 @@ FOOTER - FEBLE-5 Branding
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       cancelAnimationFrame(animationId);
     }
+  }
+
+  // ═══════════════════════════════════════════════════
+  // ICON MAPPING - Professional SVG Icons
+  // ═══════════════════════════════════════════════════
+  const iconMap = {
+    'gpu': '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg>',
+    'ai': '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>',
+    'tool': '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>',
+    'sdk': '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>',
+    'default': '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>'
+  };
+
+  function getCategoryIcon(category) {
+    return iconMap[category] || iconMap.default;
   }
 
   // ═══════════════════════════════════════════════════
@@ -2365,7 +2558,7 @@ FOOTER - FEBLE-5 Branding
   const database = Object.freeze({
     v10: {
       title: "NEXA Arc Drive™ 33.0.102.5081 WHQL (BETA)",
-      id: "895081", date: "03/05/2026", status: "latest", category: "gpu", icon: "🎮",
+      id: "895081", date: "03/05/2026", status: "latest", category: "gpu",
       alertType: "none",
       desc: "<strong>NEXA Arc Drive - Graphics Software Unificato</strong><br>Questa release introduce l'ecosistema grafico unificato NEXA, ottimizzato per GPU moderne. Include il nuovo <strong>NEXA AI Node SDK</strong> e il pacchetto 'Game On' rinnovato.",
       file: "gfx_nexa_102.5081_beta.exe", size: "~450 MB",
@@ -2378,7 +2571,7 @@ FOOTER - FEBLE-5 Branding
     },
     v2: {
       title: "NEXA Arc Drive™ 33.0.102.2131 WHQL (Legacy)",
-      id: "785598", date: "10/05/2026", status: "legacy", category: "gpu", icon: "🎮",
+      id: "785598", date: "10/05/2026", status: "legacy", category: "gpu",
       alertType: "legacy",
       alert: "⚠️ <strong>Legacy per hardware datato:</strong> Questa versione NEXA è mantenuta per GPU di prima generazione. Per hardware moderno, scarica la release più recente.",
       desc: "<strong>NEXA Arc Drive Legacy</strong><br>Versione WHQL stabile ottimizzata per hardware datato. Ideale per GPU NEXA Arc di prima generazione. <strong>Dimensione:</strong> ~131 MB.",
@@ -2392,7 +2585,7 @@ FOOTER - FEBLE-5 Branding
     },
     v6: {
       title: "NEXA XRMOT - Resource Manager v4.2.1",
-      id: "XRMOT-421", date: "30/04/2026", status: "legacy", category: "tool", icon: "⚙️",
+      id: "XRMOT-421", date: "30/04/2026", status: "legacy", category: "tool",
       alertType: "legacy",
       alert: "⚠️ <strong>Legacy:</strong> XRMOT è ora in stato legacy. Per nuove ottimizzazioni, usa il NEXA Graphics Software unificato.",
       desc: "Tool avanzato NEXA per ottimizzazione risorse.<ul><li>Priorità CPU</li><li>Libera VRAM</li><li>Pulizia RAM-cache</li><li>Ripristino stato originale alla chiusura</li></ul><strong>Include:</strong> Guida XRMOT",
@@ -2406,7 +2599,7 @@ FOOTER - FEBLE-5 Branding
     },
     v9: {
       title: "NEXA SDK 3.4 (Beta Legacy)",
-      id: "SDK-3.4-DEV", date: "01/05/2026", status: "legacy", category: "sdk", icon: "🛠️",
+      id: "SDK-3.4-DEV", date: "01/05/2026", status: "legacy", category: "sdk",
       alertType: "legacy",
       alert: "⚠️ <strong>SDK Legacy:</strong> Mantenere solo per dipendenze esistenti. Per nuovi progetti usa la release stabile NEXA.",
       desc: "<strong>NEXA SDK 3.4 - Beta Legacy</strong><br>Mini app per test rapidi e integrazione con codice esistente NEXA.<ul><li>Interfaccia ridotta</li><li>AI integration locale</li><li>Retrocompatibilità</li></ul>",
@@ -2420,7 +2613,7 @@ FOOTER - FEBLE-5 Branding
     },
     v7: {
       title: "NEXA Xe-2.0 - Driver & Software (Beta)",
-      id: "XE-2026-V2", date: "01/05/2026", status: "beta", category: "gpu", icon: "🎮",
+      id: "XE-2026-V2", date: "01/05/2026", status: "beta", category: "gpu",
       alertType: "none",
       desc: "<strong>NEXA Xe-2.0 - Build Beta</strong><br>Ottimizzazioni kernel e supporto esteso per le nuove librerie grafiche NEXA. Consigliato per testing e early adopters.",
       file: "NEXA_Xe_Package_2.0.exe", size: "~380 MB",
@@ -2433,7 +2626,7 @@ FOOTER - FEBLE-5 Branding
     },
     v8: {
       title: "NEXA Studio Accelerator (Stable)",
-      id: "SSA-901", date: "02/05/2026", status: "stable", category: "gpu", icon: "🎨",
+      id: "SSA-901", date: "02/05/2026", status: "stable", category: "gpu",
       alertType: "none",
       desc: "<strong>NEXA Studio Accelerator - Release Stabile</strong><br>Acceleratore per suite creative e produzione. Include driver 32.0.101.7080/7095 OEMx, Driver EVO PRO beta e Driver PRO.",
       file: "NEXA_Studio_Accelerator_Setup.exe", size: "~500 MB",
@@ -2446,7 +2639,7 @@ FOOTER - FEBLE-5 Branding
     },
     v1: {
       title: "NEXA Xe-1 (Legacy)",
-      id: "PKG-001", date: "29/04/2026", status: "legacy", category: "gpu", icon: "🎮",
+      id: "PKG-001", date: "29/04/2026", status: "legacy", category: "gpu",
       alertType: "legacy",
       alert: "⚠️ <strong>Legacy:</strong> Xe-1 mantenuto per retrocompatibilità. Aggiorna a NEXA Xe-2.0 se possibile.",
       desc: "<strong>NEXA Xe-1 Legacy</strong><br>Include: NEXA AI Control (53.1 MB), Driver legacy 12Th OEMs, Raptor Lake Refresh, OSS-Ai Minecraft.",
@@ -2460,7 +2653,7 @@ FOOTER - FEBLE-5 Branding
     },
     v3: {
       title: "NEXA Game On 1.21 (Archivio)",
-      id: "892102", date: "21/04/2026", status: "archived", category: "tool", icon: "🎯",
+      id: "892102", date: "21/04/2026", status: "archived", category: "tool",
       alertType: "archived",
       alert: "⚠️ <strong>Archiviato:</strong> Versione non più supportata. Usa versioni più recenti.",
       desc: "Ottimizzazione NEXA per engine legacy. Include Mods e Guida NEXA Game On mirato.",
@@ -2474,7 +2667,7 @@ FOOTER - FEBLE-5 Branding
     },
     v4: {
       title: "NEXA Control Panel SDK (Archivio)",
-      id: "445123", date: "12/01/2025", status: "archived", category: "sdk", icon: "🛠️",
+      id: "445123", date: "12/01/2025", status: "archived", category: "sdk",
       alertType: "archived",
       alert: "⚠️ <strong>Deprecato:</strong> NEXA Control archiviato. Usa i nuovi SDK.",
       desc: "NEXA AI Control Panel (53 MB) per compatibilità con impostazioni rimosse.",
@@ -2488,7 +2681,7 @@ FOOTER - FEBLE-5 Branding
     },
     v11: {
       title: "NEXA AI Training Data (Lightweight)",
-      id: "AI-TRN-LW-01", date: "05/05/2026", status: "latest", category: "ai", icon: "🧠",
+      id: "AI-TRN-LW-01", date: "05/05/2026", status: "latest", category: "ai",
       alertType: "none",
       desc: "<strong>NEXA Dataset per Addestramento Leggero</strong><br>Include: <code>code_train.jsonl</code> (11.9 MB), <code>full_train.jsonl</code> (68.1 MB), <code>instruct_train.jsonl</code> (57.8 MB), <code>Data.jsonl</code> (59 KB), formato Parquet.",
       file: "NEXA_AI_TrainingData_LW_v1.zip", size: "~200 MB",
@@ -2503,7 +2696,7 @@ FOOTER - FEBLE-5 Branding
     },
     v12: {
       title: "NEXA FP16 3.8B Internal (OSS Test)",
-      id: "NEXA-FP16-3.8B", date: "06/05/2026", status: "beta", category: "ai", icon: "🤖",
+      id: "NEXA-FP16-3.8B", date: "06/05/2026", status: "beta", category: "ai",
       alertType: "none",
       desc: "<strong>NEXA LLM 3.8B Parametri - FP16</strong><br>Build interna NEXA per test OSS. Ottimizzata per inferenza e fine-tuning su hardware consumer.",
       file: "NEXA_3.8B_FP16_Internal.safetensors", size: "~8.5 GB",
@@ -2518,7 +2711,7 @@ FOOTER - FEBLE-5 Branding
     },
     v5: {
       title: "NEXA GPU Benchmark Suite",
-      id: "GBS-2026", date: "15/05/2026", status: "stable", category: "tool", icon: "📊",
+      id: "GBS-2026", date: "15/05/2026", status: "stable", category: "tool",
       alertType: "none",
       desc: "<strong>Suite completa di benchmark</strong><br>Test prestazionali per GPU NEXA: compute shader, ray tracing, AI inference, memory bandwidth.",
       file: "NEXA_Benchmark_Suite.exe", size: "~120 MB",
@@ -2575,7 +2768,7 @@ FOOTER - FEBLE-5 Branding
     if (entries.length === 0) {
       grid.innerHTML = `
         <div class="empty-state">
-          <div class="empty-icon">🔍</div>
+          <div class="empty-icon">${iconMap.default}</div>
           <h3 class="empty-title">Nessun risultato</h3>
           <p class="empty-text">Prova a modificare i filtri o la ricerca</p>
           <button class="btn btn-secondary" onclick="document.querySelector('[data-filter=all]').click()">
@@ -2591,11 +2784,11 @@ FOOTER - FEBLE-5 Branding
       card.className = 'package-card';
       card.dataset.key = key;
       const statusBadge = getStatusBadge(data.status);
-      const categoryIcon = data.icon || '📦';
+      const categoryIcon = getCategoryIcon(data.category);
 
       card.innerHTML = `
         <div class="package-header">
-          <div class="package-icon">${categoryIcon}</div>
+          <div class="package-icon icon-wrapper icon-${data.category}">${categoryIcon}</div>
           <div class="package-badges">
             ${statusBadge}
             ${data.isAI ? '<span class="badge badge-ai">AI</span>' : ''}
@@ -2630,7 +2823,6 @@ FOOTER - FEBLE-5 Branding
       `;
       grid.appendChild(card);
 
-      // Bind events
       card.querySelector('.package-details-btn').addEventListener('click', (e) => {
         e.stopPropagation();
         openDetail(key);
@@ -2673,7 +2865,6 @@ FOOTER - FEBLE-5 Branding
       });
     });
 
-    // Search
     const searchInput = $('search-input');
     const suggestionsEl = $('search-suggestions');
     let searchTimeout;
@@ -2749,7 +2940,7 @@ FOOTER - FEBLE-5 Branding
 
     suggestionsEl.innerHTML = matches.map(([key, data]) => `
       <div class="suggestion-item" data-key="${key}">
-        <div class="suggestion-icon ${data.category}">${data.icon || '📦'}</div>
+        <div class="suggestion-icon icon-wrapper icon-${data.category}">${getCategoryIcon(data.category)}</div>
         <div class="suggestion-content">
           <div class="suggestion-title">${escapeHtml(data.title)}</div>
           <div class="suggestion-category">${data.category.toUpperCase()} • ${data.status}</div>
@@ -2789,13 +2980,12 @@ FOOTER - FEBLE-5 Branding
     $('detail-sha').textContent = data.sha;
 
     const iconEl = $('detail-icon');
-    iconEl.textContent = data.icon || '📦';
-    iconEl.className = `package-icon ${data.category}`;
+    iconEl.innerHTML = getCategoryIcon(data.category);
+    iconEl.className = `package-icon icon-wrapper icon-${data.category}`;
 
     const badgesEl = $('detail-badges');
     badgesEl.innerHTML = getStatusBadge(data.status) + (data.isAI ? ' <span class="badge badge-ai">AI</span>' : '');
 
-    // Alert
     const alertEl = $('detail-alert');
     if (data.alertType && data.alertType !== 'none') {
       alertEl.className = `alert-banner visible ${data.alertType}`;
@@ -2804,7 +2994,6 @@ FOOTER - FEBLE-5 Branding
       alertEl.classList.remove('visible');
     }
 
-    // AI sections
     if (data.isAI) {
       $('detail-ai-section').style.display = 'block';
       $('detail-ai-instr-section').style.display = 'block';
@@ -2815,7 +3004,6 @@ FOOTER - FEBLE-5 Branding
       $('detail-ai-instr-section').style.display = 'none';
     }
 
-    // Download link
     const downloadLink = $('detail-download-link');
     if (isAllowedUrl(data.url)) {
       downloadLink.href = data.url;
@@ -2830,7 +3018,6 @@ FOOTER - FEBLE-5 Branding
       };
     }
 
-    // Open panel
     $('detail-overlay').classList.add('open');
     $('detail-panel').classList.add('open');
     $('detail-panel').setAttribute('aria-hidden', 'false');
@@ -2848,7 +3035,6 @@ FOOTER - FEBLE-5 Branding
     $('detail-overlay').addEventListener('click', closeDetail);
     $('detail-close').addEventListener('click', closeDetail);
 
-    // Copy SHA
     $('copy-sha-btn').addEventListener('click', async () => {
       const sha = $('detail-sha').textContent;
       try {
@@ -2902,7 +3088,6 @@ FOOTER - FEBLE-5 Branding
       nav.classList.toggle('scrolled', window.scrollY > 20);
     });
 
-    // Mobile menu
     const mobileBtn = $('mobile-menu-btn');
     const drawer = $('mobile-drawer');
     const closeBtn = $('mobile-drawer-close');
@@ -2957,7 +3142,6 @@ FOOTER - FEBLE-5 Branding
 
     $('btn-download-report').addEventListener('click', downloadReport);
 
-    // Show badge after delay
     setTimeout(() => {
       if (!chatOpen) {
         badge.style.display = 'flex';
@@ -3006,7 +3190,16 @@ FOOTER - FEBLE-5 Branding
     }
 
     msgDiv.innerHTML = `
-      <div class="chat-msg-avatar">F5</div>
+      <div class="chat-msg-avatar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 8V4H8"/>
+          <rect width="16" height="12" x="4" y="8" rx="2"/>
+          <path d="M2 14h2"/>
+          <path d="M20 14h2"/>
+          <path d="M15 13v2"/>
+          <path d="M9 13v2"/>
+        </svg>
+      </div>
       <div>
         <div class="chat-bubble">
           ${escapeHtml(text)}
@@ -3018,7 +3211,6 @@ FOOTER - FEBLE-5 Branding
     messages.appendChild(msgDiv);
     messages.scrollTop = messages.scrollHeight;
 
-    // Bind events
     msgDiv.querySelectorAll('.chat-followup-btn').forEach(btn => {
       btn.addEventListener('click', () => handleFAQClick(btn.dataset.faq));
     });
@@ -3031,7 +3223,12 @@ FOOTER - FEBLE-5 Branding
     const msgDiv = document.createElement('div');
     msgDiv.className = 'chat-message user';
     msgDiv.innerHTML = `
-      <div class="chat-msg-avatar">👤</div>
+      <div class="chat-msg-avatar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+      </div>
       <div class="chat-bubble">${escapeHtml(text)}</div>
     `;
     messages.appendChild(msgDiv);
@@ -3044,7 +3241,16 @@ FOOTER - FEBLE-5 Branding
     typingDiv.className = 'chat-message bot';
     typingDiv.id = 'typing-indicator';
     typingDiv.innerHTML = `
-      <div class="chat-msg-avatar">F5</div>
+      <div class="chat-msg-avatar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 8V4H8"/>
+          <rect width="16" height="12" x="4" y="8" rx="2"/>
+          <path d="M2 14h2"/>
+          <path d="M20 14h2"/>
+          <path d="M15 13v2"/>
+          <path d="M9 13v2"/>
+        </svg>
+      </div>
       <div class="chat-bubble">
         <div class="chat-typing">
           <span class="chat-typing-dot"></span>
@@ -3134,15 +3340,15 @@ FOOTER - FEBLE-5 Branding
   function populateQuickActions() {
     const container = $('chat-quick-actions');
     const actions = [
-      { id: 'q1', label: '📥 Download' },
-      { id: 'q9', label: '🎮 Driver GPU' },
-      { id: 'q16', label: '🤖 Modelli AI' },
-      { id: 'q22', label: '⚙️ XRMOT' },
-      { id: 'q30', label: '📧 Supporto' }
+      { id: 'q1', label: '📥 Download', icon: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>' },
+      { id: 'q9', label: '🎮 Driver GPU', icon: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>' },
+      { id: 'q16', label: '🤖 Modelli AI', icon: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/></svg>' },
+      { id: 'q22', label: '⚙️ XRMOT', icon: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>' },
+      { id: 'q30', label: '📧 Supporto', icon: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>' }
     ];
 
     container.innerHTML = actions.map(a =>
-      `<button class="quick-action-btn" data-faq="${a.id}">${a.label}</button>`
+      `<button class="quick-action-btn" data-faq="${a.id}">${a.icon} ${a.label}</button>`
     ).join('');
 
     container.querySelectorAll('.quick-action-btn').forEach(btn => {
