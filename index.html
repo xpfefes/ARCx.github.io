@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="it" data-theme="dark">
 <head>
@@ -14,14 +15,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <style>
 /* ═══════════════════════════════════════════════════
-FEBLE-5 MYTHOX AI EDITION - ENHANCED LIQUID GLASS v6.0
-Advanced Glassmorphism with Professional Icons
+FEBLE-5 MYTHOX AI EDITION - ENHANCED LIQUID GLASS v6.1
+Hardened Security + Optimized Performance + WCAG AA
 ═══════════════════════════════════════════════════ */
 :root {
-  /* Liquid Glass Aero Effects */
   --glass-bg: rgba(255, 255, 255, 0.08);
   --glass-bg-heavy: rgba(255, 255, 255, 0.15);
   --glass-border: rgba(147, 197, 253, 0.25);
@@ -30,24 +29,18 @@ Advanced Glassmorphism with Professional Icons
   --glass-glow: 0 0 20px rgba(96, 165, 250, 0.3);
   --glass-glow-intense: 0 0 40px rgba(96, 165, 250, 0.5), 0 0 80px rgba(96, 165, 250, 0.3);
   --glass-refraction: inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-  
-  /* FEBLE-5 Brand Colors */
   --feble-primary: #60a5fa;
   --feble-secondary: #a78bfa;
   --feble-accent: #34d399;
   --feble-gradient: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #34d399 100%);
   --feble-gradient-hover: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #10b981 100%);
   --feble-gradient-radial: radial-gradient(circle, #60a5fa 0%, #a78bfa 50%, #34d399 100%);
-  
-  /* Background */
   --bg-base: #0a0a0f;
   --bg-elevated: #0f0f1a;
   --bg-surface: #13131f;
   --bg-surface-hover: #1a1a2a;
   --bg-card: rgba(19, 19, 31, 0.8);
   --bg-overlay: rgba(10, 10, 15, 0.85);
-  
-  /* Semantic Colors */
   --success: #10b981;
   --success-light: #34d399;
   --warning: #f59e0b;
@@ -56,32 +49,22 @@ Advanced Glassmorphism with Professional Icons
   --danger-light: #f87171;
   --info: #3b82f6;
   --info-light: #60a5fa;
-  
-  /* Text */
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
   --text-on-primary: #ffffff;
-  
-  /* Borders */
   --border-subtle: rgba(148, 163, 184, 0.06);
   --border-default: rgba(148, 163, 184, 0.12);
-  
-  /* Shadows */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.3);
   --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.4);
   --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
   --shadow-glow: 0 0 30px rgba(96, 165, 250, 0.4);
-  
-  /* Radii */
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
   --radius-xl: 24px;
   --radius-full: 9999px;
-  
-  /* Spacing */
   --space-xs: 8px;
   --space-sm: 12px;
   --space-md: 16px;
@@ -89,13 +72,9 @@ Advanced Glassmorphism with Professional Icons
   --space-xl: 32px;
   --space-2xl: 48px;
   --space-3xl: 64px;
-  
-  /* Typography */
   --font-sans: 'Inter', -apple-system, system-ui, sans-serif;
   --font-display: 'Space Grotesk', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
-  
-  /* Motion */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --ease-liquid: cubic-bezier(0.4, 0, 0.2, 1);
@@ -103,15 +82,11 @@ Advanced Glassmorphism with Professional Icons
   --duration-normal: 250ms;
   --duration-slow: 400ms;
   --duration-slower: 600ms;
-  
-  /* Z-index */
   --z-nav: 100;
   --z-dropdown: 200;
   --z-overlay: 500;
   --z-modal: 1000;
   --z-toast: 2000;
-  
-  /* Gradients */
   --gradient-mesh:
     radial-gradient(ellipse at 15% 10%, rgba(96, 165, 250, 0.18) 0%, transparent 45%),
     radial-gradient(ellipse at 85% 20%, rgba(167, 139, 250, 0.12) 0%, transparent 40%),
@@ -119,21 +94,8 @@ Advanced Glassmorphism with Professional Icons
     radial-gradient(ellipse at 20% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
 }
 
-/* ═══════════════════════════════════════════════════
-RESET & BASE
-═══════════════════════════════════════════════════ */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 body {
   font-family: var(--font-sans);
   background: var(--bg-base);
@@ -143,147 +105,38 @@ body {
   overflow-x: hidden;
 }
 
-/* Enhanced Animated Background */
-#bg-canvas {
-  position: fixed;
-  inset: 0;
-  z-index: -3;
-  pointer-events: none;
-  opacity: 0.6;
-}
-
-.bg-mesh {
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  background: var(--gradient-mesh);
-  pointer-events: none;
-  animation: meshFloat 25s ease-in-out infinite;
-}
-
+#bg-canvas { position: fixed; inset: 0; z-index: -3; pointer-events: none; opacity: 0.6; }
+.bg-mesh { position: fixed; inset: 0; z-index: -2; background: var(--gradient-mesh); pointer-events: none; animation: meshFloat 25s ease-in-out infinite; }
 .bg-noise {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  opacity: 0.03;
-  pointer-events: none;
+  position: fixed; inset: 0; z-index: -1; opacity: 0.03; pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
-
 @keyframes meshFloat {
-  0%, 100% { 
-    transform: scale(1) rotate(0deg);
-    opacity: 1;
-  }
-  33% { 
-    transform: scale(1.03) rotate(0.5deg);
-    opacity: 0.9;
-  }
-  66% { 
-    transform: scale(0.98) rotate(-0.3deg);
-    opacity: 1;
-  }
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+  33% { transform: scale(1.03) rotate(0.5deg); opacity: 0.9; }
+  66% { transform: scale(0.98) rotate(-0.3deg); opacity: 1; }
 }
+::selection { background: var(--feble-primary); color: var(--text-on-primary); }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--bg-elevated); }
+::-webkit-scrollbar-thumb { background: var(--feble-gradient); border-radius: var(--radius-full); }
+:focus-visible { outline: 2px solid var(--feble-primary); outline-offset: 2px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.container { max-width: 1400px; margin: 0 auto; padding: 0 var(--space-lg); }
+@media (max-width: 768px) { .container { padding: 0 var(--space-md); } }
 
-::selection {
-  background: var(--feble-primary);
-  color: var(--text-on-primary);
-}
+.icon-wrapper { display: inline-flex; align-items: center; justify-content: center; transition: all var(--duration-normal); }
+.icon-wrapper svg { transition: all var(--duration-normal); }
+.icon-gpu { color: var(--feble-primary); }
+.icon-ai { color: var(--feble-secondary); }
+.icon-tool { color: var(--feble-accent); }
+.icon-sdk { color: var(--feble-primary); }
+.icon-wrapper:hover svg { transform: scale(1.1) rotate(5deg); }
+.icon-pulse { animation: iconPulse 2s ease-in-out infinite; }
+@keyframes iconPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
 
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg-elevated);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--feble-gradient);
-  border-radius: var(--radius-full);
-}
-
-:focus-visible {
-  outline: 2px solid var(--feble-primary);
-  outline-offset: 2px;
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-.container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 var(--space-lg);
-}
-
-@media (max-width: 768px) {
-  .container {
-    padding: 0 var(--space-md);
-  }
-}
-
-/* ═══════════════════════════════════════════════════
-ICON SYSTEM - Professional SVG Icons
-═══════════════════════════════════════════════════ */
-.icon-wrapper {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: all var(--duration-normal);
-}
-
-.icon-wrapper svg {
-  transition: all var(--duration-normal);
-}
-
-.icon-gpu {
-  color: var(--feble-primary);
-}
-
-.icon-ai {
-  color: var(--feble-secondary);
-}
-
-.icon-tool {
-  color: var(--feble-accent);
-}
-
-.icon-sdk {
-  color: var(--feble-primary);
-}
-
-/* Icon animations */
-.icon-wrapper:hover svg {
-  transform: scale(1.1) rotate(5deg);
-}
-
-.icon-pulse {
-  animation: iconPulse 2s ease-in-out infinite;
-}
-
-@keyframes iconPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-}
-
-/* ═══════════════════════════════════════════════════
-NAVIGATION - Enhanced Liquid Glass
-═══════════════════════════════════════════════════ */
 .nav {
-  position: sticky;
-  top: 0;
-  z-index: var(--z-nav);
+  position: sticky; top: 0; z-index: var(--z-nav);
   background: var(--glass-bg);
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
@@ -291,1838 +144,369 @@ NAVIGATION - Enhanced Liquid Glass
   transition: all var(--duration-normal);
   box-shadow: var(--glass-refraction);
 }
-
-.nav.scrolled {
-  background: var(--glass-bg-heavy);
-  box-shadow: var(--shadow-md), var(--glass-refraction);
-}
-
-.nav-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--space-md) 0;
-  gap: var(--space-lg);
-}
-
-.nav-brand {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  text-decoration: none;
-  color: var(--text-primary);
-  position: relative;
-}
-
+.nav.scrolled { background: var(--glass-bg-heavy); box-shadow: var(--shadow-md), var(--glass-refraction); }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; padding: var(--space-md) 0; gap: var(--space-lg); }
+.nav-brand { display: flex; align-items: center; gap: var(--space-sm); text-decoration: none; color: var(--text-primary); position: relative; }
 .nav-logo {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-md);
+  width: 48px; height: 48px; border-radius: var(--radius-md);
   background: var(--feble-gradient);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 900;
-  font-size: 20px;
-  color: var(--text-on-primary);
-  box-shadow: var(--glass-glow);
-  position: relative;
-  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 20px; color: var(--text-on-primary);
+  box-shadow: var(--glass-glow); position: relative; overflow: hidden;
   transition: all var(--duration-normal) var(--ease-spring);
 }
-
 .nav-logo::before {
-  content: "";
-  position: absolute;
-  inset: 0;
+  content: ""; position: absolute; inset: 0;
   background: linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%);
   animation: shimmer 3s ease-in-out infinite;
 }
-
-@keyframes shimmer {
-  0%, 100% { transform: translateX(-100%); }
-  50% { transform: translateX(100%); }
-}
-
-.nav-logo:hover {
-  transform: scale(1.05) rotate(-3deg);
-  box-shadow: var(--glass-glow-intense);
-}
-
-.nav-brand-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.1;
-}
-
+@keyframes shimmer { 0%, 100% { transform: translateX(-100%); } 50% { transform: translateX(100%); } }
+.nav-logo:hover { transform: scale(1.05) rotate(-3deg); box-shadow: var(--glass-glow-intense); }
+.nav-brand-text { display: flex; flex-direction: column; line-height: 1.1; }
 .nav-brand-name {
-  font-family: var(--font-display);
-  font-size: 20px;
-  font-weight: 800;
-  background: var(--feble-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-family: var(--font-display); font-size: 20px; font-weight: 800;
+  background: var(--feble-gradient); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; background-clip: text;
   animation: gradientShift 8s ease-in-out infinite;
 }
-
-@keyframes gradientShift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-.nav-brand-tag {
-  font-size: 9px;
-  font-weight: 700;
-  color: var(--text-muted);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-family: var(--font-mono);
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: var(--space-xs);
-  list-style: none;
-}
-
+@keyframes gradientShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+.nav-brand-tag { font-size: 9px; font-weight: 700; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; font-family: var(--font-mono); }
+.nav-links { display: flex; align-items: center; gap: var(--space-xs); list-style: none; }
 .nav-link {
-  padding: var(--space-xs) var(--space-md);
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text-secondary);
-  text-decoration: none;
-  border-radius: var(--radius-sm);
-  transition: all var(--duration-fast);
-  position: relative;
-  overflow: hidden;
+  padding: var(--space-xs) var(--space-md); font-size: 14px; font-weight: 500;
+  color: var(--text-secondary); text-decoration: none; border-radius: var(--radius-sm);
+  transition: all var(--duration-fast); position: relative; overflow: hidden;
 }
-
-.nav-link::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--feble-gradient);
-  opacity: 0;
-  transition: opacity var(--duration-fast);
-  z-index: -1;
-}
-
-.nav-link:hover {
-  color: var(--text-primary);
-  background: var(--glass-bg);
-}
-
-.nav-link:hover::before {
-  opacity: 0.1;
-}
-
-.nav-link.active {
-  color: var(--feble-primary);
-  background: rgba(96, 165, 250, 0.1);
-}
-
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: var(--space-xs);
-}
-
+.nav-link::before { content: ''; position: absolute; inset: 0; background: var(--feble-gradient); opacity: 0; transition: opacity var(--duration-fast); z-index: -1; }
+.nav-link:hover { color: var(--text-primary); background: var(--glass-bg); }
+.nav-link:hover::before { opacity: 0.1; }
+.nav-link.active { color: var(--feble-primary); background: rgba(96, 165, 250, 0.1); }
+.nav-actions { display: flex; align-items: center; gap: var(--space-xs); }
 .nav-btn {
-  width: 40px;
-  height: 40px;
-  border: 1px solid var(--glass-border);
-  background: var(--glass-bg);
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: var(--text-secondary);
-  transition: all var(--duration-fast);
-  box-shadow: var(--glass-refraction);
+  width: 40px; height: 40px; border: 1px solid var(--glass-border);
+  background: var(--glass-bg); border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--text-secondary);
+  transition: all var(--duration-fast); box-shadow: var(--glass-refraction);
 }
+.nav-btn:hover { color: var(--text-primary); border-color: var(--glass-border-hover); background: var(--glass-bg-heavy); transform: translateY(-2px); box-shadow: var(--glass-glow); }
+.nav-btn svg { width: 18px; height: 18px; }
+.mobile-menu-btn { display: none; width: 40px; height: 40px; border: none; background: transparent; cursor: pointer; color: var(--text-primary); }
+@media (max-width: 1024px) { .nav-links { display: none; } .mobile-menu-btn { display: flex; } }
 
-.nav-btn:hover {
-  color: var(--text-primary);
-  border-color: var(--glass-border-hover);
-  background: var(--glass-bg-heavy);
-  transform: translateY(-2px);
-  box-shadow: var(--glass-glow);
-}
-
-.nav-btn svg {
-  width: 18px;
-  height: 18px;
-}
-
-.mobile-menu-btn {
-  display: none;
-  width: 40px;
-  height: 40px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  color: var(--text-primary);
-}
-
-@media (max-width: 1024px) {
-  .nav-links { display: none; }
-  .mobile-menu-btn { display: flex; }
-}
-
-/* Mobile Drawer */
 .mobile-drawer {
-  position: fixed;
-  inset: 0;
-  background: var(--bg-base);
-  z-index: var(--z-modal);
-  padding: var(--space-xl);
-  transform: translateX(100%);
+  position: fixed; inset: 0; background: var(--bg-base); z-index: var(--z-modal);
+  padding: var(--space-xl); transform: translateX(100%);
   transition: transform var(--duration-slow) var(--ease-out-expo);
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  backdrop-filter: blur(20px);
+  overflow-y: auto; overscroll-behavior: contain; backdrop-filter: blur(20px);
 }
-
-.mobile-drawer.open {
-  transform: translateX(0);
-}
-
-.mobile-drawer-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: var(--space-xl);
-  padding-bottom: var(--space-lg);
-  border-bottom: 1px solid var(--border-subtle);
-}
-
-.mobile-drawer-links {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-  list-style: none;
-}
-
+.mobile-drawer.open { transform: translateX(0); }
+.mobile-drawer-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-xl); padding-bottom: var(--space-lg); border-bottom: 1px solid var(--border-subtle); }
+.mobile-drawer-links { display: flex; flex-direction: column; gap: var(--space-sm); list-style: none; }
 .mobile-drawer-link {
-  padding: var(--space-md);
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--text-primary);
-  text-decoration: none;
-  border-radius: var(--radius-md);
-  transition: all var(--duration-fast);
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
+  padding: var(--space-md); font-size: 18px; font-weight: 600; color: var(--text-primary);
+  text-decoration: none; border-radius: var(--radius-md); transition: all var(--duration-fast);
+  display: flex; align-items: center; gap: var(--space-sm);
+  background: var(--glass-bg); border: 1px solid var(--glass-border);
 }
+.mobile-drawer-link:hover { background: var(--glass-bg-heavy); transform: translateX(8px); border-color: var(--glass-border-hover); box-shadow: var(--glass-glow); }
+.mobile-drawer-link .icon-wrapper { width: 32px; height: 32px; border-radius: var(--radius-sm); background: var(--bg-surface); display: flex; align-items: center; justify-content: center; }
 
-.mobile-drawer-link:hover {
-  background: var(--glass-bg-heavy);
-  transform: translateX(8px);
-  border-color: var(--glass-border-hover);
-  box-shadow: var(--glass-glow);
-}
-
-.mobile-drawer-link .icon-wrapper {
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-sm);
-  background: var(--bg-surface);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* ═══════════════════════════════════════════════════
-HERO SECTION - Enhanced Liquid Glass
-═══════════════════════════════════════════════════ */
-.hero {
-  position: relative;
-  padding: var(--space-3xl) 0 var(--space-2xl);
-  text-align: center;
-  overflow: hidden;
-}
-
+.hero { position: relative; padding: var(--space-3xl) 0 var(--space-2xl); text-align: center; overflow: hidden; }
 .hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-xs);
-  padding: var(--space-xs) var(--space-md);
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-full);
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text-secondary);
-  margin-bottom: var(--space-xl);
-  backdrop-filter: blur(12px);
+  display: inline-flex; align-items: center; gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-md); background: var(--glass-bg);
+  border: 1px solid var(--glass-border); border-radius: var(--radius-full);
+  font-size: 12px; font-weight: 600; color: var(--text-secondary);
+  margin-bottom: var(--space-xl); backdrop-filter: blur(12px);
   animation: fadeInUp var(--duration-slow) var(--ease-out-expo);
   box-shadow: var(--glass-refraction);
 }
+.hero-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--success); box-shadow: 0 0 8px var(--success); animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.7; transform: scale(1.2); } }
+.hero-title { font-family: var(--font-display); font-size: clamp(36px, 8vw, 88px); font-weight: 900; letter-spacing: -3px; line-height: 0.95; margin-bottom: var(--space-lg); animation: fadeInUp var(--duration-slow) var(--ease-out-expo) 100ms both; }
+.hero-title-gradient { background: var(--feble-gradient); background-size: 200% 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: gradientShift 8s ease-in-out infinite; }
+.hero-subtitle { font-size: clamp(16px, 2.5vw, 22px); color: var(--text-secondary); max-width: 640px; margin: 0 auto var(--space-2xl); line-height: 1.7; animation: fadeInUp var(--duration-slow) var(--ease-out-expo) 200ms both; }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-.hero-badge-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--success);
-  box-shadow: 0 0 8px var(--success);
-  animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.7; transform: scale(1.2); }
-}
-
-.hero-title {
-  font-family: var(--font-display);
-  font-size: clamp(36px, 8vw, 88px);
-  font-weight: 900;
-  letter-spacing: -3px;
-  line-height: 0.95;
-  margin-bottom: var(--space-lg);
-  animation: fadeInUp var(--duration-slow) var(--ease-out-expo) 100ms both;
-}
-
-.hero-title-gradient {
-  background: var(--feble-gradient);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: gradientShift 8s ease-in-out infinite;
-}
-
-.hero-subtitle {
-  font-size: clamp(16px, 2.5vw, 22px);
-  color: var(--text-secondary);
-  max-width: 640px;
-  margin: 0 auto var(--space-2xl);
-  line-height: 1.7;
-  animation: fadeInUp var(--duration-slow) var(--ease-out-expo) 200ms both;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ═══════════════════════════════════════════════════
-SEARCH & FILTER - Enhanced
-═══════════════════════════════════════════════════ */
-.search-section {
-  padding: var(--space-2xl) 0;
-}
-
-.search-container {
-  position: relative;
-  max-width: 640px;
-  margin: 0 auto;
-}
-
+.search-section { padding: var(--space-2xl) 0; }
+.search-container { position: relative; max-width: 640px; margin: 0 auto; }
 .search-bar {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-xl);
-  padding: var(--space-xs) var(--space-md);
-  backdrop-filter: blur(12px);
-  transition: all var(--duration-normal);
+  display: flex; align-items: center; gap: var(--space-sm);
+  background: var(--bg-card); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl); padding: var(--space-xs) var(--space-md);
+  backdrop-filter: blur(12px); transition: all var(--duration-normal);
   box-shadow: var(--shadow-sm);
 }
-
-.search-bar:focus-within {
-  border-color: var(--feble-primary);
-  box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.15), var(--shadow-md), var(--glass-glow);
-  transform: translateY(-2px);
-}
-
-.search-bar svg {
-  width: 20px;
-  height: 20px;
-  color: var(--text-muted);
-  flex-shrink: 0;
-}
-
-.search-input {
-  flex: 1;
-  background: transparent;
-  border: none;
-  color: var(--text-primary);
-  font-size: 15px;
-  padding: var(--space-sm) 0;
-  outline: none;
-  font-family: var(--font-sans);
-}
-
-.search-input::placeholder {
-  color: var(--text-muted);
-}
-
+.search-bar:focus-within { border-color: var(--feble-primary); box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.15), var(--shadow-md), var(--glass-glow); transform: translateY(-2px); }
+.search-bar svg { width: 20px; height: 20px; color: var(--text-muted); flex-shrink: 0; }
+.search-input { flex: 1; background: transparent; border: none; color: var(--text-primary); font-size: 15px; padding: var(--space-sm) 0; outline: none; font-family: var(--font-sans); }
+.search-input::placeholder { color: var(--text-muted); }
 .search-suggestions {
-  position: absolute;
-  top: calc(100% + var(--space-xs));
-  left: 0;
-  right: 0;
-  background: var(--bg-elevated);
-  border: 1px solid var(--border-default);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  overflow: hidden;
-  z-index: var(--z-dropdown);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-10px);
+  position: absolute; top: calc(100% + var(--space-xs)); left: 0; right: 0;
+  background: var(--bg-elevated); border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);
+  overflow: hidden; z-index: var(--z-dropdown);
+  opacity: 0; visibility: hidden; transform: translateY(-10px);
   transition: all var(--duration-normal) var(--ease-out-expo);
-  max-height: 400px;
-  overflow-y: auto;
-  backdrop-filter: blur(20px);
+  max-height: 400px; overflow-y: auto; backdrop-filter: blur(20px);
 }
-
-.search-suggestions.visible {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.suggestion-item {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  padding: var(--space-sm) var(--space-md);
-  cursor: pointer;
-  transition: background var(--duration-fast);
-}
-
-.suggestion-item:hover,
-.suggestion-item.highlighted {
-  background: var(--bg-surface);
-}
-
-.suggestion-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-}
-
-.suggestion-content {
-  flex: 1;
-  min-width: 0;
-}
-
-.suggestion-title {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-primary);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.suggestion-category {
-  font-size: 11px;
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-}
-
-.suggestion-arrow {
-  color: var(--text-muted);
-  transition: transform var(--duration-fast);
-}
-
-.suggestion-item:hover .suggestion-arrow {
-  transform: translateX(4px);
-  color: var(--feble-primary);
-}
-
-/* Filter Chips */
-.filter-chips {
-  display: flex;
-  gap: var(--space-xs);
-  margin-top: var(--space-md);
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
+.search-suggestions.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+.suggestion-item { display: flex; align-items: center; gap: var(--space-sm); padding: var(--space-sm) var(--space-md); cursor: pointer; transition: background var(--duration-fast); }
+.suggestion-item:hover, .suggestion-item.highlighted { background: var(--bg-surface); }
+.suggestion-icon { width: 36px; height: 36px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--glass-bg); border: 1px solid var(--glass-border); }
+.suggestion-content { flex: 1; min-width: 0; }
+.suggestion-title { font-size: 14px; font-weight: 600; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.suggestion-category { font-size: 11px; color: var(--text-muted); font-family: var(--font-mono); }
+.suggestion-arrow { color: var(--text-muted); transition: transform var(--duration-fast); }
+.suggestion-item:hover .suggestion-arrow { transform: translateX(4px); color: var(--feble-primary); }
+.filter-chips { display: flex; gap: var(--space-xs); margin-top: var(--space-md); flex-wrap: wrap; justify-content: center; }
 .chip {
-  padding: var(--space-xs) var(--space-md);
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-full);
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: all var(--duration-fast);
-  user-select: none;
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-xs);
-  backdrop-filter: blur(10px);
+  padding: var(--space-xs) var(--space-md); background: var(--glass-bg);
+  border: 1px solid var(--glass-border); border-radius: var(--radius-full);
+  font-size: 13px; font-weight: 500; color: var(--text-secondary);
+  cursor: pointer; transition: all var(--duration-fast); user-select: none;
+  display: inline-flex; align-items: center; gap: var(--space-xs); backdrop-filter: blur(10px);
 }
+.chip:hover { border-color: var(--glass-border-hover); color: var(--text-primary); transform: translateY(-2px); box-shadow: var(--glass-glow); }
+.chip.active { background: var(--feble-gradient); border-color: transparent; color: var(--text-on-primary); box-shadow: var(--glass-glow-intense); }
+.chip-count { font-size: 10px; font-weight: 700; padding: 2px 6px; background: rgba(255,255,255,0.2); border-radius: var(--radius-full); margin-left: var(--space-xs); }
+.chip.active .chip-count { background: rgba(255,255,255,0.3); }
 
-.chip:hover {
-  border-color: var(--glass-border-hover);
-  color: var(--text-primary);
-  transform: translateY(-2px);
-  box-shadow: var(--glass-glow);
-}
-
-.chip.active {
-  background: var(--feble-gradient);
-  border-color: transparent;
-  color: var(--text-on-primary);
-  box-shadow: var(--glass-glow-intense);
-}
-
-.chip-count {
-  font-size: 10px;
-  font-weight: 700;
-  padding: 2px 6px;
-  background: rgba(255,255,255,0.2);
-  border-radius: var(--radius-full);
-  margin-left: var(--space-xs);
-}
-
-.chip.active .chip-count {
-  background: rgba(255,255,255,0.3);
-}
-
-/* ═══════════════════════════════════════════════════
-PACKAGES GRID - Enhanced Liquid Glass Cards
-═══════════════════════════════════════════════════ */
-.packages-section {
-  padding: var(--space-xl) 0 var(--space-3xl);
-}
-
-.section-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: var(--space-xl);
-  flex-wrap: wrap;
-  gap: var(--space-md);
-}
-
-.section-title {
-  font-family: var(--font-display);
-  font-size: 24px;
-  font-weight: 800;
-}
-
-.packages-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: var(--space-lg);
-}
-
-@media (max-width: 768px) {
-  .packages-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
+.packages-section { padding: var(--space-xl) 0 var(--space-3xl); }
+.section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-xl); flex-wrap: wrap; gap: var(--space-md); }
+.section-title { font-family: var(--font-display); font-size: 24px; font-weight: 800; }
+.packages-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: var(--space-lg); }
+@media (max-width: 768px) { .packages-grid { grid-template-columns: 1fr; } }
 .package-card {
-  background: var(--bg-card);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-xl);
-  padding: var(--space-lg);
+  background: var(--bg-card); border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl); padding: var(--space-lg);
   backdrop-filter: blur(16px) saturate(180%);
   transition: all var(--duration-normal) var(--ease-out-expo);
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  cursor: pointer; position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
   box-shadow: var(--shadow-sm), var(--glass-refraction);
 }
-
-.package-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--feble-gradient);
-  opacity: 0;
-  transition: opacity var(--duration-normal);
-}
-
-.package-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 50% 0%, rgba(96, 165, 250, 0.1), transparent 70%);
-  opacity: 0;
-  transition: opacity var(--duration-normal);
-  pointer-events: none;
-}
-
-.package-card:hover {
-  border-color: var(--glass-border-hover);
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: var(--shadow-lg), var(--glass-glow-intense);
-}
-
-.package-card:hover::before {
-  opacity: 1;
-}
-
-.package-card:hover::after {
-  opacity: 1;
-}
-
-.package-card.selected {
-  border-color: var(--feble-primary);
-  box-shadow: var(--glass-glow-intense);
-}
-
-.package-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: var(--space-sm);
-  margin-bottom: var(--space-md);
-}
-
+.package-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--feble-gradient); opacity: 0; transition: opacity var(--duration-normal); }
+.package-card::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, rgba(96, 165, 250, 0.1), transparent 70%); opacity: 0; transition: opacity var(--duration-normal); pointer-events: none; }
+.package-card:hover { border-color: var(--glass-border-hover); transform: translateY(-8px) scale(1.02); box-shadow: var(--shadow-lg), var(--glass-glow-intense); }
+.package-card:hover::before { opacity: 1; }
+.package-card:hover::after { opacity: 1; }
+.package-card.selected { border-color: var(--feble-primary); box-shadow: var(--glass-glow-intense); }
+.package-header { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-sm); margin-bottom: var(--space-md); }
 .package-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  background: var(--glass-bg-heavy);
-  border: 1px solid var(--glass-border);
-  position: relative;
-  overflow: hidden;
-  box-shadow: var(--glass-refraction);
+  width: 56px; height: 56px; border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; background: var(--glass-bg-heavy);
+  border: 1px solid var(--glass-border); position: relative;
+  overflow: hidden; box-shadow: var(--glass-refraction);
 }
+.package-icon::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.2), transparent 70%); }
+.package-icon svg { width: 28px; height: 28px; position: relative; z-index: 1; transition: all var(--duration-normal); }
+.package-card:hover .package-icon svg { transform: scale(1.15) rotate(5deg); }
+.package-badges { display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; }
+.badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: var(--radius-full); font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; border: 1px solid; backdrop-filter: blur(8px); }
+.badge-latest { background: rgba(96, 165, 250, 0.15); color: var(--feble-primary); border-color: var(--feble-primary); }
+.badge-stable { background: rgba(52, 211, 153, 0.15); color: var(--success-light); border-color: var(--success); }
+.badge-beta { background: rgba(59, 130, 246, 0.15); color: var(--info-light); border-color: var(--info); }
+.badge-legacy { background: rgba(245, 158, 11, 0.15); color: var(--warning-light); border-color: var(--warning); }
+.badge-archived { background: rgba(100, 116, 139, 0.15); color: var(--text-muted); border-color: var(--text-muted); }
+.badge-ai { background: rgba(167, 139, 250, 0.15); color: var(--feble-secondary); border-color: var(--feble-secondary); }
+.package-title { font-family: var(--font-display); font-size: 16px; font-weight: 700; margin-bottom: var(--space-xs); color: var(--text-primary); }
+.package-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: var(--space-md); flex: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.package-meta { display: flex; align-items: center; gap: var(--space-md); padding-top: var(--space-md); border-top: 1px solid var(--border-subtle); font-size: 11px; color: var(--text-muted); font-family: var(--font-mono); flex-wrap: wrap; }
+.package-meta-item { display: flex; align-items: center; gap: 4px; }
+.package-meta-item svg { width: 14px; height: 14px; }
+.package-actions { display: flex; gap: var(--space-xs); margin-top: var(--space-md); }
+.package-actions .btn { flex: 1; justify-content: center; padding: var(--space-xs) var(--space-md); font-size: 13px; }
+.empty-state { grid-column: 1 / -1; text-align: center; padding: var(--space-3xl); }
+.empty-icon { width: 80px; height: 80px; border-radius: var(--radius-xl); background: var(--bg-surface); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-lg); border: 1px solid var(--glass-border); animation: float 3s ease-in-out infinite; }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.empty-title { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-xs); }
+.empty-text { font-size: 14px; color: var(--text-muted); margin-bottom: var(--space-lg); }
 
-.package-icon::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.2), transparent 70%);
-}
-
-.package-icon svg {
-  width: 28px;
-  height: 28px;
-  position: relative;
-  z-index: 1;
-  transition: all var(--duration-normal);
-}
-
-.package-card:hover .package-icon svg {
-  transform: scale(1.15) rotate(5deg);
-}
-
-.package-badges {
-  display: flex;
-  gap: 4px;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-}
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
-  font-size: 9px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  border: 1px solid;
-  backdrop-filter: blur(8px);
-}
-
-.badge-latest {
-  background: rgba(96, 165, 250, 0.15);
-  color: var(--feble-primary);
-  border-color: var(--feble-primary);
-}
-
-.badge-stable {
-  background: rgba(52, 211, 153, 0.15);
-  color: var(--success-light);
-  border-color: var(--success);
-}
-
-.badge-beta {
-  background: rgba(59, 130, 246, 0.15);
-  color: var(--info-light);
-  border-color: var(--info);
-}
-
-.badge-legacy {
-  background: rgba(245, 158, 11, 0.15);
-  color: var(--warning-light);
-  border-color: var(--warning);
-}
-
-.badge-archived {
-  background: rgba(100, 116, 139, 0.15);
-  color: var(--text-muted);
-  border-color: var(--text-muted);
-}
-
-.badge-ai {
-  background: rgba(167, 139, 250, 0.15);
-  color: var(--feble-secondary);
-  border-color: var(--feble-secondary);
-}
-
-.package-title {
-  font-family: var(--font-display);
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: var(--space-xs);
-  color: var(--text-primary);
-}
-
-.package-desc {
-  font-size: 13px;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: var(--space-md);
-  flex: 1;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.package-meta {
-  display: flex;
-  align-items: center;
-  gap: var(--space-md);
-  padding-top: var(--space-md);
-  border-top: 1px solid var(--border-subtle);
-  font-size: 11px;
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-  flex-wrap: wrap;
-}
-
-.package-meta-item {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.package-meta-item svg {
-  width: 14px;
-  height: 14px;
-}
-
-.package-actions {
-  display: flex;
-  gap: var(--space-xs);
-  margin-top: var(--space-md);
-}
-
-.package-actions .btn {
-  flex: 1;
-  justify-content: center;
-  padding: var(--space-xs) var(--space-md);
-  font-size: 13px;
-}
-
-/* Empty State */
-.empty-state {
-  grid-column: 1 / -1;
-  text-align: center;
-  padding: var(--space-3xl);
-}
-
-.empty-icon {
-  width: 80px;
-  height: 80px;
-  border-radius: var(--radius-xl);
-  background: var(--bg-surface);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto var(--space-lg);
-  border: 1px solid var(--glass-border);
-  animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-.empty-title {
-  font-family: var(--font-display);
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: var(--space-xs);
-}
-
-.empty-text {
-  font-size: 14px;
-  color: var(--text-muted);
-  margin-bottom: var(--space-lg);
-}
-
-/* ═══════════════════════════════════════════════════
-BUTTONS - Enhanced with Liquid Effects
-═══════════════════════════════════════════════════ */
 .btn {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-xs);
-  padding: var(--space-sm) var(--space-lg);
-  border-radius: var(--radius-md);
-  font-size: 14px;
-  font-weight: 600;
-  text-decoration: none;
-  cursor: pointer;
-  border: none;
-  transition: all var(--duration-normal);
-  white-space: nowrap;
-  font-family: var(--font-sans);
-  position: relative;
-  overflow: hidden;
+  display: inline-flex; align-items: center; gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-lg); border-radius: var(--radius-md);
+  font-size: 14px; font-weight: 600; text-decoration: none;
+  cursor: pointer; border: none; transition: all var(--duration-normal);
+  white-space: nowrap; font-family: var(--font-sans); position: relative; overflow: hidden;
 }
+.btn::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent); opacity: 0; transition: opacity var(--duration-fast); }
+.btn:hover::before { opacity: 1; }
+.btn:active { transform: scale(0.98); }
+.btn-primary { background: var(--feble-gradient); color: var(--text-on-primary); box-shadow: 0 4px 16px rgba(96, 165, 250, 0.3); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(96, 165, 250, 0.4), var(--glass-glow); }
+.btn-secondary { background: var(--glass-bg); color: var(--text-primary); border: 1px solid var(--glass-border); backdrop-filter: blur(10px); }
+.btn-secondary:hover { background: var(--glass-bg-heavy); border-color: var(--glass-border-hover); box-shadow: var(--glass-glow); }
+.btn-ghost { background: transparent; color: var(--text-secondary); border: 1px solid transparent; }
+.btn-ghost:hover { color: var(--text-primary); background: var(--bg-surface); }
+.btn-icon { width: 40px; height: 40px; padding: 0; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-md); }
+.btn-sm { padding: var(--space-xs) var(--space-md); font-size: 12px; }
+.btn svg { width: 16px; height: 16px; }
 
-.btn::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
-  opacity: 0;
-  transition: opacity var(--duration-fast);
-}
-
-.btn:hover::before {
-  opacity: 1;
-}
-
-.btn:active {
-  transform: scale(0.98);
-}
-
-.btn-primary {
-  background: var(--feble-gradient);
-  color: var(--text-on-primary);
-  box-shadow: 0 4px 16px rgba(96, 165, 250, 0.3);
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(96, 165, 250, 0.4), var(--glass-glow);
-}
-
-.btn-secondary {
-  background: var(--glass-bg);
-  color: var(--text-primary);
-  border: 1px solid var(--glass-border);
-  backdrop-filter: blur(10px);
-}
-
-.btn-secondary:hover {
-  background: var(--glass-bg-heavy);
-  border-color: var(--glass-border-hover);
-  box-shadow: var(--glass-glow);
-}
-
-.btn-ghost {
-  background: transparent;
-  color: var(--text-secondary);
-  border: 1px solid transparent;
-}
-
-.btn-ghost:hover {
-  color: var(--text-primary);
-  background: var(--bg-surface);
-}
-
-.btn-icon {
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-md);
-}
-
-.btn-sm {
-  padding: var(--space-xs) var(--space-md);
-  font-size: 12px;
-}
-
-.btn svg {
-  width: 16px;
-  height: 16px;
-}
-
-/* ═══════════════════════════════════════════════════
-DETAIL PANEL - Enhanced
-═══════════════════════════════════════════════════ */
-.detail-overlay {
-  position: fixed;
-  inset: 0;
-  background: var(--bg-overlay);
-  backdrop-filter: blur(12px);
-  z-index: var(--z-modal);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity var(--duration-normal);
-}
-
-.detail-overlay.open {
-  opacity: 1;
-  pointer-events: all;
-}
-
+.detail-overlay { position: fixed; inset: 0; background: var(--bg-overlay); backdrop-filter: blur(12px); z-index: var(--z-modal); opacity: 0; pointer-events: none; transition: opacity var(--duration-normal); }
+.detail-overlay.open { opacity: 1; pointer-events: all; }
 .detail-panel {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: min(640px, 100%);
-  height: 100vh;
-  height: 100dvh;
-  background: var(--bg-elevated);
-  border-left: 1px solid var(--border-subtle);
-  z-index: calc(var(--z-modal) + 1);
-  transform: translateX(100%);
-  transition: transform var(--duration-slow) var(--ease-out-expo);
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  overscroll-behavior: contain;
-  backdrop-filter: blur(20px);
+  position: fixed; top: 0; right: 0; width: min(640px, 100%);
+  height: 100vh; height: 100dvh; background: var(--bg-elevated);
+  border-left: 1px solid var(--border-subtle); z-index: calc(var(--z-modal) + 1);
+  transform: translateX(100%); transition: transform var(--duration-slow) var(--ease-out-expo);
+  overflow-y: auto; display: flex; flex-direction: column;
+  overscroll-behavior: contain; backdrop-filter: blur(20px);
 }
-
-.detail-panel.open {
-  transform: translateX(0);
-}
-
+.detail-panel.open { transform: translateX(0); }
 .detail-header {
-  padding: var(--space-lg);
-  border-bottom: 1px solid var(--border-subtle);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-md);
-  position: sticky;
-  top: 0;
-  background: var(--bg-elevated);
-  z-index: 2;
-  backdrop-filter: blur(20px);
+  padding: var(--space-lg); border-bottom: 1px solid var(--border-subtle);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--space-md); position: sticky; top: 0;
+  background: var(--bg-elevated); z-index: 2; backdrop-filter: blur(20px);
 }
-
 .detail-close {
-  width: 36px;
-  height: 36px;
-  border: 1px solid var(--border-subtle);
-  background: var(--bg-surface);
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: var(--text-secondary);
-  transition: all var(--duration-fast);
+  width: 36px; height: 36px; border: 1px solid var(--border-subtle);
+  background: var(--bg-surface); border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--text-secondary); transition: all var(--duration-fast);
 }
-
-.detail-close:hover {
-  color: var(--text-primary);
-  border-color: var(--glass-border-hover);
-  background: var(--bg-surface-hover);
-  transform: rotate(90deg);
-}
-
-.detail-body {
-  padding: var(--space-xl);
-  flex: 1;
-}
-
-.detail-title {
-  font-family: var(--font-display);
-  font-size: 24px;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-  margin-bottom: var(--space-sm);
-}
-
-.detail-meta {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  font-size: 12px;
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-  margin-bottom: var(--space-lg);
-  flex-wrap: wrap;
-}
-
-.detail-meta-divider {
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background: var(--text-muted);
-}
-
-.detail-section {
-  margin-bottom: var(--space-xl);
-}
-
-.detail-section-title {
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--text-muted);
-  margin-bottom: var(--space-sm);
-  display: flex;
-  align-items: center;
-  gap: var(--space-xs);
-}
-
-.detail-section-title svg {
-  width: 14px;
-  height: 14px;
-  color: var(--feble-primary);
-}
-
-.detail-content {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: var(--space-md);
-  font-size: 14px;
-  line-height: 1.7;
-  color: var(--text-secondary);
-}
-
-.detail-content strong {
-  color: var(--text-primary);
-  font-weight: 600;
-}
-
-.detail-content code {
-  background: rgba(96, 165, 250, 0.15);
-  color: var(--feble-primary);
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-family: var(--font-mono);
-  font-size: 0.9em;
-  border: 1px solid rgba(96, 165, 250, 0.3);
-}
-
-.detail-content ul,
-.detail-content ol {
-  padding-left: var(--space-lg);
-  margin-top: var(--space-xs);
-}
-
-.detail-content li {
-  margin-bottom: var(--space-xs);
-}
-
-.download-block {
-  background: linear-gradient(135deg, rgba(96, 165, 250, 0.08), rgba(167, 139, 250, 0.08));
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-lg);
-  backdrop-filter: blur(12px);
-}
-
+.detail-close:hover { color: var(--text-primary); border-color: var(--glass-border-hover); background: var(--bg-surface-hover); transform: rotate(90deg); }
+.detail-body { padding: var(--space-xl); flex: 1; }
+.detail-title { font-family: var(--font-display); font-size: 24px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: var(--space-sm); }
+.detail-meta { display: flex; align-items: center; gap: var(--space-sm); font-size: 12px; color: var(--text-muted); font-family: var(--font-mono); margin-bottom: var(--space-lg); flex-wrap: wrap; }
+.detail-meta-divider { width: 3px; height: 3px; border-radius: 50%; background: var(--text-muted); }
+.detail-section { margin-bottom: var(--space-xl); }
+.detail-section-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: var(--space-sm); display: flex; align-items: center; gap: var(--space-xs); }
+.detail-section-title svg { width: 14px; height: 14px; color: var(--feble-primary); }
+.detail-content { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-md); font-size: 14px; line-height: 1.7; color: var(--text-secondary); }
+.detail-content strong { color: var(--text-primary); font-weight: 600; }
+.detail-content code { background: rgba(96, 165, 250, 0.15); color: var(--feble-primary); padding: 2px 8px; border-radius: 4px; font-family: var(--font-mono); font-size: 0.9em; border: 1px solid rgba(96, 165, 250, 0.3); }
+.detail-content ul, .detail-content ol { padding-left: var(--space-lg); margin-top: var(--space-xs); }
+.detail-content li { margin-bottom: var(--space-xs); }
+.download-block { background: linear-gradient(135deg, rgba(96, 165, 250, 0.08), rgba(167, 139, 250, 0.08)); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); padding: var(--space-lg); backdrop-filter: blur(12px); }
 .download-btn-main {
-  width: 100%;
-  padding: var(--space-md) var(--space-xl);
-  font-size: 16px;
-  font-weight: 700;
-  background: var(--feble-gradient);
-  color: var(--text-on-primary);
-  border: none;
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-sm);
-  transition: all var(--duration-normal);
-  box-shadow: 0 8px 24px rgba(96, 165, 250, 0.35);
-  text-decoration: none;
-  font-family: var(--font-sans);
-  position: relative;
-  overflow: hidden;
+  width: 100%; padding: var(--space-md) var(--space-xl); font-size: 16px; font-weight: 700;
+  background: var(--feble-gradient); color: var(--text-on-primary); border: none;
+  border-radius: var(--radius-md); cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: var(--space-sm);
+  transition: all var(--duration-normal); box-shadow: 0 8px 24px rgba(96, 165, 250, 0.35);
+  text-decoration: none; font-family: var(--font-sans); position: relative; overflow: hidden;
 }
+.download-btn-main::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent); opacity: 0; transition: opacity var(--duration-fast); }
+.download-btn-main:hover::before { opacity: 1; }
+.download-btn-main:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(96, 165, 250, 0.5), var(--glass-glow-intense); }
+.download-btn-main svg { width: 20px; height: 20px; }
+.sha-block { margin-top: var(--space-md); background: var(--bg-base); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: var(--space-sm); display: flex; align-items: center; gap: var(--space-sm); }
+.sha-label { font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; font-family: var(--font-mono); white-space: nowrap; }
+.sha-value { flex: 1; font-family: var(--font-mono); font-size: 11px; color: var(--feble-accent); word-break: break-all; line-height: 1.4; }
+.copy-btn { width: 32px; height: 32px; border: 1px solid var(--border-subtle); background: var(--bg-surface); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-secondary); transition: all var(--duration-fast); flex-shrink: 0; }
+.copy-btn:hover { color: var(--feble-primary); border-color: var(--glass-border-hover); background: var(--bg-surface-hover); transform: scale(1.1); }
+.copy-btn.copied { color: var(--success); border-color: var(--success); }
+.copy-btn svg { width: 14px; height: 14px; }
+.download-progress { margin-top: var(--space-sm); display: none; }
+.download-progress.active { display: block; }
+.progress-bar { width: 100%; height: 6px; background: var(--bg-surface); border-radius: var(--radius-full); overflow: hidden; }
+.progress-fill { height: 100%; background: var(--feble-gradient); border-radius: var(--radius-full); transition: width 0.3s linear; width: 0%; position: relative; }
+.progress-fill::after { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); animation: shimmer 1.5s infinite; }
+@keyframes shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+.progress-text { font-size: 11px; color: var(--text-muted); margin-top: var(--space-xs); font-family: var(--font-mono); display: flex; justify-content: space-between; }
+.alert-banner { display: none; padding: var(--space-md) var(--space-lg); border-radius: var(--radius-md); margin-bottom: var(--space-lg); align-items: center; gap: var(--space-md); backdrop-filter: blur(12px); border: 1px solid; animation: slideDown var(--duration-slow) var(--ease-out-expo); }
+.alert-banner.visible { display: flex; }
+.alert-banner.warning { background: rgba(245, 158, 11, 0.1); border-color: rgba(245, 158, 11, 0.3); }
+.alert-banner.info { background: rgba(6, 182, 212, 0.1); border-color: rgba(6, 182, 212, 0.3); }
+.alert-banner.legacy { background: rgba(245, 158, 11, 0.1); border-color: rgba(245, 158, 11, 0.3); }
+.alert-banner.archived { background: rgba(100, 116, 139, 0.1); border-color: rgba(100, 116, 139, 0.3); }
+@keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+.alert-text { font-size: 13px; font-weight: 500; color: var(--text-secondary); flex: 1; }
+.alert-text strong { color: var(--text-primary); }
 
-.download-btn-main::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
-  opacity: 0;
-  transition: opacity var(--duration-fast);
-}
-
-.download-btn-main:hover::before {
-  opacity: 1;
-}
-
-.download-btn-main:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(96, 165, 250, 0.5), var(--glass-glow-intense);
-}
-
-.download-btn-main svg {
-  width: 20px;
-  height: 20px;
-}
-
-.sha-block {
-  margin-top: var(--space-md);
-  background: var(--bg-base);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
-  padding: var(--space-sm);
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-}
-
-.sha-label {
-  font-size: 10px;
-  font-weight: 700;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-family: var(--font-mono);
-  white-space: nowrap;
-}
-
-.sha-value {
-  flex: 1;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--feble-accent);
-  word-break: break-all;
-  line-height: 1.4;
-}
-
-.copy-btn {
-  width: 32px;
-  height: 32px;
-  border: 1px solid var(--border-subtle);
-  background: var(--bg-surface);
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: var(--text-secondary);
-  transition: all var(--duration-fast);
-  flex-shrink: 0;
-}
-
-.copy-btn:hover {
-  color: var(--feble-primary);
-  border-color: var(--glass-border-hover);
-  background: var(--bg-surface-hover);
-  transform: scale(1.1);
-}
-
-.copy-btn.copied {
-  color: var(--success);
-  border-color: var(--success);
-}
-
-.copy-btn svg {
-  width: 14px;
-  height: 14px;
-}
-
-/* Download Progress */
-.download-progress {
-  margin-top: var(--space-sm);
-  display: none;
-}
-
-.download-progress.active {
-  display: block;
-}
-
-.progress-bar {
-  width: 100%;
-  height: 6px;
-  background: var(--bg-surface);
-  border-radius: var(--radius-full);
-  overflow: hidden;
-}
-
-.progress-fill {
-  height: 100%;
-  background: var(--feble-gradient);
-  border-radius: var(--radius-full);
-  transition: width 0.3s linear;
-  width: 0%;
-  position: relative;
-}
-
-.progress-fill::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-  animation: shimmer 1.5s infinite;
-}
-
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-.progress-text {
-  font-size: 11px;
-  color: var(--text-muted);
-  margin-top: var(--space-xs);
-  font-family: var(--font-mono);
-  display: flex;
-  justify-content: space-between;
-}
-
-/* Alert Banner */
-.alert-banner {
-  display: none;
-  padding: var(--space-md) var(--space-lg);
-  border-radius: var(--radius-md);
-  margin-bottom: var(--space-lg);
-  align-items: center;
-  gap: var(--space-md);
-  backdrop-filter: blur(12px);
-  border: 1px solid;
-  animation: slideDown var(--duration-slow) var(--ease-out-expo);
-}
-
-.alert-banner.visible {
-  display: flex;
-}
-
-.alert-banner.warning {
-  background: rgba(245, 158, 11, 0.1);
-  border-color: rgba(245, 158, 11, 0.3);
-}
-
-.alert-banner.info {
-  background: rgba(6, 182, 212, 0.1);
-  border-color: rgba(6, 182, 212, 0.3);
-}
-
-.alert-banner.legacy {
-  background: rgba(245, 158, 11, 0.1);
-  border-color: rgba(245, 158, 11, 0.3);
-}
-
-.alert-banner.archived {
-  background: rgba(100, 116, 139, 0.1);
-  border-color: rgba(100, 116, 139, 0.3);
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.alert-text {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-secondary);
-  flex: 1;
-}
-
-.alert-text strong {
-  color: var(--text-primary);
-}
-
-/* ═══════════════════════════════════════════════════
-CHATBOT - Enhanced with Professional Icons
-═══════════════════════════════════════════════════ */
 .chat-fab {
-  position: fixed;
-  bottom: var(--space-xl);
-  right: var(--space-xl);
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: var(--feble-gradient);
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: var(--glass-glow), var(--shadow-lg);
-  z-index: var(--z-overlay);
-  transition: all var(--duration-normal) var(--ease-spring);
-  color: var(--text-on-primary);
+  position: fixed; bottom: var(--space-xl); right: var(--space-xl);
+  width: 60px; height: 60px; border-radius: 50%;
+  background: var(--feble-gradient); border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--glass-glow), var(--shadow-lg); z-index: var(--z-overlay);
+  transition: all var(--duration-normal) var(--ease-spring); color: var(--text-on-primary);
 }
-
-.chat-fab:hover {
-  transform: scale(1.1) rotate(5deg);
-  box-shadow: var(--glass-glow-intense), var(--shadow-xl);
-}
-
-.chat-fab svg {
-  width: 28px;
-  height: 28px;
-}
-
+.chat-fab:hover { transform: scale(1.1) rotate(5deg); box-shadow: var(--glass-glow-intense), var(--shadow-xl); }
+.chat-fab svg { width: 28px; height: 28px; }
 .chat-fab-badge {
-  position: absolute;
-  top: -4px;
-  right: -4px;
-  width: 20px;
-  height: 20px;
-  background: var(--danger);
-  border-radius: 50%;
-  font-size: 10px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid var(--bg-base);
-  color: white;
-  animation: pulse 2s ease-in-out infinite;
+  position: absolute; top: -4px; right: -4px; width: 20px; height: 20px;
+  background: var(--danger); border-radius: 50%; font-size: 10px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid var(--bg-base); color: white; animation: pulse 2s ease-in-out infinite;
 }
-
 .chat-panel {
-  position: fixed;
-  bottom: var(--space-xl);
-  right: var(--space-xl);
-  width: 420px;
-  max-width: calc(100vw - 32px);
-  height: 640px;
-  max-height: calc(100vh - 100px);
-  max-height: calc(100dvh - 100px);
-  background: var(--bg-elevated);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-xl), var(--glass-glow);
-  display: flex;
-  flex-direction: column;
-  z-index: calc(var(--z-overlay) + 1);
-  transform: scale(0.95) translateY(20px);
-  opacity: 0;
-  pointer-events: none;
-  transition: all var(--duration-slow) var(--ease-spring);
-  overflow: hidden;
-  backdrop-filter: blur(20px);
+  position: fixed; bottom: var(--space-xl); right: var(--space-xl);
+  width: 420px; max-width: calc(100vw - 32px);
+  height: 640px; max-height: calc(100vh - 100px); max-height: calc(100dvh - 100px);
+  background: var(--bg-elevated); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl); box-shadow: var(--shadow-xl), var(--glass-glow);
+  display: flex; flex-direction: column; z-index: calc(var(--z-overlay) + 1);
+  transform: scale(0.95) translateY(20px); opacity: 0; pointer-events: none;
+  transition: all var(--duration-slow) var(--ease-spring); overflow: hidden; backdrop-filter: blur(20px);
 }
-
-.chat-panel.open {
-  transform: scale(1) translateY(0);
-  opacity: 1;
-  pointer-events: all;
-}
-
+.chat-panel.open { transform: scale(1) translateY(0); opacity: 1; pointer-events: all; }
 @media (max-width: 768px) {
-  .chat-fab {
-    bottom: var(--space-md);
-    right: var(--space-md);
-    width: 56px;
-    height: 56px;
-  }
-  .chat-panel {
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 100vh;
-    height: 100dvh;
-    max-height: 100vh;
-    max-height: 100dvh;
-    border-radius: 0;
-  }
+  .chat-fab { bottom: var(--space-md); right: var(--space-md); width: 56px; height: 56px; }
+  .chat-panel { bottom: 0; right: 0; width: 100%; height: 100vh; height: 100dvh; max-height: 100vh; max-height: 100dvh; border-radius: 0; }
 }
-
-.chat-header {
-  padding: var(--space-md) var(--space-lg);
-  border-bottom: 1px solid var(--border-subtle);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: linear-gradient(135deg, rgba(96, 165, 250, 0.05), rgba(167, 139, 250, 0.05));
-}
-
-.chat-header-left {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-}
-
-.chat-avatar-header {
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-md);
-  background: var(--feble-gradient);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-on-primary);
-  box-shadow: var(--glass-glow);
-}
-
-.chat-header-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.chat-header-name {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
-.chat-header-status {
-  font-size: 11px;
-  color: var(--success);
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.chat-header-status::before {
-  content: "";
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--success);
-  box-shadow: 0 0 6px var(--success);
-}
-
-.chat-close {
-  width: 32px;
-  height: 32px;
-  border: 1px solid var(--border-subtle);
-  background: var(--bg-surface);
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: var(--text-secondary);
-  transition: all var(--duration-fast);
-}
-
-.chat-close:hover {
-  color: var(--text-primary);
-  border-color: var(--glass-border-hover);
-  background: var(--bg-surface-hover);
-  transform: rotate(90deg);
-}
-
-.chat-messages {
-  flex: 1;
-  overflow-y: auto;
-  padding: var(--space-md);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-  overscroll-behavior: contain;
-}
-
-.chat-message {
-  display: flex;
-  gap: var(--space-xs);
-  animation: messageIn var(--duration-normal) var(--ease-out-expo);
-}
-
-@keyframes messageIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-.chat-message.bot {
-  align-self: flex-start;
-  max-width: 85%;
-}
-
-.chat-message.user {
-  align-self: flex-end;
-  max-width: 85%;
-  flex-direction: row-reverse;
-}
-
-.chat-msg-avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.chat-message.bot .chat-msg-avatar {
-  background: var(--feble-gradient);
-  color: var(--text-on-primary);
-}
-
-.chat-message.user .chat-msg-avatar {
-  background: var(--feble-accent);
-  color: var(--text-on-primary);
-}
-
-.chat-bubble {
-  padding: var(--space-sm) var(--space-md);
-  border-radius: var(--radius-md);
-  font-size: 13px;
-  line-height: 1.5;
-  backdrop-filter: blur(10px);
-}
-
-.chat-message.bot .chat-bubble {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-top-left-radius: 4px;
-}
-
-.chat-message.user .chat-bubble {
-  background: var(--feble-gradient);
-  color: var(--text-on-primary);
-  border-top-right-radius: 4px;
-}
-
-.chat-typing {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: var(--space-xs);
-}
-
-.chat-typing-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--text-muted);
-  animation: typing 1.4s infinite;
-}
-
+.chat-header { padding: var(--space-md) var(--space-lg); border-bottom: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: space-between; background: linear-gradient(135deg, rgba(96, 165, 250, 0.05), rgba(167, 139, 250, 0.05)); }
+.chat-header-left { display: flex; align-items: center; gap: var(--space-sm); }
+.chat-avatar-header { width: 40px; height: 40px; border-radius: var(--radius-md); background: var(--feble-gradient); display: flex; align-items: center; justify-content: center; color: var(--text-on-primary); box-shadow: var(--glass-glow); }
+.chat-header-info { display: flex; flex-direction: column; }
+.chat-header-name { font-size: 14px; font-weight: 700; color: var(--text-primary); }
+.chat-header-status { font-size: 11px; color: var(--success); display: flex; align-items: center; gap: 4px; }
+.chat-header-status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--success); box-shadow: 0 0 6px var(--success); }
+.chat-close { width: 32px; height: 32px; border: 1px solid var(--border-subtle); background: var(--bg-surface); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-secondary); transition: all var(--duration-fast); }
+.chat-close:hover { color: var(--text-primary); border-color: var(--glass-border-hover); background: var(--bg-surface-hover); transform: rotate(90deg); }
+.chat-messages { flex: 1; overflow-y: auto; padding: var(--space-md); display: flex; flex-direction: column; gap: var(--space-sm); overscroll-behavior: contain; }
+.chat-message { display: flex; gap: var(--space-xs); animation: messageIn var(--duration-normal) var(--ease-out-expo); }
+@keyframes messageIn { from { opacity: 0; transform: translateY(10px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
+.chat-message.bot { align-self: flex-start; max-width: 85%; }
+.chat-message.user { align-self: flex-end; max-width: 85%; flex-direction: row-reverse; }
+.chat-msg-avatar { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.chat-message.bot .chat-msg-avatar { background: var(--feble-gradient); color: var(--text-on-primary); }
+.chat-message.user .chat-msg-avatar { background: var(--feble-accent); color: var(--text-on-primary); }
+.chat-bubble { padding: var(--space-sm) var(--space-md); border-radius: var(--radius-md); font-size: 13px; line-height: 1.5; backdrop-filter: blur(10px); }
+.chat-message.bot .chat-bubble { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-top-left-radius: 4px; }
+.chat-message.user .chat-bubble { background: var(--feble-gradient); color: var(--text-on-primary); border-top-right-radius: 4px; }
+.chat-typing { display: flex; align-items: center; gap: 4px; padding: var(--space-xs); }
+.chat-typing-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--text-muted); animation: typing 1.4s infinite; }
 .chat-typing-dot:nth-child(2) { animation-delay: 0.2s; }
 .chat-typing-dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes typing { 0%, 60%, 100% { opacity: 0.3; transform: translateY(0); } 30% { opacity: 1; transform: translateY(-4px); } }
+.chat-followups { display: flex; flex-wrap: wrap; gap: var(--space-xs); margin-top: var(--space-xs); }
+.chat-followup-btn { background: var(--bg-surface); border: 1px solid var(--glass-border); color: var(--feble-primary); padding: 4px 10px; border-radius: var(--radius-full); font-size: 11px; font-weight: 600; cursor: pointer; transition: all var(--duration-fast); }
+.chat-followup-btn:hover { background: var(--feble-primary); border-color: var(--feble-primary); color: var(--text-on-primary); transform: translateY(-1px); box-shadow: var(--glass-glow); }
+.chat-not-useful { margin-top: var(--space-xs); background: transparent; border: 1px solid rgba(239, 68, 68, 0.3); color: var(--danger-light); padding: 4px 10px; border-radius: var(--radius-full); font-size: 10px; font-weight: 600; cursor: pointer; transition: all var(--duration-fast); }
+.chat-not-useful:hover { background: rgba(239, 68, 68, 0.1); transform: translateY(-1px); }
+.chat-quick-actions { padding: var(--space-sm) var(--space-md); display: flex; flex-wrap: wrap; gap: var(--space-xs); border-top: 1px solid var(--border-subtle); }
+.quick-action-btn { background: var(--bg-surface); border: 1px solid var(--glass-border); color: var(--text-secondary); padding: 6px 12px; border-radius: var(--radius-full); font-size: 11px; font-weight: 500; cursor: pointer; transition: all var(--duration-fast); display: inline-flex; align-items: center; gap: 4px; }
+.quick-action-btn:hover { background: var(--bg-surface-hover); color: var(--text-primary); border-color: var(--glass-border-hover); transform: translateY(-1px); box-shadow: var(--glass-glow); }
+.chat-footer { padding: var(--space-md); border-top: 1px solid var(--border-subtle); display: flex; gap: var(--space-xs); }
+.chat-input { flex: 1; padding: var(--space-sm) var(--space-md); background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); color: var(--text-primary); font-size: 14px; font-family: var(--font-sans); outline: none; transition: border-color var(--duration-fast); }
+.chat-input:focus { border-color: var(--feble-primary); box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1); }
+.chat-input::placeholder { color: var(--text-muted); }
+.chat-send { width: 44px; height: 44px; background: var(--feble-gradient); border: none; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-on-primary); transition: all var(--duration-fast); box-shadow: var(--glass-glow); }
+.chat-send:hover { transform: scale(1.05) rotate(5deg); box-shadow: var(--glass-glow-intense); }
+.chat-send svg { width: 18px; height: 18px; }
+.chat-report-section { display: none; padding: var(--space-md); flex-direction: column; gap: var(--space-sm); border-top: 1px solid var(--border-subtle); background: rgba(239, 68, 68, 0.1); }
+.chat-report-section.visible { display: flex; }
+.report-info { background: var(--bg-surface); border: 1px solid rgba(239, 68, 68, 0.3); padding: var(--space-md); border-radius: var(--radius-sm); font-size: 12px; line-height: 1.6; color: var(--text-secondary); }
+.report-info strong { color: var(--text-primary); }
+.report-email { font-family: var(--font-mono); color: var(--feble-accent); padding: 2px 6px; background: var(--bg-surface); border-radius: 3px; user-select: all; }
+.btn-report-download { width: 100%; background: linear-gradient(135deg, var(--feble-accent), var(--feble-primary)); border: none; color: var(--text-on-primary); padding: var(--space-sm) var(--space-md); border-radius: var(--radius-sm); font-weight: 700; font-size: 13px; cursor: pointer; transition: all var(--duration-fast); display: flex; align-items: center; justify-content: center; gap: var(--space-xs); }
+.btn-report-download:hover { transform: translateY(-2px); box-shadow: 0 0 20px rgba(52, 211, 153, 0.4); }
 
-@keyframes typing {
-  0%, 60%, 100% {
-    opacity: 0.3;
-    transform: translateY(0);
-  }
-  30% {
-    opacity: 1;
-    transform: translateY(-4px);
-  }
-}
+.toast-container { position: fixed; bottom: var(--space-xl); left: 50%; transform: translateX(-50%); z-index: var(--z-toast); display: flex; flex-direction: column; gap: var(--space-sm); pointer-events: none; max-width: 400px; width: calc(100% - 32px); }
+.toast { background: var(--bg-elevated); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-sm) var(--space-lg); display: flex; align-items: center; gap: var(--space-sm); box-shadow: var(--shadow-lg), var(--glass-glow); pointer-events: all; animation: toastIn var(--duration-slow) var(--ease-out-expo); backdrop-filter: blur(16px); }
+@keyframes toastIn { from { opacity: 0; transform: translateY(20px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
+.toast-text { font-size: 13px; font-weight: 500; color: var(--text-primary); flex: 1; }
 
-.chat-followups {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-xs);
-  margin-top: var(--space-xs);
-}
-
-.chat-followup-btn {
-  background: var(--bg-surface);
-  border: 1px solid var(--glass-border);
-  color: var(--feble-primary);
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
-  font-size: 11px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all var(--duration-fast);
-}
-
-.chat-followup-btn:hover {
-  background: var(--feble-primary);
-  border-color: var(--feble-primary);
-  color: var(--text-on-primary);
-  transform: translateY(-1px);
-  box-shadow: var(--glass-glow);
-}
-
-.chat-not-useful {
-  margin-top: var(--space-xs);
-  background: transparent;
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  color: var(--danger-light);
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
-  font-size: 10px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all var(--duration-fast);
-}
-
-.chat-not-useful:hover {
-  background: rgba(239, 68, 68, 0.1);
-  transform: translateY(-1px);
-}
-
-.chat-quick-actions {
-  padding: var(--space-sm) var(--space-md);
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-xs);
-  border-top: 1px solid var(--border-subtle);
-}
-
-.quick-action-btn {
-  background: var(--bg-surface);
-  border: 1px solid var(--glass-border);
-  color: var(--text-secondary);
-  padding: 6px 12px;
-  border-radius: var(--radius-full);
-  font-size: 11px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all var(--duration-fast);
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.quick-action-btn:hover {
-  background: var(--bg-surface-hover);
-  color: var(--text-primary);
-  border-color: var(--glass-border-hover);
-  transform: translateY(-1px);
-  box-shadow: var(--glass-glow);
-}
-
-.chat-footer {
-  padding: var(--space-md);
-  border-top: 1px solid var(--border-subtle);
-  display: flex;
-  gap: var(--space-xs);
-}
-
-.chat-input {
-  flex: 1;
-  padding: var(--space-sm) var(--space-md);
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  color: var(--text-primary);
-  font-size: 14px;
-  font-family: var(--font-sans);
-  outline: none;
-  transition: border-color var(--duration-fast);
-}
-
-.chat-input:focus {
-  border-color: var(--feble-primary);
-  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
-}
-
-.chat-input::placeholder {
-  color: var(--text-muted);
-}
-
-.chat-send {
-  width: 44px;
-  height: 44px;
-  background: var(--feble-gradient);
-  border: none;
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: var(--text-on-primary);
-  transition: all var(--duration-fast);
-  box-shadow: var(--glass-glow);
-}
-
-.chat-send:hover {
-  transform: scale(1.05) rotate(5deg);
-  box-shadow: var(--glass-glow-intense);
-}
-
-.chat-send svg {
-  width: 18px;
-  height: 18px;
-}
-
-.chat-report-section {
-  display: none;
-  padding: var(--space-md);
-  flex-direction: column;
-  gap: var(--space-sm);
-  border-top: 1px solid var(--border-subtle);
-  background: rgba(239, 68, 68, 0.1);
-}
-
-.chat-report-section.visible {
-  display: flex;
-}
-
-.report-info {
-  background: var(--bg-surface);
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  padding: var(--space-md);
-  border-radius: var(--radius-sm);
-  font-size: 12px;
-  line-height: 1.6;
-  color: var(--text-secondary);
-}
-
-.report-info strong {
-  color: var(--text-primary);
-}
-
-.report-email {
-  font-family: var(--font-mono);
-  color: var(--feble-accent);
-  padding: 2px 6px;
-  background: var(--bg-surface);
-  border-radius: 3px;
-  user-select: all;
-}
-
-.btn-report-download {
-  width: 100%;
-  background: linear-gradient(135deg, var(--feble-accent), var(--feble-primary));
-  border: none;
-  color: var(--text-on-primary);
-  padding: var(--space-sm) var(--space-md);
-  border-radius: var(--radius-sm);
-  font-weight: 700;
-  font-size: 13px;
-  cursor: pointer;
-  transition: all var(--duration-fast);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-xs);
-}
-
-.btn-report-download:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 20px rgba(52, 211, 153, 0.4);
-}
-
-/* ═══════════════════════════════════════════════════
-TOAST NOTIFICATIONS
-═══════════════════════════════════════════════════ */
-.toast-container {
-  position: fixed;
-  bottom: var(--space-xl);
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: var(--z-toast);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-  pointer-events: none;
-  max-width: 400px;
-  width: calc(100% - 32px);
-}
-
-.toast {
-  background: var(--bg-elevated);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: var(--space-sm) var(--space-lg);
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  box-shadow: var(--shadow-lg), var(--glass-glow);
-  pointer-events: all;
-  animation: toastIn var(--duration-slow) var(--ease-out-expo);
-  backdrop-filter: blur(16px);
-}
-
-@keyframes toastIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-.toast-text {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-primary);
-  flex: 1;
-}
-
-/* ═══════════════════════════════════════════════════
-FOOTER - FEBLE-5 Branding
-═══════════════════════════════════════════════════ */
-.footer {
-  margin-top: var(--space-3xl);
-  padding: var(--space-2xl) 0 var(--space-lg);
-  border-top: 1px solid var(--glass-border);
-  text-align: center;
-}
-
-.footer-brand {
-  font-family: var(--font-display);
-  font-size: 14px;
-  font-weight: 700;
-  background: var(--feble-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: var(--space-xs);
-  animation: gradientShift 8s ease-in-out infinite;
-}
-
-.footer-copy {
-  font-size: 12px;
-  color: var(--text-muted);
-}
-
-/* Utility */
+.footer { margin-top: var(--space-3xl); padding: var(--space-2xl) 0 var(--space-lg); border-top: 1px solid var(--glass-border); text-align: center; }
+.footer-brand { font-family: var(--font-display); font-size: 14px; font-weight: 700; background: var(--feble-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: var(--space-xs); animation: gradientShift 8s ease-in-out infinite; }
+.footer-copy { font-size: 12px; color: var(--text-muted); }
 .hidden { display: none !important; }
+[aria-hidden="true"] { display: none !important; }
 </style>
 </head>
 <body>
@@ -2130,65 +514,58 @@ FOOTER - FEBLE-5 Branding
 <div class="bg-mesh" aria-hidden="true"></div>
 <div class="bg-noise" aria-hidden="true"></div>
 
-<!-- ═══════════════ NAVIGATION ═══════════════ -->
-<nav class="nav" id="main-nav">
+<nav class="nav" id="main-nav" role="navigation" aria-label="Navigazione principale">
   <div class="container nav-inner">
-    <a href="#" class="nav-brand" aria-label="FEBLE-5 MythOX">
-      <div class="nav-logo">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-          <path d="M2 17l10 5 10-5"/>
-          <path d="M2 12l10 5 10-5"/>
+    <a href="#" class="nav-brand" aria-label="FEBLE-5 MythOX - Torna alla home">
+      <div class="nav-logo" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
         </svg>
       </div>
       <div class="nav-brand-text">
         <span class="nav-brand-name">FEBLE-5 MythOX</span>
-        <span class="nav-brand-tag">AI EDITION v6.0</span>
+        <span class="nav-brand-tag">AI EDITION v6.1</span>
       </div>
     </a>
-    <ul class="nav-links">
-      <li><a href="#packages" class="nav-link active">Pacchetti</a></li>
+    <ul class="nav-links" role="menubar">
+      <li role="none"><a href="#packages" class="nav-link active" role="menuitem">Pacchetti</a></li>
     </ul>
     <div class="nav-actions">
-      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="3" y1="12" x2="21" y2="12"/>
-          <line x1="3" y1="6" x2="21" y2="6"/>
-          <line x1="3" y1="18" x2="21" y2="18"/>
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Apri menu di navigazione" aria-expanded="false" aria-controls="mobile-drawer">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
         </svg>
       </button>
     </div>
   </div>
 </nav>
 
-<!-- Mobile drawer -->
-<div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+<div class="mobile-drawer" id="mobile-drawer" role="dialog" aria-modal="true" aria-label="Menu di navigazione" aria-hidden="true">
   <div class="mobile-drawer-header">
     <div class="nav-brand-text">
       <span class="nav-brand-name">FEBLE-5 MythOX</span>
-      <span class="nav-brand-tag">AI EDITION v6.0</span>
+      <span class="nav-brand-tag">AI EDITION v6.1</span>
     </div>
     <button class="nav-btn" id="mobile-drawer-close" aria-label="Chiudi menu">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
   </div>
-  <ul class="mobile-drawer-links">
-    <li><a href="#packages" class="mobile-drawer-link">
-      <span class="icon-wrapper"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></span>
+  <ul class="mobile-drawer-links" role="menu">
+    <li role="none"><a href="#packages" class="mobile-drawer-link" role="menuitem">
+      <span class="icon-wrapper" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></span>
       Pacchetti
     </a></li>
   </ul>
 </div>
 
-<main id="main">
-  <!-- ═══════════════ HERO ═══════════════ -->
-  <section class="hero">
+<main id="main" role="main">
+  <section class="hero" aria-labelledby="hero-title">
     <div class="container">
-      <div class="hero-badge">
-        <span class="hero-badge-dot"></span>
+      <div class="hero-badge" role="status">
+        <span class="hero-badge-dot" aria-hidden="true"></span>
         <span>Liquid Glass AI Edition • Production Ready</span>
       </div>
-      <h1 class="hero-title">
+      <h1 class="hero-title" id="hero-title">
         <span class="hero-title-gradient">FEBLE-5 MythOX</span><br>
         Liquid Glass Portal
       </h1>
@@ -2199,77 +576,61 @@ FOOTER - FEBLE-5 Branding
     </div>
   </section>
 
-  <!-- ═══════════════ SEARCH & FILTER ═══════════════ -->
-  <section class="search-section" id="packages">
+  <section class="search-section" id="packages" aria-labelledby="packages-heading">
     <div class="container">
       <div class="search-container">
         <div class="search-bar" role="search">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input type="text" id="search-input" class="search-input" placeholder="Cerca pacchetti, versioni, modelli AI..." aria-label="Cerca pacchetti" autocomplete="off" />
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="search-input" class="search-input" placeholder="Cerca pacchetti, versioni, modelli AI..." aria-label="Cerca pacchetti" autocomplete="off" maxlength="200" />
         </div>
-        <div class="search-suggestions" id="search-suggestions"></div>
+        <div class="search-suggestions" id="search-suggestions" role="listbox" aria-label="Suggerimenti di ricerca"></div>
       </div>
-      <div class="filter-chips" id="filter-chips" role="tablist">
-        <button class="chip active" data-filter="all" role="tab" aria-selected="true">
-          Tutti <span class="chip-count">12</span>
-        </button>
-        <button class="chip" data-filter="gpu" role="tab">
-          GPU <span class="chip-count">6</span>
-        </button>
-        <button class="chip" data-filter="ai" role="tab">
-          AI <span class="chip-count">2</span>
-        </button>
-        <button class="chip" data-filter="tool" role="tab">
-          Tools <span class="chip-count">3</span>
-        </button>
-        <button class="chip" data-filter="sdk" role="tab">
-          SDK <span class="chip-count">2</span>
-        </button>
-        <button class="chip" data-filter="latest" role="tab">
-          Latest <span class="chip-count">3</span>
-        </button>
+      <div class="filter-chips" id="filter-chips" role="tablist" aria-label="Filtri categorie">
+        <button class="chip active" data-filter="all" role="tab" aria-selected="true" aria-controls="packages-grid">Tutti <span class="chip-count">12</span></button>
+        <button class="chip" data-filter="gpu" role="tab" aria-selected="false" aria-controls="packages-grid">GPU <span class="chip-count">6</span></button>
+        <button class="chip" data-filter="ai" role="tab" aria-selected="false" aria-controls="packages-grid">AI <span class="chip-count">2</span></button>
+        <button class="chip" data-filter="tool" role="tab" aria-selected="false" aria-controls="packages-grid">Tools <span class="chip-count">3</span></button>
+        <button class="chip" data-filter="sdk" role="tab" aria-selected="false" aria-controls="packages-grid">SDK <span class="chip-count">2</span></button>
+        <button class="chip" data-filter="latest" role="tab" aria-selected="false" aria-controls="packages-grid">Latest <span class="chip-count">3</span></button>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════ PACKAGES GRID ═══════════════ -->
-  <section class="packages-section">
+  <section class="packages-section" aria-labelledby="packages-heading">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">Pacchetti Disponibili</h2>
+        <h2 class="section-title" id="packages-heading">Pacchetti Disponibili</h2>
       </div>
-      <div class="packages-grid" id="packages-grid"></div>
+      <div class="packages-grid" id="packages-grid" role="region" aria-live="polite"></div>
     </div>
   </section>
 </main>
 
-<!-- ═══════════════ FOOTER ═══════════════ -->
-<footer class="footer">
+<footer class="footer" role="contentinfo">
   <div class="container">
     <div class="footer-brand">FEBLE-5 MythOX AI Edition</div>
-    <div class="footer-copy">Designed & Built by FEBLE-5 MythOX Agent • Liquid Glass v6.0.0 • © 2026</div>
+    <div class="footer-copy">Designed & Built by FEBLE-5 MythOX Agent • Liquid Glass v6.1.0 • © 2026</div>
   </div>
 </footer>
 
-<!-- ═══════════════ DETAIL PANEL ═══════════════ -->
-<div class="detail-overlay" id="detail-overlay"></div>
-<div class="detail-panel" id="detail-panel" role="dialog" aria-label="Dettagli pacchetto" aria-hidden="true">
+<div class="detail-overlay" id="detail-overlay" aria-hidden="true"></div>
+<div class="detail-panel" id="detail-panel" role="dialog" aria-modal="true" aria-labelledby="detail-title" aria-hidden="true">
   <div class="detail-header">
     <div style="display:flex;align-items:center;gap:var(--space-sm);">
-      <div class="package-icon" id="detail-icon" style="width:44px;height:44px;"></div>
+      <div class="package-icon" id="detail-icon" style="width:44px;height:44px;" aria-hidden="true"></div>
       <div id="detail-badges" style="display:flex;gap:4px;flex-wrap:wrap;"></div>
     </div>
-    <button class="detail-close" id="detail-close" aria-label="Chiudi">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    <button class="detail-close" id="detail-close" aria-label="Chiudi dettagli pacchetto">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
   </div>
   <div class="detail-body">
     <h2 class="detail-title" id="detail-title"></h2>
-    <div class="detail-meta">
+    <div class="detail-meta" aria-label="Informazioni pacchetto">
       <span id="detail-id"></span>
-      <span class="detail-meta-divider"></span>
+      <span class="detail-meta-divider" aria-hidden="true"></span>
       <span id="detail-date"></span>
-      <span class="detail-meta-divider"></span>
+      <span class="detail-meta-divider" aria-hidden="true"></span>
       <span id="detail-file"></span>
     </div>
     <div id="detail-alert" class="alert-banner" role="alert">
@@ -2277,39 +638,39 @@ FOOTER - FEBLE-5 Branding
     </div>
     <div class="detail-section">
       <div class="detail-section-title">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
         Descrizione
       </div>
       <div class="detail-content" id="detail-desc"></div>
     </div>
     <div class="detail-section">
       <div class="detail-section-title">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
         Requisiti di Sistema
       </div>
       <div class="detail-content" id="detail-requirements"></div>
     </div>
     <div class="detail-section" id="detail-ai-section" style="display:none;">
       <div class="detail-section-title">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/></svg>
         Requisiti AI
       </div>
       <div class="detail-content" id="detail-ai-req"></div>
     </div>
     <div class="detail-section" id="detail-ai-instr-section" style="display:none;">
       <div class="detail-section-title">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
         Istruzioni AI
       </div>
       <div class="detail-content" id="detail-ai-instr"></div>
     </div>
     <div class="download-block">
       <a id="detail-download-link" href="#" class="download-btn-main" target="_blank" rel="noopener noreferrer">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         Scarica Ora
       </a>
-      <div class="download-progress" id="download-progress">
-        <div class="progress-bar">
+      <div class="download-progress" id="download-progress" aria-hidden="true">
+        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
           <div class="progress-fill" id="progress-fill"></div>
         </div>
         <div class="progress-text">
@@ -2318,224 +679,153 @@ FOOTER - FEBLE-5 Branding
         </div>
       </div>
       <div class="sha-block">
-        <span class="sha-label">SHA256</span>
-        <span class="sha-value" id="detail-sha"></span>
-        <button class="copy-btn" id="copy-sha-btn" aria-label="Copia SHA256" title="Copia">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        <span class="sha-label" id="sha-label">SHA256</span>
+        <span class="sha-value" id="detail-sha" aria-labelledby="sha-label"></span>
+        <button class="copy-btn" id="copy-sha-btn" aria-label="Copia SHA256 negli appunti" title="Copia checksum">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
         </button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ═══════════════ CHATBOT ═══════════════ -->
-<button class="chat-fab" id="chat-fab" aria-label="Apri assistenza chat">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-  <span class="chat-fab-badge" id="chat-badge" style="display:none;">1</span>
+<button class="chat-fab" id="chat-fab" aria-label="Apri assistenza chat" aria-expanded="false" aria-controls="chat-panel">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  <span class="chat-fab-badge" id="chat-badge" style="display:none;" aria-hidden="true">1</span>
 </button>
-<div class="chat-panel" id="chat-panel" role="dialog" aria-label="Assistenza Chat FEBLE-5" aria-hidden="true">
+<div class="chat-panel" id="chat-panel" role="dialog" aria-modal="true" aria-labelledby="chat-title" aria-hidden="true">
   <div class="chat-header">
     <div class="chat-header-left">
-      <div class="chat-avatar-header">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 8V4H8"/>
-          <rect width="16" height="12" x="4" y="8" rx="2"/>
-          <path d="M2 14h2"/>
-          <path d="M20 14h2"/>
-          <path d="M15 13v2"/>
-          <path d="M9 13v2"/>
+      <div class="chat-avatar-header" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/>
         </svg>
       </div>
       <div class="chat-header-info">
-        <div class="chat-header-name">FEBLE-5 Assistant</div>
+        <div class="chat-header-name" id="chat-title">FEBLE-5 Assistant</div>
         <div class="chat-header-status">Online</div>
       </div>
     </div>
     <button class="chat-close" id="chat-close" aria-label="Chiudi chat">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
   </div>
-  <div class="chat-messages" id="chat-messages" role="log" aria-live="polite"></div>
-  <div class="chat-quick-actions" id="chat-quick-actions"></div>
+  <div class="chat-messages" id="chat-messages" role="log" aria-live="polite" aria-label="Messaggi chat"></div>
+  <div class="chat-quick-actions" id="chat-quick-actions" role="toolbar" aria-label="Azioni rapide"></div>
   <div class="chat-footer">
-    <input type="text" id="chat-input" class="chat-input" placeholder="Scrivi una domanda..." autocomplete="off" maxlength="500" />
-    <button class="chat-send" id="chat-send" aria-label="Invia">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    <input type="text" id="chat-input" class="chat-input" placeholder="Scrivi una domanda..." autocomplete="off" maxlength="500" aria-label="Messaggio chat" />
+    <button class="chat-send" id="chat-send" aria-label="Invia messaggio">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
     </button>
   </div>
-  <div class="chat-report-section" id="chat-report-section">
+  <div class="chat-report-section" id="chat-report-section" aria-live="assertive">
     <div class="report-info">
-      <strong>📄 Report Problema</strong><br>
+      <strong>Report Problema</strong><br>
       Il bot non è riuscito a risolvere. Scarica il report e invialo al supporto:<br>
       <span class="report-email" id="support-email">support@feble5-ai.dev</span>
     </div>
     <button class="btn-report-download" id="btn-download-report" type="button">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       Scarica Report (.md)
     </button>
   </div>
 </div>
 
-<!-- Toast container -->
-<div class="toast-container" id="toast-container" aria-live="polite"></div>
+<div class="toast-container" id="toast-container" aria-live="polite" aria-atomic="true"></div>
 
 <script>
 (function() {
   'use strict';
 
-  // Initialize Lucide icons
-  if (window.lucide) {
-    window.lucide.createIcons();
-  }
-
   // ═══════════════════════════════════════════════════
-  // ENHANCED PARTICLE BACKGROUND
-  // ═══════════════════════════════════════════════════
-  function initParticles() {
-    const canvas = document.getElementById('bg-canvas');
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-    let animationId;
-    const isMobile = window.innerWidth < 768;
-    const particleCount = isMobile ? 40 : 80;
-    const connectionDistance = isMobile ? 80 : 120;
-
-    function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-
-    function createParticles() {
-      particles = [];
-      for (let i = 0; i < particleCount; i++) {
-        particles.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.3,
-          vy: (Math.random() - 0.5) * 0.3,
-          radius: Math.random() * 2.5 + 0.8,
-          opacity: Math.random() * 0.5 + 0.3,
-          hue: Math.random() * 60 + 200
-        });
-      }
-    }
-
-    function draw() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      if (!isMobile) {
-        for (let i = 0; i < particles.length; i++) {
-          for (let j = i + 1; j < particles.length; j++) {
-            const dx = particles[j].x - particles[i].x;
-            const dy = particles[j].y - particles[i].y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            
-            if (dist < connectionDistance) {
-              const opacity = (1 - dist / connectionDistance) * 0.15;
-              ctx.beginPath();
-              ctx.moveTo(particles[i].x, particles[i].y);
-              ctx.lineTo(particles[j].x, particles[j].y);
-              ctx.strokeStyle = `hsla(${particles[i].hue}, 70%, 60%, ${opacity})`;
-              ctx.lineWidth = 0.8;
-              ctx.stroke();
-            }
-          }
-        }
-      }
-
-      particles.forEach(p => {
-        p.x += p.vx;
-        p.y += p.vy;
-
-        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(${p.hue}, 70%, 60%, ${p.opacity})`;
-        ctx.fill();
-
-        const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.radius * 3);
-        gradient.addColorStop(0, `hsla(${p.hue}, 70%, 60%, ${p.opacity * 0.4})`);
-        gradient.addColorStop(1, 'hsla(220, 70%, 60%, 0)');
-        ctx.fillStyle = gradient;
-        ctx.fillRect(p.x - p.radius * 3, p.y - p.radius * 3, p.radius * 6, p.radius * 6);
-      });
-
-      animationId = requestAnimationFrame(draw);
-    }
-
-    resize();
-    createParticles();
-    draw();
-
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
-        resize();
-        createParticles();
-      }, 250);
-    });
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      cancelAnimationFrame(animationId);
-    }
-  }
-
-  // ═══════════════════════════════════════════════════
-  // ICON MAPPING - Professional SVG Icons
-  // ═══════════════════════════════════════════════════
-  const iconMap = {
-    'gpu': '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg>',
-    'ai': '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>',
-    'tool': '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>',
-    'sdk': '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>',
-    'default': '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>'
-  };
-
-  function getCategoryIcon(category) {
-    return iconMap[category] || iconMap.default;
-  }
-
-  // ═══════════════════════════════════════════════════
-  // SECURITY & UTILITIES
+  // CONSTANTS & CONFIG
   // ═══════════════════════════════════════════════════
   const ALLOWED_HOSTS = Object.freeze(['drive.google.com', 'docs.google.com']);
+  const ALLOWED_TAGS = Object.freeze(['STRONG', 'EM', 'CODE', 'UL', 'OL', 'LI', 'BR', 'P', 'B', 'I']);
+  const ALLOWED_ATTRS = Object.freeze(['class']);
+  const SESSION_ID = generateSessionId();
+  const SESSION_START = new Date().toISOString();
+  const SUPPORT_EMAIL = "support@feble5-ai.dev";
+  const MAX_NOT_USEFUL = 3;
 
-  function isAllowedUrl(urlString) {
-    try {
-      const url = new URL(urlString, window.location.origin);
-      if (url.protocol !== 'https:' && url.protocol !== 'http:') return false;
-      return ALLOWED_HOSTS.some(h => url.hostname === h || url.hostname.endsWith('.' + h));
-    } catch {
-      return false;
-    }
-  }
-
-  function escapeHtml(str) {
-    if (typeof str !== 'string') return '';
-    return str
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#39;');
-  }
-
+  // ═══════════════════════════════════════════════════
+  // SECURITY - Allowlist-based HTML Sanitizer
+  // PRE: html must be a string
+  // POST: returns safe HTML string with only allowed tags/attrs
+  // INV: no script/iframe/object/embed/style/event handlers survive
+  // ═══════════════════════════════════════════════════
   function sanitizeHtml(html) {
-    const temp = document.createElement('div');
-    temp.innerHTML = html;
-    temp.querySelectorAll('script, iframe, object, embed').forEach(el => el.remove());
-    temp.querySelectorAll('*').forEach(el => {
+    if (typeof html !== 'string') return '';
+    if (html.length > 10000) return '[Content too long]';
+    
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    
+    // Remove dangerous elements completely
+    const dangerous = doc.querySelectorAll('script, iframe, object, embed, style, link, meta, base, form, input, textarea, button, select');
+    dangerous.forEach(el => el.remove());
+    
+    // Walk all elements and sanitize
+    const allElements = doc.body.querySelectorAll('*');
+    allElements.forEach(el => {
+      // Remove disallowed tags
+      if (!ALLOWED_TAGS.includes(el.tagName)) {
+        // Replace with text content
+        const text = el.textContent;
+        el.replaceWith(doc.createTextNode(text));
+        return;
+      }
+      
+      // Remove disallowed attributes
       Array.from(el.attributes).forEach(attr => {
-        if (attr.name.startsWith('on')) el.removeAttribute(attr.name);
-        if (attr.name === 'href' && !attr.value.startsWith('http') && !attr.value.startsWith('#') && !attr.value.startsWith('mailto:')) {
+        const name = attr.name.toLowerCase();
+        // Block all event handlers
+        if (name.startsWith('on')) {
+          el.removeAttribute(attr.name);
+          return;
+        }
+        // Block style attribute (CSS injection)
+        if (name === 'style') {
+          el.removeAttribute(attr.name);
+          return;
+        }
+        // Block src/href on most tags (except img which we don't allow anyway)
+        if ((name === 'src' || name === 'href') && el.tagName !== 'A') {
+          el.removeAttribute(attr.name);
+          return;
+        }
+        // Validate href on anchors
+        if (name === 'href' && el.tagName === 'A') {
+          const val = attr.value.trim().toLowerCase();
+          if (val.startsWith('javascript:') || val.startsWith('data:') || val.startsWith('vbscript:')) {
+            el.removeAttribute(attr.name);
+          }
+        }
+        // Remove non-allowed attributes
+        if (!ALLOWED_ATTRS.includes(attr.name)) {
           el.removeAttribute(attr.name);
         }
       });
     });
-    return temp.innerHTML;
+    
+    return doc.body.innerHTML;
+  }
+
+  function escapeHtml(str) {
+    if (typeof str !== 'string') return '';
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  function isAllowedUrl(urlString) {
+    try {
+      const url = new URL(urlString, window.location.origin);
+      if (url.protocol !== 'https:') return false;
+      return ALLOWED_HOSTS.some(h => url.hostname === h || url.hostname.endsWith('.' + h));
+    } catch {
+      return false;
+    }
   }
 
   function generateSessionId() {
@@ -2548,293 +838,68 @@ FOOTER - FEBLE-5 Branding
     return Array.from(arr).map(b => b.toString(16).padStart(2, '0')).join('');
   }
 
-  const SESSION_ID = generateSessionId();
-  const SESSION_START = new Date().toISOString();
-  const SUPPORT_EMAIL = "support@feble5-ai.dev";
-
   // ═══════════════════════════════════════════════════
-  // DATABASE - All Packages with Google Drive Links
-  // ═══════════════════════════════════════════════════
-  const database = Object.freeze({
-    v10: {
-      title: "NEXA Arc Drive™ 33.0.102.5081 WHQL (BETA)",
-      id: "895081", date: "03/05/2026", status: "latest", category: "gpu",
-      alertType: "none",
-      desc: "<strong>NEXA Arc Drive - Graphics Software Unificato</strong><br>Questa release introduce l'ecosistema grafico unificato NEXA, ottimizzato per GPU moderne. Include il nuovo <strong>NEXA AI Node SDK</strong> e il pacchetto 'Game On' rinnovato.",
-      file: "gfx_nexa_102.5081_beta.exe", size: "~450 MB",
-      os: "<strong>OS Minimo:</strong> Windows 10 (64-bit) | <strong>OS Consigliato:</strong> Windows 11<br><strong>CPU:</strong> 64-bit multicore<br><strong>RAM:</strong> 4 GB minimi<br><strong>GPU:</strong> NEXA Arc Drive compatibile<br><strong>Spazio:</strong> 600 MB",
-      sha: "E1F2A3B4C5D6E7F8901234567890ABCDEF1234567890ABCDEF1234567890ABCD",
-      url: "https://drive.google.com/drive/folders/1tCINvrgZT84fhitlwDiXXPSYa0SQZxTZ?usp=drive_link",
-      isAI: false,
-      rating: 4.8,
-      ratingCount: 342
-    },
-    v2: {
-      title: "NEXA Arc Drive™ 33.0.102.2131 WHQL (Legacy)",
-      id: "785598", date: "10/05/2026", status: "legacy", category: "gpu",
-      alertType: "legacy",
-      alert: "⚠️ <strong>Legacy per hardware datato:</strong> Questa versione NEXA è mantenuta per GPU di prima generazione. Per hardware moderno, scarica la release più recente.",
-      desc: "<strong>NEXA Arc Drive Legacy</strong><br>Versione WHQL stabile ottimizzata per hardware datato. Ideale per GPU NEXA Arc di prima generazione. <strong>Dimensione:</strong> ~131 MB.",
-      file: "33.0.102.2131_WHQL.exe", size: "131 MB",
-      os: "<strong>OS:</strong> Windows 10/11 (64-bit)<br><strong>CPU:</strong> Dual-core 2 GHz+<br><strong>RAM:</strong> 4 GB minimi<br><strong>GPU:</strong> NEXA Arc™ prima generazione",
-      sha: "9F8E7D6C5B4A3928172635445362718293049586756453423120192837465544",
-      url: "https://drive.google.com/uc?export=download&id=1Xud5XxkHYwOSUIPjp3SoMzJCOqwNbdtw",
-      isAI: false,
-      rating: 4.2,
-      ratingCount: 156
-    },
-    v6: {
-      title: "NEXA XRMOT - Resource Manager v4.2.1",
-      id: "XRMOT-421", date: "30/04/2026", status: "legacy", category: "tool",
-      alertType: "legacy",
-      alert: "⚠️ <strong>Legacy:</strong> XRMOT è ora in stato legacy. Per nuove ottimizzazioni, usa il NEXA Graphics Software unificato.",
-      desc: "Tool avanzato NEXA per ottimizzazione risorse.<ul><li>Priorità CPU</li><li>Libera VRAM</li><li>Pulizia RAM-cache</li><li>Ripristino stato originale alla chiusura</li></ul><strong>Include:</strong> Guida XRMOT",
-      file: "XRMOT-4.2.1.exe", size: "655 KB",
-      os: "<strong>OS:</strong> Windows 10/11<br><strong>Dimensione:</strong> 655 KB<br><strong>Permessi:</strong> Amministratore",
-      sha: "8F4E2C1B9A0D7F6E5D4C3B2A1F0E9D8C7B6A5F4E3D2C1B0A9F8E7D6C5B4A3928",
-      url: "https://drive.google.com/drive/folders/1U5ILjzK-W6B-R1AFDRuQ0jWji2vrZWAG",
-      isAI: false,
-      rating: 4.5,
-      ratingCount: 89
-    },
-    v9: {
-      title: "NEXA SDK 3.4 (Beta Legacy)",
-      id: "SDK-3.4-DEV", date: "01/05/2026", status: "legacy", category: "sdk",
-      alertType: "legacy",
-      alert: "⚠️ <strong>SDK Legacy:</strong> Mantenere solo per dipendenze esistenti. Per nuovi progetti usa la release stabile NEXA.",
-      desc: "<strong>NEXA SDK 3.4 - Beta Legacy</strong><br>Mini app per test rapidi e integrazione con codice esistente NEXA.<ul><li>Interfaccia ridotta</li><li>AI integration locale</li><li>Retrocompatibilità</li></ul>",
-      file: "NEXA_SDK_3.4_DevMiniApp.exe", size: "700 KB",
-      os: "Windows 10+, connessione internet, CPU 1 GHz+, 700 KB",
-      sha: "C1D2E3F40516273849A0B1C2D3E4F5061728394A5B6C7D8E9F00112233445566",
-      url: "https://drive.google.com/drive/folders/15GycJKJmR1iwp-owg9xXaI4t8J2-q1dq?usp=drive_link",
-      isAI: false,
-      rating: 3.9,
-      ratingCount: 45
-    },
-    v7: {
-      title: "NEXA Xe-2.0 - Driver & Software (Beta)",
-      id: "XE-2026-V2", date: "01/05/2026", status: "beta", category: "gpu",
-      alertType: "none",
-      desc: "<strong>NEXA Xe-2.0 - Build Beta</strong><br>Ottimizzazioni kernel e supporto esteso per le nuove librerie grafiche NEXA. Consigliato per testing e early adopters.",
-      file: "NEXA_Xe_Package_2.0.exe", size: "~380 MB",
-      os: "Windows 10/11 64-bit",
-      sha: "AAABBBCCCDDDEEEFFF111222333444555666777888999000AAABBBCCCDDDEEEF",
-      url: "https://drive.google.com/drive/folders/1naCyvxiBd3ZwUsu5P1q7tuixYzE-hwH2",
-      isAI: false,
-      rating: 4.3,
-      ratingCount: 67
-    },
-    v8: {
-      title: "NEXA Studio Accelerator (Stable)",
-      id: "SSA-901", date: "02/05/2026", status: "stable", category: "gpu",
-      alertType: "none",
-      desc: "<strong>NEXA Studio Accelerator - Release Stabile</strong><br>Acceleratore per suite creative e produzione. Include driver 32.0.101.7080/7095 OEMx, Driver EVO PRO beta e Driver PRO.",
-      file: "NEXA_Studio_Accelerator_Setup.exe", size: "~500 MB",
-      os: "<strong>OS:</strong> Windows 11 64-bit<br><strong>CPU:</strong> Quad-core 2.5 GHz+<br><strong>RAM:</strong> 8 GB<br><strong>Storage:</strong> 500 MB",
-      sha: "556677889900AABBCCDDEEFF11223344556677889900AABBCCDDEEFF11223344",
-      url: "https://drive.google.com/drive/folders/1JHV173PewLwC9sXJVamaORnKKy3lcKV_",
-      isAI: false,
-      rating: 4.9,
-      ratingCount: 234
-    },
-    v1: {
-      title: "NEXA Xe-1 (Legacy)",
-      id: "PKG-001", date: "29/04/2026", status: "legacy", category: "gpu",
-      alertType: "legacy",
-      alert: "⚠️ <strong>Legacy:</strong> Xe-1 mantenuto per retrocompatibilità. Aggiorna a NEXA Xe-2.0 se possibile.",
-      desc: "<strong>NEXA Xe-1 Legacy</strong><br>Include: NEXA AI Control (53.1 MB), Driver legacy 12Th OEMs, Raptor Lake Refresh, OSS-Ai Minecraft.",
-      file: "NEXA_Xe-1_Archive.zip", size: "~200 MB",
-      os: "Windows 10 64-bit",
-      sha: "111122223333444455556666777788889999AAAABBBBCCCCDDDDEEEEFFFF0000",
-      url: "https://drive.google.com/drive/folders/1g0B7EcuI3x7zovo92jdW1lRs0CgRnv1w?usp=drive_link",
-      isAI: false,
-      rating: 3.8,
-      ratingCount: 112
-    },
-    v3: {
-      title: "NEXA Game On 1.21 (Archivio)",
-      id: "892102", date: "21/04/2026", status: "archived", category: "tool",
-      alertType: "archived",
-      alert: "⚠️ <strong>Archiviato:</strong> Versione non più supportata. Usa versioni più recenti.",
-      desc: "Ottimizzazione NEXA per engine legacy. Include Mods e Guida NEXA Game On mirato.",
-      file: "nexa_game_on_1.21.exe", size: "~80 MB",
-      os: "Windows 10 64-bit",
-      sha: "A1B2C3D4E5F678901234567890ABCDEF1234567890ABCDEF1234567890ABCDEF",
-      url: "https://drive.google.com/drive/folders/1p5u_K7c6X_PDKc3diWqnwMoIWELU1FpB?usp=sharing",
-      isAI: false,
-      rating: 4.0,
-      ratingCount: 78
-    },
-    v4: {
-      title: "NEXA Control Panel SDK (Archivio)",
-      id: "445123", date: "12/01/2025", status: "archived", category: "sdk",
-      alertType: "archived",
-      alert: "⚠️ <strong>Deprecato:</strong> NEXA Control archiviato. Usa i nuovi SDK.",
-      desc: "NEXA AI Control Panel (53 MB) per compatibilità con impostazioni rimosse.",
-      file: "NEXA_AI_Control.exe", size: "53 MB",
-      os: "Windows 10/11",
-      sha: "BBDDCC11223344556677889900AABBCCDDEEFF11223344556677889900AABBCC",
-      url: "https://drive.google.com/uc?export=download&id=1FMxlcMH__KeSqMOuahNUHN47S3AeYrDo",
-      isAI: false,
-      rating: 3.5,
-      ratingCount: 34
-    },
-    v11: {
-      title: "NEXA AI Training Data (Lightweight)",
-      id: "AI-TRN-LW-01", date: "05/05/2026", status: "latest", category: "ai",
-      alertType: "none",
-      desc: "<strong>NEXA Dataset per Addestramento Leggero</strong><br>Include: <code>code_train.jsonl</code> (11.9 MB), <code>full_train.jsonl</code> (68.1 MB), <code>instruct_train.jsonl</code> (57.8 MB), <code>Data.jsonl</code> (59 KB), formato Parquet.",
-      file: "NEXA_AI_TrainingData_LW_v1.zip", size: "~200 MB",
-      os: "Qualsiasi OS moderno<br><strong>Storage:</strong> ~200 MB<br><strong>RAM:</strong> 4 GB minimi",
-      sha: "7A8B9C0D1E2F3A4B5C6D7E8F9A0B1C2D3E4F5A6B7C8D9E0F1A2B3C4D5E6F7A8B",
-      url: "https://drive.google.com/drive/folders/1Sy1eZZR6_g8ucNrMzLckSr4rsxH6sto2",
-      isAI: true,
-      aiReq: "<strong>Dispositivi:</strong> Laptop, Mini-PC, Edge Device<br><strong>Formato:</strong> JSONL / Parquet normalizzati<br><strong>EriK 1.6 Weight prompt</strong> incluso",
-      aiInstructions: "<ol><li>Estrai l'archivio in directory con permessi R/W.</li><li>Verifica SHA256.</li><li>Carica con PyTorch/TensorFlow/HuggingFace.</li><li><code>batch_size</code> tra 8 e 32.</li><li><code>gradient_accumulation_steps=4</code> per simulare batch grandi.</li><li>Monitora con <code>htop</code>/<code>nvtop</code>.</li></ol>",
-      rating: 4.7,
-      ratingCount: 156
-    },
-    v12: {
-      title: "NEXA FP16 3.8B Internal (OSS Test)",
-      id: "NEXA-FP16-3.8B", date: "06/05/2026", status: "beta", category: "ai",
-      alertType: "none",
-      desc: "<strong>NEXA LLM 3.8B Parametri - FP16</strong><br>Build interna NEXA per test OSS. Ottimizzata per inferenza e fine-tuning su hardware consumer.",
-      file: "NEXA_3.8B_FP16_Internal.safetensors", size: "~8.5 GB",
-      os: "Windows 10/11 64-bit o Linux Ubuntu 22.04+<br><strong>Python:</strong> 3.10+<br><strong>Librerie:</strong> transformers>=4.35, accelerate, torch>=2.1",
-      sha: "9F8E7D6C5B4A3928172635445362718293049586756453423120192837465599",
-      url: "https://drive.google.com/file/d/1ZRMaCxnISc4xfiqmlHWUPx3v169MoQkB/view?usp=drivesdk",
-      isAI: true,
-      aiReq: "<strong>VRAM:</strong> 12 GB minimi<br><strong>RAM:</strong> 12 GB minimi<br><strong>Storage:</strong> ~8.5 GB<br><strong>Compute:</strong> CUDA 12.x / ROCm 5.7+",
-      aiInstructions: "<ol><li>Scarica <code>.safetensors</code> in <code>./models/</code>.</li><li><code>pip install torch transformers accelerate safetensors</code></li><li>Carica FP16 con <code>device_map='auto'</code>.</li><li>Fine-tuning con LoRA/QLoRA.</li><li>Se OOM: riduci <code>max_length</code> o abilita <code>load_in_8bit=True</code>.</li></ol>",
-      rating: 4.6,
-      ratingCount: 98
-    },
-    v5: {
-      title: "NEXA GPU Benchmark Suite",
-      id: "GBS-2026", date: "15/05/2026", status: "stable", category: "tool",
-      alertType: "none",
-      desc: "<strong>Suite completa di benchmark</strong><br>Test prestazionali per GPU NEXA: compute shader, ray tracing, AI inference, memory bandwidth.",
-      file: "NEXA_Benchmark_Suite.exe", size: "~120 MB",
-      os: "Windows 10/11 64-bit<br><strong>GPU:</strong> DirectX 12 / Vulkan<br><strong>RAM:</strong> 8 GB",
-      sha: "DEADBEEF1234567890ABCDEF1234567890ABCDEF1234567890ABCDEF12345678",
-      url: "https://drive.google.com/drive/folders/1tCINvrgZT84fhitlwDiXXPSYa0SQZxTZ?usp=drive_link",
-      isAI: false,
-      rating: 4.4,
-      ratingCount: 203
-    }
-  });
-
-  // ═══════════════════════════════════════════════════
-  // DOM ELEMENTS
+  // DOM HELPERS
   // ═══════════════════════════════════════════════════
   const $ = (id) => document.getElementById(id);
 
   // ═══════════════════════════════════════════════════
   // TOAST SYSTEM
+  // PRE: message is string, type is 'info'|'success'|'error'|'warning'
+  // POST: toast appears, auto-dismisses after 3500ms
   // ═══════════════════════════════════════════════════
   function showToast(message, type = 'info') {
     const container = $('toast-container');
+    if (!container) return;
     const toast = document.createElement('div');
     toast.className = `toast ${type}`;
+    toast.setAttribute('role', 'status');
     toast.innerHTML = `<span class="toast-text">${escapeHtml(message)}</span>`;
     container.appendChild(toast);
     setTimeout(() => {
       toast.style.animation = 'toastIn 0.3s reverse';
-      setTimeout(() => toast.remove(), 300);
+      setTimeout(() => { if (toast.parentNode) toast.remove(); }, 300);
     }, 3500);
   }
 
   // ═══════════════════════════════════════════════════
-  // PACKAGES GRID
+  // ICON MAPPING - Professional SVG Icons
+  // ═══════════════════════════════════════════════════
+  const iconMap = Object.freeze({
+    'gpu': '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg>',
+    'ai': '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>',
+    'tool': '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>',
+    'sdk': '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>',
+    'default': '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>'
+  });
+
+  function getCategoryIcon(category) {
+    return iconMap[category] || iconMap.default;
+  }
+
+  // ═══════════════════════════════════════════════════
+  // DATABASE - All Packages
+  // ═══════════════════════════════════════════════════
+  const database = Object.freeze({
+    v10: { title: "NEXA Arc Drive™ 33.0.102.5081 WHQL (BETA)", id: "895081", date: "03/05/2026", status: "latest", category: "gpu", alertType: "none", desc: "<strong>NEXA Arc Drive - Graphics Software Unificato</strong><br>Questa release introduce l'ecosistema grafico unificato NEXA, ottimizzato per GPU moderne. Include il nuovo <strong>NEXA AI Node SDK</strong> e il pacchetto 'Game On' rinnovato.", file: "gfx_nexa_102.5081_beta.exe", size: "~450 MB", os: "<strong>OS Minimo:</strong> Windows 10 (64-bit) | <strong>OS Consigliato:</strong> Windows 11<br><strong>CPU:</strong> 64-bit multicore<br><strong>RAM:</strong> 4 GB minimi<br><strong>GPU:</strong> NEXA Arc Drive compatibile<br><strong>Spazio:</strong> 600 MB", sha: "E1F2A3B4C5D6E7F8901234567890ABCDEF1234567890ABCDEF1234567890ABCD", url: "https://drive.google.com/drive/folders/1tCINvrgZT84fhitlwDiXXPSYa0SQZxTZ?usp=drive_link", isAI: false, rating: 4.8, ratingCount: 342 },
+    v2: { title: "NEXA Arc Drive™ 33.0.102.2131 WHQL (Legacy)", id: "785598", date: "10/05/2026", status: "legacy", category: "gpu", alertType: "legacy", alert: "<strong>Legacy per hardware datato:</strong> Questa versione NEXA è mantenuta per GPU di prima generazione. Per hardware moderno, scarica la release più recente.", desc: "<strong>NEXA Arc Drive Legacy</strong><br>Versione WHQL stabile ottimizzata per hardware datato. Ideale per GPU NEXA Arc di prima generazione. <strong>Dimensione:</strong> ~131 MB.", file: "33.0.102.2131_WHQL.exe", size: "131 MB", os: "<strong>OS:</strong> Windows 10/11 (64-bit)<br><strong>CPU:</strong> Dual-core 2 GHz+<br><strong>RAM:</strong> 4 GB minimi<br><strong>GPU:</strong> NEXA Arc™ prima generazione", sha: "9F8E7D6C5B4A3928172635445362718293049586756453423120192837465544", url: "https://drive.google.com/uc?export=download&id=1Xud5XxkHYwOSUIPjp3SoMzJCOqwNbdtw", isAI: false, rating: 4.2, ratingCount: 156 },
+    v6: { title: "NEXA XRMOT - Resource Manager v4.2.1", id: "XRMOT-421", date: "30/04/2026", status: "legacy", category: "tool", alertType: "legacy", alert: "<strong>Legacy:</strong> XRMOT è ora in stato legacy. Per nuove ottimizzazioni, usa il NEXA Graphics Software unificato.", desc: "Tool avanzato NEXA per ottimizzazione risorse.<ul><li>Priorità CPU</li><li>Libera VRAM</li><li>Pulizia RAM-cache</li><li>Ripristino stato originale alla chiusura</li></ul><strong>Include:</strong> Guida XRMOT", file: "XRMOT-4.2.1.exe", size: "655 KB", os: "<strong>OS:</strong> Windows 10/11<br><strong>Dimensione:</strong> 655 KB<br><strong>Permessi:</strong> Amministratore", sha: "8F4E2C1B9A0D7F6E5D4C3B2A1F0E9D8C7B6A5F4E3D2C1B0A9F8E7D6C5B4A3928", url: "https://drive.google.com/drive/folders/1U5ILjzK-W6B-R1AFDRuQ0jWji2vrZWAG", isAI: false, rating: 4.5, ratingCount: 89 },
+    v9: { title: "NEXA SDK 3.4 (Beta Legacy)", id: "SDK-3.4-DEV", date: "01/05/2026", status: "legacy", category: "sdk", alertType: "legacy", alert: "<strong>SDK Legacy:</strong> Mantenere solo per dipendenze esistenti. Per nuovi progetti usa la release stabile NEXA.", desc: "<strong>NEXA SDK 3.4 - Beta Legacy</strong><br>Mini app per test rapidi e integrazione con codice esistente NEXA.<ul><li>Interfaccia ridotta</li><li>AI integration locale</li><li>Retrocompatibilità</li></ul>", file: "NEXA_SDK_3.4_DevMiniApp.exe", size: "700 KB", os: "Windows 10+, connessione internet, CPU 1 GHz+, 700 KB", sha: "C1D2E3F40516273849A0B1C2D3E4F5061728394A5B6C7D8E9F00112233445566", url: "https://drive.google.com/drive/folders/15GycJKJmR1iwp-owg9xXaI4t8J2-q1dq?usp=drive_link", isAI: false, rating: 3.9, ratingCount: 45 },
+    v7: { title: "NEXA Xe-2.0 - Driver & Software (Beta)", id: "XE-2026-V2", date: "01/05/2026", status: "beta", category: "gpu", alertType: "none", desc: "<strong>NEXA Xe-2.0 - Build Beta</strong><br>Ottimizzazioni kernel e supporto esteso per le nuove librerie grafiche NEXA. Consigliato per testing e early adopters.", file: "NEXA_Xe_Package_2.0.exe", size: "~380 MB", os: "Windows 10/11 64-bit", sha: "AAABBBCCCDDDEEEFFF111222333444555666777888999000AAABBBCCCDDDEEEF", url: "https://drive.google.com/drive/folders/1naCyvxiBd3ZwUsu5P1q7tuixYzE-hwH2", isAI: false, rating: 4.3, ratingCount: 67 },
+    v8: { title: "NEXA Studio Accelerator (Stable)", id: "SSA-901", date: "02/05/2026", status: "stable", category: "gpu", alertType: "none", desc: "<strong>NEXA Studio Accelerator - Release Stabile</strong><br>Acceleratore per suite creative e produzione. Include driver 32.0.101.7080/7095 OEMx, Driver EVO PRO beta e Driver PRO.", file: "NEXA_Studio_Accelerator_Setup.exe", size: "~500 MB", os: "<strong>OS:</strong> Windows 11 64-bit<br><strong>CPU:</strong> Quad-core 2.5 GHz+<br><strong>RAM:</strong> 8 GB<br><strong>Storage:</strong> 500 MB", sha: "556677889900AABBCCDDEEFF11223344556677889900AABBCCDDEEFF11223344", url: "https://drive.google.com/drive/folders/1JHV173PewLwC9sXJVamaORnKKy3lcKV_", isAI: false, rating: 4.9, ratingCount: 234 },
+    v1: { title: "NEXA Xe-1 (Legacy)", id: "PKG-001", date: "29/04/2026", status: "legacy", category: "gpu", alertType: "legacy", alert: "<strong>Legacy:</strong> Xe-1 mantenuto per retrocompatibilità. Aggiorna a NEXA Xe-2.0 se possibile.", desc: "<strong>NEXA Xe-1 Legacy</strong><br>Include: NEXA AI Control (53.1 MB), Driver legacy 12Th OEMs, Raptor Lake Refresh, OSS-Ai Minecraft.", file: "NEXA_Xe-1_Archive.zip", size: "~200 MB", os: "Windows 10 64-bit", sha: "111122223333444455556666777788889999AAAABBBBCCCCDDDDEEEEFFFF0000", url: "https://drive.google.com/drive/folders/1g0B7EcuI3x7zovo92jdW1lRs0CgRnv1w?usp=drive_link", isAI: false, rating: 3.8, ratingCount: 112 },
+    v3: { title: "NEXA Game On 1.21 (Archivio)", id: "892102", date: "21/04/2026", status: "archived", category: "tool", alertType: "archived", alert: "<strong>Archiviato:</strong> Versione non più supportata. Usa versioni più recenti.", desc: "Ottimizzazione NEXA per engine legacy. Include Mods e Guida NEXA Game On mirato.", file: "nexa_game_on_1.21.exe", size: "~80 MB", os: "Windows 10 64-bit", sha: "A1B2C3D4E5F678901234567890ABCDEF1234567890ABCDEF1234567890ABCDEF", url: "https://drive.google.com/drive/folders/1p5u_K7c6X_PDKc3diWqnwMoIWELU1FpB?usp=sharing", isAI: false, rating: 4.0, ratingCount: 78 },
+    v4: { title: "NEXA Control Panel SDK (Archivio)", id: "445123", date: "12/01/2025", status: "archived", category: "sdk", alertType: "archived", alert: "<strong>Deprecato:</strong> NEXA Control archiviato. Usa i nuovi SDK.", desc: "NEXA AI Control Panel (53 MB) per compatibilità con impostazioni rimosse.", file: "NEXA_AI_Control.exe", size: "53 MB", os: "Windows 10/11", sha: "BBDDCC11223344556677889900AABBCCDDEEFF11223344556677889900AABBCC", url: "https://drive.google.com/uc?export=download&id=1FMxlcMH__KeSqMOuahNUHN47S3AeYrDo", isAI: false, rating: 3.5, ratingCount: 34 },
+    v11: { title: "NEXA AI Training Data (Lightweight)", id: "AI-TRN-LW-01", date: "05/05/2026", status: "latest", category: "ai", alertType: "none", desc: "<strong>NEXA Dataset per Addestramento Leggero</strong><br>Include: <code>code_train.jsonl</code> (11.9 MB), <code>full_train.jsonl</code> (68.1 MB), <code>instruct_train.jsonl</code> (57.8 MB), <code>Data.jsonl</code> (59 KB), formato Parquet.", file: "NEXA_AI_TrainingData_LW_v1.zip", size: "~200 MB", os: "Qualsiasi OS moderno<br><strong>Storage:</strong> ~200 MB<br><strong>RAM:</strong> 4 GB minimi", sha: "7A8B9C0D1E2F3A4B5C6D7E8F9A0B1C2D3E4F5A6B7C8D9E0F1A2B3C4D5E6F7A8B", url: "https://drive.google.com/drive/folders/1Sy1eZZR6_g8ucNrMzLckSr4rsxH6sto2", isAI: true, aiReq: "<strong>Dispositivi:</strong> Laptop, Mini-PC, Edge Device<br><strong>Formato:</strong> JSONL / Parquet normalizzati<br><strong>EriK 1.6 Weight prompt</strong> incluso", aiInstructions: "<ol><li>Estrai l'archivio in directory con permessi R/W.</li><li>Verifica SHA256.</li><li>Carica con PyTorch/TensorFlow/HuggingFace.</li><li><code>batch_size</code> tra 8 e 32.</li><li><code>gradient_accumulation_steps=4</code> per simulare batch grandi.</li><li>Monitora con <code>htop</code>/<code>nvtop</code>.</li></ol>", rating: 4.7, ratingCount: 156 },
+    v12: { title: "NEXA FP16 3.8B Internal (OSS Test)", id: "NEXA-FP16-3.8B", date: "06/05/2026", status: "beta", category: "ai", alertType: "none", desc: "<strong>NEXA LLM 3.8B Parametri - FP16</strong><br>Build interna NEXA per test OSS. Ottimizzata per inferenza e fine-tuning su hardware consumer.", file: "NEXA_3.8B_FP16_Internal.safetensors", size: "~8.5 GB", os: "Windows 10/11 64-bit o Linux Ubuntu 22.04+<br><strong>Python:</strong> 3.10+<br><strong>Librerie:</strong> transformers>=4.35, accelerate, torch>=2.1", sha: "9F8E7D6C5B4A3928172635445362718293049586756453423120192837465599", url: "https://drive.google.com/file/d/1ZRMaCxnISc4xfiqmlHWUPx3v169MoQkB/view?usp=drivesdk", isAI: true, aiReq: "<strong>VRAM:</strong> 12 GB minimi<br><strong>RAM:</strong> 12 GB minimi<br><strong>Storage:</strong> ~8.5 GB<br><strong>Compute:</strong> CUDA 12.x / ROCm 5.7+", aiInstructions: "<ol><li>Scarica <code>.safetensors</code> in <code>./models/</code>.</li><li><code>pip install torch transformers accelerate safetensors</code></li><li>Carica FP16 con <code>device_map='auto'</code>.</li><li>Fine-tuning con LoRA/QLoRA.</li><li>Se OOM: riduci <code>max_length</code> o abilita <code>load_in_8bit=True</code>.</li></ol>", rating: 4.6, ratingCount: 98 },
+    v5: { title: "NEXA GPU Benchmark Suite", id: "GBS-2026", date: "15/05/2026", status: "stable", category: "tool", alertType: "none", desc: "<strong>Suite completa di benchmark</strong><br>Test prestazionali per GPU NEXA: compute shader, ray tracing, AI inference, memory bandwidth.", file: "NEXA_Benchmark_Suite.exe", size: "~120 MB", os: "Windows 10/11 64-bit<br><strong>GPU:</strong> DirectX 12 / Vulkan<br><strong>RAM:</strong> 8 GB", sha: "DEADBEEF1234567890ABCDEF1234567890ABCDEF1234567890ABCDEF12345678", url: "https://drive.google.com/drive/folders/1tCINvrgZT84fhitlwDiXXPSYa0SQZxTZ?usp=drive_link", isAI: false, rating: 4.4, ratingCount: 203 }
+  });
+
+  // ═══════════════════════════════════════════════════
+  // PACKAGE RENDERING
   // ═══════════════════════════════════════════════════
   let currentFilter = 'all';
   let currentSearch = '';
-
-  function renderPackages() {
-    const grid = $('packages-grid');
-    grid.innerHTML = '';
-
-    const entries = Object.entries(database).filter(([key, data]) => {
-      const matchesFilter = currentFilter === 'all' ||
-        data.category === currentFilter ||
-        data.status === currentFilter;
-      const matchesSearch = currentSearch === '' ||
-        data.title.toLowerCase().includes(currentSearch) ||
-        data.desc.toLowerCase().includes(currentSearch) ||
-        data.file.toLowerCase().includes(currentSearch);
-      return matchesFilter && matchesSearch;
-    });
-
-    if (entries.length === 0) {
-      grid.innerHTML = `
-        <div class="empty-state">
-          <div class="empty-icon">${iconMap.default}</div>
-          <h3 class="empty-title">Nessun risultato</h3>
-          <p class="empty-text">Prova a modificare i filtri o la ricerca</p>
-          <button class="btn btn-secondary" onclick="document.querySelector('[data-filter=all]').click()">
-            Mostra tutti
-          </button>
-        </div>
-      `;
-      return;
-    }
-
-    entries.forEach(([key, data]) => {
-      const card = document.createElement('div');
-      card.className = 'package-card';
-      card.dataset.key = key;
-      const statusBadge = getStatusBadge(data.status);
-      const categoryIcon = getCategoryIcon(data.category);
-
-      card.innerHTML = `
-        <div class="package-header">
-          <div class="package-icon icon-wrapper icon-${data.category}">${categoryIcon}</div>
-          <div class="package-badges">
-            ${statusBadge}
-            ${data.isAI ? '<span class="badge badge-ai">AI</span>' : ''}
-          </div>
-        </div>
-        <h3 class="package-title">${escapeHtml(data.title)}</h3>
-        <p class="package-desc">${data.desc.replace(/<[^>]+>/g, ' ').substring(0, 100)}...</p>
-        <div class="package-meta">
-          <div class="package-meta-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            ${data.date}
-          </div>
-          <div class="package-meta-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            ${data.size || 'N/A'}
-          </div>
-        </div>
-        <div class="package-actions">
-          <button class="btn btn-secondary package-details-btn" data-key="${key}">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-            Dettagli
-          </button>
-          <a href="${isAllowedUrl(data.url) ? data.url : '#'}" 
-             class="btn btn-primary package-download-btn" 
-             target="_blank" 
-             rel="noopener noreferrer"
-             ${!isAllowedUrl(data.url) ? 'onclick="event.preventDefault();"' : ''}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Scarica
-          </a>
-        </div>
-      `;
-      grid.appendChild(card);
-
-      card.querySelector('.package-details-btn').addEventListener('click', (e) => {
-        e.stopPropagation();
-        openDetail(key);
-      });
-
-      card.addEventListener('click', (e) => {
-        if (!e.target.closest('.package-download-btn') && !e.target.closest('a') && !e.target.closest('button')) {
-          openDetail(key);
-        }
-      });
-    });
-  }
 
   function getStatusBadge(status) {
     const map = {
@@ -2847,6 +912,125 @@ FOOTER - FEBLE-5 Branding
     return map[status] || '<span class="badge badge-latest">Latest</span>';
   }
 
+  function renderPackages() {
+    const grid = $('packages-grid');
+    if (!grid) return;
+    
+    const fragment = document.createDocumentFragment();
+    let matchCount = 0;
+
+    Object.entries(database).forEach(([key, data]) => {
+      const matchesFilter = currentFilter === 'all' ||
+        data.category === currentFilter ||
+        data.status === currentFilter;
+      const searchLower = currentSearch.toLowerCase();
+      const matchesSearch = searchLower === '' ||
+        data.title.toLowerCase().includes(searchLower) ||
+        data.desc.toLowerCase().includes(searchLower) ||
+        data.file.toLowerCase().includes(searchLower);
+      
+      if (!matchesFilter || !matchesSearch) return;
+      matchCount++;
+
+      const card = document.createElement('article');
+      card.className = 'package-card';
+      card.dataset.key = key;
+      card.setAttribute('role', 'article');
+      card.setAttribute('aria-label', `Pacchetto: ${data.title}`);
+      
+      const statusBadge = getStatusBadge(data.status);
+      const categoryIcon = getCategoryIcon(data.category);
+      const safeUrl = isAllowedUrl(data.url) ? data.url : '#';
+      const urlDisabled = !isAllowedUrl(data.url);
+
+      card.innerHTML = `
+        <div class="package-header">
+          <div class="package-icon icon-wrapper icon-${data.category}" aria-hidden="true">${categoryIcon}</div>
+          <div class="package-badges">
+            ${statusBadge}
+            ${data.isAI ? '<span class="badge badge-ai">AI</span>' : ''}
+          </div>
+        </div>
+        <h3 class="package-title">${escapeHtml(data.title)}</h3>
+        <p class="package-desc">${escapeHtml(data.desc.replace(/<[^>]+>/g, ' ').substring(0, 100))}...</p>
+        <div class="package-meta">
+          <div class="package-meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <time datetime="${data.date}">${escapeHtml(data.date)}</time>
+          </div>
+          <div class="package-meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>${escapeHtml(data.size || 'N/A')}</span>
+          </div>
+        </div>
+        <div class="package-actions">
+          <button class="btn btn-secondary package-details-btn" data-key="${key}" aria-label="Dettagli di ${escapeHtml(data.title)}">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            Dettagli
+          </button>
+          <a href="${safeUrl}" 
+             class="btn btn-primary package-download-btn" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             ${urlDisabled ? 'aria-disabled="true"' : ''}
+             aria-label="Scarica ${escapeHtml(data.title)}">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Scarica
+          </a>
+        </div>
+      `;
+      fragment.appendChild(card);
+    });
+
+    grid.innerHTML = '';
+    if (matchCount === 0) {
+      grid.innerHTML = `
+        <div class="empty-state" role="status">
+          <div class="empty-icon" aria-hidden="true">${iconMap.default}</div>
+          <h3 class="empty-title">Nessun risultato</h3>
+          <p class="empty-text">Prova a modificare i filtri o la ricerca</p>
+          <button class="btn btn-secondary" id="reset-filters-btn" aria-label="Mostra tutti i pacchetti">
+            Mostra tutti
+          </button>
+        </div>
+      `;
+      const resetBtn = $('reset-filters-btn');
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          const allChip = document.querySelector('[data-filter="all"]');
+          if (allChip) allChip.click();
+          const searchInput = $('search-input');
+          if (searchInput) { searchInput.value = ''; currentSearch = ''; }
+          renderPackages();
+        });
+      }
+    } else {
+      grid.appendChild(fragment);
+      // Attach event listeners
+      grid.querySelectorAll('.package-details-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          openDetail(btn.dataset.key);
+        });
+      });
+      grid.querySelectorAll('.package-card').forEach(card => {
+        card.addEventListener('click', (e) => {
+          if (!e.target.closest('.package-download-btn') && !e.target.closest('a') && !e.target.closest('button')) {
+            openDetail(card.dataset.key);
+          }
+        });
+      });
+      grid.querySelectorAll('.package-download-btn').forEach(btn => {
+        if (btn.getAttribute('aria-disabled') === 'true') {
+          btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showToast('URL di download non consentito', 'error');
+          });
+        }
+      });
+    }
+  }
+
   // ═══════════════════════════════════════════════════
   // FILTER & SEARCH
   // ═══════════════════════════════════════════════════
@@ -2854,10 +1038,7 @@ FOOTER - FEBLE-5 Branding
     const chips = document.querySelectorAll('.chip');
     chips.forEach(chip => {
       chip.addEventListener('click', () => {
-        chips.forEach(c => {
-          c.classList.remove('active');
-          c.setAttribute('aria-selected', 'false');
-        });
+        chips.forEach(c => { c.classList.remove('active'); c.setAttribute('aria-selected', 'false'); });
         chip.classList.add('active');
         chip.setAttribute('aria-selected', 'true');
         currentFilter = chip.dataset.filter;
@@ -2867,22 +1048,21 @@ FOOTER - FEBLE-5 Branding
 
     const searchInput = $('search-input');
     const suggestionsEl = $('search-suggestions');
-    let searchTimeout;
+    let searchTimeout = null;
     let highlightedIdx = -1;
 
     searchInput.addEventListener('input', (e) => {
       clearTimeout(searchTimeout);
       searchTimeout = setTimeout(() => {
-        currentSearch = e.target.value.toLowerCase().trim();
+        const val = e.target.value.slice(0, 200); // limit input
+        currentSearch = val.trim();
         renderPackages();
         showSearchSuggestions(currentSearch);
       }, 200);
     });
 
     searchInput.addEventListener('focus', () => {
-      if (searchInput.value) {
-        showSearchSuggestions(searchInput.value.toLowerCase().trim());
-      }
+      if (searchInput.value) showSearchSuggestions(searchInput.value.trim());
     });
 
     searchInput.addEventListener('keydown', (e) => {
@@ -2914,6 +1094,8 @@ FOOTER - FEBLE-5 Branding
     function updateHighlight(suggestions) {
       suggestions.forEach((s, i) => {
         s.classList.toggle('highlighted', i === highlightedIdx);
+        if (i === highlightedIdx) s.setAttribute('aria-selected', 'true');
+        else s.removeAttribute('aria-selected');
       });
     }
   }
@@ -2922,54 +1104,66 @@ FOOTER - FEBLE-5 Branding
     const suggestionsEl = $('search-suggestions');
     if (!query) {
       suggestionsEl.classList.remove('visible');
+      suggestionsEl.innerHTML = '';
       return;
     }
 
+    const queryLower = query.toLowerCase();
     const matches = Object.entries(database)
       .filter(([key, data]) =>
-        data.title.toLowerCase().includes(query) ||
-        data.desc.toLowerCase().includes(query) ||
-        data.file.toLowerCase().includes(query)
+        data.title.toLowerCase().includes(queryLower) ||
+        data.desc.toLowerCase().includes(queryLower) ||
+        data.file.toLowerCase().includes(queryLower)
       )
       .slice(0, 5);
 
     if (matches.length === 0) {
       suggestionsEl.classList.remove('visible');
+      suggestionsEl.innerHTML = '';
       return;
     }
 
-    suggestionsEl.innerHTML = matches.map(([key, data]) => `
-      <div class="suggestion-item" data-key="${key}">
-        <div class="suggestion-icon icon-wrapper icon-${data.category}">${getCategoryIcon(data.category)}</div>
+    const fragment = document.createDocumentFragment();
+    matches.forEach(([key, data]) => {
+      const item = document.createElement('div');
+      item.className = 'suggestion-item';
+      item.dataset.key = key;
+      item.setAttribute('role', 'option');
+      item.innerHTML = `
+        <div class="suggestion-icon icon-wrapper icon-${data.category}" aria-hidden="true">${getCategoryIcon(data.category)}</div>
         <div class="suggestion-content">
           <div class="suggestion-title">${escapeHtml(data.title)}</div>
-          <div class="suggestion-category">${data.category.toUpperCase()} • ${data.status}</div>
+          <div class="suggestion-category">${escapeHtml(data.category.toUpperCase())} • ${escapeHtml(data.status)}</div>
         </div>
-        <div class="suggestion-arrow">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <div class="suggestion-arrow" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"/></svg>
         </div>
-      </div>
-    `).join('');
-
-    suggestionsEl.classList.add('visible');
-
-    suggestionsEl.querySelectorAll('.suggestion-item').forEach(item => {
+      `;
       item.addEventListener('click', () => {
-        openDetail(item.dataset.key);
+        openDetail(key);
         suggestionsEl.classList.remove('visible');
         $('search-input').value = '';
         currentSearch = '';
         renderPackages();
       });
+      fragment.appendChild(item);
     });
+    
+    suggestionsEl.innerHTML = '';
+    suggestionsEl.appendChild(fragment);
+    suggestionsEl.classList.add('visible');
   }
 
   // ═══════════════════════════════════════════════════
   // DETAIL PANEL
   // ═══════════════════════════════════════════════════
+  let lastFocusedElement = null;
+
   function openDetail(key) {
     const data = database[key];
     if (!data) return;
+
+    lastFocusedElement = document.activeElement;
 
     $('detail-title').textContent = data.title;
     $('detail-id').textContent = `ID: ${data.id}`;
@@ -2989,7 +1183,7 @@ FOOTER - FEBLE-5 Branding
     const alertEl = $('detail-alert');
     if (data.alertType && data.alertType !== 'none') {
       alertEl.className = `alert-banner visible ${data.alertType}`;
-      $('detail-alert-text').innerHTML = sanitizeHtml(data.alert);
+      $('detail-alert-text').innerHTML = sanitizeHtml(data.alert || '');
     } else {
       alertEl.classList.remove('visible');
     }
@@ -3007,14 +1201,15 @@ FOOTER - FEBLE-5 Branding
     const downloadLink = $('detail-download-link');
     if (isAllowedUrl(data.url)) {
       downloadLink.href = data.url;
-      downloadLink.onclick = (e) => {
-        simulateProgress();
-      };
+      downloadLink.removeAttribute('aria-disabled');
+      downloadLink.onclick = () => { simulateProgress(); return true; };
     } else {
       downloadLink.href = '#';
+      downloadLink.setAttribute('aria-disabled', 'true');
       downloadLink.onclick = (e) => {
         e.preventDefault();
-        showToast('URL non consentito', 'error');
+        showToast('URL non consentito per motivi di sicurezza', 'error');
+        return false;
       };
     }
 
@@ -3022,6 +1217,9 @@ FOOTER - FEBLE-5 Branding
     $('detail-panel').classList.add('open');
     $('detail-panel').setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+    
+    // Focus trap
+    setTimeout(() => $('detail-close').focus(), 100);
   }
 
   function closeDetail() {
@@ -3029,21 +1227,51 @@ FOOTER - FEBLE-5 Branding
     $('detail-panel').classList.remove('open');
     $('detail-panel').setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+    if (lastFocusedElement) lastFocusedElement.focus();
   }
 
   function initDetail() {
     $('detail-overlay').addEventListener('click', closeDetail);
     $('detail-close').addEventListener('click', closeDetail);
 
+    // Focus trap for detail panel
+    $('detail-panel').addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') { closeDetail(); return; }
+      if (e.key === 'Tab') {
+        const focusable = $('detail-panel').querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault(); last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault(); first.focus();
+        }
+      }
+    });
+
     $('copy-sha-btn').addEventListener('click', async () => {
       const sha = $('detail-sha').textContent;
+      if (!sha) return;
+      
       try {
-        await navigator.clipboard.writeText(sha);
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(sha);
+        } else {
+          // Fallback for non-HTTPS
+          const textarea = document.createElement('textarea');
+          textarea.value = sha;
+          textarea.style.position = 'fixed';
+          textarea.style.opacity = '0';
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand('copy');
+          document.body.removeChild(textarea);
+        }
         $('copy-sha-btn').classList.add('copied');
-        showToast('✅ SHA256 copiato negli appunti', 'success');
+        showToast('SHA256 copiato negli appunti', 'success');
         setTimeout(() => $('copy-sha-btn').classList.remove('copied'), 2000);
-      } catch {
-        showToast('❌ Impossibile copiare', 'error');
+      } catch (err) {
+        showToast('Impossibile copiare: seleziona manualmente il checksum', 'error');
       }
     });
   }
@@ -3056,6 +1284,7 @@ FOOTER - FEBLE-5 Branding
     const fillEl = $('progress-fill');
     const statusEl = $('progress-status');
     const percentEl = $('progress-percent');
+    const progressBar = progressEl.querySelector('[role="progressbar"]');
 
     progressEl.classList.add('active');
     fillEl.style.width = '0%';
@@ -3067,12 +1296,14 @@ FOOTER - FEBLE-5 Branding
         progress = 100;
         clearInterval(interval);
         statusEl.textContent = 'Reindirizzamento a Google Drive...';
+        if (progressBar) progressBar.setAttribute('aria-valuenow', '100');
         setTimeout(() => {
           progressEl.classList.remove('active');
-          showToast('📦 Download avviato da Google Drive', 'success');
+          showToast('Download avviato da Google Drive', 'success');
         }, 1000);
       } else {
         statusEl.textContent = 'Preparazione download...';
+        if (progressBar) progressBar.setAttribute('aria-valuenow', String(Math.floor(progress)));
       }
       fillEl.style.width = progress + '%';
       percentEl.textContent = Math.floor(progress) + '%';
@@ -3084,9 +1315,16 @@ FOOTER - FEBLE-5 Branding
   // ═══════════════════════════════════════════════════
   function initNav() {
     const nav = $('main-nav');
+    let scrollTicking = false;
     window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 20);
-    });
+      if (!scrollTicking) {
+        requestAnimationFrame(() => {
+          nav.classList.toggle('scrolled', window.scrollY > 20);
+          scrollTicking = false;
+        });
+        scrollTicking = true;
+      }
+    }, { passive: true });
 
     const mobileBtn = $('mobile-menu-btn');
     const drawer = $('mobile-drawer');
@@ -3095,18 +1333,27 @@ FOOTER - FEBLE-5 Branding
     function openDrawer() {
       drawer.classList.add('open');
       drawer.setAttribute('aria-hidden', 'false');
+      mobileBtn.setAttribute('aria-expanded', 'true');
       document.body.style.overflow = 'hidden';
+      setTimeout(() => closeBtn.focus(), 100);
     }
 
     function closeDrawer() {
       drawer.classList.remove('open');
       drawer.setAttribute('aria-hidden', 'true');
+      mobileBtn.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
+      mobileBtn.focus();
     }
 
     mobileBtn.addEventListener('click', openDrawer);
     closeBtn.addEventListener('click', closeDrawer);
     drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+    
+    // Focus trap for drawer
+    drawer.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeDrawer();
+    });
   }
 
   // ═══════════════════════════════════════════════════
@@ -3114,7 +1361,6 @@ FOOTER - FEBLE-5 Branding
   // ═══════════════════════════════════════════════════
   let chatOpen = false;
   let chatNotUsefulCount = 0;
-  const MAX_NOT_USEFUL = 3;
   const chatTranscript = [];
   let chatInitialized = false;
 
@@ -3127,26 +1373,21 @@ FOOTER - FEBLE-5 Branding
     const badge = $('chat-badge');
 
     fab.addEventListener('click', () => {
-      if (!chatOpen) {
-        openChatPanel();
-      } else {
-        closeChatPanel();
-      }
+      if (!chatOpen) openChatPanel();
+      else closeChatPanel();
     });
 
     closeBtn.addEventListener('click', closeChatPanel);
     sendBtn.addEventListener('click', sendChatMessage);
-    input.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') sendChatMessage();
-    });
-
+    input.addEventListener('keydown', (e) => { if (e.key === 'Enter') sendChatMessage(); });
     $('btn-download-report').addEventListener('click', downloadReport);
 
-    setTimeout(() => {
-      if (!chatOpen) {
-        badge.style.display = 'flex';
-      }
-    }, 5000);
+    setTimeout(() => { if (!chatOpen && badge) badge.style.display = 'flex'; }, 5000);
+    
+    // Focus trap for chat panel
+    panel.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeChatPanel();
+    });
   }
 
   function openChatPanel() {
@@ -3154,14 +1395,14 @@ FOOTER - FEBLE-5 Branding
     $('chat-panel').classList.add('open');
     $('chat-panel').setAttribute('aria-hidden', 'false');
     $('chat-fab').style.display = 'none';
-    $('chat-badge').style.display = 'none';
+    $('chat-fab').setAttribute('aria-expanded', 'true');
+    if ($('chat-badge')) $('chat-badge').style.display = 'none';
 
     if (!chatInitialized) {
-      addBotMessage("Ciao! 👋 Sono l'assistente FEBLE-5. Come posso aiutarti oggi?", ['q1', 'q5', 'q9']);
+      addBotMessage("Ciao! Sono l'assistente FEBLE-5. Come posso aiutarti oggi?", ['q1', 'q5', 'q9']);
       populateQuickActions();
       chatInitialized = true;
     }
-
     setTimeout(() => $('chat-input').focus(), 300);
   }
 
@@ -3170,6 +1411,7 @@ FOOTER - FEBLE-5 Branding
     $('chat-panel').classList.remove('open');
     $('chat-panel').setAttribute('aria-hidden', 'true');
     $('chat-fab').style.display = 'flex';
+    $('chat-fab').setAttribute('aria-expanded', 'false');
   }
 
   function addBotMessage(text, followupIds = []) {
@@ -3180,31 +1422,23 @@ FOOTER - FEBLE-5 Branding
 
     let followupsHTML = '';
     if (followupIds.length > 0) {
-      const followupTexts = {
-        q1: 'Come scaricare', q5: 'Requisiti', q9: 'Driver GPU',
-        q16: 'Modelli AI', q22: 'XRMOT', q30: 'Contatta supporto'
-      };
+      const followupTexts = { q1: 'Come scaricare', q5: 'Requisiti', q9: 'Driver GPU', q16: 'Modelli AI', q22: 'XRMOT', q30: 'Contatta supporto' };
       followupsHTML = '<div class="chat-followups">' +
-        followupIds.map(id => `<button class="chat-followup-btn" data-faq="${id}">${followupTexts[id] || 'Altro'}</button>`).join('') +
+        followupIds.map(id => `<button class="chat-followup-btn" data-faq="${id}">${escapeHtml(followupTexts[id] || 'Altro')}</button>`).join('') +
         '</div>';
     }
 
     msgDiv.innerHTML = `
-      <div class="chat-msg-avatar">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 8V4H8"/>
-          <rect width="16" height="12" x="4" y="8" rx="2"/>
-          <path d="M2 14h2"/>
-          <path d="M20 14h2"/>
-          <path d="M15 13v2"/>
-          <path d="M9 13v2"/>
+      <div class="chat-msg-avatar" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/>
         </svg>
       </div>
       <div>
         <div class="chat-bubble">
           ${escapeHtml(text)}
           ${followupsHTML}
-          <button class="chat-not-useful">❌ Non utile</button>
+          <button class="chat-not-useful" aria-label="Segna come non utile">Non utile</button>
         </div>
       </div>
     `;
@@ -3223,10 +1457,9 @@ FOOTER - FEBLE-5 Branding
     const msgDiv = document.createElement('div');
     msgDiv.className = 'chat-message user';
     msgDiv.innerHTML = `
-      <div class="chat-msg-avatar">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
-          <circle cx="12" cy="7" r="4"/>
+      <div class="chat-msg-avatar" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
         </svg>
       </div>
       <div class="chat-bubble">${escapeHtml(text)}</div>
@@ -3240,19 +1473,15 @@ FOOTER - FEBLE-5 Branding
     const typingDiv = document.createElement('div');
     typingDiv.className = 'chat-message bot';
     typingDiv.id = 'typing-indicator';
+    typingDiv.setAttribute('aria-live', 'polite');
     typingDiv.innerHTML = `
-      <div class="chat-msg-avatar">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 8V4H8"/>
-          <rect width="16" height="12" x="4" y="8" rx="2"/>
-          <path d="M2 14h2"/>
-          <path d="M20 14h2"/>
-          <path d="M15 13v2"/>
-          <path d="M9 13v2"/>
+      <div class="chat-msg-avatar" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/>
         </svg>
       </div>
-      <div class="chat-bubble">
-        <div class="chat-typing">
+      <div class="chat-bubble" aria-label="Il bot sta scrivendo">
+        <div class="chat-typing" aria-hidden="true">
           <span class="chat-typing-dot"></span>
           <span class="chat-typing-dot"></span>
           <span class="chat-typing-dot"></span>
@@ -3340,15 +1569,15 @@ FOOTER - FEBLE-5 Branding
   function populateQuickActions() {
     const container = $('chat-quick-actions');
     const actions = [
-      { id: 'q1', label: '📥 Download', icon: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>' },
-      { id: 'q9', label: '🎮 Driver GPU', icon: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>' },
-      { id: 'q16', label: '🤖 Modelli AI', icon: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/></svg>' },
-      { id: 'q22', label: '⚙️ XRMOT', icon: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>' },
-      { id: 'q30', label: '📧 Supporto', icon: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>' }
+      { id: 'q1', label: 'Download', icon: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>' },
+      { id: 'q9', label: 'Driver GPU', icon: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>' },
+      { id: 'q16', label: 'Modelli AI', icon: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/></svg>' },
+      { id: 'q22', label: 'XRMOT', icon: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>' },
+      { id: 'q30', label: 'Supporto', icon: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>' }
     ];
 
     container.innerHTML = actions.map(a =>
-      `<button class="quick-action-btn" data-faq="${a.id}">${a.icon} ${a.label}</button>`
+      `<button class="quick-action-btn" data-faq="${a.id}" aria-label="${a.label}">${a.icon} ${escapeHtml(a.label)}</button>`
     ).join('');
 
     container.querySelectorAll('.quick-action-btn').forEach(btn => {
@@ -3358,6 +1587,9 @@ FOOTER - FEBLE-5 Branding
 
   // ═══════════════════════════════════════════════════
   // REPORT GENERATION
+  // PRE: chatTranscript is array of {role, text, time}
+  // POST: returns markdown string report
+  // INV: no PII, no credentials, no secrets in report
   // ═══════════════════════════════════════════════════
   function generateProblemReport() {
     const now = new Date();
@@ -3369,14 +1601,11 @@ FOOTER - FEBLE-5 Branding
 
     let transcript = '';
     chatTranscript.forEach(entry => {
-      const roleLabel = entry.role === 'user' ? '👤 UTENTE' : '🤖 BOT FEBLE-5';
-      transcript += `
-### [${entry.time}] ${roleLabel}
-${escapeHtml(entry.text)}
-`;
+      const roleLabel = entry.role === 'user' ? 'UTENTE' : 'BOT FEBLE-5';
+      transcript += `\n### [${entry.time}] ${roleLabel}\n${escapeHtml(entry.text)}\n`;
     });
 
-    return `# 📄 FEBLE-5 Problem Report
+    return `# FEBLE-5 Problem Report
 **Session ID:** \`${SESSION_ID}\`
 **Generated:** ${timestamp}
 **Session Start:** ${SESSION_START}
@@ -3384,12 +1613,12 @@ ${escapeHtml(entry.text)}
 
 ---
 
-## 💬 Chat Transcript
+## Chat Transcript
 ${transcript || '_No messages_'}
 
 ---
 
-## 🖥️ Environment Info
+## Environment Info
 - **User Agent:** ${escapeHtml(ua)}
 - **Platform:** ${escapeHtml(platform)}
 - **Language:** ${escapeHtml(language)}
@@ -3398,7 +1627,7 @@ ${transcript || '_No messages_'}
 
 ---
 
-## 📋 How to Submit
+## How to Submit
 1. Save this report as \`feble5-report-${SESSION_ID}.md\`
 2. Email to: **${SUPPORT_EMAIL}**
 3. Subject: \`[FEBLE-5 Support] Report ${SESSION_ID}\`
@@ -3408,7 +1637,7 @@ Expected response time: 24-48 business hours.
 
 ---
 
-## 🔒 Privacy Notice
+## Privacy Notice
 This report contains **NO** personal data, credentials, or PII. Only technical session data for diagnostics.
 
 ---
@@ -3437,11 +1666,114 @@ _Generated by FEBLE-5 MythOX AI Edition · ${now.getFullYear()}_
         URL.revokeObjectURL(url);
       }, 100);
 
-      showToast(`✅ Report scaricato: ${filename}`, 'success');
+      showToast(`Report scaricato: ${filename}`, 'success');
     } catch (err) {
-      console.error("[FEBLE-5] Report download failed:", err);
-      showToast('❌ Errore nel download del report', 'error');
+      showToast('Errore nel download del report', 'error');
     }
+  }
+
+  // ═══════════════════════════════════════════════════
+  // ENHANCED PARTICLE BACKGROUND (Optimized)
+  // O(1) gradient allocation, O(n²) connections with early exit
+  // ═══════════════════════════════════════════════════
+  function initParticles() {
+    const canvas = $('bg-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    
+    let particles = [];
+    let animationId;
+    const isMobile = window.innerWidth < 768;
+    const particleCount = isMobile ? 40 : 80;
+    const connectionDistance = isMobile ? 80 : 120;
+    const connectionDistSq = connectionDistance * connectionDistance; // avoid sqrt in loop
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    function createParticles() {
+      particles = [];
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          vx: (Math.random() - 0.5) * 0.3,
+          vy: (Math.random() - 0.5) * 0.3,
+          radius: Math.random() * 2.5 + 0.8,
+          opacity: Math.random() * 0.5 + 0.3,
+          hue: Math.random() * 60 + 200
+        });
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Draw connections (desktop only, optimized)
+      if (!isMobile) {
+        for (let i = 0; i < particles.length; i++) {
+          const pi = particles[i];
+          for (let j = i + 1; j < particles.length; j++) {
+            const pj = particles[j];
+            const dx = pj.x - pi.x;
+            const dy = pj.y - pi.y;
+            const distSq = dx * dx + dy * dy;
+            
+            if (distSq < connectionDistSq) {
+              const opacity = (1 - Math.sqrt(distSq) / connectionDistance) * 0.15;
+              ctx.beginPath();
+              ctx.moveTo(pi.x, pi.y);
+              ctx.lineTo(pj.x, pj.y);
+              ctx.strokeStyle = `hsla(${pi.hue}, 70%, 60%, ${opacity})`;
+              ctx.lineWidth = 0.8;
+              ctx.stroke();
+            }
+          }
+        }
+      }
+
+      // Draw particles (optimized - no gradient per frame)
+      particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // Boundary check with wrap instead of bounce for smoother motion
+        if (p.x < -10) p.x = canvas.width + 10;
+        else if (p.x > canvas.width + 10) p.x = -10;
+        if (p.y < -10) p.y = canvas.height + 10;
+        else if (p.y > canvas.height + 10) p.y = -10;
+
+        // Simple circle instead of gradient for performance
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `hsla(${p.hue}, 70%, 60%, ${p.opacity})`;
+        ctx.fill();
+      });
+
+      animationId = requestAnimationFrame(draw);
+    }
+
+    resize();
+    createParticles();
+    draw();
+
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => { resize(); createParticles(); }, 250);
+    }, { passive: true });
+
+    // Respect reduced motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      cancelAnimationFrame(animationId);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    
+    // Handle context loss
+    canvas.addEventListener('webglcontextlost', (e) => { e.preventDefault(); cancelAnimationFrame(animationId); });
   }
 
   // ═══════════════════════════════════════════════════
@@ -3454,7 +1786,7 @@ _Generated by FEBLE-5 MythOX AI Edition · ${now.getFullYear()}_
     renderPackages();
     initDetail();
     initChat();
-    setTimeout(() => showToast('👋 Benvenuto in FEBLE-5 MythOX AI Edition', 'info'), 1000);
+    setTimeout(() => showToast('Benvenuto in FEBLE-5 MythOX AI Edition', 'info'), 1000);
   }
 
   if (document.readyState === 'loading') {
